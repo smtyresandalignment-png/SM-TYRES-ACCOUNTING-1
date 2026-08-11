@@ -1,1 +1,508 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SM TYRES ACCOUNTING</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f5f7;
+    color: #17202a;
+}
+
+header {
+    background: #123b5d;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 23px;
+}
+
+header p {
+    margin: 6px 0 0;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 15px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.card {
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #0002;
+}
+
+.card small {
+    color: #68737d;
+}
+
+.amount {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 7px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+button {
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    background: #1677b8;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.section {
+    display: none;
+    margin-top: 15px;
+}
+
+.active {
+    display: block;
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin: 6px 0;
+    border: 1px solid #ccd3d8;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.back {
+    background: #68737d;
+    margin-bottom: 10px;
+}
+
+.list {
+    background: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.item {
+    padding: 12px 5px;
+    border-bottom: 1px solid #eee;
+}
+
+@media (min-width: 700px) {
+    .cards {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .buttons {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>SM TYRES ACCOUNTING</h1>
+    <p>Sales • Purchases • Inventory</p>
+</header>
+
+<div class="container">
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="active">
+
+    <div class="cards">
+
+        <div class="card">
+            <small>Total Sales</small>
+            <div class="amount" id="salesTotal">TSh 0</div>
+        </div>
+
+        <div class="card">
+            <small>Total Purchases</small>
+            <div class="amount" id="purchaseTotal">TSh 0</div>
+        </div>
+
+        <div class="card">
+            <small>Stock Quantity</small>
+            <div class="amount" id="stockCount">0</div>
+        </div>
+
+        <div class="card">
+            <small>Profit</small>
+            <div class="amount" id="profitTotal">TSh 0</div>
+        </div>
+
+    </div>
+
+    <div class="buttons">
+
+        <button onclick="showSection('sales')">
+            💰 SALES
+        </button>
+
+        <button onclick="showSection('purchases')">
+            🛒 PURCHASES
+        </button>
+
+        <button onclick="showSection('inventory')">
+            📦 INVENTORY
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- SALES -->
+<div id="sales" class="section">
+
+    <button class="back" onclick="showSection('dashboard')">
+        ← Dashboard
+    </button>
+
+    <h2>Sales</h2>
+
+    <input id="saleProduct" placeholder="Product name">
+
+    <input id="saleQty"
+           type="number"
+           placeholder="Quantity">
+
+    <input id="salePrice"
+           type="number"
+           placeholder="Selling price per item (TSh)">
+
+    <button onclick="addSale()">
+        Record Sale
+    </button>
+
+    <div id="salesList" class="list"></div>
+
+</div>
+
+
+<!-- PURCHASES -->
+<div id="purchases" class="section">
+
+    <button class="back" onclick="showSection('dashboard')">
+        ← Dashboard
+    </button>
+
+    <h2>Purchases</h2>
+
+    <input id="buyProduct" placeholder="Product name">
+
+    <input id="buyQty"
+           type="number"
+           placeholder="Quantity">
+
+    <input id="buyPrice"
+           type="number"
+           placeholder="Buying price per item (TSh)">
+
+    <button onclick="addPurchase()">
+        Record Purchase
+    </button>
+
+    <div id="purchaseList" class="list"></div>
+
+</div>
+
+
+<!-- INVENTORY -->
+<div id="inventory" class="section">
+
+    <button class="back" onclick="showSection('dashboard')">
+        ← Dashboard
+    </button>
+
+    <h2>Inventory</h2>
+
+    <div id="inventoryList" class="list"></div>
+
+</div>
+
+</div>
+
+
+<script>
+
+let data = JSON.parse(
+    localStorage.getItem("smTyresData") ||
+    '{"sales":[],"purchases":[],"stock":{}}'
+);
+
+
+function money(number) {
+
+    return "TSh " +
+        Number(number || 0)
+        .toLocaleString();
+
+}
+
+
+function saveData() {
+
+    localStorage.setItem(
+        "smTyresData",
+        JSON.stringify(data)
+    );
+
+    render();
+
+}
+
+
+function showSection(section) {
+
+    document
+        .querySelectorAll(".container > div")
+        .forEach(element => {
+            element.classList.remove("active");
+        });
+
+    document
+        .getElementById(section)
+        .classList.add("active");
+
+    render();
+
+}
+
+
+function addPurchase() {
+
+    let product =
+        document.getElementById("buyProduct")
+        .value.trim();
+
+    let quantity =
+        Number(document.getElementById("buyQty").value);
+
+    let price =
+        Number(document.getElementById("buyPrice").value);
+
+
+    if (!product || quantity <= 0 || price <= 0) {
+
+        alert("Please enter product, quantity and price.");
+
+        return;
+
+    }
+
+
+    data.stock[product] =
+        (data.stock[product] || 0) + quantity;
+
+
+    data.purchases.push({
+
+        product: product,
+
+        quantity: quantity,
+
+        price: price,
+
+        total: quantity * price,
+
+        date: new Date().toISOString()
+
+    });
+
+
+    saveData();
+
+
+    document.getElementById("buyProduct").value = "";
+    document.getElementById("buyQty").value = "";
+    document.getElementById("buyPrice").value = "";
+
+}
+
+
+function addSale() {
+
+    let product =
+        document.getElementById("saleProduct")
+        .value.trim();
+
+    let quantity =
+        Number(document.getElementById("saleQty").value);
+
+    let price =
+        Number(document.getElementById("salePrice").value);
+
+
+    if (!product || quantity <= 0 || price <= 0) {
+
+        alert("Please enter product, quantity and price.");
+
+        return;
+
+    }
+
+
+    if ((data.stock[product] || 0) < quantity) {
+
+        alert("Not enough stock available.");
+
+        return;
+
+    }
+
+
+    data.stock[product] -= quantity;
+
+
+    data.sales.push({
+
+        product: product,
+
+        quantity: quantity,
+
+        price: price,
+
+        total: quantity * price,
+
+        date: new Date().toISOString()
+
+    });
+
+
+    saveData();
+
+
+    document.getElementById("saleProduct").value = "";
+    document.getElementById("saleQty").value = "";
+    document.getElementById("salePrice").value = "";
+
+}
+
+
+function render() {
+
+    let stockQuantity =
+        Object.values(data.stock)
+        .reduce((total, quantity) =>
+            total + quantity, 0);
+
+
+    let totalSales =
+        data.sales
+        .reduce((total, sale) =>
+            total + sale.total, 0);
+
+
+    let totalPurchases =
+        data.purchases
+        .reduce((total, purchase) =>
+            total + purchase.total, 0);
+
+
+    let profit =
+        totalSales - totalPurchases;
+
+
+    document.getElementById("salesTotal")
+        .textContent = money(totalSales);
+
+
+    document.getElementById("purchaseTotal")
+        .textContent = money(totalPurchases);
+
+
+    document.getElementById("stockCount")
+        .textContent = stockQuantity;
+
+
+    document.getElementById("profitTotal")
+        .textContent = money(profit);
+
+
+    document.getElementById("salesList").innerHTML =
+
+        data.sales
+        .slice()
+        .reverse()
+        .map(sale =>
+
+            `<div class="item">
+                ${sale.product}
+                × ${sale.quantity}
+                — <b>${money(sale.total)}</b>
+            </div>`
+
+        )
+        .join("") || "No sales yet.";
+
+
+    document.getElementById("purchaseList").innerHTML =
+
+        data.purchases
+        .slice()
+        .reverse()
+        .map(purchase =>
+
+            `<div class="item">
+                ${purchase.product}
+                × ${purchase.quantity}
+                — <b>${money(purchase.total)}</b>
+            </div>`
+
+        )
+        .join("") || "No purchases yet.";
+
+
+    document.getElementById("inventoryList").innerHTML =
+
+        Object.entries(data.stock)
+        .map(([product, quantity]) =>
+
+            `<div class="item">
+                <b>${product}</b><br>
+                Stock: ${quantity}
+            </div>`
+
+        )
+        .join("") || "No inventory yet.";
+
+}
+
+
+render();
+
+</script>
+
+</body>
+</html>
