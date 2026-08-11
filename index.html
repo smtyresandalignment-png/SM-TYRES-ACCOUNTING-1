@@ -1378,7 +1378,169 @@ document.getElementById("inventoryBtn")
 
 });
 
+/* ================================
+   PRODUCT MANAGEMENT
+================================ */
 
+document.getElementById("productsBtn")
+.addEventListener("click", function(){
+
+    showScreen("products");
+
+});
+
+
+document.getElementById("productsBack")
+.addEventListener("click", function(){
+
+    showScreen("dashboard");
+
+});
+
+
+document.getElementById("addProduct")
+.addEventListener("click", function(){
+
+    let code =
+        document.getElementById("productCode")
+        .value.trim();
+
+    let name =
+        document.getElementById("productName")
+        .value.trim();
+
+    let category =
+        document.getElementById("productCategory")
+        .value.trim();
+
+
+    if(!name){
+
+        alert("Please enter a product name.");
+
+        return;
+
+    }
+
+
+    /* Don't allow duplicate product names */
+
+    if(data.products[name]){
+
+        alert("This product already exists.");
+
+        return;
+
+    }
+
+
+    /* Create product */
+
+    data.products[name] = {
+
+        code: code,
+
+        category: category,
+
+        stock: 0,
+
+        cost: 0
+
+    };
+
+
+    save();
+
+    renderProducts();
+
+
+    document.getElementById("productCode").value="";
+    document.getElementById("productName").value="";
+    document.getElementById("productCategory").value="";
+
+
+    alert("Product added successfully.");
+
+});
+
+
+/* ================================
+   DISPLAY PRODUCTS
+================================ */
+
+function renderProducts(){
+
+    let search =
+        document.getElementById("productSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    let html = "";
+
+
+    Object.keys(data.products)
+    .forEach(function(name){
+
+        let product =
+            data.products[name];
+
+
+        if(
+            search &&
+            !name.toLowerCase().includes(search) &&
+            !(product.code || "")
+                .toLowerCase()
+                .includes(search)
+        ){
+
+            return;
+
+        }
+
+
+        html +=
+
+        "<div class='item'>" +
+
+        "<b>" + name + "</b><br>" +
+
+        "Code: " +
+        (product.code || "No code") +
+        "<br>" +
+
+        "Category: " +
+        (product.category || "Not specified") +
+        "<br>" +
+
+        "Stock: " +
+        product.stock +
+        "<br>" +
+
+        "Latest buying cost: " +
+        money(product.cost) +
+
+        "</div>";
+
+    });
+
+
+    document.getElementById("productsList")
+        .innerHTML =
+        html || "No products found.";
+
+}
+
+
+/* PRODUCT SEARCH */
+
+document.getElementById("productSearch")
+.addEventListener("input", function(){
+
+    renderProducts();
+
+});
 document.getElementById("expensesBtn")
 .addEventListener("click", function(){
 
