@@ -1,1 +1,243 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SM TYRES ACCOUNTING V2</title>
+
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f3f5f7;color:#17202a}
+header{background:#123b5d;color:white;padding:18px;text-align:center}
+header h1{margin:0;font-size:22px}
+header p{margin:5px 0;font-size:13px}
+.container{max-width:1000px;margin:auto;padding:15px}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.card{background:white;border-radius:12px;padding:14px;box-shadow:0 2px 8px #0002}
+.card small{color:#68737d}
+.amount{font-size:19px;font-weight:bold;margin-top:7px}
+.buttons{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:15px}
+button{border:0;border-radius:9px;padding:13px;background:#1677b8;color:white;font-size:14px;font-weight:bold}
+button.secondary{background:#68737d}
+button.danger{background:#c0392b}
+.section{display:none;margin-top:15px}
+.active{display:block}
+input,select{width:100%;padding:11px;margin:5px 0;border:1px solid #ccd3d8;border-radius:8px;font-size:15px;background:white}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.list{background:white;border-radius:10px;padding:10px;margin-top:10px}
+.item{padding:12px 5px;border-bottom:1px solid #eee}
+.item:last-child{border-bottom:0}
+.back{background:#68737d;margin-bottom:10px}
+h2{margin-top:5px}
+.notice{background:#fff8df;padding:10px;border-radius:8px;margin:10px 0;font-size:13px}
+.receipt{background:white;padding:20px;border-radius:10px;margin-top:10px}
+@media(min-width:700px){
+.cards{grid-template-columns:repeat(4,1fr)}
+.buttons{grid-template-columns:repeat(4,1fr)}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>SM TYRES ACCOUNTING</h1>
+<p>Sales • Purchases • Inventory • Reports</p>
+</header>
+
+<div class="container">
+
+<!-- DASHBOARD -->
+<div id="dashboard" class="active">
+
+<div class="cards">
+
+<div class="card">
+<small>Sales</small>
+<div class="amount" id="salesTotal">TSh 0</div>
+</div>
+
+<div class="card">
+<small>Purchases</small>
+<div class="amount" id="purchaseTotal">TSh 0</div>
+</div>
+
+<div class="card">
+<small>Expenses</small>
+<div class="amount" id="expenseTotal">TSh 0</div>
+</div>
+
+<div class="card">
+<small>Net Profit</small>
+<div class="amount" id="profitTotal">TSh 0</div>
+</div>
+
+</div>
+
+<div class="buttons">
+
+<button onclick="show('sales')">💰 SALES</button>
+<button onclick="show('purchases')">🛒 PURCHASES</button>
+<button onclick="show('inventory')">📦 INVENTORY</button>
+<button onclick="show('expenses')">💸 EXPENSES</button>
+<button onclick="show('customers')">👥 CUSTOMERS</button>
+<button onclick="show('suppliers')">🏢 SUPPLIERS</button>
+<button onclick="show('reports')">📊 REPORTS</button>
+
+</div>
+
+</div>
+
+
+<!-- SALES -->
+<section id="sales" class="section">
+
+<button class="back" onclick="show('dashboard')">← Dashboard</button>
+
+<h2>💰 Sales</h2>
+
+<input id="saleCustomer" placeholder="Customer name">
+
+<input id="saleProduct" placeholder="Product name">
+
+<div class="row">
+<input id="saleQty" type="number" placeholder="Quantity">
+<input id="salePrice" type="number" placeholder="Selling price">
+</div>
+
+<button onclick="addSale()">Record Sale & Create Receipt</button>
+
+<div id="salesList" class="list"></div>
+
+</section>
+
+
+<!-- PURCHASES -->
+<section id="purchases" class="section">
+
+<button class="back" onclick="show('dashboard')">← Dashboard</button>
+
+<h2>🛒 Purchases</h2>
+
+<input id="buySupplier" placeholder="Supplier name">
+
+<input id="buyProduct" placeholder="Product name">
+
+<div class="row">
+<input id="buyQty" type="number" placeholder="Quantity">
+<input id="buyPrice" type="number" placeholder="Buying price">
+</div>
+
+<button onclick="addPurchase()">Record Purchase</button>
+
+<div id="purchaseList" class="list"></div>
+
+</section>
+
+
+<!-- INVENTORY -->
+<section id="inventory" class="section">
+
+<button class="back" onclick="show('dashboard')">← Dashboard</button>
+
+<h2>📦 Inventory</h2>
+
+<div class="notice">
+Buying cost is calculated using the latest purchase price.
+</div>
+
+<div id="inventoryList" class="list"></div>
+
+</section>
+
+
+<!-- EXPENSES -->
+<section id="expenses" class="section">
+
+<button class="back" onclick="show('dashboard')">← Dashboard</button>
+
+<h2>💸 Expenses</h2>
+
+<input id="expenseName" placeholder="Expense description">
+
+<input id="expenseAmount" type="number" placeholder="Amount (TSh)">
+
+<button onclick="addExpense()">Record Expense</button>
+
+<div id="expenseList" class="list"></div>
+
+</section>
+
+
+<!-- CUSTOMERS -->
+<section id="customers" class="section">
+
+<button class="back" onclick="show('dashboard')">← Dashboard</button>
+
+<h2>👥 Customers</h2>
+
+<input id="customerName" placeholder="Customer name">
+
+<input id="customerPhone" placeholder="Phone number">
+
+<button onclick="addCustomer()">Add Customer</button>
+
+<div id="customerList" class="list"></div>
+
+</section>
+
+
+<!-- SUPPLIERS -->
+<section id="suppliers" class="section">
+
+<button class="back" onclick="show('dashboard')">← Dashboard</button>
+
+<h2>🏢 Suppliers</h2>
+
+<input id="supplierName" placeholder="Supplier name">
+
+<input id="supplierPhone" placeholder="Phone number">
+
+<button onclick="addSupplier()">Add Supplier</button>
+
+<div id="supplierList" class="list"></div>
+
+</section>
+
+
+<!-- REPORTS -->
+<section id="reports" class="section">
+
+<button class="back" onclick="show('dashboard')">← Dashboard</button>
+
+<h2>📊 Reports</h2>
+
+<div class="list">
+
+<div class="item">
+<b>Total Sales</b>
+<br>
+<span id="reportSales">TSh 0</span>
+</div>
+
+<div class="item">
+<b>Cost of Goods Sold</b>
+<br>
+<span id="reportCOGS">TSh 0</span>
+</div>
+
+<div class="item">
+<b>Gross Profit</b>
+<br>
+<span id="reportGross">TSh 0</span>
+</div>
+
+<div class="item">
+<b>Expenses</b>
+<br>
+<span id="reportExpenses">TSh 0</span>
+</div>
+
+<div class="item">
+<b>Net
