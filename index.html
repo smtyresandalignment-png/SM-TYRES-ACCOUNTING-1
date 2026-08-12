@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport"
 content="width=device-width,initial-scale=1.0">
 
@@ -11,45 +13,46 @@ content="width=device-width,initial-scale=1.0">
 
 *{
 box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
 }
 
 body{
 margin:0;
-font-family:Arial,Helvetica,sans-serif;
-background:linear-gradient(135deg,#eef3f8,#dfe8f1);
+font-family:Arial,sans-serif;
+background:linear-gradient(135deg,#edf3f8,#dce7ef);
 color:#17202a;
 }
 
 header{
-background:linear-gradient(135deg,#061f36,#0b4f78,#087f8c);
+background:linear-gradient(135deg,#06243d,#075579,#078b91);
 color:white;
-padding:25px 15px;
+padding:24px 15px;
 text-align:center;
 box-shadow:0 4px 15px #0004;
 }
 
 .logo{
-width:75px;
-height:75px;
+width:72px;
+height:72px;
 margin:auto;
 border-radius:50%;
-background:linear-gradient(135deg,#f5c542,#ff8c00);
+background:linear-gradient(135deg,#ffd54a,#ff8a00);
 display:flex;
 align-items:center;
 justify-content:center;
-font-size:35px;
+font-size:34px;
 box-shadow:0 5px 15px #0005;
 }
 
 header h1{
 margin:10px 0 3px;
-font-size:25px;
+font-size:24px;
 }
 
 header p{
-margin:0;
-opacity:.9;
+margin:4px 0;
 font-size:13px;
+opacity:.9;
 }
 
 .container{
@@ -58,29 +61,32 @@ margin:auto;
 padding:15px;
 }
 
-.dashboard-title{
-margin:8px 0 15px;
-font-size:20px;
-font-weight:bold;
+.screen{
+display:none;
+}
+
+.screen.active{
+display:block;
 }
 
 .cards{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:12px;
+gap:11px;
 }
 
 .card{
 background:white;
-border-radius:16px;
-padding:17px;
+border-radius:15px;
+padding:16px;
 box-shadow:0 4px 14px #0002;
-border-left:5px solid #087f8c;
+border-left:5px solid #078b91;
 }
 
 .card small{
 color:#68737d;
-font-size:12px;
+font-weight:bold;
+font-size:11px;
 }
 
 .amount{
@@ -100,60 +106,47 @@ button{
 border:0;
 border-radius:11px;
 padding:14px;
-background:linear-gradient(135deg,#087f8c,#0b5c88);
+background:linear-gradient(135deg,#078b91,#075579);
 color:white;
 font-size:14px;
 font-weight:bold;
-cursor:pointer;
 box-shadow:0 3px 8px #0002;
+cursor:pointer;
 }
 
 button:active{
 transform:scale(.97);
 }
 
-button.back{
+.back{
 background:#66737d;
 margin-bottom:12px;
 }
 
-button.edit{
-background:#f0a500;
-}
-
-button.delete{
-background:#c0392b;
-}
-
-button.green{
+.green{
 background:#159957;
 }
 
-.screen{
-display:none;
-margin-top:10px;
+.yellow{
+background:#e09b00;
 }
 
-.screen.active{
-display:block;
+.red{
+background:#c0392b;
+}
+
+.screen-title{
+font-size:21px;
+font-weight:bold;
+color:#123b5d;
+margin:5px 0 15px;
 }
 
 .panel{
 background:white;
-padding:18px;
+padding:17px;
 border-radius:16px;
 box-shadow:0 4px 15px #0002;
-}
-
-h2{
-margin-top:0;
-color:#123b5d;
-}
-
-label{
-font-size:13px;
-font-weight:bold;
-color:#455a64;
 }
 
 input,select{
@@ -163,11 +156,17 @@ margin:6px 0 10px;
 border:1px solid #ccd5dc;
 border-radius:9px;
 font-size:15px;
-background:#fff;
+background:white;
 }
 
 input:focus,select:focus{
-outline:2px solid #45a8b5;
+outline:2px solid #36a7b0;
+}
+
+label{
+font-size:13px;
+font-weight:bold;
+color:#455a64;
 }
 
 .row{
@@ -182,50 +181,117 @@ margin-top:15px;
 
 .item{
 background:#f8fafc;
-border-radius:12px;
-padding:14px;
-margin-bottom:9px;
-border:1px solid #e1e7eb;
-box-shadow:0 2px 5px #0001;
+border:1px solid #e0e7eb;
+border-radius:13px;
+padding:15px;
+margin-bottom:10px;
+box-shadow:0 2px 7px #0001;
+}
+
+.tappable{
+cursor:pointer;
+}
+
+.tappable:active{
+background:#e9f7f8;
+transform:scale(.99);
 }
 
 .item-title{
+font-size:17px;
 font-weight:bold;
-font-size:16px;
 color:#123b5d;
+margin-bottom:6px;
 }
 
-.item-actions{
+.item-sub{
+font-size:13px;
+color:#596872;
+line-height:1.7;
+}
+
+.actions{
 display:flex;
-gap:7px;
+gap:8px;
 margin-top:12px;
 }
 
-.item-actions button{
-padding:9px 12px;
+.actions button{
+flex:1;
+padding:10px;
 font-size:12px;
 }
 
 .notice{
 background:#fff7d6;
-border-left:5px solid #f0a500;
+border-left:5px solid #e0a000;
 padding:12px;
 border-radius:8px;
-margin:10px 0;
+margin-bottom:12px;
 font-size:13px;
+}
+
+.empty{
+background:white;
+padding:25px;
+border-radius:12px;
+text-align:center;
+color:#71808c;
+}
+
+.modal{
+display:none;
+position:fixed;
+z-index:1000;
+left:0;
+top:0;
+width:100%;
+height:100%;
+background:#0008;
+padding:20px;
+overflow:auto;
+}
+
+.modal.show{
+display:flex;
+align-items:center;
+justify-content:center;
+}
+
+.modal-box{
+background:white;
+width:100%;
+max-width:500px;
+border-radius:17px;
+padding:20px;
+box-shadow:0 8px 30px #0006;
+}
+
+.modal-title{
+font-size:20px;
+font-weight:bold;
+color:#123b5d;
+margin-bottom:15px;
+}
+
+.modal-actions{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin-top:10px;
 }
 
 .invoice{
 background:white;
 padding:20px;
-border-radius:12px;
-margin-bottom:15px;
+border-radius:13px;
+margin-bottom:14px;
 box-shadow:0 3px 10px #0002;
 }
 
 .invoice-head{
 text-align:center;
-border-bottom:2px solid #087f8c;
+border-bottom:2px solid #078b91;
 padding-bottom:10px;
 margin-bottom:12px;
 }
@@ -236,22 +302,11 @@ color:#123b5d;
 }
 
 .invoice-total{
+text-align:right;
 font-size:20px;
 font-weight:bold;
-text-align:right;
-color:#087f8c;
-}
-
-.search{
+color:#078b91;
 margin-top:12px;
-}
-
-.empty{
-text-align:center;
-padding:25px;
-color:#71808c;
-background:white;
-border-radius:12px;
 }
 
 footer{
@@ -279,9 +334,14 @@ grid-template-columns:repeat(4,1fr);
 grid-template-columns:1fr;
 }
 
+.actions{
+flex-direction:column;
+}
+
 }
 
 </style>
+
 </head>
 
 <body>
@@ -298,13 +358,15 @@ grid-template-columns:1fr;
 
 </header>
 
+
 <div class="container">
 
-<!-- DASHBOARD -->
+
+<!-- ================= DASHBOARD ================= -->
 
 <div id="dashboard" class="screen active">
 
-<div class="dashboard-title">
+<div class="screen-title">
 📊 Business Dashboard
 </div>
 
@@ -331,6 +393,7 @@ grid-template-columns:1fr;
 </div>
 
 </div>
+
 
 <div class="menu">
 
@@ -371,7 +434,7 @@ grid-template-columns:1fr;
 </div>
 
 
-<!-- PRODUCTS -->
+<!-- ================= PRODUCTS ================= -->
 
 <div id="products" class="screen">
 
@@ -382,7 +445,9 @@ onclick="showScreen('dashboard')">
 
 <div class="panel">
 
-<h2>🛠️ Product Management</h2>
+<div class="screen-title">
+🛠️ Product Management
+</div>
 
 <label>Product Code / SKU</label>
 
@@ -404,8 +469,7 @@ onclick="addProduct()">
 ➕ ADD PRODUCT
 </button>
 
-<input class="search"
-id="productSearch"
+<input id="productSearch"
 placeholder="🔎 Search products..."
 oninput="renderProducts()">
 
@@ -417,7 +481,45 @@ class="list"></div>
 </div>
 
 
-<!-- SALES -->
+<!-- ================= PRODUCT DETAILS MODAL ================= -->
+
+<div id="productModal" class="modal">
+
+<div class="modal-box">
+
+<div class="modal-title">
+📦 Product Details
+</div>
+
+<div id="productDetails"></div>
+
+<div class="modal-actions">
+
+<button class="yellow"
+onclick="editCurrentProduct()">
+✏️ EDIT
+</button>
+
+<button class="red"
+onclick="deleteCurrentProduct()">
+🗑️ DELETE
+</button>
+
+</div>
+
+<br>
+
+<button class="back"
+onclick="closeProductModal()">
+CLOSE
+</button>
+
+</div>
+
+</div>
+
+
+<!-- ================= SALES ================= -->
 
 <div id="sales" class="screen">
 
@@ -428,12 +530,16 @@ onclick="showScreen('dashboard')">
 
 <div class="panel">
 
-<h2>💰 Sales</h2>
+<div class="screen-title">
+💰 Sales
+</div>
 
 <label>Date</label>
+
 <input id="saleDate" type="date">
 
 <label>Customer</label>
+
 <input id="saleCustomer"
 placeholder="Customer name">
 
@@ -481,7 +587,7 @@ class="list"></div>
 </div>
 
 
-<!-- PURCHASES -->
+<!-- ================= PURCHASES ================= -->
 
 <div id="purchases" class="screen">
 
@@ -492,13 +598,16 @@ onclick="showScreen('dashboard')">
 
 <div class="panel">
 
-<h2>🛒 Purchases</h2>
+<div class="screen-title">
+🛒 Purchases
+</div>
 
 <label>Date</label>
-<input id="purchaseDate"
-type="date">
+
+<input id="purchaseDate" type="date">
 
 <label>Supplier</label>
+
 <input id="purchaseSupplier"
 placeholder="Supplier name">
 
@@ -546,7 +655,7 @@ class="list"></div>
 </div>
 
 
-<!-- INVENTORY -->
+<!-- ================= INVENTORY ================= -->
 
 <div id="inventory" class="screen">
 
@@ -557,10 +666,12 @@ onclick="showScreen('dashboard')">
 
 <div class="panel">
 
-<h2>📦 Inventory</h2>
+<div class="screen-title">
+📦 Inventory
+</div>
 
 <div class="notice">
-Products increase when you record purchases and decrease when you record sales.
+Tap any product to view its details.
 </div>
 
 <div id="inventoryList"
@@ -571,7 +682,7 @@ class="list"></div>
 </div>
 
 
-<!-- EXPENSES -->
+<!-- ================= EXPENSES ================= -->
 
 <div id="expenses" class="screen">
 
@@ -582,12 +693,13 @@ onclick="showScreen('dashboard')">
 
 <div class="panel">
 
-<h2>💸 Expenses</h2>
+<div class="screen-title">
+💸 Expenses
+</div>
 
 <label>Date</label>
 
-<input id="expenseDate"
-type="date">
+<input id="expenseDate" type="date">
 
 <label>Description</label>
 
@@ -612,7 +724,7 @@ class="list"></div>
 </div>
 
 
-<!-- CUSTOMERS -->
+<!-- ================= CUSTOMERS ================= -->
 
 <div id="customers" class="screen">
 
@@ -623,7 +735,9 @@ onclick="showScreen('dashboard')">
 
 <div class="panel">
 
-<h2>👥 Customers</h2>
+<div class="screen-title">
+👥 Customers
+</div>
 
 <input id="customerName"
 placeholder="Customer name">
@@ -643,7 +757,7 @@ class="list"></div>
 </div>
 
 
-<!-- SUPPLIERS -->
+<!-- ================= SUPPLIERS ================= -->
 
 <div id="suppliers" class="screen">
 
@@ -654,7 +768,9 @@ onclick="showScreen('dashboard')">
 
 <div class="panel">
 
-<h2>🏢 Suppliers</h2>
+<div class="screen-title">
+🏢 Suppliers
+</div>
 
 <input id="supplierName"
 placeholder="Supplier name">
@@ -674,7 +790,7 @@ class="list"></div>
 </div>
 
 
-<!-- REPORTS -->
+<!-- ================= REPORTS ================= -->
 
 <div id="reports" class="screen">
 
@@ -685,39 +801,38 @@ onclick="showScreen('dashboard')">
 
 <div class="panel">
 
-<h2>📊 Financial Reports</h2>
+<div class="screen-title">
+📊 Financial Reports
+</div>
 
 <div class="item">
-<b>Total Sales</b>
-<br>
+<b>Total Sales</b><br>
 <span id="reportSales">TSh 0</span>
 </div>
 
 <div class="item">
-<b>Cost of Goods Sold</b>
-<br>
+<b>Cost of Goods Sold</b><br>
 <span id="reportCost">TSh 0</span>
 </div>
 
 <div class="item">
-<b>Gross Profit</b>
-<br>
+<b>Gross Profit</b><br>
 <span id="reportGross">TSh 0</span>
 </div>
 
 <div class="item">
-<b>Total Expenses</b>
-<br>
+<b>Total Expenses</b><br>
 <span id="reportExpenses">TSh 0</span>
 </div>
 
 <div class="item">
-<b>NET PROFIT</b>
-<br>
+<b>NET PROFIT</b><br>
 <span id="reportNet">TSh 0</span>
 </div>
 
-<h2>🧾 Sales Invoices</h2>
+<div class="screen-title">
+🧾 Sales Invoices
+</div>
 
 <div id="invoicesList"></div>
 
@@ -725,18 +840,23 @@ onclick="showScreen('dashboard')">
 
 </div>
 
+
 </div>
 
+
 <footer>
-SM TYRES & ALIGNMENT • Accounting System
+
+SM TYRES & ALIGNMENT<br>
+Accounting System
+
 </footer>
 
 
 <script>
 
-/* =================================================
+/* =====================================================
 DATABASE
-================================================= */
+===================================================== */
 
 let data={
 products:{},
@@ -760,9 +880,9 @@ data=JSON.parse(saved);
 
 }
 
-}catch(e){
+}catch(error){
 
-console.log(e);
+console.log("Starting database");
 
 }
 
@@ -774,9 +894,16 @@ data.customers=data.customers||[];
 data.suppliers=data.suppliers||[];
 
 
-/* =================================================
+/* =====================================================
+CURRENT PRODUCT
+===================================================== */
+
+let currentProduct=null;
+
+
+/* =====================================================
 SAVE
-================================================= */
+===================================================== */
 
 function save(){
 
@@ -788,9 +915,9 @@ JSON.stringify(data)
 }
 
 
-/* =================================================
+/* =====================================================
 MONEY
-================================================= */
+===================================================== */
 
 function money(value){
 
@@ -801,9 +928,9 @@ Number(value||0)
 }
 
 
-/* =================================================
-DATE
-================================================= */
+/* =====================================================
+TODAY
+===================================================== */
 
 function today(){
 
@@ -814,9 +941,9 @@ return new Date()
 }
 
 
-/* =================================================
+/* =====================================================
 SHOW SCREEN
-================================================= */
+===================================================== */
 
 function showScreen(name){
 
@@ -849,11 +976,11 @@ renderProductDropdowns();
 }
 
 
-/* =================================================
+/* =====================================================
 TOTALS
-================================================= */
+===================================================== */
 
-function totals(){
+function getTotals(){
 
 let sales=0;
 let purchases=0;
@@ -896,13 +1023,13 @@ net:net
 }
 
 
-/* =================================================
+/* =====================================================
 DASHBOARD
-================================================= */
+===================================================== */
 
 function updateDashboard(){
 
-let t=totals();
+let t=getTotals();
 
 document.getElementById("totalSales")
 .textContent=money(t.sales);
@@ -934,9 +1061,9 @@ document.getElementById("reportNet")
 }
 
 
-/* =================================================
-PRODUCTS
-================================================= */
+/* =====================================================
+ADD PRODUCT
+===================================================== */
 
 function addProduct(){
 
@@ -954,7 +1081,7 @@ document.getElementById("productCategory")
 
 if(!name){
 
-alert("Enter product name.");
+alert("Please enter product name.");
 
 return;
 
@@ -995,24 +1122,94 @@ alert("Product added successfully.");
 }
 
 
-/* =================================================
-EDIT PRODUCT
-================================================= */
+/* =====================================================
+OPEN PRODUCT
+===================================================== */
 
-function editProduct(name){
+function openProduct(name){
 
-let product=data.products[name];
+if(!data.products[name]){
 
-if(!product){
+alert("Product not found.");
 
 return;
 
 }
 
+currentProduct=name;
+
+let p=data.products[name];
+
+document.getElementById("productDetails")
+.innerHTML=`
+
+<div class="item">
+
+<div class="item-title">
+${escapeHTML(name)}
+</div>
+
+<div class="item-sub">
+
+<b>Code:</b>
+${escapeHTML(p.code||"No code")}
+<br>
+
+<b>Category:</b>
+${escapeHTML(p.category||"Not specified")}
+<br>
+
+<b>Current Stock:</b>
+${p.stock}
+<br>
+
+<b>Latest Buying Cost:</b>
+${money(p.cost)}
+
+</div>
+
+</div>
+
+`;
+
+document
+.getElementById("productModal")
+.classList.add("show");
+
+}
+
+
+/* =====================================================
+CLOSE PRODUCT
+===================================================== */
+
+function closeProductModal(){
+
+document
+.getElementById("productModal")
+.classList.remove("show");
+
+currentProduct=null;
+
+}
+
+
+/* =====================================================
+EDIT PRODUCT
+===================================================== */
+
+function editCurrentProduct(){
+
+if(!currentProduct)return;
+
+let oldName=currentProduct;
+
+let p=data.products[oldName];
+
 let newName=
 prompt(
 "Product name:",
-name
+oldName
 );
 
 if(newName===null)return;
@@ -1021,74 +1218,74 @@ newName=newName.trim();
 
 if(!newName){
 
-alert("Name cannot be empty.");
+alert("Product name cannot be empty.");
 
 return;
 
 }
 
 if(
-newName!==name &&
+newName!==oldName &&
 data.products[newName]
 ){
 
-alert(
-"Another product already has this name."
-);
+alert("Another product already has this name.");
 
 return;
 
 }
 
-let newCode=
+let code=
 prompt(
-"Product code:",
-product.code||""
+"Product code / SKU:",
+p.code||""
 );
 
-if(newCode===null)return;
+if(code===null)return;
 
-let newCategory=
+let category=
 prompt(
 "Category:",
-product.category||""
+p.category||""
 );
 
-if(newCategory===null)return;
+if(category===null)return;
 
+if(newName!==oldName){
 
-if(newName!==name){
+data.products[newName]=p;
 
-data.products[newName]=product;
+delete data.products[oldName];
 
-delete data.products[name];
+currentProduct=newName;
 
 }
 
-data.products[newName].code=
-newCode.trim();
+data.products[newName].code=code.trim();
 
 data.products[newName].category=
-newCategory.trim();
+category.trim();
 
 save();
 
 render();
+
+openProduct(newName);
 
 alert("Product updated successfully.");
 
 }
 
 
-/* =================================================
+/* =====================================================
 DELETE PRODUCT
-================================================= */
+===================================================== */
 
-function deleteProduct(name){
+function deleteCurrentProduct(){
 
-let product=data.products[name];
+if(!currentProduct)return;
 
-if(!product)return;
+let name=currentProduct;
 
 let usedSales=
 data.sales.some(function(s){
@@ -1108,44 +1305,45 @@ if(usedSales||usedPurchases){
 
 alert(
 "This product has accounting history.\n\n"+
-"It cannot be deleted because that could damage your records."
+"It cannot be deleted because your sales and purchase records depend on it."
 );
 
 return;
 
 }
 
-if(
-!confirm(
-"Delete "+name+"?"
-)
-){
+let confirmDelete=
+confirm(
+"Are you sure you want to delete:\n\n"+
+name+"?"
+);
 
-return;
-
-}
+if(!confirmDelete)return;
 
 delete data.products[name];
 
 save();
 
+closeProductModal();
+
 render();
 
-alert("Product deleted.");
+alert("Product deleted successfully.");
 
 }
 
 
-/* =================================================
-PRODUCT DISPLAY
-================================================= */
+/* =====================================================
+PRODUCT LIST
+===================================================== */
 
 function renderProducts(){
 
 let search=
 (document.getElementById("productSearch")
 .value||"")
-.toLowerCase();
+.toLowerCase()
+.trim();
 
 let html="";
 
@@ -1168,11 +1366,14 @@ return;
 
 html+=`
 
-<div class="item">
+<div class="item tappable"
+onclick="openProduct('${escapeJS(name)}')">
 
 <div class="item-title">
-${escapeHTML(name)}
+📦 ${escapeHTML(name)}
 </div>
+
+<div class="item-sub">
 
 Code:
 ${escapeHTML(p.code||"No code")}
@@ -1186,18 +1387,21 @@ Stock:
 <b>${p.stock}</b>
 <br>
 
-Latest buying cost:
+Buying cost:
 ${money(p.cost)}
 
-<div class="item-actions">
+</div>
 
-<button class="edit"
-onclick="editProduct('${escapeJS(name)}')">
-✏️ EDIT
+<div class="actions"
+onclick="event.stopPropagation()">
+
+<button class="yellow"
+onclick="openProduct('${escapeJS(name)}')">
+👁️ OPEN
 </button>
 
-<button class="delete"
-onclick="deleteProduct('${escapeJS(name)}')">
+<button class="red"
+onclick="currentProduct='${escapeJS(name)}';deleteCurrentProduct()">
 🗑️ DELETE
 </button>
 
@@ -1219,783 +1423,5 @@ No products found.
 }
 
 
-/* =================================================
-DROPDOWNS
-================================================= */
-
-function renderProductDropdowns(){
-
-let sales=
-document.getElementById("saleProduct");
-
-let purchases=
-document.getElementById("purchaseProduct");
-
-let options=
-`<option value="">
-Select product
-</option>`;
-
-Object.keys(data.products)
-.forEach(function(name){
-
-options+=
-`<option value="${escapeHTML(name)}">
-${escapeHTML(name)}
-</option>`;
-
-});
-
-sales.innerHTML=options;
-
-purchases.innerHTML=options;
-
-}
-
-
-/* =================================================
-PURCHASE
-================================================= */
-
-function recordPurchase(){
-
-let date=
-document.getElementById("purchaseDate").value
-||today();
-
-let supplier=
-document.getElementById("purchaseSupplier")
-.value.trim();
-
-let product=
-document.getElementById("purchaseProduct")
-.value;
-
-let quantity=
-Number(
-document.getElementById("purchaseQuantity")
-.value
-);
-
-let price=
-Number(
-document.getElementById("purchasePrice")
-.value
-);
-
-if(
-!product||
-quantity<=0||
-price<=0
-){
-
-alert(
-"Please enter product, quantity and buying price."
-);
-
-return;
-
-}
-
-let p=data.products[product];
-
-p.stock+=quantity;
-
-p.cost=price;
-
-data.purchases.push({
-
-date:date,
-
-supplier:
-supplier||"Unknown",
-
-product:product,
-
-quantity:quantity,
-
-price:price,
-
-total:quantity*price
-
-});
-
-if(
-supplier &&
-!data.suppliers.some(function(s){
-
-return s.name.toLowerCase()
-===supplier.toLowerCase();
-
-})
-){
-
-data.suppliers.push({
-
-name:supplier,
-
-phone:""
-
-});
-
-}
-
-save();
-
-render();
-
-document.getElementById("purchaseSupplier").value="";
-
-document.getElementById("purchaseProduct").value="";
-
-document.getElementById("purchaseQuantity").value="";
-
-document.getElementById("purchasePrice").value="";
-
-alert("Purchase recorded successfully.");
-
-}
-
-
-/* =================================================
-SALE
-================================================= */
-
-function recordSale(){
-
-let date=
-document.getElementById("saleDate").value
-||today();
-
-let customer=
-document.getElementById("saleCustomer")
-.value.trim();
-
-let product=
-document.getElementById("saleProduct")
-.value;
-
-let quantity=
-Number(
-document.getElementById("saleQuantity")
-.value
-);
-
-let price=
-Number(
-document.getElementById("salePrice")
-.value
-);
-
-if(
-!product||
-quantity<=0||
-price<=0
-){
-
-alert(
-"Please select product and enter quantity and selling price."
-);
-
-return;
-
-}
-
-let p=data.products[product];
-
-if(p.stock<quantity){
-
-alert(
-"Not enough stock.\nAvailable: "+
-p.stock
-);
-
-return;
-
-}
-
-let cost=
-Number(p.cost||0);
-
-let invoice=
-"INV-"+
-
-new Date().getFullYear()+
-"-"+
-
-String(data.sales.length+1)
-.padStart(4,"0");
-
-p.stock-=quantity;
-
-let sale={
-
-invoice:invoice,
-
-date:date,
-
-customer:
-customer||"Cash Customer",
-
-product:product,
-
-quantity:quantity,
-
-price:price,
-
-cost:cost,
-
-total:quantity*price,
-
-costTotal:quantity*cost,
-
-profit:(price-cost)*quantity
-
-};
-
-data.sales.push(sale);
-
-if(
-customer &&
-!data.customers.some(function(c){
-
-return c.name.toLowerCase()
-===customer.toLowerCase();
-
-})
-){
-
-data.customers.push({
-
-name:customer,
-
-phone:""
-
-});
-
-}
-
-save();
-
-render();
-
-document.getElementById("saleCustomer").value="";
-
-document.getElementById("saleProduct").value="";
-
-document.getElementById("saleQuantity").value="";
-
-document.getElementById("salePrice").value="";
-
-alert(
-"Sales invoice created:\n"+invoice
-);
-
-}
-
-
-/* =================================================
-EXPENSE
-================================================= */
-
-function recordExpense(){
-
-let date=
-document.getElementById("expenseDate").value
-||today();
-
-let name=
-document.getElementById("expenseName")
-.value.trim();
-
-let amount=
-Number(
-document.getElementById("expenseAmount")
-.value
-);
-
-if(!name||amount<=0){
-
-alert(
-"Enter expense description and amount."
-);
-
-return;
-
-}
-
-data.expenses.push({
-
-date:date,
-
-name:name,
-
-amount:amount
-
-});
-
-save();
-
-render();
-
-document.getElementById("expenseName").value="";
-
-document.getElementById("expenseAmount").value="";
-
-alert("Expense recorded.");
-
-}
-
-
-/* =================================================
-CUSTOMERS
-================================================= */
-
-function addCustomer(){
-
-let name=
-document.getElementById("customerName")
-.value.trim();
-
-let phone=
-document.getElementById("customerPhone")
-.value.trim();
-
-if(!name){
-
-alert("Enter customer name.");
-
-return;
-
-}
-
-data.customers.push({
-
-name:name,
-
-phone:phone
-
-});
-
-save();
-
-render();
-
-document.getElementById("customerName").value="";
-
-document.getElementById("customerPhone").value="";
-
-}
-
-
-/* =================================================
-SUPPLIERS
-================================================= */
-
-function addSupplier(){
-
-let name=
-document.getElementById("supplierName")
-.value.trim();
-
-let phone=
-document.getElementById("supplierPhone")
-.value.trim();
-
-if(!name){
-
-alert("Enter supplier name.");
-
-return;
-
-}
-
-data.suppliers.push({
-
-name:name,
-
-phone:phone
-
-});
-
-save();
-
-render();
-
-document.getElementById("supplierName").value="";
-
-document.getElementById("supplierPhone").value="";
-
-}
-
-
-/* =================================================
-RENDER EVERYTHING
-================================================= */
-
-function render(){
-
-updateDashboard();
-
-renderProducts();
-
-renderProductDropdowns();
-
-
-/* INVENTORY */
-
-let inventory="";
-
-Object.keys(data.products)
-.forEach(function(name){
-
-let p=data.products[name];
-
-inventory+=`
-
-<div class="item">
-
-<div class="item-title">
-${escapeHTML(name)}
-</div>
-
-Stock:
-<b>${p.stock}</b>
-<br>
-
-Buying cost:
-${money(p.cost)}
-<br>
-
-Category:
-${escapeHTML(p.category||"Not specified")}
-
-</div>
-
-`;
-
-});
-
-document.getElementById("inventoryList")
-.innerHTML=
-inventory||
-`<div class="empty">
-No products yet.
-</div>`;
-
-
-/* SALES */
-
-let sales="";
-
-data.sales
-.slice()
-.reverse()
-.forEach(function(s){
-
-sales+=`
-
-<div class="item">
-
-<div class="item-title">
-${escapeHTML(s.invoice)}
-</div>
-
-Date: ${s.date}
-<br>
-
-Customer:
-${escapeHTML(s.customer)}
-<br>
-
-${escapeHTML(s.product)}
-× ${s.quantity}
-<br>
-
-Total:
-<b>${money(s.total)}</b>
-<br>
-
-Profit:
-<b>${money(s.profit)}</b>
-
-</div>
-
-`;
-
-});
-
-document.getElementById("salesList")
-.innerHTML=
-sales||
-`<div class="empty">
-No sales yet.
-</div>`;
-
-
-/* PURCHASES */
-
-let purchases="";
-
-data.purchases
-.slice()
-.reverse()
-.forEach(function(p){
-
-purchases+=`
-
-<div class="item">
-
-<div class="item-title">
-${escapeHTML(p.product)}
-</div>
-
-Date: ${p.date}
-<br>
-
-Supplier:
-${escapeHTML(p.supplier)}
-<br>
-
-Quantity:
-${p.quantity}
-<br>
-
-Total:
-<b>${money(p.total)}</b>
-
-</div>
-
-`;
-
-});
-
-document.getElementById("purchasesList")
-.innerHTML=
-purchases||
-`<div class="empty">
-No purchases yet.
-</div>`;
-
-
-/* EXPENSES */
-
-let expenses="";
-
-data.expenses
-.slice()
-.reverse()
-.forEach(function(e){
-
-expenses+=`
-
-<div class="item">
-
-<div class="item-title">
-${escapeHTML(e.name)}
-</div>
-
-Date: ${e.date}
-<br>
-
-Amount:
-<b>${money(e.amount)}</b>
-
-</div>
-
-`;
-
-});
-
-document.getElementById("expensesList")
-.innerHTML=
-expenses||
-`<div class="empty">
-No expenses yet.
-</div>`;
-
-
-/* CUSTOMERS */
-
-let customers="";
-
-data.customers.forEach(function(c){
-
-customers+=`
-
-<div class="item">
-
-<div class="item-title">
-${escapeHTML(c.name)}
-</div>
-
-${escapeHTML(c.phone||"No phone number")}
-
-</div>
-
-`;
-
-});
-
-document.getElementById("customersList")
-.innerHTML=
-customers||
-`<div class="empty">
-No customers yet.
-</div>`;
-
-
-/* SUPPLIERS */
-
-let suppliers="";
-
-data.suppliers.forEach(function(s){
-
-suppliers+=`
-
-<div class="item">
-
-<div class="item-title">
-${escapeHTML(s.name)}
-</div>
-
-${escapeHTML(s.phone||"No phone number")}
-
-</div>
-
-`;
-
-});
-
-document.getElementById("suppliersList")
-.innerHTML=
-suppliers||
-`<div class="empty">
-No suppliers yet.
-</div>`;
-
-
-/* INVOICES */
-
-let invoices="";
-
-data.sales
-.slice()
-.reverse()
-.forEach(function(s){
-
-invoices+=`
-
-<div class="invoice">
-
-<div class="invoice-head">
-
-<h3>
-SM TYRES & ALIGNMENT
-</h3>
-
-Small Accounting System
-
-</div>
-
-<b>INVOICE:</b>
-${s.invoice}
-
-<br>
-
-<b>Date:</b>
-${s.date}
-
-<br>
-
-<b>Customer:</b>
-${escapeHTML(s.customer)}
-
-<hr>
-
-${escapeHTML(s.product)}
-
-<br>
-
-Quantity:
-${s.quantity}
-
-<br>
-
-Unit price:
-${money(s.price)}
-
-<div class="invoice-total">
-
-TOTAL:
-${money(s.total)}
-
-</div>
-
-<hr>
-
-<center>
-Thank you for your business.
-</center>
-
-</div>
-
-`;
-
-});
-
-document.getElementById("invoicesList")
-.innerHTML=
-invoices||
-`<div class="empty">
-No sales invoices yet.
-</div>`;
-
-}
-
-
-/* =================================================
-SECURITY HELPERS
-================================================= */
-
-function escapeHTML(value){
-
-return String(value||"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-function escapeJS(value){
-
-return String(value||"")
-.replace(/\\/g,"\\\\")
-.replace(/'/g,"\\'")
-.replace(/\n/g,"\\n")
-.replace(/\r/g,"\\r");
-
-}
-
-
-/* =================================================
-START
-================================================= */
-
-document.getElementById("saleDate")
-.value=today();
-
-document.getElementById("purchaseDate")
-.value=today();
-
-document.getElementById("expenseDate")
-.value=today();
-
-render();
-
-</script>
-
-</body>
-</html>
+/* =====================================================
+IN
