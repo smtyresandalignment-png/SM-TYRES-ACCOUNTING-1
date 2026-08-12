@@ -4,893 +4,605 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>SM TYRES & ALIGNMENT - Accounting System</title>
+<title>SM TYRES & ALIGNMENT</title>
 
 <style>
 
-/* =========================================================
-   SM TYRES & ALIGNMENT
-   COMPLETE ACCOUNTING SYSTEM
-========================================================= */
-
 *{
-    box-sizing:border-box;
+box-sizing:border-box;
 }
 
 html,body{
-    margin:0;
-    padding:0;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#eef3f7;
-    color:#17202a;
+margin:0;
+padding:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#eef3f8;
+color:#17202a;
 }
 
-button,
-input,
-select{
-    font-family:inherit;
+body{
+min-height:100vh;
 }
 
-button{
-    cursor:pointer;
+/* =========================
+   HEADER
+========================= */
+
+.header{
+background:
+linear-gradient(135deg,#061523,#0b2942,#006b80);
+color:white;
+padding:22px 15px;
+position:relative;
+overflow:hidden;
+border-bottom:4px solid #f4b400;
 }
 
-/* =========================================================
-   TOP HEADER
-========================================================= */
+.header:before{
+content:"";
+position:absolute;
+width:400px;
+height:400px;
+border:2px solid #f4b400;
+border-radius:50%;
+right:-180px;
+top:-180px;
+opacity:.25;
+}
 
-.top-header{
-    background:
-        radial-gradient(circle at 20% 30%,rgba(0,190,200,.18),transparent 30%),
-        radial-gradient(circle at 80% 30%,rgba(255,190,0,.12),transparent 25%),
-        linear-gradient(135deg,#03121f,#082a43,#063e59);
-    color:white;
-    padding:18px 20px 16px;
-    border-bottom:3px solid #08a7ad;
+.header:after{
+content:"";
+position:absolute;
+width:300px;
+height:300px;
+border:2px solid #12a6b5;
+border-radius:50%;
+left:-170px;
+bottom:-220px;
+opacity:.2;
 }
 
 .brand{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
-    max-width:1400px;
-    margin:auto;
-}
-
-.brand-left{
-    display:flex;
-    align-items:center;
-    gap:16px;
+position:relative;
+z-index:2;
+display:flex;
+align-items:center;
+justify-content:center;
+gap:18px;
+flex-wrap:wrap;
 }
 
 .logo{
-    width:90px;
-    height:90px;
-    border-radius:50%;
-    border:5px solid #f5b400;
-    background:
-        radial-gradient(circle,#333 0 35%,#111 36% 50%,#f5b400 51% 56%,#17202a 57%);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    box-shadow:0 0 20px #0008;
-    flex-shrink:0;
+width:105px;
+height:105px;
+border-radius:50%;
+background:
+radial-gradient(circle,#111 0 28%,#777 29% 34%,#151515 35% 55%,#f4b400 56% 60%,#101c27 61%);
+border:5px solid #f4b400;
+box-shadow:0 0 25px #0008;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:34px;
 }
 
-.logo-text{
-    font-weight:900;
-    color:white;
-    font-size:21px;
-    line-height:.9;
-    text-align:center;
-    text-shadow:2px 2px 3px #000;
+.brandText{
+text-align:center;
 }
 
-.brand-name{
-    font-size:34px;
-    font-weight:900;
-    letter-spacing:.5px;
+.brandText h1{
+margin:0;
+font-size:34px;
+font-weight:900;
+letter-spacing:1px;
 }
 
-.brand-name span{
-    color:#f5b400;
+.brandText h1 span{
+color:#f4b400;
 }
 
-.brand-subtitle{
-    font-size:14px;
-    margin-top:6px;
-    color:#d7e8ef;
-    letter-spacing:.5px;
+.brandText p{
+margin:6px 0 0;
+font-size:14px;
+letter-spacing:1px;
 }
 
-.brand-icons{
-    display:flex;
-    gap:25px;
-    align-items:center;
+.brandText small{
+display:block;
+margin-top:7px;
+font-size:12px;
+opacity:.85;
 }
 
-.brand-icon{
-    text-align:center;
-    font-size:13px;
-    color:white;
+/* =========================
+   DATE BAR
+========================= */
+
+.dateBar{
+background:#09243a;
+color:white;
+padding:10px 18px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:14px;
 }
 
-.brand-icon strong{
-    display:block;
-    font-size:25px;
-    margin-bottom:3px;
+#currentDate{
+font-weight:bold;
 }
 
-/* =========================================================
-   INFO BAR
-========================================================= */
+/* =========================
+   MAIN
+========================= */
 
-.info-bar{
-    background:#061d31;
-    color:white;
-    min-height:45px;
-    padding:8px 20px;
+.container{
+max-width:1250px;
+margin:auto;
+padding:20px;
 }
 
-.info-inner{
-    max-width:1400px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:15px;
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboardTitle{
+font-size:27px;
+font-weight:bold;
+margin:5px 0 18px;
 }
 
-.info-user{
-    display:flex;
-    align-items:center;
-    gap:8px;
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:15px;
 }
 
-.user-circle{
-    width:30px;
-    height:30px;
-    border-radius:50%;
-    background:white;
-    color:#078f9a;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-weight:bold;
+.card{
+background:white;
+border-radius:16px;
+padding:20px;
+box-shadow:0 5px 18px #102a4318;
+border-left:6px solid;
+min-height:145px;
+position:relative;
+overflow:hidden;
 }
 
-/* =========================================================
-   MAIN LAYOUT
-========================================================= */
-
-.layout{
-    display:flex;
-    min-height:calc(100vh - 200px);
+.card:after{
+content:"";
+position:absolute;
+width:100px;
+height:100px;
+border-radius:50%;
+right:-40px;
+bottom:-50px;
+background:#00000008;
 }
 
-/* =========================================================
-   SIDEBAR
-========================================================= */
-
-.sidebar{
-    width:220px;
-    background:
-        linear-gradient(180deg,#061b2d,#041321);
-    color:white;
-    flex-shrink:0;
-    box-shadow:3px 0 10px #0003;
+.card.sales{
+border-color:#19a866;
 }
 
-.nav-title{
-    padding:16px 20px 8px;
-    color:#7bdde0;
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:1px;
+.card.purchase{
+border-color:#1768c4;
 }
 
-.nav-btn{
-    width:100%;
-    border:0;
-    border-left:4px solid transparent;
-    background:transparent;
-    color:#eaf3f6;
-    padding:14px 17px;
-    text-align:left;
-    font-size:15px;
-    font-weight:bold;
-    display:flex;
-    align-items:center;
-    gap:12px;
+.card.expense{
+border-color:#ed7b08;
 }
 
-.nav-btn:hover{
-    background:#0b334d;
+.card.profit{
+border-color:#7444c4;
 }
 
-.nav-btn.active{
-    background:linear-gradient(90deg,#078f9a,#087d91);
-    border-left-color:#f5c400;
+.cardIcon{
+font-size:30px;
 }
 
-.nav-icon{
-    width:25px;
-    text-align:center;
-    font-size:20px;
+.cardTitle{
+font-size:14px;
+font-weight:bold;
+margin-top:8px;
+color:#68737d;
 }
 
-/* =========================================================
-   CONTENT
-========================================================= */
-
-.content{
-    flex:1;
-    min-width:0;
-    padding:22px;
+.cardAmount{
+font-size:25px;
+font-weight:900;
+margin-top:8px;
 }
+
+.sales .cardAmount{
+color:#15965a;
+}
+
+.purchase .cardAmount{
+color:#1768c4;
+}
+
+.expense .cardAmount{
+color:#dc6b00;
+}
+
+.profit .cardAmount{
+color:#7040bd;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.navigation{
+margin-top:22px;
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:12px;
+}
+
+.navButton{
+border:0;
+border-radius:13px;
+padding:17px 10px;
+color:white;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
+box-shadow:0 5px 12px #0002;
+transition:.15s;
+}
+
+.navButton:active{
+transform:scale(.97);
+}
+
+.nav-sales{
+background:linear-gradient(135deg,#10a35c,#087c4b);
+}
+
+.nav-purchases{
+background:linear-gradient(135deg,#1769c7,#114c9c);
+}
+
+.nav-inventory{
+background:linear-gradient(135deg,#ef8500,#d85c00);
+}
+
+.nav-products{
+background:linear-gradient(135deg,#0aa4a7,#087c89);
+}
+
+.nav-expenses{
+background:linear-gradient(135deg,#7541c6,#5227a0);
+}
+
+.nav-customers{
+background:linear-gradient(135deg,#e51b72,#b20b50);
+}
+
+.nav-suppliers{
+background:linear-gradient(135deg,#5553c9,#3533a0);
+}
+
+.nav-reports{
+background:linear-gradient(135deg,#9a6912,#6f4c08);
+}
+
+/* =========================
+   SCREEN
+========================= */
 
 .screen{
-    display:none;
+display:none;
 }
 
 .screen.active{
-    display:block;
+display:block;
 }
 
-.page-title{
-    font-size:28px;
-    margin:0 0 18px;
+.sectionBox{
+background:white;
+border-radius:16px;
+padding:20px;
+box-shadow:0 5px 18px #102a4318;
 }
 
-.page-subtitle{
-    color:#68737d;
-    margin-top:-10px;
-    margin-bottom:20px;
+.sectionTitle{
+font-size:24px;
+font-weight:bold;
+margin:0 0 18px;
 }
 
-/* =========================================================
-   DASHBOARD STAT CARDS
-========================================================= */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:16px;
+.backButton{
+background:#52616d;
+color:white;
+border:0;
+border-radius:9px;
+padding:11px 17px;
+font-weight:bold;
+cursor:pointer;
+margin-bottom:15px;
 }
 
-.stat-card{
-    background:white;
-    border-radius:15px;
-    padding:18px;
-    box-shadow:0 5px 18px #17344b18;
-    position:relative;
-    overflow:hidden;
-    min-height:145px;
+/* =========================
+   FORM
+========================= */
+
+.formGrid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:10px;
 }
 
-.stat-card:before{
-    content:"";
-    position:absolute;
-    left:0;
-    top:0;
-    bottom:0;
-    width:5px;
-}
-
-.stat-sales:before{
-    background:#12a96b;
-}
-
-.stat-purchases:before{
-    background:#2469c9;
-}
-
-.stat-expenses:before{
-    background:#e67e16;
-}
-
-.stat-profit:before{
-    background:#7541c8;
-}
-
-.stat-icon{
-    width:42px;
-    height:42px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:21px;
-    margin-bottom:12px;
-}
-
-.stat-sales .stat-icon{
-    background:#12a96b;
-}
-
-.stat-purchases .stat-icon{
-    background:#2469c9;
-}
-
-.stat-expenses .stat-icon{
-    background:#e67e16;
-}
-
-.stat-profit .stat-icon{
-    background:#7541c8;
-}
-
-.stat-label{
-    font-size:13px;
-    font-weight:bold;
-    color:#607080;
-    text-transform:uppercase;
-}
-
-.stat-value{
-    font-size:25px;
-    font-weight:900;
-    margin-top:5px;
-}
-
-.stat-sales .stat-value{
-    color:#129c64;
-}
-
-.stat-purchases .stat-value{
-    color:#2462ae;
-}
-
-.stat-expenses .stat-value{
-    color:#df6f0b;
-}
-
-.stat-profit .stat-value{
-    color:#7040ba;
-}
-
-/* =========================================================
-   DASHBOARD LOWER CARDS
-========================================================= */
-
-.dashboard-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr 1fr;
-    gap:16px;
-    margin-top:20px;
-}
-
-.panel{
-    background:white;
-    border-radius:15px;
-    padding:17px;
-    box-shadow:0 5px 18px #17344b18;
-}
-
-.panel h3{
-    margin:0 0 14px;
-    font-size:18px;
-}
-
-.panel-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
-}
-
-.small-link{
-    border:0;
-    background:none;
-    color:#087f9b;
-    font-weight:bold;
-    padding:4px;
-}
-
-.low-stock-item,
-.recent-item{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:10px;
-    border-bottom:1px solid #edf0f2;
-    padding:11px 0;
-}
-
-.low-stock-item:last-child,
-.recent-item:last-child{
-    border-bottom:0;
-}
-
-.low-stock-left{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.tyre-icon{
-    width:40px;
-    height:40px;
-    border-radius:50%;
-    background:
-        radial-gradient(circle,#ccc 0 20%,#222 21% 45%,#555 46% 52%,#111 53%);
-    flex-shrink:0;
-}
-
-.stock-danger{
-    color:#e03939;
-    font-weight:bold;
-}
-
-.recent-number{
-    color:#087f9b;
-    font-weight:bold;
-    font-size:13px;
-}
-
-.recent-money{
-    font-weight:bold;
-    color:#129c64;
-}
-
-/* =========================================================
-   FORMS
-========================================================= */
-
-.form-panel{
-    background:white;
-    border-radius:15px;
-    padding:20px;
-    box-shadow:0 5px 18px #17344b18;
-    max-width:1000px;
-}
-
-.form-grid{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:12px;
-}
-
-.form-group{
-    margin-bottom:10px;
-}
-
-.form-group.full{
-    grid-column:1/-1;
+input,select{
+width:100%;
+padding:13px;
+border:1px solid #ccd5dc;
+border-radius:9px;
+font-size:15px;
+background:white;
 }
 
 label{
-    display:block;
-    font-size:13px;
-    font-weight:bold;
-    color:#51606c;
-    margin-bottom:5px;
+font-size:13px;
+font-weight:bold;
+color:#53616b;
+display:block;
+margin-top:5px;
 }
 
-input,
-select{
-    width:100%;
-    padding:12px;
-    border:1px solid #ccd5db;
-    border-radius:8px;
-    background:white;
-    font-size:15px;
-    outline:none;
+.full{
+grid-column:1/-1;
 }
 
-input:focus,
-select:focus{
-    border-color:#078f9a;
-    box-shadow:0 0 0 3px #078f9a18;
+.primaryButton{
+border:0;
+border-radius:9px;
+padding:13px 18px;
+background:#087fa1;
+color:white;
+font-weight:bold;
+font-size:15px;
+cursor:pointer;
 }
 
-.action-row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px;
-    margin-top:12px;
+.redButton{
+background:#c0392b;
 }
 
-.btn{
-    border:0;
-    border-radius:9px;
-    padding:12px 18px;
-    color:white;
-    font-weight:bold;
-    font-size:14px;
+.greenButton{
+background:#15965a;
 }
 
-.btn-primary{
-    background:#078f9a;
+.grayButton{
+background:#68737d;
 }
 
-.btn-blue{
-    background:#2469c9;
+/* =========================
+   TABLE / LIST
+========================= */
+
+.list{
+margin-top:18px;
 }
 
-.btn-green{
-    background:#12a96b;
+.listItem{
+background:#f8fafc;
+border:1px solid #e3e8ed;
+border-radius:11px;
+padding:14px;
+margin-bottom:9px;
 }
 
-.btn-orange{
-    background:#e67e16;
+.itemTop{
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:center;
 }
 
-.btn-purple{
-    background:#7040ba;
+.itemName{
+font-weight:bold;
+font-size:16px;
 }
 
-.btn-red{
-    background:#c0392b;
+.itemInfo{
+font-size:13px;
+color:#5d6972;
+margin-top:5px;
+line-height:1.6;
 }
 
-.btn-dark{
-    background:#34495e;
+.actionRow{
+display:flex;
+gap:7px;
+margin-top:10px;
+flex-wrap:wrap;
 }
 
-.btn-light{
-    background:#e8eef2;
-    color:#263746;
+.smallButton{
+border:0;
+border-radius:7px;
+padding:8px 12px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+font-size:12px;
 }
 
-/* =========================================================
-   TABLES
-========================================================= */
+/* =========================
+   INVENTORY
+========================= */
 
-.table-panel{
-    background:white;
-    border-radius:15px;
-    padding:18px;
-    box-shadow:0 5px 18px #17344b18;
-    margin-top:18px;
-    overflow-x:auto;
+.stockGood{
+color:#15965a;
+font-weight:bold;
 }
 
-table{
-    width:100%;
-    border-collapse:collapse;
-    min-width:700px;
+.stockLow{
+color:#d35400;
+font-weight:bold;
 }
 
-th{
-    background:#082b43;
-    color:white;
-    padding:12px;
-    text-align:left;
-    font-size:13px;
+.stockEmpty{
+color:#c0392b;
+font-weight:bold;
 }
 
-td{
-    padding:11px;
-    border-bottom:1px solid #e8edf0;
-    font-size:14px;
+/* =========================
+   REPORTS
+========================= */
+
+.reportGrid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
 }
 
-tr:hover td{
-    background:#f7fafb;
+.reportCard{
+background:#f8fafc;
+border-radius:12px;
+padding:17px;
+border-left:5px solid #087fa1;
 }
 
-.badge{
-    display:inline-block;
-    padding:4px 8px;
-    border-radius:20px;
-    font-size:11px;
-    font-weight:bold;
+.reportCard b{
+display:block;
+font-size:13px;
+color:#68737d;
 }
 
-.badge-green{
-    background:#dff7eb;
-    color:#087c4e;
+.reportCard strong{
+font-size:22px;
+display:block;
+margin-top:7px;
 }
 
-.badge-red{
-    background:#fde3e3;
-    color:#a62626;
-}
-
-.badge-blue{
-    background:#e1efff;
-    color:#1f5d9e;
-}
-
-/* =========================================================
-   PRODUCT CARDS
-========================================================= */
-
-.product-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-top:18px;
-}
-
-.product-card{
-    background:white;
-    border-radius:14px;
-    padding:17px;
-    box-shadow:0 5px 18px #17344b18;
-}
-
-.product-card h3{
-    margin:0 0 8px;
-}
-
-.product-code{
-    color:#078f9a;
-    font-weight:bold;
-    font-size:13px;
-}
-
-.product-meta{
-    margin-top:10px;
-    line-height:1.7;
-    color:#586672;
-}
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-.search-box{
-    margin-bottom:15px;
-}
-
-/* =========================================================
-   REPORT CARDS
-========================================================= */
-
-.report-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-}
-
-.report-card{
-    background:white;
-    border-radius:14px;
-    padding:18px;
-    box-shadow:0 5px 18px #17344b18;
-}
-
-.report-card h3{
-    margin:0;
-    color:#63727d;
-    font-size:14px;
-}
-
-.report-card strong{
-    display:block;
-    margin-top:8px;
-    font-size:24px;
-}
-
-/* =========================================================
+/* =========================
    INVOICE
-========================================================= */
+========================= */
 
 .invoice{
-    background:white;
-    max-width:800px;
-    margin:20px auto;
-    padding:30px;
-    box-shadow:0 5px 20px #0002;
+background:white;
+border:1px solid #d9e0e5;
+border-radius:12px;
+padding:20px;
+margin-top:12px;
 }
 
-.invoice-head{
-    display:flex;
-    justify-content:space-between;
-    gap:20px;
-    border-bottom:2px solid #078f9a;
-    padding-bottom:15px;
+.invoiceHeader{
+text-align:center;
+border-bottom:2px solid #087fa1;
+padding-bottom:12px;
 }
 
-.invoice-logo{
-    display:flex;
-    align-items:center;
-    gap:10px;
+.invoiceHeader h2{
+margin:0;
 }
 
-.invoice-logo-circle{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    background:#111;
-    border:3px solid #f5b400;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    color:white;
-    font-size:11px;
-    font-weight:bold;
-    text-align:center;
+.invoiceHeader p{
+margin:5px 0;
+font-size:13px;
 }
 
-.invoice-title{
-    color:#078f9a;
-    font-size:22px;
-    font-weight:bold;
+.invoiceInfo{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+margin:15px 0;
 }
 
-.invoice table{
-    min-width:0;
-    margin-top:20px;
+.invoiceTotal{
+font-size:22px;
+font-weight:bold;
+text-align:right;
+margin-top:15px;
 }
 
-.invoice th{
-    background:#078f9a;
-}
-
-.invoice-total{
-    text-align:right;
-    font-size:20px;
-    font-weight:bold;
-    margin-top:15px;
-}
-
-/* =========================================================
-   NOTICE
-========================================================= */
-
-.notice{
-    background:#fff8df;
-    border-left:4px solid #f5b400;
-    padding:12px;
-    border-radius:8px;
-    margin-bottom:15px;
-}
-
-/* =========================================================
+/* =========================
    FOOTER
-========================================================= */
+========================= */
 
 .footer{
-    background:#dce6ed;
-    color:#5f6c75;
-    text-align:center;
-    padding:20px;
-    margin-top:20px;
+text-align:center;
+padding:35px 10px;
+color:#68737d;
+font-size:13px;
 }
 
-/* =========================================================
-   MOBILE / TABLET
-========================================================= */
+/* =========================
+   TOAST
+========================= */
 
-@media(max-width:1000px){
+.toast{
+position:fixed;
+left:50%;
+bottom:25px;
+transform:translateX(-50%);
+background:#17202a;
+color:white;
+padding:13px 20px;
+border-radius:10px;
+display:none;
+z-index:9999;
+box-shadow:0 5px 20px #0005;
+}
 
-    .stats{
-        grid-template-columns:repeat(2,1fr);
-    }
+/* =========================
+   MOBILE
+========================= */
 
-    .dashboard-grid{
-        grid-template-columns:1fr 1fr;
-    }
+@media(max-width:800px){
 
-    .product-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
+.brandText h1{
+font-size:25px;
+}
 
-    .brand-icons{
-        display:none;
-    }
+.logo{
+width:80px;
+height:80px;
+font-size:27px;
+}
 
-    .brand-name{
-        font-size:26px;
-    }
+.cards{
+grid-template-columns:repeat(2,1fr);
+}
+
+.navigation{
+grid-template-columns:repeat(2,1fr);
+}
 
 }
 
-@media(max-width:700px){
+@media(max-width:500px){
 
-    .top-header{
-        padding:14px;
-    }
+.container{
+padding:12px;
+}
 
-    .brand{
-        justify-content:center;
-    }
+.cards{
+grid-template-columns:1fr;
+}
 
-    .brand-left{
-        width:100%;
-        justify-content:center;
-    }
+.navigation{
+grid-template-columns:1fr;
+}
 
-    .logo{
-        width:70px;
-        height:70px;
-    }
+.formGrid{
+grid-template-columns:1fr;
+}
 
-    .brand-name{
-        font-size:20px;
-    }
+.full{
+grid-column:auto;
+}
 
-    .brand-subtitle{
-        font-size:11px;
-    }
+.dateBar{
+font-size:12px;
+}
 
-    .info-inner{
-        font-size:12px;
-    }
-
-    .layout{
-        display:block;
-    }
-
-    .sidebar{
-        width:100%;
-        display:flex;
-        overflow-x:auto;
-        position:sticky;
-        top:0;
-        z-index:20;
-    }
-
-    .nav-title{
-        display:none;
-    }
-
-    .nav-btn{
-        min-width:105px;
-        justify-content:center;
-        flex-direction:column;
-        gap:2px;
-        padding:8px 5px;
-        font-size:10px;
-        border-left:0;
-        border-bottom:3px solid transparent;
-    }
-
-    .nav-btn.active{
-        border-left:0;
-        border-bottom-color:#f5c400;
-    }
-
-    .nav-icon{
-        font-size:19px;
-    }
-
-    .content{
-        padding:14px;
-    }
-
-    .stats{
-        grid-template-columns:1fr 1fr;
-        gap:10px;
-    }
-
-    .stat-card{
-        min-height:125px;
-        padding:13px;
-    }
-
-    .stat-value{
-        font-size:19px;
-    }
-
-    .dashboard-grid{
-        grid-template-columns:1fr;
-    }
-
-    .form-grid{
-        grid-template-columns:1fr;
-    }
-
-    .form-group.full{
-        grid-column:auto;
-    }
-
-    .product-grid{
-        grid-template-columns:1fr;
-    }
-
-    .report-grid{
-        grid-template-columns:1fr 1fr;
-    }
-
-    .page-title{
-        font-size:23px;
-    }
+.invoiceInfo{
+grid-template-columns:1fr;
+}
 
 }
 
@@ -899,815 +611,1443 @@ tr:hover td{
 
 <body>
 
-<!-- =========================================================
+<!-- =========================
      HEADER
-========================================================= -->
+========================= -->
 
-<header class="top-header">
+<header class="header">
 
 <div class="brand">
 
-    <div class="brand-left">
+<div class="logo">
+🚗
+</div>
 
-        <div class="logo">
-            <div class="logo-text">
-                SM<br>
-                <span style="color:#f5b400">TYRES</span><br>
-                <span style="font-size:12px">ALIGNMENT</span>
-            </div>
-        </div>
+<div class="brandText">
 
-        <div>
-            <div class="brand-name">
-                SM TYRES & <span>ALIGNMENT</span>
-            </div>
+<h1>SM <span>TYRES & ALIGNMENT</span></h1>
 
-            <div class="brand-subtitle">
-                ACCOUNTING & INVENTORY MANAGEMENT
-            </div>
+<p>ACCOUNTING & INVENTORY MANAGEMENT</p>
 
-            <div class="brand-subtitle">
-                Sales • Purchases • Inventory • Reports
-            </div>
-        </div>
+<small>
+SALES • PURCHASES • INVENTORY • REPORTS
+</small>
 
-    </div>
-
-    <div class="brand-icons">
-
-        <div class="brand-icon">
-            <strong>💰</strong>
-            Sales
-        </div>
-
-        <div class="brand-icon">
-            <strong>🛒</strong>
-            Purchases
-        </div>
-
-        <div class="brand-icon">
-            <strong>📦</strong>
-            Inventory
-        </div>
-
-        <div class="brand-icon">
-            <strong>📊</strong>
-            Reports
-        </div>
-
-    </div>
+</div>
 
 </div>
 
 </header>
 
+<!-- DATE -->
 
-<!-- =========================================================
-     INFO BAR
-========================================================= -->
+<div class="dateBar">
 
-<div class="info-bar">
+<div id="currentDate">
+Loading date...
+</div>
 
-<div class="info-inner">
-
-    <div id="currentDate">
-        📅 Loading date...
-    </div>
-
-    <div class="info-user">
-        Welcome, SM TYRES
-        <div class="user-circle">👤</div>
-    </div>
-
+<div>
+Welcome, SM TYRES
 </div>
 
 </div>
 
 
-<!-- =========================================================
-     MAIN LAYOUT
-========================================================= -->
+<div class="container">
 
-<div class="layout">
-
-
-<!-- =========================================================
-     SIDEBAR
-========================================================= -->
-
-<nav class="sidebar">
-
-<div class="nav-title">
-    Main Menu
-</div>
-
-<button class="nav-btn active" data-screen="dashboard">
-    <span class="nav-icon">🏠</span>
-    Dashboard
-</button>
-
-<button class="nav-btn" data-screen="sales">
-    <span class="nav-icon">💰</span>
-    Sales
-</button>
-
-<button class="nav-btn" data-screen="purchases">
-    <span class="nav-icon">🛒</span>
-    Purchases
-</button>
-
-<button class="nav-btn" data-screen="inventory">
-    <span class="nav-icon">📦</span>
-    Inventory
-</button>
-
-<button class="nav-btn" data-screen="products">
-    <span class="nav-icon">🛠️</span>
-    Products
-</button>
-
-<button class="nav-btn" data-screen="expenses">
-    <span class="nav-icon">💸</span>
-    Expenses
-</button>
-
-<button class="nav-btn" data-screen="customers">
-    <span class="nav-icon">👥</span>
-    Customers
-</button>
-
-<button class="nav-btn" data-screen="suppliers">
-    <span class="nav-icon">🏢</span>
-    Suppliers
-</button>
-
-<button class="nav-btn" data-screen="reports">
-    <span class="nav-icon">📊</span>
-    Reports
-</button>
-
-<button class="nav-btn" data-screen="settings">
-    <span class="nav-icon">⚙️</span>
-    Settings
-</button>
-
-<button class="nav-btn" data-screen="backup">
-    <span class="nav-icon">☁️</span>
-    Backup
-</button>
-
-</nav>
-
-
-<!-- =========================================================
-     CONTENT
-========================================================= -->
-
-<main class="content">
-
-
-<!-- =========================================================
+<!-- =========================
      DASHBOARD
-========================================================= -->
+========================= -->
 
 <section id="dashboard" class="screen active">
 
-<h1 class="page-title">
-    📊 Business Dashboard
-</h1>
-
-<p class="page-subtitle">
-    Overview of SM TYRES & ALIGNMENT
-</p>
-
-
-<div class="stats">
-
-<div class="stat-card stat-sales">
-
-    <div class="stat-icon">💰</div>
-
-    <div class="stat-label">
-        Total Sales
-    </div>
-
-    <div class="stat-value" id="dashSales">
-        TSh 0
-    </div>
-
+<div class="dashboardTitle">
+📊 Business Dashboard
 </div>
 
+<div class="cards">
 
-<div class="stat-card stat-purchases">
-
-    <div class="stat-icon">🛒</div>
-
-    <div class="stat-label">
-        Purchases
-    </div>
-
-    <div class="stat-value" id="dashPurchases">
-        TSh 0
-    </div>
-
+<div class="card sales">
+<div class="cardIcon">💰</div>
+<div class="cardTitle">TOTAL SALES</div>
+<div class="cardAmount" id="dashSales">TSh 0</div>
 </div>
 
-
-<div class="stat-card stat-expenses">
-
-    <div class="stat-icon">💸</div>
-
-    <div class="stat-label">
-        Expenses
-    </div>
-
-    <div class="stat-value" id="dashExpenses">
-        TSh 0
-    </div>
-
+<div class="card purchase">
+<div class="cardIcon">🛒</div>
+<div class="cardTitle">PURCHASES</div>
+<div class="cardAmount" id="dashPurchases">TSh 0</div>
 </div>
 
+<div class="card expense">
+<div class="cardIcon">💸</div>
+<div class="cardTitle">EXPENSES</div>
+<div class="cardAmount" id="dashExpenses">TSh 0</div>
+</div>
 
-<div class="stat-card stat-profit">
-
-    <div class="stat-icon">📈</div>
-
-    <div class="stat-label">
-        Net Profit
-    </div>
-
-    <div class="stat-value" id="dashProfit">
-        TSh 0
-    </div>
-
+<div class="card profit">
+<div class="cardIcon">📈</div>
+<div class="cardTitle">NET PROFIT</div>
+<div class="cardAmount" id="dashProfit">TSh 0</div>
 </div>
 
 </div>
 
 
-<div class="dashboard-grid">
+<!-- NO QUICK ACCESS -->
 
+<div class="navigation">
 
-<!-- LOW STOCK -->
-
-<div class="panel">
-
-<div class="panel-header">
-
-<h3>⚠️ Low Stock Alert</h3>
-
-<button class="small-link" data-screen="inventory">
-    View all →
+<button class="navButton nav-sales" data-screen="sales">
+💰 SALES
 </button>
 
-</div>
-
-<div id="lowStockList">
-    No low-stock products.
-</div>
-
-</div>
-
-
-<!-- RECENT SALES -->
-
-<div class="panel">
-
-<div class="panel-header">
-
-<h3>📈 Recent Sales</h3>
-
-<button class="small-link" data-screen="sales">
-    View all →
+<button class="navButton nav-purchases" data-screen="purchases">
+🛒 PURCHASES
 </button>
 
-</div>
-
-<div id="recentSales">
-    No sales yet.
-</div>
-
-</div>
-
-
-<!-- RECENT PURCHASES -->
-
-<div class="panel">
-
-<div class="panel-header">
-
-<h3>🛒 Recent Purchases</h3>
-
-<button class="small-link" data-screen="purchases">
-    View all →
+<button class="navButton nav-inventory" data-screen="inventory">
+📦 INVENTORY
 </button>
 
-</div>
+<button class="navButton nav-products" data-screen="products">
+🔧 PRODUCTS
+</button>
 
-<div id="recentPurchases">
-    No purchases yet.
-</div>
+<button class="navButton nav-expenses" data-screen="expenses">
+💸 EXPENSES
+</button>
 
-</div>
+<button class="navButton nav-customers" data-screen="customers">
+👥 CUSTOMERS
+</button>
+
+<button class="navButton nav-suppliers" data-screen="suppliers">
+🏢 SUPPLIERS
+</button>
+
+<button class="navButton nav-reports" data-screen="reports">
+📊 REPORTS
+</button>
 
 </div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =========================
      SALES
-========================================================= -->
+========================= -->
 
 <section id="sales" class="screen">
 
-<h1 class="page-title">💰 Sales</h1>
+<div class="sectionBox">
 
-<p class="page-subtitle">
-    Record sales and create sales invoices.
-</p>
+<button class="backButton" data-screen="dashboard">
+← Dashboard
+</button>
 
+<h2 class="sectionTitle">💰 Sales</h2>
 
-<div class="form-panel">
+<div class="formGrid">
 
-<div class="form-grid">
-
-<div class="form-group">
-
+<div>
 <label>Date</label>
-
-<input
-    id="saleDate"
-    type="date">
-
+<input id="saleDate" type="date">
 </div>
 
-
-<div class="form-group">
-
+<div>
 <label>Customer</label>
-
-<input
-    id="saleCustomer"
-    placeholder="Customer name">
-
+<input id="saleCustomer" placeholder="Customer name">
 </div>
 
-
-<div class="form-group">
-
+<div>
 <label>Product</label>
-
-<select id="saleProduct">
-    <option value="">Select product</option>
-</select>
-
+<input id="saleProduct" placeholder="Product name">
 </div>
 
-
-<div class="form-group">
-
+<div>
 <label>Quantity</label>
-
-<input
-    id="saleQuantity"
-    type="number"
-    min="1"
-    value="1">
-
+<input id="saleQuantity" type="number" min="1" placeholder="Quantity">
 </div>
 
-
-<div class="form-group">
-
-<label>Selling Price per Unit</label>
-
-<input
-    id="salePrice"
-    type="number"
-    min="0"
-    placeholder="Enter selling price">
-
+<div>
+<label>Selling Price</label>
+<input id="salePrice" type="number" min="0" placeholder="Selling price">
 </div>
 
-</div>
-
-
-<div class="notice">
-Selling prices can be different on every sale.
-</div>
-
-
-<div class="action-row">
-
-<button class="btn btn-green" id="recordSale">
-    💾 Record Sale
+<div class="full">
+<button class="primaryButton" id="recordSale">
+💰 RECORD SALE
 </button>
-
-<button class="btn btn-light" id="clearSale">
-    Clear
-</button>
-
 </div>
 
 </div>
 
-
-<div class="table-panel">
-
-<h3>Sales History</h3>
-
-<table>
-
-<thead>
-
-<tr>
-<th>Invoice</th>
-<th>Date</th>
-<th>Customer</th>
-<th>Product</th>
-<th>Qty</th>
-<th>Total</th>
-<th>Profit</th>
-</tr>
-
-</thead>
-
-<tbody id="salesTable">
-</tbody>
-
-</table>
+<div id="salesList" class="list"></div>
 
 </div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =========================
      PURCHASES
-========================================================= -->
+========================= -->
 
 <section id="purchases" class="screen">
 
-<h1 class="page-title">🛒 Purchases</h1>
+<div class="sectionBox">
 
-<p class="page-subtitle">
-    Record purchases from suppliers and automatically increase stock.
-</p>
+<button class="backButton" data-screen="dashboard">
+← Dashboard
+</button>
 
+<h2 class="sectionTitle">🛒 Purchases</h2>
 
-<div class="form-panel">
+<div class="formGrid">
 
-<div class="form-grid">
-
-<div class="form-group">
-
+<div>
 <label>Date</label>
-
-<input
-    id="purchaseDate"
-    type="date">
-
+<input id="purchaseDate" type="date">
 </div>
 
-
-<div class="form-group">
-
+<div>
 <label>Supplier</label>
-
-<input
-    id="purchaseSupplier"
-    placeholder="Supplier name">
-
+<input id="purchaseSupplier" placeholder="Supplier name">
 </div>
 
-
-<div class="form-group">
-
+<div>
 <label>Product</label>
-
-<select id="purchaseProduct">
-    <option value="">Select product</option>
-</select>
-
+<input id="purchaseProduct" placeholder="Product name">
 </div>
 
-
-<div class="form-group">
-
+<div>
 <label>Quantity</label>
-
-<input
-    id="purchaseQuantity"
-    type="number"
-    min="1"
-    value="1">
-
+<input id="purchaseQuantity" type="number" min="1" placeholder="Quantity">
 </div>
 
-
-<div class="form-group">
-
-<label>Buying Price per Unit</label>
-
-<input
-    id="purchasePrice"
-    type="number"
-    min="0"
-    placeholder="Buying price">
-
+<div>
+<label>Buying Price</label>
+<input id="purchasePrice" type="number" min="0" placeholder="Buying price">
 </div>
 
-</div>
-
-
-<div class="action-row">
-
-<button class="btn btn-blue" id="recordPurchase">
-    💾 Record Purchase
+<div class="full">
+<button class="primaryButton" id="recordPurchase">
+🛒 RECORD PURCHASE
 </button>
-
-<button class="btn btn-light" id="clearPurchase">
-    Clear
-</button>
-
 </div>
 
 </div>
 
-
-<div class="table-panel">
-
-<h3>Purchase History</h3>
-
-<table>
-
-<thead>
-
-<tr>
-<th>PO Number</th>
-<th>Date</th>
-<th>Supplier</th>
-<th>Product</th>
-<th>Qty</th>
-<th>Total</th>
-</tr>
-
-</thead>
-
-<tbody id="purchasesTable">
-</tbody>
-
-</table>
+<div id="purchasesList" class="list"></div>
 
 </div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =========================
      INVENTORY
-========================================================= -->
+========================= -->
 
 <section id="inventory" class="screen">
 
-<h1 class="page-title">📦 Inventory</h1>
+<div class="sectionBox">
 
-<p class="page-subtitle">
-    Current stock and product values.
-</p>
+<button class="backButton" data-screen="dashboard">
+← Dashboard
+</button>
 
+<h2 class="sectionTitle">📦 Inventory</h2>
 
-<div class="table-panel">
-
-<table>
-
-<thead>
-
-<tr>
-<th>Product</th>
-<th>SKU</th>
-<th>Category</th>
-<th>Stock</th>
-<th>Buying Cost</th>
-<th>Stock Value</th>
-<th>Status</th>
-</tr>
-
-</thead>
-
-<tbody id="inventoryTable">
-</tbody>
-
-</table>
+<div id="inventoryList" class="list"></div>
 
 </div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =========================
      PRODUCTS
-========================================================= -->
+========================= -->
 
 <section id="products" class="screen">
 
-<h1 class="page-title">🛠️ Product Management</h1>
+<div class="sectionBox">
 
-<p class="page-subtitle">
-    Add, edit, search and delete products.
-</p>
+<button class="backButton" data-screen="dashboard">
+← Dashboard
+</button>
 
+<h2 class="sectionTitle">🔧 Product Management</h2>
 
-<div class="form-panel">
+<div class="formGrid">
 
-<div class="form-grid">
-
-<div class="form-group">
-
+<div>
 <label>Product Code / SKU</label>
-
-<input
-    id="productCode"
-    placeholder="Example: MIC-205">
-
+<input id="productCode" placeholder="Example: MIC205">
 </div>
 
-
-<div class="form-group">
-
+<div>
 <label>Product Name</label>
-
-<input
-    id="productName"
-    placeholder="Example: Michelin 205/55R16">
-
+<input id="productName" placeholder="Example: Michelin 205/55R16">
 </div>
 
-
-<div class="form-group">
-
+<div>
 <label>Category</label>
-
-<select id="productCategory">
-
-<option value="Tyre">
-Tyre
-</option>
-
-<option value="Wheel">
-Wheel
-</option>
-
-<option value="Spare Part">
-Spare Part
-</option>
-
-<option value="Service">
-Service
-</option>
-
-<option value="Other">
-Other
-</option>
-
-</select>
-
+<input id="productCategory" placeholder="Tyre / Service / Spare Part">
 </div>
 
+<div>
+<label>Opening Stock</label>
+<input id="productStock" type="number" min="0" placeholder="0">
 </div>
 
+<div class="full">
 
-<div class="action-row">
-
-<button class="btn btn-primary" id="addProduct">
-    ➕ Add Product
-</button>
-
-<button class="btn btn-light" id="clearProduct">
-    Clear
+<button class="primaryButton" id="addProduct">
+➕ ADD PRODUCT
 </button>
 
 </div>
 
 </div>
 
+<br>
 
-<div style="margin-top:18px">
+<input id="productSearch" placeholder="🔎 Search products">
 
-<input
-    id="productSearch"
-    class="search-box"
-    placeholder="🔎 Search by product name, code or category">
+<div id="productsList" class="list"></div>
 
-</div>
-
-
-<div id="productGrid" class="product-grid">
 </div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =========================
      EXPENSES
-========================================================= -->
+========================= -->
 
 <section id="expenses" class="screen">
 
-<h1 class="page-title">💸 Expenses</h1>
+<div class="sectionBox">
 
-<p class="page-subtitle">
-    Record business expenses.
-</p>
+<button class="backButton" data-screen="dashboard">
+← Dashboard
+</button>
 
+<h2 class="sectionTitle">💸 Expenses</h2>
 
-<div class="form-panel">
+<div class="formGrid">
 
-<div class="form-grid">
-
-<div class="form-group">
-
+<div>
 <label>Date</label>
-
-<input
-    id="expenseDate"
-    type="date">
-
+<input id="expenseDate" type="date">
 </div>
 
-
-<div class="form-group">
-
-<label>Expense Description</label>
-
-<input
-    id="expenseName"
-    placeholder="Example: Electricity">
-
+<div>
+<label>Description</label>
+<input id="expenseName" placeholder="Expense description">
 </div>
 
-
-<div class="form-group">
-
+<div>
 <label>Amount</label>
-
-<input
-    id="expenseAmount"
-    type="number"
-    min="0"
-    placeholder="Amount in TSh">
-
+<input id="expenseAmount" type="number" min="0" placeholder="TSh">
 </div>
 
+<div>
+<label>Category</label>
+<input id="expenseCategory" placeholder="Fuel / Electricity / Rent">
 </div>
 
+<div class="full">
 
-<div class="action-row">
-
-<button class="btn btn-orange" id="recordExpense">
-    💾 Record Expense
+<button class="primaryButton" id="recordExpense">
+💸 RECORD EXPENSE
 </button>
 
 </div>
 
 </div>
 
-
-<div class="table-panel">
-
-<h3>Expense History</h3>
-
-<table>
-
-<thead>
-
-<tr>
-<th>Date</th>
-<th>Description</th>
-<th>Amount</th>
-</tr>
-
-</thead>
-
-<tbody id="expensesTable">
-</tbody>
-
-</table>
+<div id="expensesList" class="list"></div>
 
 </div>
 
 </section>
 
 
-<!-- =========================================================
+<!-- =========================
      CUSTOMERS
-========================================================= -->
+========================= -->
 
 <section id="customers" class="screen">
 
-<h1 class="page-title">👥 Customers</h1>
+<div class="sectionBox">
 
-<p class="page-subtitle">
-    Manage your customers.
-</p>
+<button class="backButton" data-screen="dashboard">
+← Dashboard
+</button>
+
+<h2 class="sectionTitle">👥 Customers</h2>
+
+<div class="formGrid">
+
+<div>
+<label>Customer Name</label>
+<input id="customerName" placeholder="Customer name">
+</div>
+
+<div>
+<label>Phone</label>
+<input id="customerPhone" placeholder="Phone number">
+</div>
+
+<div class="full">
+
+<button class="primaryButton" id="addCustomer">
+➕ ADD CUSTOMER
+</button>
+
+</div>
+
+</div>
+
+<div id="customersList" class="list"></div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     SUPPLIERS
+========================= -->
+
+<section id="suppliers" class="screen">
+
+<div class="sectionBox">
+
+<button class="backButton" data-screen="dashboard">
+← Dashboard
+</button>
+
+<h2 class="sectionTitle">🏢 Suppliers</h2>
+
+<div class="formGrid">
+
+<div>
+<label>Supplier Name</label>
+<input id="supplierName" placeholder="Supplier name">
+</div>
+
+<div>
+<label>Phone</label>
+<input id="supplierPhone" placeholder="Phone number">
+</div>
+
+<div class="full">
+
+<button class="primaryButton" id="addSupplier">
+➕ ADD SUPPLIER
+</button>
+
+</div>
+
+</div>
+
+<div id="suppliersList" class="list"></div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     REPORTS
+========================= -->
+
+<section id="reports" class="screen">
+
+<div class="sectionBox">
+
+<button class="backButton" data-screen="dashboard">
+← Dashboard
+</button>
+
+<h2 class="sectionTitle">📊 Reports</h2>
+
+<div class="reportGrid">
+
+<div class="reportCard">
+<b>TOTAL SALES</b>
+<strong id="reportSales">TSh 0</strong>
+</div>
+
+<div class="reportCard">
+<b>COST OF GOODS SOLD</b>
+<strong id="reportCost">TSh 0</strong>
+</div>
+
+<div class="reportCard">
+<b>GROSS PROFIT</b>
+<strong id="reportGross">TSh 0</strong>
+</div>
+
+<div class="reportCard">
+<b>TOTAL EXPENSES</b>
+<strong id="reportExpenses">TSh 0</strong>
+</div>
+
+<div class="reportCard">
+<b>NET PROFIT</b>
+<strong id="reportNet">TSh 0</strong>
+</div>
+
+</div>
+
+<h2 style="margin-top:25px">
+🧾 Sales Invoices
+</h2>
+
+<div id="invoiceList"></div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<div class="footer">
+SM TYRES & ALIGNMENT • Accounting & Inventory System<br>
+© 2026
+</div>
+
+<div id="toast" class="toast"></div>
+
+
+<script>
+
+/* =====================================================
+   SM TYRES ACCOUNTING
+   SIMPLE LOCAL DATABASE
+===================================================== */
+
+const STORAGE_KEY = "SM_TYRES_ACCOUNTING_FINAL_V1";
+
+
+let db = {
+
+products:[],
+sales:[],
+purchases:[],
+expenses:[],
+customers:[],
+suppliers:[]
+
+};
+
+
+/* =====================================================
+   LOAD DATABASE
+===================================================== */
+
+function loadData(){
+
+try{
+
+const saved = localStorage.getItem(STORAGE_KEY);
+
+if(saved){
+
+const parsed = JSON.parse(saved);
+
+db = {
+
+products:Array.isArray(parsed.products) ? parsed.products : [],
+sales:Array.isArray(parsed.sales) ? parsed.sales : [],
+purchases:Array.isArray(parsed.purchases) ? parsed.purchases : [],
+expenses:Array.isArray(parsed.expenses) ? parsed.expenses : [],
+customers:Array.isArray(parsed.customers) ? parsed.customers : [],
+suppliers:Array.isArray(parsed.suppliers) ? parsed.suppliers : []
+
+};
+
+}
+
+}catch(error){
+
+console.log("Database reset.");
+
+}
+
+}
+
+
+/* =====================================================
+   SAVE
+===================================================== */
+
+function saveData(){
+
+try{
+
+localStorage.setItem(
+STORAGE_KEY,
+JSON.stringify(db)
+);
+
+}catch(error){
+
+alert("The browser could not save the data.");
+
+}
+
+}
+
+
+/* =====================================================
+   MONEY
+===================================================== */
+
+function money(value){
+
+return "TSh " + Number(value || 0).toLocaleString("en-TZ");
+
+}
+
+
+/* =====================================================
+   DATE
+===================================================== */
+
+function todayString(){
+
+const d = new Date();
+
+const year = d.getFullYear();
+
+const month = String(d.getMonth()+1).padStart(2,"0");
+
+const day = String(d.getDate()).padStart(2,"0");
+
+return year + "-" + month + "-" + day;
+
+}
+
+
+function displayDate(){
+
+const d = new Date();
+
+const options = {
+weekday:"short",
+day:"2-digit",
+month:"long",
+year:"numeric"
+};
+
+document.getElementById("currentDate").textContent =
+"📅 " + d.toLocaleDateString("en-TZ",options);
+
+}
+
+
+function setDefaultDates(){
+
+document.getElementById("saleDate").value = todayString();
+
+document.getElementById("purchaseDate").value = todayString();
+
+document.getElementById("expenseDate").value = todayString();
+
+}
+
+
+/* =====================================================
+   SCREEN NAVIGATION
+===================================================== */
+
+function showScreen(name){
+
+document.querySelectorAll(".screen").forEach(function(screen){
+
+screen.classList.remove("active");
+
+});
+
+const screen = document.getElementById(name);
+
+if(screen){
+
+screen.classList.add("active");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+}
+
+}
+
+
+/* =====================================================
+   NAVIGATION BUTTONS
+===================================================== */
+
+document.querySelectorAll("[data-screen]").forEach(function(button){
+
+button.addEventListener("click",function(){
+
+showScreen(button.dataset.screen);
+
+});
+
+});
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function message(text){
+
+const toast = document.getElementById("toast");
+
+toast.textContent = text;
+
+toast.style.display = "block";
+
+setTimeout(function(){
+
+toast.style.display = "none";
+
+},2200);
+
+}
+
+
+/* =====================================================
+   TOTALS
+===================================================== */
+
+function totals(){
+
+let sales = 0;
+
+let purchases = 0;
+
+let expenses = 0;
+
+let cost = 0;
+
+
+db.sales.forEach(function(sale){
+
+sales += Number(sale.total);
+
+cost += Number(sale.costTotal);
+
+});
+
+
+db.purchases.forEach(function(purchase){
+
+purchases += Number(purchase.total);
+
+});
+
+
+db.expenses.forEach(function(expense){
+
+expenses += Number(expense.amount);
+
+});
+
+
+const gross = sales - cost;
+
+const net = gross - expenses;
+
+
+return {
+
+sales:sales,
+
+purchases:purchases,
+
+expenses:expenses,
+
+cost:cost,
+
+gross:gross,
+
+net:net
+
+};
+
+}
+
+
+/* =====================================================
+   DASHBOARD
+===================================================== */
+
+function renderDashboard(){
+
+const t = totals();
+
+document.getElementById("dashSales").textContent = money(t.sales);
+
+document.getElementById("dashPurchases").textContent = money(t.purchases);
+
+document.getElementById("dashExpenses").textContent = money(t.expenses);
+
+document.getElementById("dashProfit").textContent = money(t.net);
+
+}
+
+
+/* =====================================================
+   FIND PRODUCT
+===================================================== */
+
+function findProduct(name){
+
+return db.products.find(function(product){
+
+return product.name.toLowerCase() === name.toLowerCase();
+
+});
+
+}
+
+
+/* =====================================================
+   PRODUCT MANAGEMENT
+===================================================== */
+
+function addProduct(){
+
+const code =
+document.getElementById("productCode").value.trim();
+
+const name =
+document.getElementById("productName").value.trim();
+
+const category =
+document.getElementById("productCategory").value.trim();
+
+const stock =
+Number(document.getElementById("productStock").value || 0);
+
+
+if(!name){
+
+alert("Enter the product name.");
+
+return;
+
+}
+
+
+if(findProduct(name)){
+
+alert("This product already exists.");
+
+return;
+
+}
+
+
+db.products.push({
+
+id:Date.now(),
+
+code:code,
+
+name:name,
+
+category:category,
+
+stock:stock,
+
+cost:0
+
+});
+
+
+saveData();
+
+renderAll();
+
+document.getElementById("productCode").value="";
+
+document.getElementById("productName").value="";
+
+document.getElementById("productCategory").value="";
+
+document.getElementById("productStock").value="";
+
+message("Product added successfully.");
+
+}
+
+
+/* =====================================================
+   EDIT PRODUCT
+===================================================== */
+
+function editProduct(id){
+
+const product =
+db.products.find(function(p){
+
+return p.id === id;
+
+});
+
+
+if(!product)return;
+
+
+const name =
+prompt("Product name:",product.name);
+
+if(name === null)return;
+
+
+const code =
+prompt("Product code:",product.code || "");
+
+if(code === null)return;
+
+
+const category =
+prompt("Category:",product.category || "");
+
+if(category === null)return;
+
+
+product.name = name.trim();
+
+product.code = code.trim();
+
+product.category = category.trim();
+
+
+saveData();
+
+renderAll();
+
+message("Product updated.");
+
+}
+
+
+/* =====================================================
+   DELETE PRODUCT
+===================================================== */
+
+function deleteProduct(id){
+
+const product =
+db.products.find(function(p){
+
+return p.id === id;
+
+});
+
+
+if(!product)return;
+
+
+const confirmDelete =
+confirm(
+"Delete " +
+product.name +
+"?\n\nThis removes the product from product management."
+);
+
+
+if(!confirmDelete)return;
+
+
+db.products =
+db.products.filter(function(p){
+
+return p.id !== id;
+
+});
+
+
+saveData();
+
+renderAll();
+
+message("Product deleted.");
+
+}
+
+
+/* =====================================================
+   PRODUCT SEARCH
+===================================================== */
+
+document.getElementById("productSearch")
+.addEventListener("input",renderProducts);
+
+
+/* =====================================================
+   RENDER PRODUCTS
+===================================================== */
+
+function renderProducts(){
+
+const search =
+document.getElementById("productSearch")
+.value
+.toLowerCase()
+.trim();
+
+
+let html = "";
+
+
+db.products.forEach(function(product){
+
+const matches =
+!search ||
+product.name.toLowerCase().includes(search) ||
+(product.code || "").toLowerCase().includes(search) ||
+(product.category || "").toLowerCase().includes(search);
+
+
+if(!matches)return;
+
+
+let stockClass = "stockGood";
+
+
+if(product.stock <= 0){
+
+stockClass = "stockEmpty";
+
+}else if(product.stock <= 3){
+
+stockClass = "stockLow";
+
+}
+
+
+html += `
+
+<div class="listItem">
+
+<div class="itemTop">
+
+<div class="itemName">
+${escapeHTML(product.name)}
+</div>
+
+<div class="${stockClass}">
+Stock: ${product.stock}
+</div>
+
+</div>
+
+<div class="itemInfo">
+
+Code: ${escapeHTML(product.code || "No code")}<br>
+
+Category: ${escapeHTML(product.category || "Not specified")}<br>
+
+Buying cost: ${money(product.cost)}
+
+</div>
+
+<div class="actionRow">
+
+<button
+class="smallButton grayButton"
+onclick="editProduct(${product.id})">
+✏️ EDIT
+</button>
+
+<button
+class="smallButton redButton"
+onclick="deleteProduct(${product.id})">
+🗑️ DELETE
+</button>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+document.getElementById("productsList").innerHTML =
+html || "<div class='listItem'>No products found.</div>";
+
+}
+
+
+/* =====================================================
+   PURCHASE
+===================================================== */
+
+function recordPurchase(){
+
+const date =
+document.getElementById("purchaseDate").value;
+
+const supplier =
+document.getElementById("purchaseSupplier").value.trim();
+
+const productName =
+document.getElementById("purchaseProduct").value.trim();
+
+const quantity =
+Number(document.getElementById("purchaseQuantity").value);
+
+const price =
+Number(document.getElementById("purchasePrice").value);
+
+
+if(!date){
+
+alert("Select the purchase date.");
+
+return;
+
+}
+
+
+if(!productName || quantity <= 0 || price <= 0){
+
+alert("Enter product, quantity and buying price.");
+
+return;
+
+}
+
+
+let product = findProduct(productName);
+
+
+if(!product){
+
+const create =
+confirm(
+"Product does not exist.\n\nCreate it automatically?"
+);
+
+if(!create)return;
+
+
+product = {
+
+id:Date.now(),
+
+code:"",
+
+name:productName,
+
+category:"",
+
+stock:0,
+
+cost:price
+
+};
+
+db.products.push(product);
+
+}
+
+
+product.stock += quantity;
+
+product.cost = price;
+
+
+const purchase = {
+
+id:Date.now(),
+
+date:date,
+
+supplier:supplier || "Unknown Supplier",
+
+product:product.name,
+
+quantity:quantity,
+
+price:price,
+
+total:quantity * price
+
+};
+
+
+db.purchases.push(purchase);
+
+
+/* Automatically add supplier */
+
+if(
+supplier &&
+!db.suppliers.some(function(s){
+
+return s.name.toLowerCase() === supplier.toLowerCase();
+
+})
+){
+
+db.suppliers.push({
+
+id:Date.now()+1,
+
+name:supplier,
+
+phone:""
+
+});
+
+}
+
+
+saveData();
+
+renderAll();
+
+
+document.getElementById("purchaseSupplier").value="";
+
+document.getElementById("purchaseProduct").value="";
+
+document.getElementById("purchaseQuantity").value="";
+
+document.getElementById("purchasePrice").value="";
+
+
+message("Purchase recorded successfully.");
+
+}
+
+
+/* =====================================================
+   SALES
+===================================================== */
+
+function recordSale(){
+
+const date =
+document.getElementById("saleDate").value;
+
+const customer =
+document.getElementById("saleCustomer").value.trim();
+
+const productName =
+document.getElementById("saleProduct").value.trim();
+
+const quantity =
+Number(document.getElementById("saleQuantity").value);
+
+const price =
+Number(document.getElementById("salePrice").value);
+
+
+if(!date){
+
+alert("Select the sale date.");
+
+return;
+
+}
+
+
+if(!productName || quantity <= 0 || price <= 0){
+
+alert("Enter product, quantity and selling price.");
+
+return;
+
+}
+
+
+const product = findProduct(productName);
+
+
+if(!product){
+
+alert(
+"This product does not exist.\n\nAdd it in PRODUCTS first."
+);
+
+return;
+
+}
+
+
+if(product.stock < quantity){
+
+alert(
+"Not enough stock.\n\nAvailable: " +
+product.stock
+);
+
+return;
+
+}
+
+
+const cost =
+Number(product.cost || 0);
+
+
+const invoice =
+"INV-" +
+new Date().getFullYear() +
+"-" +
+String(db.sales.length + 1).padStart(4,"0");
+
+
+const sale = {
+
+id:Date.now(),
+
+invoice:invoice,
+
+date:date,
+
+customer:customer || "Cash Customer",
+
+product:product.name,
+
+quantity:quantity,
+
+price:price,
+
+cost:cost,
+
+total:quantity * price,
+
+costTotal:quantity * cost,
+
+profit:(price-cost)*quantity
+
+};
+
+
+product.stock -= quantity;
+
+db.sales.push(sale);
+
+
+/* Customer */
+
+if(
+customer &&
+!db.customers.some(function(c){
+
+return c.name.toLowerCase() === customer.toLowerCase();
+
+})
+){
+
+db.customers.push({
+
+id:Date.now()+2,
+
+name:customer,
+
+phone:""
+
+});
+
+}
+
+
+saveData();
+
+renderAll();
+
+
+document.getElementById("saleCustomer").value="";
+
+document.getElementById("saleProduct").value="";
+
+document.getElementById("saleQuantity").value="";
+
+document.getElementById("salePrice").value="";
+
+
+message("Sale recorded: " + invoice);
+
+}
+
+
+/* =====================================================
+   EXPENSE
+===================================================== */
+
+function recordExpense(){
+
+const date =
+document.getElementById("expenseDate").value;
+
+const name =
+document.getElementById("expenseName").value.trim();
+
+const category =
+document.getElementById("expenseCategory").value.trim();
+
+const amount =
+Number(document.getElementById("expenseAmount").value);
+
+
+if(!date || !name || amount <= 0){
+
+alert("Enter date, description and amount.");
+
+return;
+
+}
+
+
+db.expenses.push({
+
+id:Date.now(),
+
+date:date,
+
+name:name,
+
+category:category,
+
+amount:amount
+
+});
+
+
+saveData();
+
+renderAll();
+
+
+document.getElementById("expenseName").value="";
+
+document.getElementById("expenseCategory").value="";
+
+document.getElementById("expenseAmount").value="";
+
+
+message("Expense recorded
