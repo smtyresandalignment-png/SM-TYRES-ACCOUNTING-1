@@ -1,768 +1,538 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SM TYRES & ALIGNMENT</title>
 
 <style>
 *{box-sizing:border-box}
 
 body{
-margin:0;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#061827,#0d3553);
-color:#fff;
-}
-
-.app{
-max-width:1050px;
-margin:auto;
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#071b2b;
+    color:white;
 }
 
 header{
-text-align:center;
-padding:18px;
-background:#071b2f;
-border-bottom:1px solid #ffffff22;
+    text-align:center;
+    padding:20px 10px;
+    background:linear-gradient(135deg,#061522,#123e5f);
 }
 
 .logo{
-margin:auto;
-width:100px;
-height:100px;
-border-radius:50%;
-display:grid;
-place-items:center;
-background:radial-gradient(circle,#333 0 38%,#111 39% 61%,#f5a623 62% 66%,#111 67%);
-box-shadow:0 0 0 4px #f5a62355;
+    width:95px;
+    height:95px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:radial-gradient(circle,#444 0 35%,#111 36% 58%,#f5a623 59% 65%,#111 66%);
+    border:3px solid #f5a623;
 }
 
-.logo b{
-font-size:22px;
+.logo div{
+    font-size:25px;
+    font-weight:bold;
 }
 
-.logo small{
-display:block;
-font-size:7px;
-color:#f5a623;
+.logo span{
+    display:block;
+    font-size:7px;
+    color:#f5a623;
 }
 
-h1{
-font-size:23px;
-margin:10px 0 4px;
+header h1{
+    margin:10px 0 4px;
+    font-size:23px;
 }
 
 header p{
-margin:0;
-color:#abc;
-font-size:12px;
+    margin:0;
+    font-size:12px;
+    color:#b8c9d5;
 }
 
-main{
-padding:15px;
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:15px;
 }
 
 .screen{
-display:none;
+    display:none;
 }
 
 .screen.active{
-display:block;
-}
-
-.cards{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-}
-
-.card,
-.panel,
-.item{
-background:#102e48;
-border:1px solid #ffffff14;
-border-radius:14px;
-padding:14px;
-box-shadow:0 5px 18px #0005;
-}
-
-.amount{
-font-weight:bold;
-font-size:19px;
-margin-top:7px;
-}
-
-.muted{
-color:#abc;
-font-size:13px;
+    display:block;
 }
 
 .menu{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:10px;
-margin-top:15px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
 }
 
-.menu button,
-.primary{
-padding:15px;
-border:0;
-border-radius:12px;
-background:linear-gradient(135deg,#f7b83b,#d98500);
-font-weight:bold;
-color:#071b2f;
-min-height:55px;
+.menu button{
+    min-height:65px;
+    border:0;
+    border-radius:12px;
+    background:linear-gradient(135deg,#f5b632,#d47d00);
+    color:#071b2b;
+    font-size:14px;
+    font-weight:bold;
 }
 
 .menu button:nth-child(even){
-background:linear-gradient(135deg,#2389c9,#12547e);
-color:#fff;
+    background:linear-gradient(135deg,#1888c9,#10527c);
+    color:white;
 }
 
-.back{
-background:#35546d;
-color:#fff;
-border:0;
-border-radius:9px;
-padding:11px;
-margin-right:8px;
-}
-
-h2{
-display:inline;
-font-size:20px;
-}
-
-input,
-select{
-width:100%;
-padding:12px;
-margin:5px 0;
-border-radius:9px;
-border:1px solid #456;
-background:#071b2f;
-color:#fff;
-}
-
-.row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:8px;
+button{
+    border:0;
+    border-radius:9px;
+    padding:12px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
 .primary{
-width:100%;
-margin-top:10px;
+    width:100%;
+    margin-top:10px;
+    background:#f5a623;
+    color:#071b2b;
+}
+
+.back{
+    background:#456278;
+    color:white;
+    margin-bottom:12px;
+}
+
+.panel{
+    background:#102e47;
+    padding:15px;
+    border-radius:12px;
+}
+
+input,select{
+    width:100%;
+    padding:12px;
+    margin:5px 0;
+    border-radius:8px;
+    border:1px solid #47657b;
+    background:#061a2a;
+    color:white;
+    font-size:15px;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:8px;
 }
 
 .list{
-margin-top:12px;
+    margin-top:12px;
 }
 
 .item{
-margin-bottom:8px;
+    background:#102e47;
+    padding:13px;
+    margin-bottom:8px;
+    border-radius:10px;
 }
 
 .actions{
-display:flex;
-gap:7px;
-margin-top:9px;
-}
-
-.actions button{
-padding:8px;
-border:0;
-border-radius:7px;
-color:white;
+    display:flex;
+    gap:7px;
+    margin-top:10px;
 }
 
 .edit{
-background:#7055a5;
+    background:#7557a5;
+    color:white;
 }
 
-.danger{
-background:#b83232;
+.delete{
+    background:#c0392b;
+    color:white;
 }
 
 .invoice{
-background:#fff;
-color:#111;
-padding:16px;
-border-radius:12px;
-margin:10px 0;
+    background:white;
+    color:#111;
+    padding:18px;
+    border-radius:10px;
+    margin-bottom:10px;
 }
 
 .empty{
-text-align:center;
-color:#abc;
-padding:20px;
+    background:#102e47;
+    padding:20px;
+    text-align:center;
+    border-radius:10px;
+    color:#aabcca;
+}
+
+h2{
+    font-size:20px;
 }
 
 .notice{
-padding:10px;
-background:#49380e;
-color:#f6d782;
-border-radius:9px;
-margin-bottom:10px;
+    background:#49380e;
+    color:#f5d889;
+    padding:10px;
+    border-radius:8px;
+    margin-bottom:10px;
 }
 
 @media(min-width:700px){
-
-.cards{
-grid-template-columns:repeat(4,1fr);
-}
-
-.menu{
-grid-template-columns:repeat(4,1fr);
-}
-
+    .menu{
+        grid-template-columns:repeat(4,1fr);
+    }
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
 <header>
 
 <div class="logo">
-<b>
+<div>
 SM
-<small>TYRES & ALIGNMENT</small>
-</b>
+<span>TYRES & ALIGNMENT</span>
+</div>
 </div>
 
 <h1>SM TYRES & ALIGNMENT</h1>
 
-<p>
-Sales • Purchases • Products • Inventory • Reports
-</p>
+<p>ACCOUNTING SYSTEM</p>
 
 </header>
 
-<main>
+<div class="container">
+
 
 <!-- DASHBOARD -->
 
-<section id="dashboard" class="screen active">
+<div id="dashboard" class="screen active">
 
-<div class="cards">
-
-<div class="card">
-Sales
-<div class="amount" id="ds">TSh 0</div>
-</div>
-
-<div class="card">
-Purchases
-<div class="amount" id="dp">TSh 0</div>
-</div>
-
-<div class="card">
-Expenses
-<div class="amount" id="de">TSh 0</div>
-</div>
-
-<div class="card">
-Net Profit
-<div class="amount" id="dn">TSh 0</div>
-</div>
-
-</div>
+<h2>Dashboard</h2>
 
 <div class="menu">
 
-<button data-go="sales">
+<button onclick="openPage('sales')">
 💰 SALES
 </button>
 
-<button data-go="purchases">
+<button onclick="openPage('purchases')">
 🛒 PURCHASES
 </button>
 
-<button data-go="products">
+<button onclick="openPage('products')">
 📦 PRODUCTS
 </button>
 
-<button data-go="inventory">
+<button onclick="openPage('inventory')">
 📋 INVENTORY
 </button>
 
-<button data-go="expenses">
+<button onclick="openPage('expenses')">
 💸 EXPENSES
 </button>
 
-<button data-go="customers">
+<button onclick="openPage('customers')">
 👥 CUSTOMERS
 </button>
 
-<button data-go="suppliers">
+<button onclick="openPage('suppliers')">
 🏢 SUPPLIERS
 </button>
 
-<button data-go="reports">
+<button onclick="openPage('reports')">
 📊 REPORTS
 </button>
 
 </div>
 
-</section>
+</div>
 
 
 <!-- SALES -->
 
-<section id="sales" class="screen">
+<div id="sales" class="screen">
 
-<p>
-<button class="back" data-go="dashboard">
-← Back
+<button class="back" onclick="openPage('dashboard')">
+← DASHBOARD
 </button>
 
 <h2>💰 Sales Invoice</h2>
-</p>
 
 <div class="panel">
 
 <label>Date</label>
+<input id="saleDate" type="date">
 
-<input
-id="sd"
-type="date"
->
+<input id="saleCustomer"
+placeholder="Customer name">
 
-<input
-id="sc"
-placeholder="Customer name"
->
-
-<select id="sp">
-<option value="">
--- Select product --
-</option>
+<select id="saleProduct">
+<option value="">Select Product</option>
 </select>
 
 <div class="row">
 
-<input
-id="sq"
+<input id="saleQty"
 type="number"
 min="1"
 value="1"
-placeholder="Quantity"
->
+placeholder="Quantity">
 
-<input
-id="sprice"
+<input id="salePrice"
 type="number"
 min="0"
-placeholder="Selling price"
->
+placeholder="Selling price">
 
 </div>
 
-<button
-class="primary"
-id="sale"
->
+<button class="primary" onclick="makeSale()">
 CREATE SALES INVOICE
 </button>
 
 </div>
 
-<div
-id="sl"
-class="list"
-></div>
+<div id="salesList" class="list"></div>
 
-</section>
+</div>
 
 
 <!-- PURCHASES -->
 
-<section id="purchases" class="screen">
+<div id="purchases" class="screen">
 
-<p>
-
-<button
-class="back"
-data-go="dashboard"
->
-← Back
+<button class="back" onclick="openPage('dashboard')">
+← DASHBOARD
 </button>
 
 <h2>🛒 Purchases</h2>
 
-</p>
-
 <div class="panel">
 
 <label>Date</label>
+<input id="purchaseDate" type="date">
 
-<input
-id="pd"
-type="date"
->
+<input id="purchaseSupplier"
+placeholder="Supplier name">
 
-<input
-id="ps"
-placeholder="Supplier name"
->
-
-<select id="pp">
-<option value="">
--- Select product --
-</option>
+<select id="purchaseProduct">
+<option value="">Select Product</option>
 </select>
 
 <div class="row">
 
-<input
-id="pq"
+<input id="purchaseQty"
 type="number"
 min="1"
 value="1"
-placeholder="Quantity"
->
+placeholder="Quantity">
 
-<input
-id="pprice"
+<input id="purchasePrice"
 type="number"
 min="0"
-placeholder="Buying price"
->
+placeholder="Buying price">
 
 </div>
 
-<button
-class="primary"
-id="purchase"
->
+<button class="primary" onclick="makePurchase()">
 RECORD PURCHASE
 </button>
 
 </div>
 
-<div
-id="pl"
-class="list"
-></div>
+<div id="purchaseList" class="list"></div>
 
-</section>
+</div>
 
 
 <!-- PRODUCTS -->
 
-<section id="products" class="screen">
+<div id="products" class="screen">
 
-<p>
-
-<button
-class="back"
-data-go="dashboard"
->
-← Back
+<button class="back" onclick="openPage('dashboard')">
+← DASHBOARD
 </button>
 
-<h2>📦 Products</h2>
-
-</p>
+<h2>📦 Product Management</h2>
 
 <div class="panel">
 
-<input
-id="pc"
-placeholder="Product code / SKU"
->
+<input id="productCode"
+placeholder="Product code / SKU">
 
-<input
-id="pn"
-placeholder="Product name"
->
+<input id="productName"
+placeholder="Product name">
 
-<input
-id="cat"
-placeholder="Category"
->
+<input id="productCategory"
+placeholder="Category">
 
-<button
-class="primary"
-id="addp"
->
+<button class="primary" onclick="addProduct()">
 ➕ ADD PRODUCT
 </button>
 
-<input
-id="search"
-placeholder="🔎 Search"
->
+<input id="productSearch"
+placeholder="🔎 Search product"
+oninput="showProducts()">
 
 </div>
 
-<div
-id="prodlist"
-class="list"
-></div>
+<div id="productList" class="list"></div>
 
-</section>
+</div>
 
 
 <!-- INVENTORY -->
 
-<section id="inventory" class="screen">
+<div id="inventory" class="screen">
 
-<p>
-
-<button
-class="back"
-data-go="dashboard"
->
-← Back
+<button class="back" onclick="openPage('dashboard')">
+← DASHBOARD
 </button>
 
 <h2>📋 Inventory</h2>
 
-</p>
-
 <div class="notice">
-Purchases add stock. Sales reduce stock.
+Purchases increase stock. Sales decrease stock.
 </div>
 
-<div
-id="inv"
-class="list"
-></div>
+<div id="inventoryList" class="list"></div>
 
-</section>
+</div>
 
 
 <!-- EXPENSES -->
 
-<section id="expenses" class="screen">
+<div id="expenses" class="screen">
 
-<p>
-
-<button
-class="back"
-data-go="dashboard"
->
-← Back
+<button class="back" onclick="openPage('dashboard')">
+← DASHBOARD
 </button>
 
 <h2>💸 Expenses</h2>
 
-</p>
-
 <div class="panel">
 
 <label>Date</label>
+<input id="expenseDate" type="date">
 
-<input
-id="ed"
-type="date"
->
+<input id="expenseName"
+placeholder="Expense description">
 
-<input
-id="en"
-placeholder="Expense description"
->
-
-<input
-id="ea"
+<input id="expenseAmount"
 type="number"
-min="0"
-placeholder="Amount in TSh"
->
+placeholder="Amount in TSh">
 
-<button
-class="primary"
-id="expense"
->
+<button class="primary" onclick="addExpense()">
 RECORD EXPENSE
 </button>
 
 </div>
 
-<div
-id="el"
-class="list"
-></div>
+<div id="expenseList" class="list"></div>
 
-</section>
+</div>
 
 
 <!-- CUSTOMERS -->
 
-<section id="customers" class="screen">
+<div id="customers" class="screen">
 
-<p>
-
-<button
-class="back"
-data-go="dashboard"
->
-← Back
+<button class="back" onclick="openPage('dashboard')">
+← DASHBOARD
 </button>
 
 <h2>👥 Customers</h2>
 
-</p>
-
 <div class="panel">
 
-<input
-id="cn"
-placeholder="Customer name"
->
+<input id="customerName"
+placeholder="Customer name">
 
-<input
-id="ct"
-placeholder="Phone number"
->
+<input id="customerPhone"
+placeholder="Phone number">
 
-<button
-class="primary"
-id="customer"
->
+<button class="primary" onclick="addCustomer()">
 ADD CUSTOMER
 </button>
 
 </div>
 
-<div
-id="cl"
-class="list"
-></div>
+<div id="customerList" class="list"></div>
 
-</section>
+</div>
 
 
 <!-- SUPPLIERS -->
 
-<section id="suppliers" class="screen">
+<div id="suppliers" class="screen">
 
-<p>
-
-<button
-class="back"
-data-go="dashboard"
->
-← Back
+<button class="back" onclick="openPage('dashboard')">
+← DASHBOARD
 </button>
 
 <h2>🏢 Suppliers</h2>
 
-</p>
-
 <div class="panel">
 
-<input
-id="sn"
-placeholder="Supplier name"
->
+<input id="supplierName"
+placeholder="Supplier name">
 
-<input
-id="st"
-placeholder="Phone number"
->
+<input id="supplierPhone"
+placeholder="Phone number">
 
-<button
-class="primary"
-id="supplier"
->
+<button class="primary" onclick="addSupplier()">
 ADD SUPPLIER
 </button>
 
 </div>
 
-<div
-id="spl"
-class="list"
-></div>
+<div id="supplierList" class="list"></div>
 
-</section>
+</div>
 
 
 <!-- REPORTS -->
 
-<section id="reports" class="screen">
+<div id="reports" class="screen">
 
-<p>
-
-<button
-class="back"
-data-go="dashboard"
->
-← Back
+<button class="back" onclick="openPage('dashboard')">
+← DASHBOARD
 </button>
 
 <h2>📊 Reports</h2>
 
-</p>
+<div id="reportList"></div>
 
-<div class="cards">
+<h2>🧾 Sales Invoices</h2>
 
-<div class="card">
-Sales
-<div
-class="amount"
-id="rs"
->
-TSh 0
-</div>
-</div>
-
-<div class="card">
-COGS
-<div
-class="amount"
-id="rc"
->
-TSh 0
-</div>
-</div>
-
-<div class="card">
-Gross Profit
-<div
-class="amount"
-id="rg"
->
-TSh 0
-</div>
-</div>
-
-<div class="card">
-Net Profit
-<div
-class="amount"
-id="rn"
->
-TSh 0
-</div>
-</div>
+<div id="invoiceList"></div>
 
 </div>
 
-<div
-id="invoices"
-class="list"
-></div>
-
-</section>
-
-</main>
 
 </div>
 
 
 <script>
 
-const K="SMTYRES_FINAL_1";
+/* =========================
+DATABASE
+========================= */
 
-let d={
+var database={
 products:[],
 sales:[],
 purchases:[],
@@ -771,190 +541,1223 @@ customers:[],
 suppliers:[]
 };
 
+var saved=localStorage.getItem(
+"SM_TYRES_DATABASE"
+);
+
+if(saved){
+
 try{
+database=JSON.parse(saved);
+}catch(error){
+console.log(error);
+}
 
-d=
-JSON.parse(
-localStorage.getItem(K)
-)||d;
-
-}catch(e){}
-
-
-const $=id=>
-document.getElementById(id);
+}
 
 
-const today=()=>
-new Date()
-.toISOString()
-.slice(0,10);
+/* =========================
+SAVE
+========================= */
 
-
-const money=n=>
-"TSh "+
-Number(n||0)
-.toLocaleString("en-TZ");
-
-
-function save(){
+function saveData(){
 
 localStorage.setItem(
-K,
-JSON.stringify(d)
+"SM_TYRES_DATABASE",
+JSON.stringify(database)
 );
 
 }
 
 
-function go(x){
+/* =========================
+TODAY
+========================= */
 
-document
-.querySelectorAll(".screen")
-.forEach(s=>
-s.classList.remove("active")
-);
+function today(){
 
-$(x).classList.add("active");
+var d=new Date();
 
-render();
+var month=
+String(d.getMonth()+1)
+.padStart(2,"0");
 
-}
+var day=
+String(d.getDate())
+.padStart(2,"0");
 
-
-document.addEventListener(
-"click",
-function(e){
-
-let b=
-e.target.closest("[data-go]");
-
-if(b){
-
-go(b.dataset.go);
-
-}
-
-}
-);
-
-
-function prod(id){
-
-return d.products.find(
-x=>x.id==id
-);
+return d.getFullYear()+
+"-"+
+month+
+"-"+
+day;
 
 }
 
 
-function totals(){
+/* =========================
+MONEY
+========================= */
 
-let s=
-d.sales.reduce(
-(a,x)=>a+x.total,
-0
-);
+function money(number){
 
-let c=
-d.sales.reduce(
-(a,x)=>a+x.costTotal,
-0
-);
+return "TSh "+
+Number(number||0)
+.toLocaleString();
 
-let p=
-d.purchases.reduce(
-(a,x)=>a+x.total,
-0
-);
+}
 
-let e=
-d.expenses.reduce(
-(a,x)=>a+x.amount,
-0
-);
 
-return{
+/* =========================
+OPEN PAGE
+========================= */
 
-s:s,
-c:c,
-p:p,
-e:e,
-g:s-c,
-n:s-c-e
+function openPage(page){
+
+var screens=
+document.querySelectorAll(".screen");
+
+for(var i=0;i<screens.length;i++){
+
+screens[i].classList.remove("active");
+
+}
+
+var selected=
+document.getElementById(page);
+
+if(selected){
+
+selected.classList.add("active");
+
+}
+
+setDates();
+
+renderAll();
+
+window.scrollTo(0,0);
+
+}
+
+
+/* =========================
+DATES
+========================= */
+
+function setDates(){
+
+if(document.getElementById("saleDate").value==="")
+document.getElementById("saleDate").value=today();
+
+if(document.getElementById("purchaseDate").value==="")
+document.getElementById("purchaseDate").value=today();
+
+if(document.getElementById("expenseDate").value==="")
+document.getElementById("expenseDate").value=today();
+
+}
+
+
+/* =========================
+PRODUCT FIND
+========================= */
+
+function findProduct(id){
+
+for(var i=0;i<database.products.length;i++){
+
+if(String(database.products[i].id)===String(id))
+return database.products[i];
+
+}
+
+return null;
+
+}
+
+
+/* =========================
+PRODUCT OPTIONS
+========================= */
+
+function productOptions(){
+
+var html=
+'<option value="">Select Product</option>';
+
+for(var i=0;i<database.products.length;i++){
+
+var p=database.products[i];
+
+html+=
+'<option value="'+p.id+'">'+
+p.name+
+'</option>';
+
+}
+
+document.getElementById(
+"saleProduct"
+).innerHTML=html;
+
+document.getElementById(
+"purchaseProduct"
+).innerHTML=html;
+
+}
+
+
+/* =========================
+ADD PRODUCT
+========================= */
+
+function addProduct(){
+
+var name=
+document.getElementById(
+"productName"
+).value.trim();
+
+if(name===""){
+
+alert("Enter product name.");
+
+return;
+
+}
+
+var product={
+
+id:Date.now(),
+
+code:
+document.getElementById(
+"productCode"
+).value.trim(),
+
+name:name,
+
+category:
+document.getElementById(
+"productCategory"
+).value.trim(),
+
+stock:0,
+
+cost:0
 
 };
 
+database.products.push(product);
+
+saveData();
+
+document.getElementById(
+"productCode"
+).value="";
+
+document.getElementById(
+"productName"
+).value="";
+
+document.getElementById(
+"productCategory"
+).value="";
+
+renderAll();
+
+alert("Product added successfully.");
+
 }
 
 
-function selects(){
+/* =========================
+EDIT PRODUCT
+========================= */
 
-let o=
-'<option value="">-- Select product --</option>'+
-d.products.map(
-p=>
-`<option value="${p.id}">
-${p.name}
-</option>`
-).join("");
+function editProduct(id){
 
-$("sp").innerHTML=o;
-$("pp").innerHTML=o;
+var p=findProduct(id);
+
+if(!p)return;
+
+var name=prompt(
+"Product name:",
+p.name
+);
+
+if(name===null)return;
+
+var category=prompt(
+"Category:",
+p.category||""
+);
+
+if(category===null)return;
+
+var code=prompt(
+"Product code:",
+p.code||""
+);
+
+if(code===null)return;
+
+p.name=name.trim()||p.name;
+
+p.category=category.trim();
+
+p.code=code.trim();
+
+saveData();
+
+renderAll();
+
+alert("Product updated.");
 
 }
 
 
-function render(){
+/* =========================
+DELETE PRODUCT
+========================= */
 
-if(!$("sd").value)
-$("sd").value=today();
+function deleteProduct(id){
 
-if(!$("pd").value)
-$("pd").value=today();
+var p=findProduct(id);
 
-if(!$("ed").value)
-$("ed").value=today();
+if(!p)return;
 
-selects();
+if(p.stock>0){
 
-let t=totals();
+alert(
+"Cannot delete this product because stock is still available."
+);
 
-$("ds").textContent=money(t.s);
-$("dp").textContent=money(t.p);
-$("de").textContent=money(t.e);
-$("dn").textContent=money(t.n);
+return;
 
-$("rs").textContent=money(t.s);
-$("rc").textContent=money(t.c);
-$("rg").textContent=money(t.g);
-$("rn").textContent=money(t.n);
+}
+
+var answer=
+confirm(
+"Delete "+p.name+"?"
+);
+
+if(!answer)return;
+
+database.products=
+database.products.filter(
+function(item){
+return item.id!==id;
+}
+);
+
+saveData();
+
+renderAll();
+
+}
 
 
-/* INVENTORY */
+/* =========================
+PURCHASE
+========================= */
 
-$("inv").innerHTML=
-d.products.length?
+function makePurchase(){
 
-d.products.map(
-p=>
-`<div class="item">
+var product=
+findProduct(
+document.getElementById(
+"purchaseProduct"
+).value
+);
 
-<b>${p.name}</b>
+var qty=
+Number(
+document.getElementById(
+"purchaseQty"
+).value
+);
 
-<br>
+var price=
+Number(
+document.getElementById(
+"purchasePrice"
+).value
+);
 
-Stock:
-${p.stock}
+var supplier=
+document.getElementById(
+"purchaseSupplier"
+).value.trim();
 
-<br>
+if(!product){
 
-Buying cost:
-${money(p.cost)}
+alert("Select a product.");
 
-</div>`
-).join("")
+return;
 
-:
+}
 
-'<
+if(qty<=0){
+
+alert("Enter quantity.");
+
+return;
+
+}
+
+if(price<=0){
+
+alert("Enter buying price.");
+
+return;
+
+}
+
+product.stock+=qty;
+
+product.cost=price;
+
+database.purchases.push({
+
+date:
+document.getElementById(
+"purchaseDate"
+).value,
+
+supplier:
+supplier||"Unknown",
+
+productId:product.id,
+
+quantity:qty,
+
+price:price,
+
+total:qty*price
+
+});
+
+if(supplier!==""){
+
+database.suppliers.push({
+
+name:supplier,
+
+phone:""
+
+});
+
+}
+
+saveData();
+
+document.getElementById(
+"purchaseSupplier"
+).value="";
+
+document.getElementById(
+"purchaseQty"
+).value=1;
+
+document.getElementById(
+"purchasePrice"
+).value="";
+
+renderAll();
+
+alert("Purchase recorded successfully.");
+
+}
+
+
+/* =========================
+SALE
+========================= */
+
+function makeSale(){
+
+var product=
+findProduct(
+document.getElementById(
+"saleProduct"
+).value
+);
+
+var qty=
+Number(
+document.getElementById(
+"saleQty"
+).value
+);
+
+var price=
+Number(
+document.getElementById(
+"salePrice"
+).value
+);
+
+var customer=
+document.getElementById(
+"saleCustomer"
+).value.trim();
+
+if(!product){
+
+alert("Select a product.");
+
+return;
+
+}
+
+if(qty<=0){
+
+alert("Enter quantity.");
+
+return;
+
+}
+
+if(price<=0){
+
+alert("Enter selling price.");
+
+return;
+
+}
+
+if(product.stock<qty){
+
+alert(
+"Not enough stock.\nAvailable: "+
+product.stock
+);
+
+return;
+
+}
+
+var invoice=
+"INV-"+String(
+database.sales.length+1
+).padStart(4,"0");
+
+var cost=
+product.cost||0;
+
+product.stock-=qty;
+
+database.sales.push({
+
+invoice:invoice,
+
+date:
+document.getElementById(
+"saleDate"
+).value,
+
+customer:
+customer||"Cash Customer",
+
+productId:product.id,
+
+quantity:qty,
+
+price:price,
+
+cost:cost,
+
+total:qty*price,
+
+costTotal:qty*cost,
+
+profit:(price-cost)*qty
+
+});
+
+if(customer!==""){
+
+database.customers.push({
+
+name:customer,
+
+phone:""
+
+});
+
+}
+
+saveData();
+
+document.getElementById(
+"saleCustomer"
+).value="";
+
+document.getElementById(
+"saleQty"
+).value=1;
+
+document.getElementById(
+"salePrice"
+).value="";
+
+renderAll();
+
+alert(
+"Sales Invoice "+
+invoice+
+" created successfully."
+);
+
+}
+
+
+/* =========================
+EXPENSE
+========================= */
+
+function addExpense(){
+
+var name=
+document.getElementById(
+"expenseName"
+).value.trim();
+
+var amount=
+Number(
+document.getElementById(
+"expenseAmount"
+).value
+);
+
+if(name===""){
+
+alert("Enter expense description.");
+
+return;
+
+}
+
+if(amount<=0){
+
+alert("Enter expense amount.");
+
+return;
+
+}
+
+database.expenses.push({
+
+date:
+document.getElementById(
+"expenseDate"
+).value,
+
+name:name,
+
+amount:amount
+
+});
+
+saveData();
+
+document.getElementById(
+"expenseName"
+).value="";
+
+document.getElementById(
+"expenseAmount"
+).value="";
+
+renderAll();
+
+alert("Expense recorded.");
+
+}
+
+
+/* =========================
+CUSTOMER
+========================= */
+
+function addCustomer(){
+
+var name=
+document.getElementById(
+"customerName"
+).value.trim();
+
+if(name===""){
+
+alert("Enter customer name.");
+
+return;
+
+}
+
+database.customers.push({
+
+name:name,
+
+phone:
+document.getElementById(
+"customerPhone"
+).value.trim()
+
+});
+
+saveData();
+
+document.getElementById(
+"customerName"
+).value="";
+
+document.getElementById(
+"customerPhone"
+).value="";
+
+renderAll();
+
+alert("Customer added.");
+
+}
+
+
+/* =========================
+SUPPLIER
+========================= */
+
+function addSupplier(){
+
+var name=
+document.getElementById(
+"supplierName"
+).value.trim();
+
+if(name===""){
+
+alert("Enter supplier name.");
+
+return;
+
+}
+
+database.suppliers.push({
+
+name:name,
+
+phone:
+document.getElementById(
+"supplierPhone"
+).value.trim()
+
+});
+
+saveData();
+
+document.getElementById(
+"supplierName"
+).value="";
+
+document.getElementById(
+"supplierPhone"
+).value="";
+
+renderAll();
+
+alert("Supplier added.");
+
+}
+
+
+/* =========================
+PRODUCT LIST
+========================= */
+
+function showProducts(){
+
+var search=
+document.getElementById(
+"productSearch"
+).value
+.toLowerCase();
+
+var html="";
+
+for(var i=0;i<database.products.length;i++){
+
+var p=database.products[i];
+
+if(
+search!=="" &&
+p.name.toLowerCase()
+.indexOf(search)===-1 &&
+(p.code||"")
+.toLowerCase()
+.indexOf(search)===-1
+){
+
+continue;
+
+}
+
+html+=
+'<div class="item">'+
+
+'<b>'+p.name+'</b><br>'+
+
+'Code: '+(p.code||"-")+'<br>'+
+
+'Category: '+(p.category||"-")+'<br>'+
+
+'Stock: '+p.stock+'<br>'+
+
+'Buying cost: '+money(p.cost)+
+
+'<div class="actions">'+
+
+'<button class="edit" onclick="editProduct('+p.id+')">'+
+'✏️ EDIT'+
+'</button>'+
+
+'<button class="delete" onclick="deleteProduct('+p.id+')">'+
+'🗑 DELETE'+
+'</button>'+
+
+'</div>'+
+
+'</div>';
+
+}
+
+if(html===""){
+
+html=
+'<div class="empty">No products yet.</div>';
+
+}
+
+document.getElementById(
+"productList"
+).innerHTML=html;
+
+}
+
+
+/* =========================
+INVENTORY
+========================= */
+
+function showInventory(){
+
+var html="";
+
+for(var i=0;i<database.products.length;i++){
+
+var p=database.products[i];
+
+html+=
+'<div class="item">'+
+
+'<b>'+p.name+'</b><br>'+
+
+'Stock: <b>'+p.stock+'</b><br>'+
+
+'Buying cost: '+money(p.cost)+
+
+'</div>';
+
+}
+
+if(html===""){
+
+html=
+'<div class="empty">No products yet.</div>';
+
+}
+
+document.getElementById(
+"inventoryList"
+).innerHTML=html;
+
+}
+
+
+/* =========================
+SALES LIST
+========================= */
+
+function showSales(){
+
+var html="";
+
+for(
+var i=database.sales.length-1;
+i>=0;
+i--
+){
+
+var s=database.sales[i];
+
+var p=findProduct(s.productId);
+
+html+=
+'<div class="item">'+
+
+'<b>'+s.invoice+'</b><br>'+
+
+'Date: '+s.date+'<br>'+
+
+'Customer: '+s.customer+'<br>'+
+
+'Product: '+(p?p.name:"Unknown")+'<br>'+
+
+'Quantity: '+s.quantity+'<br>'+
+
+'Total: '+money(s.total)+'<br>'+
+
+'Profit: '+money(s.profit)+
+
+'</div>';
+
+}
+
+if(html===""){
+
+html=
+'<div class="empty">No sales yet.</div>';
+
+}
+
+document.getElementById(
+"salesList"
+).innerHTML=html;
+
+}
+
+
+/* =========================
+PURCHASE LIST
+========================= */
+
+function showPurchases(){
+
+var html="";
+
+for(
+var i=database.purchases.length-1;
+i>=0;
+i--
+){
+
+var p=database.purchases[i];
+
+var product=
+findProduct(p.productId);
+
+html+=
+'<div class="item">'+
+
+'<b>'+
+(product?product.name:"Unknown")+
+'</b><br>'+
+
+'Date: '+p.date+'<br>'+
+
+'Supplier: '+p.supplier+'<br>'+
+
+'Quantity: '+p.quantity+'<br>'+
+
+'Total: '+money(p.total)+
+
+'</div>';
+
+}
+
+if(html===""){
+
+html=
+'<div class="empty">No purchases yet.</div>';
+
+}
+
+document.getElementById(
+"purchaseList"
+).innerHTML=html;
+
+}
+
+
+/* =========================
+EXPENSE LIST
+========================= */
+
+function showExpenses(){
+
+var html="";
+
+for(
+var i=database.expenses.length-1;
+i>=0;
+i--
+){
+
+var e=database.expenses[i];
+
+html+=
+'<div class="item">'+
+
+'<b>'+e.name+'</b><br>'+
+
+'Date: '+e.date+'<br>'+
+
+'Amount: '+money(e.amount)+
+
+'</div>';
+
+}
+
+if(html===""){
+
+html=
+'<div class="empty">No expenses yet.</div>';
+
+}
+
+document.getElementById(
+"expenseList"
+).innerHTML=html;
+
+}
+
+
+/* =========================
+CUSTOMER LIST
+========================= */
+
+function showCustomers(){
+
+var html="";
+
+for(var i=0;i<database.customers.length;i++){
+
+var c=database.customers[i];
+
+html+=
+'<div class="item">'+
+
+'<b>'+c.name+'</b><br>'+
+
+(c.phone||"No phone number")+
+
+'</div>';
+
+}
+
+if(html===""){
+
+html=
+'<div class="empty">No customers yet.</div>';
+
+}
+
+document.getElementById(
+"customerList"
+).innerHTML=html;
+
+}
+
+
+/* =========================
+SUPPLIER LIST
+========================= */
+
+function showSuppliers(){
+
+var html="";
+
+for(var i=0;i<database.suppliers.length;i++){
+
+var s=database.suppliers[i];
+
+html+=
+'<div class="item">'+
+
+'<b>'+s.name+'</b><br>'+
+
+(s.phone||"No phone number")+
+
+'</div>';
+
+}
+
+if(html===""){
+
+html=
+'<div class="empty">No suppliers yet.</div>';
+
+}
+
+document.getElementById(
+"supplierList"
+).innerHTML=html;
+
+}
+
+
+/* =========================
+REPORTS
+========================= */
+
+function showReports(){
+
+var sales=0;
+var cost=0;
+var expenses=0;
+
+for(var i=0;i<database.sales.length;i++){
+
+sales+=database.sales[i].total;
+
+cost+=database.sales[i].costTotal;
+
+}
+
+for(var j=0;j<database.expenses.length;j++){
+
+expenses+=database.expenses[j].amount;
+
+}
+
+var gross=sales-cost;
+
+var net=gross-expenses;
+
+document.getElementById(
+"reportList"
+).innerHTML=
+
+'<div class="item">'+
+'<b>Total Sales</b><br>'+
+money(sales)+
+'</div>'+
+
+'<div class="item">'+
+'<b>Cost of Goods Sold</b><br>'+
+money(cost)+
+'</div>'+
+
+'<div class="item">'+
+'<b>Gross Profit</b><br>'+
+money(gross)+
+'</div>'+
+
+'<div class="item">'+
+'<b>Total Expenses</b><br>'+
+money(expenses)+
+'</div>'+
+
+'<div class="item">'+
+'<b>NET PROFIT</b><br>'+
+money(net)+
+'</div>';
+
+
+var invoices="";
+
+for(
+var k=database.sales.length-1;
+k>=0;
+k--
+){
+
+var s=database.sales[k];
+
+var p=findProduct(s.productId);
+
+invoices+=
+
+'<div class="invoice">'+
+
+'<h3>SM TYRES & ALIGNMENT</h3>'+
+
+'<b>SALES INVOICE</b><hr>'+
+
+'Invoice: '+s.invoice+'<br>'+
+
+'Date: '+s.date+'<br>'+
+
+'Customer: '+s.customer+'<hr>'+
+
+(p?p.name:"Unknown")+
+'<br>'+
+
+'Quantity: '+s.quantity+
+'<br>'+
+
+'Price: '+money(s.price)+
+'<br><br>'+
+
+'<b>TOTAL: '+
+money(s.total)+
+'</b>'+
+
+'</div>';
+
+}
+
+if(invoices===""){
+
+invoices=
+'<div class="empty">No sales invoices yet.</div>';
+
+}
+
+document.getElementById(
+"invoiceList"
+).innerHTML=invoices;
+
+}
+
+
+/* =========================
+RENDER EVERYTHING
+========================= */
+
+function renderAll(){
+
+setDates();
+
+productOptions();
+
+showProducts();
+
+showInventory();
+
+showSales();
+
+showPurchases();
+
+showExpenses();
+
+showCustomers();
+
+showSuppliers();
+
+showReports();
+
+}
+
+
+/* =========================
+START
+========================= */
+
+renderAll();
+
+</script>
+
+</body>
+</html>
