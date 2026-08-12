@@ -1,1427 +1,688 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0">
-
-<title>SM TYRES ACCOUNTING</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#061d30">
+<title>SM TYRES & ALIGNMENT - Accounting</title>
 
 <style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial;background:#eef4f8;color:#172638}
+button,input{font:inherit}
+button{border:0;cursor:pointer}
 
-*{
-box-sizing:border-box;
--webkit-tap-highlight-color:transparent;
-}
-
-body{
-margin:0;
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#edf3f8,#dce7ef);
-color:#17202a;
-}
-
-header{
-background:linear-gradient(135deg,#06243d,#075579,#078b91);
+.top{
+background:linear-gradient(120deg,#031827,#0b3858,#087f8d);
 color:white;
-padding:24px 15px;
-text-align:center;
-box-shadow:0 4px 15px #0004;
+padding:20px
+}
+
+.brand{
+max-width:1200px;
+margin:auto;
+display:flex;
+align-items:center;
+gap:18px
 }
 
 .logo{
-width:72px;
-height:72px;
-margin:auto;
+width:90px;
+height:90px;
+border:4px solid #f5b900;
 border-radius:50%;
-background:linear-gradient(135deg,#ffd54a,#ff8a00);
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:34px;
-box-shadow:0 5px 15px #0005;
-}
-
-header h1{
-margin:10px 0 3px;
-font-size:24px;
-}
-
-header p{
-margin:4px 0;
-font-size:13px;
-opacity:.9;
-}
-
-.container{
-max-width:1100px;
-margin:auto;
-padding:15px;
-}
-
-.screen{
-display:none;
-}
-
-.screen.active{
-display:block;
-}
-
-.cards{
 display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:11px;
+place-items:center;
+background:#092235;
+font-size:46px
 }
 
-.card{
-background:white;
-border-radius:15px;
-padding:16px;
-box-shadow:0 4px 14px #0002;
-border-left:5px solid #078b91;
+h1{margin:0;font-size:30px}
+.gold{color:#f5b900}
+.brand p{margin:5px 0}
+
+.topline{
+max-width:1200px;
+margin:12px auto 0;
+border-top:1px solid #ffffff33;
+padding-top:10px;
+display:flex;
+justify-content:space-between
 }
+
+.layout{
+max-width:1200px;
+margin:auto;
+display:flex;
+min-height:700px
+}
+
+.side{
+width:190px;
+background:#071d30;
+padding:10px
+}
+
+.nav{
+width:100%;
+background:transparent;
+color:white;
+text-align:left;
+padding:13px;
+border-radius:8px;
+margin:2px 0;
+font-weight:bold
+}
+
+.nav.active,.nav:hover{background:#0b9fa6}
+
+.main{
+flex:1;
+padding:20px
+}
+
+.screen{display:none}
+.screen.active{display:block}
+
+.cards,.grid,.panels{
+display:grid;
+gap:12px
+}
+
+.cards{grid-template-columns:repeat(4,1fr)}
+
+.grid{
+grid-template-columns:repeat(4,1fr);
+margin-top:12px
+}
+
+.panels{
+grid-template-columns:repeat(3,1fr);
+margin-top:18px
+}
+
+.card,.panel,.form,.list{
+background:white;
+border-radius:14px;
+padding:15px;
+box-shadow:0 4px 16px #16334a18
+}
+
+.card{border-left:5px solid #0b9fa6}
+.card:nth-child(1){border-color:#11a56a}
+.card:nth-child(2){border-color:#246dcc}
+.card:nth-child(3){border-color:#e77d17}
+.card:nth-child(4){border-color:#7350d8}
 
 .card small{
-color:#68737d;
-font-weight:bold;
-font-size:11px;
+color:#6d7c89;
+font-weight:bold
 }
 
 .amount{
-font-size:19px;
+font-size:23px;
 font-weight:bold;
-margin-top:8px;
+margin-top:8px
 }
 
-.menu{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:11px;
-margin-top:18px;
-}
-
-button{
-border:0;
-border-radius:11px;
-padding:14px;
-background:linear-gradient(135deg,#078b91,#075579);
+.tile{
 color:white;
-font-size:14px;
+padding:19px;
+border-radius:13px;
 font-weight:bold;
-box-shadow:0 3px 8px #0002;
-cursor:pointer;
+min-height:65px
 }
 
-button:active{
-transform:scale(.97);
+.s{background:#11a56a}
+.p{background:#246dcc}
+.i{background:#e67d14}
+.pr{background:#0b9fa6}
+.e{background:#7350d8}
+.c{background:#d52c70}
+.su{background:#5148bd}
+.r{background:#986d16}
+
+.title{
+display:flex;
+justify-content:space-between;
+align-items:center
 }
 
-.back{
-background:#66737d;
-margin-bottom:12px;
-}
+.title h2{margin-top:0}
 
-.green{
-background:#159957;
-}
-
-.yellow{
-background:#e09b00;
-}
-
-.red{
-background:#c0392b;
-}
-
-.screen-title{
-font-size:21px;
-font-weight:bold;
-color:#123b5d;
-margin:5px 0 15px;
-}
-
-.panel{
-background:white;
-padding:17px;
-border-radius:16px;
-box-shadow:0 4px 15px #0002;
-}
-
-input,select{
-width:100%;
-padding:13px;
-margin:6px 0 10px;
-border:1px solid #ccd5dc;
-border-radius:9px;
-font-size:15px;
-background:white;
-}
-
-input:focus,select:focus{
-outline:2px solid #36a7b0;
-}
-
-label{
-font-size:13px;
-font-weight:bold;
-color:#455a64;
-}
+.form{max-width:800px}
 
 .row{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:10px;
+gap:10px
 }
 
-.list{
-margin-top:15px;
+input{
+width:100%;
+padding:12px;
+border:1px solid #d3dce2;
+border-radius:9px;
+margin:5px 0
 }
+
+.btn{
+padding:12px 15px;
+border-radius:9px;
+background:#087c91;
+color:white;
+font-weight:bold;
+margin:5px 0
+}
+
+.green{background:#11a56a}
+.gray{background:#687782}
+.red{background:#d83b4b}
 
 .item{
-background:#f8fafc;
-border:1px solid #e0e7eb;
-border-radius:13px;
-padding:15px;
-margin-bottom:10px;
-box-shadow:0 2px 7px #0001;
+padding:12px 5px;
+border-bottom:1px solid #edf0f2
 }
 
-.tappable{
-cursor:pointer;
-}
+.item:last-child{border:0}
 
-.tappable:active{
-background:#e9f7f8;
-transform:scale(.99);
-}
-
-.item-title{
-font-size:17px;
-font-weight:bold;
-color:#123b5d;
-margin-bottom:6px;
-}
-
-.item-sub{
-font-size:13px;
-color:#596872;
-line-height:1.7;
-}
-
-.actions{
+.head{
 display:flex;
-gap:8px;
-margin-top:12px;
+justify-content:space-between;
+gap:8px
 }
 
-.actions button{
-flex:1;
-padding:10px;
-font-size:12px;
+.badge{
+background:#e8f6f5;
+color:#087c91;
+padding:4px 7px;
+border-radius:20px;
+font-size:11px;
+font-weight:bold
 }
+
+.small{
+padding:7px 9px;
+background:#246dcc;
+color:white;
+border-radius:7px;
+font-size:12px
+}
+
+.small.red{background:#d83b4b}
 
 .notice{
-background:#fff7d6;
-border-left:5px solid #e0a000;
-padding:12px;
+background:#fff7dc;
+border-left:4px solid #f5b900;
+padding:11px;
 border-radius:8px;
-margin-bottom:12px;
-font-size:13px;
-}
-
-.empty{
-background:white;
-padding:25px;
-border-radius:12px;
-text-align:center;
-color:#71808c;
-}
-
-.modal{
-display:none;
-position:fixed;
-z-index:1000;
-left:0;
-top:0;
-width:100%;
-height:100%;
-background:#0008;
-padding:20px;
-overflow:auto;
-}
-
-.modal.show{
-display:flex;
-align-items:center;
-justify-content:center;
-}
-
-.modal-box{
-background:white;
-width:100%;
-max-width:500px;
-border-radius:17px;
-padding:20px;
-box-shadow:0 8px 30px #0006;
-}
-
-.modal-title{
-font-size:20px;
-font-weight:bold;
-color:#123b5d;
-margin-bottom:15px;
-}
-
-.modal-actions{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px;
-margin-top:10px;
+margin:10px 0
 }
 
 .invoice{
 background:white;
-padding:20px;
-border-radius:13px;
-margin-bottom:14px;
-box-shadow:0 3px 10px #0002;
-}
-
-.invoice-head{
-text-align:center;
-border-bottom:2px solid #078b91;
-padding-bottom:10px;
-margin-bottom:12px;
-}
-
-.invoice-head h3{
-margin:0;
-color:#123b5d;
-}
-
-.invoice-total{
-text-align:right;
-font-size:20px;
-font-weight:bold;
-color:#078b91;
-margin-top:12px;
-}
-
-footer{
-text-align:center;
+max-width:700px;
+margin:15px auto;
 padding:25px;
-font-size:12px;
-color:#68737d;
+border-radius:12px
 }
 
-@media(min-width:700px){
+.footer{
+text-align:center;
+color:#74818a;
+padding:25px;
+font-size:12px
+}
 
-.cards{
+@media(max-width:850px){
+.side{width:165px}
+.cards{grid-template-columns:1fr 1fr}
+.grid{grid-template-columns:1fr 1fr}
+.panels{grid-template-columns:1fr}
+}
+
+@media(max-width:600px){
+h1{font-size:21px}
+.logo{
+width:65px;
+height:65px;
+font-size:32px
+}
+.layout{display:block}
+.side{
+width:100%;
+display:grid;
 grid-template-columns:repeat(4,1fr);
+gap:3px
 }
-
-.menu{
-grid-template-columns:repeat(4,1fr);
+.nav{
+font-size:11px;
+text-align:center;
+padding:10px 3px
 }
-
+.main{padding:12px}
+.row{grid-template-columns:1fr}
 }
-
-@media(max-width:500px){
-
-.row{
-grid-template-columns:1fr;
-}
-
-.actions{
-flex-direction:column;
-}
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-<header>
+<header class="top">
+
+<div class="brand">
 
 <div class="logo">🚗</div>
 
-<h1>SM TYRES & ALIGNMENT</h1>
+<div>
+
+<h1>
+SM <span class="gold">TYRES & ALIGNMENT</span>
+</h1>
 
 <p>ACCOUNTING & INVENTORY MANAGEMENT</p>
 
 <p>Sales • Purchases • Inventory • Reports</p>
 
+</div>
+
+</div>
+
+<div class="topline">
+
+<span id="today"></span>
+
+<span>Welcome, SM TYRES</span>
+
+</div>
+
 </header>
 
 
-<div class="container">
+<div class="layout">
 
 
-<!-- ================= DASHBOARD ================= -->
+<aside class="side">
 
-<div id="dashboard" class="screen active">
+<button class="nav active" data-s="dashboard">
+🏠 Dashboard
+</button>
 
-<div class="screen-title">
-📊 Business Dashboard
-</div>
+<button class="nav" data-s="sales">
+💰 Sales
+</button>
+
+<button class="nav" data-s="purchases">
+🛒 Purchases
+</button>
+
+<button class="nav" data-s="inventory">
+📦 Inventory
+</button>
+
+<button class="nav" data-s="products">
+🔧 Products
+</button>
+
+<button class="nav" data-s="expenses">
+💸 Expenses
+</button>
+
+<button class="nav" data-s="customers">
+👥 Customers
+</button>
+
+<button class="nav" data-s="suppliers">
+🏢 Suppliers
+</button>
+
+<button class="nav" data-s="reports">
+📊 Reports
+</button>
+
+</aside>
+
+
+<main class="main">
+
+
+<!-- DASHBOARD -->
+
+<section id="dashboard" class="screen active">
+
+<h2>📊 Business Dashboard</h2>
 
 <div class="cards">
 
 <div class="card">
 <small>💰 TOTAL SALES</small>
-<div class="amount" id="totalSales">TSh 0</div>
+<div class="amount" id="ts">TSh 0</div>
 </div>
 
 <div class="card">
 <small>🛒 PURCHASES</small>
-<div class="amount" id="totalPurchases">TSh 0</div>
+<div class="amount" id="tp">TSh 0</div>
 </div>
 
 <div class="card">
 <small>💸 EXPENSES</small>
-<div class="amount" id="totalExpenses">TSh 0</div>
+<div class="amount" id="te">TSh 0</div>
 </div>
 
 <div class="card">
 <small>📈 NET PROFIT</small>
-<div class="amount" id="netProfit">TSh 0</div>
+<div class="amount" id="tn">TSh 0</div>
 </div>
 
 </div>
 
 
-<div class="menu">
+<h3>🚀 Quick Access</h3>
 
-<button onclick="showScreen('sales')">
+<div class="grid">
+
+<button class="tile s" data-s="sales">
 💰 SALES
 </button>
 
-<button onclick="showScreen('purchases')">
+<button class="tile p" data-s="purchases">
 🛒 PURCHASES
 </button>
 
-<button onclick="showScreen('inventory')">
+<button class="tile i" data-s="inventory">
 📦 INVENTORY
 </button>
 
-<button onclick="showScreen('products')">
-🛠️ PRODUCTS
+<button class="tile pr" data-s="products">
+🔧 PRODUCTS
 </button>
 
-<button onclick="showScreen('expenses')">
+<button class="tile e" data-s="expenses">
 💸 EXPENSES
 </button>
 
-<button onclick="showScreen('customers')">
+<button class="tile c" data-s="customers">
 👥 CUSTOMERS
 </button>
 
-<button onclick="showScreen('suppliers')">
+<button class="tile su" data-s="suppliers">
 🏢 SUPPLIERS
 </button>
 
-<button onclick="showScreen('reports')">
+<button class="tile r" data-s="reports">
 📊 REPORTS
 </button>
 
 </div>
 
-</div>
 
-
-<!-- ================= PRODUCTS ================= -->
-
-<div id="products" class="screen">
-
-<button class="back"
-onclick="showScreen('dashboard')">
-← Dashboard
-</button>
+<div class="panels">
 
 <div class="panel">
 
-<div class="screen-title">
-🛠️ Product Management
-</div>
+<h3>⚠️ Low Stock</h3>
 
-<label>Product Code / SKU</label>
-
-<input id="productCode"
-placeholder="Example: TYR001">
-
-<label>Product Name</label>
-
-<input id="productName"
-placeholder="Example: Michelin 205/55R16">
-
-<label>Category</label>
-
-<input id="productCategory"
-placeholder="Tyre / Spare Part / Service">
-
-<button class="green"
-onclick="addProduct()">
-➕ ADD PRODUCT
-</button>
-
-<input id="productSearch"
-placeholder="🔎 Search products..."
-oninput="renderProducts()">
-
-<div id="productsList"
-class="list"></div>
+<div id="low"></div>
 
 </div>
 
-</div>
-
-
-<!-- ================= PRODUCT DETAILS MODAL ================= -->
-
-<div id="productModal" class="modal">
-
-<div class="modal-box">
-
-<div class="modal-title">
-📦 Product Details
-</div>
-
-<div id="productDetails"></div>
-
-<div class="modal-actions">
-
-<button class="yellow"
-onclick="editCurrentProduct()">
-✏️ EDIT
-</button>
-
-<button class="red"
-onclick="deleteCurrentProduct()">
-🗑️ DELETE
-</button>
-
-</div>
-
-<br>
-
-<button class="back"
-onclick="closeProductModal()">
-CLOSE
-</button>
-
-</div>
-
-</div>
-
-
-<!-- ================= SALES ================= -->
-
-<div id="sales" class="screen">
-
-<button class="back"
-onclick="showScreen('dashboard')">
-← Dashboard
-</button>
 
 <div class="panel">
 
-<div class="screen-title">
-💰 Sales
+<h3>💰 Recent Sales</h3>
+
+<div id="recentS"></div>
+
 </div>
+
+
+<div class="panel">
+
+<h3>🛒 Recent Purchases</h3>
+
+<div id="recentP"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- SALES -->
+
+<section id="sales" class="screen">
+
+<h2>💰 Sales Invoice</h2>
+
+<div class="form">
 
 <label>Date</label>
 
-<input id="saleDate" type="date">
+<input id="sd" type="date">
 
-<label>Customer</label>
-
-<input id="saleCustomer"
+<input
+id="sc"
 placeholder="Customer name">
 
-<label>Product</label>
-
-<select id="saleProduct">
-<option value="">Select product</option>
-</select>
+<input
+id="sp"
+list="opts"
+placeholder="Product name">
 
 <div class="row">
 
-<div>
-
-<label>Quantity</label>
-
-<input id="saleQuantity"
+<input
+id="sq"
 type="number"
 min="1"
+value="1"
 placeholder="Quantity">
 
-</div>
-
-<div>
-
-<label>Selling Price</label>
-
-<input id="salePrice"
+<input
+id="sv"
 type="number"
 min="0"
 placeholder="Selling price">
 
 </div>
 
-</div>
+<button class="btn green" id="addSale">
 
-<button onclick="recordSale()">
-💰 RECORD SALE
+➕ Record Sale & Create Invoice
+
 </button>
 
-<div id="salesList"
-class="list"></div>
-
 </div>
 
-</div>
+<div id="salesList" class="list"></div>
+
+</section>
 
 
-<!-- ================= PURCHASES ================= -->
+<!-- PURCHASES -->
 
-<div id="purchases" class="screen">
+<section id="purchases" class="screen">
 
-<button class="back"
-onclick="showScreen('dashboard')">
-← Dashboard
-</button>
+<h2>🛒 Purchases</h2>
 
-<div class="panel">
-
-<div class="screen-title">
-🛒 Purchases
-</div>
+<div class="form">
 
 <label>Date</label>
 
-<input id="purchaseDate" type="date">
+<input id="pd" type="date">
 
-<label>Supplier</label>
-
-<input id="purchaseSupplier"
+<input
+id="ps"
 placeholder="Supplier name">
 
-<label>Product</label>
-
-<select id="purchaseProduct">
-<option value="">Select product</option>
-</select>
+<input
+id="pp"
+list="opts"
+placeholder="Product name">
 
 <div class="row">
 
-<div>
-
-<label>Quantity</label>
-
-<input id="purchaseQuantity"
+<input
+id="pq"
 type="number"
 min="1"
+value="1"
 placeholder="Quantity">
 
-</div>
-
-<div>
-
-<label>Buying Price</label>
-
-<input id="purchasePrice"
+<input
+id="pv"
 type="number"
 min="0"
 placeholder="Buying price">
 
 </div>
 
-</div>
+<button class="btn" id="addPurchase">
 
-<button onclick="recordPurchase()">
-🛒 RECORD PURCHASE
+➕ Record Purchase
+
 </button>
 
-<div id="purchasesList"
-class="list"></div>
-
 </div>
 
-</div>
+<div id="purchaseList" class="list"></div>
+
+</section>
 
 
-<!-- ================= INVENTORY ================= -->
+<!-- INVENTORY -->
 
-<div id="inventory" class="screen">
+<section id="inventory" class="screen">
 
-<button class="back"
-onclick="showScreen('dashboard')">
-← Dashboard
-</button>
-
-<div class="panel">
-
-<div class="screen-title">
-📦 Inventory
-</div>
+<h2>📦 Inventory</h2>
 
 <div class="notice">
-Tap any product to view its details.
-</div>
 
-<div id="inventoryList"
-class="list"></div>
+Purchases increase stock.
+Sales decrease stock.
 
 </div>
 
-</div>
+<div id="inventoryList" class="list"></div>
+
+</section>
 
 
-<!-- ================= EXPENSES ================= -->
+<!-- PRODUCTS -->
 
-<div id="expenses" class="screen">
+<section id="products" class="screen">
 
-<button class="back"
-onclick="showScreen('dashboard')">
-← Dashboard
+<h2>🔧 Product Management</h2>
+
+<div class="form">
+
+<input id="editKey" type="hidden">
+
+<input
+id="pc"
+placeholder="Product code / SKU">
+
+<input
+id="pn"
+placeholder="Product name">
+
+<input
+id="cat"
+placeholder="Category">
+
+<button class="btn green" id="saveProduct">
+
+➕ Add Product
+
 </button>
 
-<div class="panel">
+<button
+class="btn gray"
+id="cancelEdit"
+style="display:none">
 
-<div class="screen-title">
-💸 Expenses
+Cancel Edit
+
+</button>
+
 </div>
 
-<label>Date</label>
 
-<input id="expenseDate" type="date">
+<input
+id="search"
+placeholder="🔎 Search products">
 
-<label>Description</label>
 
-<input id="expenseName"
-placeholder="Example: Electricity">
+<div id="productList" class="list"></div>
 
-<label>Amount</label>
+</section>
 
-<input id="expenseAmount"
+
+<!-- EXPENSES -->
+
+<section id="expenses" class="screen">
+
+<h2>💸 Expenses</h2>
+
+<div class="form">
+
+<input id="ed" type="date">
+
+<input
+id="en"
+placeholder="Expense description">
+
+<input
+id="ea"
 type="number"
+min="0"
 placeholder="Amount in TSh">
 
-<button onclick="recordExpense()">
-💸 RECORD EXPENSE
+<button class="btn" id="addExpense">
+
+➕ Record Expense
+
 </button>
 
-<div id="expensesList"
-class="list"></div>
-
 </div>
 
-</div>
+<div id="expenseList" class="list"></div>
+
+</section>
 
 
-<!-- ================= CUSTOMERS ================= -->
+<!-- CUSTOMERS -->
 
-<div id="customers" class="screen">
+<section id="customers" class="screen">
 
-<button class="back"
-onclick="showScreen('dashboard')">
-← Dashboard
-</button>
+<h2>👥 Customers</h2>
 
-<div class="panel">
+<div class="form">
 
-<div class="screen-title">
-👥 Customers
-</div>
-
-<input id="customerName"
+<input
+id="cn"
 placeholder="Customer name">
 
-<input id="customerPhone"
+<input
+id="ct"
 placeholder="Phone number">
 
-<button onclick="addCustomer()">
-➕ ADD CUSTOMER
-</button>
+<button class="btn" id="addCustomer">
 
-<div id="customersList"
-class="list"></div>
+➕ Add Customer
 
-</div>
-
-</div>
-
-
-<!-- ================= SUPPLIERS ================= -->
-
-<div id="suppliers" class="screen">
-
-<button class="back"
-onclick="showScreen('dashboard')">
-← Dashboard
-</button>
-
-<div class="panel">
-
-<div class="screen-title">
-🏢 Suppliers
-</div>
-
-<input id="supplierName"
-placeholder="Supplier name">
-
-<input id="supplierPhone"
-placeholder="Phone number">
-
-<button onclick="addSupplier()">
-➕ ADD SUPPLIER
-</button>
-
-<div id="suppliersList"
-class="list"></div>
-
-</div>
-
-</div>
-
-
-<!-- ================= REPORTS ================= -->
-
-<div id="reports" class="screen">
-
-<button class="back"
-onclick="showScreen('dashboard')">
-← Dashboard
-</button>
-
-<div class="panel">
-
-<div class="screen-title">
-📊 Financial Reports
-</div>
-
-<div class="item">
-<b>Total Sales</b><br>
-<span id="reportSales">TSh 0</span>
-</div>
-
-<div class="item">
-<b>Cost of Goods Sold</b><br>
-<span id="reportCost">TSh 0</span>
-</div>
-
-<div class="item">
-<b>Gross Profit</b><br>
-<span id="reportGross">TSh 0</span>
-</div>
-
-<div class="item">
-<b>Total Expenses</b><br>
-<span id="reportExpenses">TSh 0</span>
-</div>
-
-<div class="item">
-<b>NET PROFIT</b><br>
-<span id="reportNet">TSh 0</span>
-</div>
-
-<div class="screen-title">
-🧾 Sales Invoices
-</div>
-
-<div id="invoicesList"></div>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<footer>
-
-SM TYRES & ALIGNMENT<br>
-Accounting System
-
-</footer>
-
-
-<script>
-
-/* =====================================================
-DATABASE
-===================================================== */
-
-let data={
-products:{},
-sales:[],
-purchases:[],
-expenses:[],
-customers:[],
-suppliers:[]
-};
-
-try{
-
-let saved=
-localStorage.getItem(
-"smTyresAccountingV2"
-);
-
-if(saved){
-
-data=JSON.parse(saved);
-
-}
-
-}catch(error){
-
-console.log("Starting database");
-
-}
-
-data.products=data.products||{};
-data.sales=data.sales||[];
-data.purchases=data.purchases||[];
-data.expenses=data.expenses||[];
-data.customers=data.customers||[];
-data.suppliers=data.suppliers||[];
-
-
-/* =====================================================
-CURRENT PRODUCT
-===================================================== */
-
-let currentProduct=null;
-
-
-/* =====================================================
-SAVE
-===================================================== */
-
-function save(){
-
-localStorage.setItem(
-"smTyresAccountingV2",
-JSON.stringify(data)
-);
-
-}
-
-
-/* =====================================================
-MONEY
-===================================================== */
-
-function money(value){
-
-return "TSh "+
-Number(value||0)
-.toLocaleString();
-
-}
-
-
-/* =====================================================
-TODAY
-===================================================== */
-
-function today(){
-
-return new Date()
-.toISOString()
-.substring(0,10);
-
-}
-
-
-/* =====================================================
-SHOW SCREEN
-===================================================== */
-
-function showScreen(name){
-
-document
-.querySelectorAll(".screen")
-.forEach(function(screen){
-
-screen.classList.remove("active");
-
-});
-
-let screen=
-document.getElementById(name);
-
-if(screen){
-
-screen.classList.add("active");
-
-}
-
-if(name==="products")
-renderProducts();
-
-if(name==="sales")
-renderProductDropdowns();
-
-if(name==="purchases")
-renderProductDropdowns();
-
-}
-
-
-/* =====================================================
-TOTALS
-===================================================== */
-
-function getTotals(){
-
-let sales=0;
-let purchases=0;
-let expenses=0;
-let cost=0;
-
-data.sales.forEach(function(s){
-
-sales+=Number(s.total||0);
-
-cost+=Number(s.costTotal||0);
-
-});
-
-data.purchases.forEach(function(p){
-
-purchases+=Number(p.total||0);
-
-});
-
-data.expenses.forEach(function(e){
-
-expenses+=Number(e.amount||0);
-
-});
-
-let gross=sales-cost;
-
-let net=gross-expenses;
-
-return{
-sales:sales,
-purchases:purchases,
-expenses:expenses,
-cost:cost,
-gross:gross,
-net:net
-};
-
-}
-
-
-/* =====================================================
-DASHBOARD
-===================================================== */
-
-function updateDashboard(){
-
-let t=getTotals();
-
-document.getElementById("totalSales")
-.textContent=money(t.sales);
-
-document.getElementById("totalPurchases")
-.textContent=money(t.purchases);
-
-document.getElementById("totalExpenses")
-.textContent=money(t.expenses);
-
-document.getElementById("netProfit")
-.textContent=money(t.net);
-
-document.getElementById("reportSales")
-.textContent=money(t.sales);
-
-document.getElementById("reportCost")
-.textContent=money(t.cost);
-
-document.getElementById("reportGross")
-.textContent=money(t.gross);
-
-document.getElementById("reportExpenses")
-.textContent=money(t.expenses);
-
-document.getElementById("reportNet")
-.textContent=money(t.net);
-
-}
-
-
-/* =====================================================
-ADD PRODUCT
-===================================================== */
-
-function addProduct(){
-
-let code=
-document.getElementById("productCode")
-.value.trim();
-
-let name=
-document.getElementById("productName")
-.value.trim();
-
-let category=
-document.getElementById("productCategory")
-.value.trim();
-
-if(!name){
-
-alert("Please enter product name.");
-
-return;
-
-}
-
-if(data.products[name]){
-
-alert("This product already exists.");
-
-return;
-
-}
-
-data.products[name]={
-
-code:code,
-
-category:category,
-
-stock:0,
-
-cost:0
-
-};
-
-save();
-
-render();
-
-document.getElementById("productCode").value="";
-
-document.getElementById("productName").value="";
-
-document.getElementById("productCategory").value="";
-
-alert("Product added successfully.");
-
-}
-
-
-/* =====================================================
-OPEN PRODUCT
-===================================================== */
-
-function openProduct(name){
-
-if(!data.products[name]){
-
-alert("Product not found.");
-
-return;
-
-}
-
-currentProduct=name;
-
-let p=data.products[name];
-
-document.getElementById("productDetails")
-.innerHTML=`
-
-<div class="item">
-
-<div class="item-title">
-${escapeHTML(name)}
-</div>
-
-<div class="item-sub">
-
-<b>Code:</b>
-${escapeHTML(p.code||"No code")}
-<br>
-
-<b>Category:</b>
-${escapeHTML(p.category||"Not specified")}
-<br>
-
-<b>Current Stock:</b>
-${p.stock}
-<br>
-
-<b>Latest Buying Cost:</b>
-${money(p.cost)}
-
-</div>
-
-</div>
-
-`;
-
-document
-.getElementById("productModal")
-.classList.add("show");
-
-}
-
-
-/* =====================================================
-CLOSE PRODUCT
-===================================================== */
-
-function closeProductModal(){
-
-document
-.getElementById("productModal")
-.classList.remove("show");
-
-currentProduct=null;
-
-}
-
-
-/* =====================================================
-EDIT PRODUCT
-===================================================== */
-
-function editCurrentProduct(){
-
-if(!currentProduct)return;
-
-let oldName=currentProduct;
-
-let p=data.products[oldName];
-
-let newName=
-prompt(
-"Product name:",
-oldName
-);
-
-if(newName===null)return;
-
-newName=newName.trim();
-
-if(!newName){
-
-alert("Product name cannot be empty.");
-
-return;
-
-}
-
-if(
-newName!==oldName &&
-data.products[newName]
-){
-
-alert("Another product already has this name.");
-
-return;
-
-}
-
-let code=
-prompt(
-"Product code / SKU:",
-p.code||""
-);
-
-if(code===null)return;
-
-let category=
-prompt(
-"Category:",
-p.category||""
-);
-
-if(category===null)return;
-
-if(newName!==oldName){
-
-data.products[newName]=p;
-
-delete data.products[oldName];
-
-currentProduct=newName;
-
-}
-
-data.products[newName].code=code.trim();
-
-data.products[newName].category=
-category.trim();
-
-save();
-
-render();
-
-openProduct(newName);
-
-alert("Product updated successfully.");
-
-}
-
-
-/* =====================================================
-DELETE PRODUCT
-===================================================== */
-
-function deleteCurrentProduct(){
-
-if(!currentProduct)return;
-
-let name=currentProduct;
-
-let usedSales=
-data.sales.some(function(s){
-
-return s.product===name;
-
-});
-
-let usedPurchases=
-data.purchases.some(function(p){
-
-return p.product===name;
-
-});
-
-if(usedSales||usedPurchases){
-
-alert(
-"This product has accounting history.\n\n"+
-"It cannot be deleted because your sales and purchase records depend on it."
-);
-
-return;
-
-}
-
-let confirmDelete=
-confirm(
-"Are you sure you want to delete:\n\n"+
-name+"?"
-);
-
-if(!confirmDelete)return;
-
-delete data.products[name];
-
-save();
-
-closeProductModal();
-
-render();
-
-alert("Product deleted successfully.");
-
-}
-
-
-/* =====================================================
-PRODUCT LIST
-===================================================== */
-
-function renderProducts(){
-
-let search=
-(document.getElementById("productSearch")
-.value||"")
-.toLowerCase()
-.trim();
-
-let html="";
-
-Object.keys(data.products)
-.forEach(function(name){
-
-let p=data.products[name];
-
-if(
-search &&
-!name.toLowerCase().includes(search) &&
-!(p.code||"")
-.toLowerCase()
-.includes(search)
-){
-
-return;
-
-}
-
-html+=`
-
-<div class="item tappable"
-onclick="openProduct('${escapeJS(name)}')">
-
-<div class="item-title">
-📦 ${escapeHTML(name)}
-</div>
-
-<div class="item-sub">
-
-Code:
-${escapeHTML(p.code||"No code")}
-<br>
-
-Category:
-${escapeHTML(p.category||"Not specified")}
-<br>
-
-Stock:
-<b>${p.stock}</b>
-<br>
-
-Buying cost:
-${money(p.cost)}
-
-</div>
-
-<div class="actions"
-onclick="event.stopPropagation()">
-
-<button class="yellow"
-onclick="openProduct('${escapeJS(name)}')">
-👁️ OPEN
-</button>
-
-<button class="red"
-onclick="currentProduct='${escapeJS(name)}';deleteCurrentProduct()">
-🗑️ DELETE
 </button>
 
 </div>
 
-</div>
+<div id="customerList" class="list"></div>
 
-`;
-
-});
-
-document.getElementById("productsList")
-.innerHTML=
-html||
-`<div class="empty">
-No products found.
-</div>`;
-
-}
+</section>
 
 
-/* =====================================================
-IN
+<!-- SUPPLIERS -->
+
+<section id="suppliers" class="screen">
+
+<h2>🏢 Suppliers</h
