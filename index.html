@@ -1,187 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0">
-
-<title>SM TYRES & ALIGNMENT - Accounting</title>
+<title>SM TYRES & ALIGNMENT - Accounting System</title>
 
 <style>
 
 /* =========================================================
-   SM TYRES ACCOUNTING V3
-   COMPLETE SINGLE FILE APP
+   SM TYRES & ALIGNMENT
+   COMPLETE ACCOUNTING SYSTEM
 ========================================================= */
 
 *{
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
-body{
+html,body{
     margin:0;
+    padding:0;
     font-family:Arial,Helvetica,sans-serif;
-    background:#eef3f8;
+    background:#eef3f7;
     color:#17202a;
 }
 
+button,
+input,
+select{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
 /* =========================================================
-   HEADER
+   TOP HEADER
 ========================================================= */
 
 .top-header{
     background:
-    linear-gradient(120deg,#02121f,#08263d 45%,#087f91 100%);
+        radial-gradient(circle at 20% 30%,rgba(0,190,200,.18),transparent 30%),
+        radial-gradient(circle at 80% 30%,rgba(255,190,0,.12),transparent 25%),
+        linear-gradient(135deg,#03121f,#082a43,#063e59);
     color:white;
-    min-height:235px;
-    position:relative;
-    overflow:hidden;
-    border-bottom:4px solid #f4b400;
-}
-
-.top-header:before{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    border:3px solid #f4b400;
-    border-radius:50%;
-    right:-220px;
-    top:-300px;
-    opacity:.35;
-}
-
-.top-header:after{
-    content:"";
-    position:absolute;
-    width:450px;
-    height:450px;
-    border:2px solid #0bb5c4;
-    transform:rotate(25deg);
-    left:-280px;
-    top:-280px;
-    opacity:.3;
-}
-
-.header-content{
-    position:relative;
-    z-index:2;
-    max-width:1400px;
-    margin:auto;
-    padding:22px 25px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:20px;
+    padding:18px 20px 16px;
+    border-bottom:3px solid #08a7ad;
 }
 
 .brand{
     display:flex;
     align-items:center;
-    gap:18px;
+    justify-content:space-between;
+    gap:20px;
+    max-width:1400px;
+    margin:auto;
+}
+
+.brand-left{
+    display:flex;
+    align-items:center;
+    gap:16px;
 }
 
 .logo{
-    width:105px;
-    height:105px;
-    border:5px solid #f4b400;
+    width:90px;
+    height:90px;
     border-radius:50%;
+    border:5px solid #f5b400;
     background:
-    radial-gradient(circle at center,
-    #1c2630 0 28%,
-    #111820 29% 44%,
-    #f4b400 45% 48%,
-    #202b35 49% 70%,
-    #0a1015 71%);
+        radial-gradient(circle,#333 0 35%,#111 36% 50%,#f5b400 51% 56%,#17202a 57%);
     display:flex;
     align-items:center;
     justify-content:center;
-    box-shadow:0 0 25px #f4b40055;
+    box-shadow:0 0 20px #0008;
     flex-shrink:0;
 }
 
 .logo-text{
-    text-align:center;
-    transform:rotate(-2deg);
-}
-
-.logo-text b{
-    display:block;
-    font-size:27px;
-    font-style:italic;
+    font-weight:900;
     color:white;
-    text-shadow:2px 2px 0 #111;
+    font-size:21px;
+    line-height:.9;
+    text-align:center;
+    text-shadow:2px 2px 3px #000;
 }
 
-.logo-text span{
-    display:block;
-    font-size:13px;
-    font-weight:bold;
-    color:#f4b400;
+.brand-name{
+    font-size:34px;
+    font-weight:900;
+    letter-spacing:.5px;
 }
 
-.brand-title h1{
-    margin:0;
-    font-size:42px;
-    font-style:italic;
-    letter-spacing:-1px;
+.brand-name span{
+    color:#f5b400;
 }
 
-.brand-title h1 span{
-    color:#f4b400;
-}
-
-.brand-title p{
-    margin:8px 0 0;
-    font-size:16px;
-    font-weight:bold;
-    letter-spacing:1px;
-}
-
-.header-tools{
-    text-align:right;
-}
-
-.header-tools .date{
-    margin-bottom:12px;
+.brand-subtitle{
     font-size:14px;
+    margin-top:6px;
+    color:#d7e8ef;
+    letter-spacing:.5px;
 }
 
-.welcome{
+.brand-icons{
     display:flex;
+    gap:25px;
     align-items:center;
-    justify-content:flex-end;
-    gap:10px;
-    font-weight:bold;
 }
 
-.user-circle{
-    width:43px;
-    height:43px;
-    background:white;
-    color:#087f91;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:22px;
+.brand-icon{
+    text-align:center;
+    font-size:13px;
+    color:white;
+}
+
+.brand-icon strong{
+    display:block;
+    font-size:25px;
+    margin-bottom:3px;
 }
 
 /* =========================================================
-   LAYOUT
+   INFO BAR
 ========================================================= */
 
-.app-layout{
-    display:flex;
-    max-width:1450px;
+.info-bar{
+    background:#061d31;
+    color:white;
+    min-height:45px;
+    padding:8px 20px;
+}
+
+.info-inner{
+    max-width:1400px;
     margin:auto;
-    min-height:calc(100vh - 235px);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:15px;
+}
+
+.info-user{
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.user-circle{
+    width:30px;
+    height:30px;
+    border-radius:50%;
+    background:white;
+    color:#078f9a;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+}
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.layout{
+    display:flex;
+    min-height:calc(100vh - 200px);
 }
 
 /* =========================================================
@@ -191,37 +176,42 @@ body{
 .sidebar{
     width:220px;
     background:
-    linear-gradient(180deg,#031524,#06283f);
+        linear-gradient(180deg,#061b2d,#041321);
     color:white;
     flex-shrink:0;
+    box-shadow:3px 0 10px #0003;
 }
 
-.nav-button{
+.nav-title{
+    padding:16px 20px 8px;
+    color:#7bdde0;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+.nav-btn{
     width:100%;
     border:0;
     border-left:4px solid transparent;
-    border-radius:0;
     background:transparent;
-    color:white;
+    color:#eaf3f6;
+    padding:14px 17px;
     text-align:left;
-    padding:17px 18px;
     font-size:15px;
     font-weight:bold;
-    cursor:pointer;
     display:flex;
     align-items:center;
-    gap:13px;
-    transition:.2s;
+    gap:12px;
 }
 
-.nav-button:hover{
-    background:#0b405d;
+.nav-btn:hover{
+    background:#0b334d;
 }
 
-.nav-button.active{
-    background:
-    linear-gradient(90deg,#0b9fa5,#08788e);
-    border-left-color:#f4b400;
+.nav-btn.active{
+    background:linear-gradient(90deg,#078f9a,#087d91);
+    border-left-color:#f5c400;
 }
 
 .nav-icon{
@@ -231,13 +221,13 @@ body{
 }
 
 /* =========================================================
-   MAIN
+   CONTENT
 ========================================================= */
 
-.main{
+.content{
     flex:1;
     min-width:0;
-    padding:25px;
+    padding:22px;
 }
 
 .screen{
@@ -249,349 +239,431 @@ body{
 }
 
 .page-title{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:10px;
+    font-size:28px;
+    margin:0 0 18px;
+}
+
+.page-subtitle{
+    color:#68737d;
+    margin-top:-10px;
     margin-bottom:20px;
 }
 
-.page-title h2{
-    margin:0;
-    font-size:28px;
-}
-
-.page-title p{
-    margin:4px 0 0;
-    color:#68737d;
-}
-
 /* =========================================================
-   DASHBOARD CARDS
+   DASHBOARD STAT CARDS
 ========================================================= */
 
-.kpi-grid{
+.stats{
     display:grid;
     grid-template-columns:repeat(4,1fr);
     gap:16px;
 }
 
-.kpi{
+.stat-card{
     background:white;
     border-radius:15px;
     padding:18px;
-    box-shadow:0 5px 18px #17202a18;
-    border-left:4px solid;
+    box-shadow:0 5px 18px #17344b18;
     position:relative;
     overflow:hidden;
+    min-height:145px;
 }
 
-.kpi.green{border-left-color:#16a36b}
-.kpi.blue{border-left-color:#1769c2}
-.kpi.orange{border-left-color:#f27c00}
-.kpi.purple{border-left-color:#713fc2}
+.stat-card:before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    bottom:0;
+    width:5px;
+}
 
-.kpi-icon{
-    width:50px;
-    height:50px;
+.stat-sales:before{
+    background:#12a96b;
+}
+
+.stat-purchases:before{
+    background:#2469c9;
+}
+
+.stat-expenses:before{
+    background:#e67e16;
+}
+
+.stat-profit:before{
+    background:#7541c8;
+}
+
+.stat-icon{
+    width:42px;
+    height:42px;
     border-radius:50%;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:25px;
-    margin-bottom:10px;
-}
-
-.green .kpi-icon{
-    background:#d9f5e8;
-}
-
-.blue .kpi-icon{
-    background:#dceaff;
-}
-
-.orange .kpi-icon{
-    background:#fff0d8;
-}
-
-.purple .kpi-icon{
-    background:#eee4ff;
-}
-
-.kpi-label{
-    font-size:14px;
-    font-weight:bold;
-    color:#68737d;
-}
-
-.kpi-value{
-    font-size:25px;
-    font-weight:bold;
-    margin-top:7px;
-}
-
-.green .kpi-value{color:#12935f}
-.blue .kpi-value{color:#145daf}
-.orange .kpi-value{color:#df6900}
-.purple .kpi-value{color:#6a38b7}
-
-/* =========================================================
-   QUICK ACCESS
-========================================================= */
-
-.quick-title{
-    margin:25px 0 12px;
-    font-size:21px;
-}
-
-.quick-grid{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:14px;
-}
-
-.quick{
-    border:0;
-    min-height:82px;
-    border-radius:13px;
     color:white;
+    font-size:21px;
+    margin-bottom:12px;
+}
+
+.stat-sales .stat-icon{
+    background:#12a96b;
+}
+
+.stat-purchases .stat-icon{
+    background:#2469c9;
+}
+
+.stat-expenses .stat-icon{
+    background:#e67e16;
+}
+
+.stat-profit .stat-icon{
+    background:#7541c8;
+}
+
+.stat-label{
+    font-size:13px;
     font-weight:bold;
-    font-size:16px;
-    cursor:pointer;
-    box-shadow:0 5px 14px #17202a22;
-    transition:.2s;
+    color:#607080;
+    text-transform:uppercase;
 }
 
-.quick:hover{
-    transform:translateY(-2px);
+.stat-value{
+    font-size:25px;
+    font-weight:900;
+    margin-top:5px;
 }
 
-.quick:active{
-    transform:scale(.98);
+.stat-sales .stat-value{
+    color:#129c64;
 }
 
-.q-sales{background:linear-gradient(135deg,#079957,#13bd78)}
-.q-purchases{background:linear-gradient(135deg,#1259b4,#187ee0)}
-.q-inventory{background:linear-gradient(135deg,#ec6d00,#ff9700)}
-.q-products{background:linear-gradient(135deg,#07969b,#16bcc1)}
-.q-expenses{background:linear-gradient(135deg,#6930c3,#914ce2)}
-.q-customers{background:linear-gradient(135deg,#d91669,#f02b80)}
-.q-suppliers{background:linear-gradient(135deg,#3e37b5,#6159dc)}
-.q-reports{background:linear-gradient(135deg,#93620a,#bf850d)}
+.stat-purchases .stat-value{
+    color:#2462ae;
+}
+
+.stat-expenses .stat-value{
+    color:#df6f0b;
+}
+
+.stat-profit .stat-value{
+    color:#7040ba;
+}
 
 /* =========================================================
-   PANELS
+   DASHBOARD LOWER CARDS
 ========================================================= */
 
-.dashboard-panels{
+.dashboard-grid{
     display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:15px;
-    margin-top:18px;
+    grid-template-columns:1fr 1fr 1fr;
+    gap:16px;
+    margin-top:20px;
 }
 
 .panel{
     background:white;
-    border-radius:14px;
+    border-radius:15px;
     padding:17px;
-    box-shadow:0 4px 15px #17202a12;
+    box-shadow:0 5px 18px #17344b18;
 }
 
 .panel h3{
-    margin:0 0 12px;
+    margin:0 0 14px;
+    font-size:18px;
 }
 
-.panel-row{
-    padding:10px 0;
+.panel-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:10px;
+}
+
+.small-link{
+    border:0;
+    background:none;
+    color:#087f9b;
+    font-weight:bold;
+    padding:4px;
+}
+
+.low-stock-item,
+.recent-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
     border-bottom:1px solid #edf0f2;
+    padding:11px 0;
 }
 
-.panel-row:last-child{
+.low-stock-item:last-child,
+.recent-item:last-child{
     border-bottom:0;
 }
 
-.low-stock{
-    color:#d71920;
+.low-stock-left{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.tyre-icon{
+    width:40px;
+    height:40px;
+    border-radius:50%;
+    background:
+        radial-gradient(circle,#ccc 0 20%,#222 21% 45%,#555 46% 52%,#111 53%);
+    flex-shrink:0;
+}
+
+.stock-danger{
+    color:#e03939;
     font-weight:bold;
+}
+
+.recent-number{
+    color:#087f9b;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.recent-money{
+    font-weight:bold;
+    color:#129c64;
 }
 
 /* =========================================================
    FORMS
 ========================================================= */
 
-.form-card{
+.form-panel{
     background:white;
-    border-radius:14px;
+    border-radius:15px;
     padding:20px;
-    box-shadow:0 4px 15px #17202a15;
-    margin-bottom:18px;
+    box-shadow:0 5px 18px #17344b18;
+    max-width:1000px;
 }
 
 .form-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
 }
 
-.form-grid.three{
-    grid-template-columns:repeat(3,1fr);
+.form-group{
+    margin-bottom:10px;
+}
+
+.form-group.full{
+    grid-column:1/-1;
 }
 
 label{
     display:block;
-    font-weight:bold;
     font-size:13px;
-    margin:5px 0 4px;
+    font-weight:bold;
+    color:#51606c;
+    margin-bottom:5px;
 }
 
 input,
-select,
-textarea{
+select{
     width:100%;
     padding:12px;
-    border:1px solid #ccd5dc;
+    border:1px solid #ccd5db;
     border-radius:8px;
-    font-size:15px;
     background:white;
-}
-
-textarea{
-    min-height:90px;
-    resize:vertical;
+    font-size:15px;
+    outline:none;
 }
 
 input:focus,
-select:focus,
-textarea:focus{
-    outline:none;
-    border-color:#078e9c;
-    box-shadow:0 0 0 3px #078e9c18;
-}
-
-.btn{
-    border:0;
-    border-radius:9px;
-    padding:12px 16px;
-    color:white;
-    background:#087f91;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.btn:hover{
-    filter:brightness(1.08);
-}
-
-.btn-green{background:#159b65}
-.btn-blue{background:#1769c2}
-.btn-orange{background:#ef7600}
-.btn-red{background:#c62828}
-.btn-purple{background:#713fc2}
-.btn-gray{background:#68737d}
-.btn-yellow{
-    background:#e8a800;
-    color:#111;
+select:focus{
+    border-color:#078f9a;
+    box-shadow:0 0 0 3px #078f9a18;
 }
 
 .action-row{
     display:flex;
     flex-wrap:wrap;
-    gap:8px;
+    gap:10px;
     margin-top:12px;
 }
 
+.btn{
+    border:0;
+    border-radius:9px;
+    padding:12px 18px;
+    color:white;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.btn-primary{
+    background:#078f9a;
+}
+
+.btn-blue{
+    background:#2469c9;
+}
+
+.btn-green{
+    background:#12a96b;
+}
+
+.btn-orange{
+    background:#e67e16;
+}
+
+.btn-purple{
+    background:#7040ba;
+}
+
+.btn-red{
+    background:#c0392b;
+}
+
+.btn-dark{
+    background:#34495e;
+}
+
+.btn-light{
+    background:#e8eef2;
+    color:#263746;
+}
+
 /* =========================================================
-   TABLE
+   TABLES
 ========================================================= */
 
-.table-wrap{
-    overflow-x:auto;
+.table-panel{
     background:white;
-    border-radius:14px;
-    box-shadow:0 4px 15px #17202a12;
+    border-radius:15px;
+    padding:18px;
+    box-shadow:0 5px 18px #17344b18;
+    margin-top:18px;
+    overflow-x:auto;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    min-width:750px;
+    min-width:700px;
 }
 
 th{
-    background:#062b42;
+    background:#082b43;
     color:white;
     padding:12px;
     text-align:left;
+    font-size:13px;
 }
 
 td{
     padding:11px;
-    border-bottom:1px solid #edf0f2;
+    border-bottom:1px solid #e8edf0;
+    font-size:14px;
 }
 
 tr:hover td{
-    background:#f7fafc;
+    background:#f7fafb;
 }
 
-.small-btn{
-    padding:7px 9px;
-    border:0;
-    border-radius:6px;
-    color:white;
-    cursor:pointer;
+.badge{
+    display:inline-block;
+    padding:4px 8px;
+    border-radius:20px;
+    font-size:11px;
     font-weight:bold;
+}
+
+.badge-green{
+    background:#dff7eb;
+    color:#087c4e;
+}
+
+.badge-red{
+    background:#fde3e3;
+    color:#a62626;
+}
+
+.badge-blue{
+    background:#e1efff;
+    color:#1f5d9e;
+}
+
+/* =========================================================
+   PRODUCT CARDS
+========================================================= */
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
+    margin-top:18px;
+}
+
+.product-card{
+    background:white;
+    border-radius:14px;
+    padding:17px;
+    box-shadow:0 5px 18px #17344b18;
+}
+
+.product-card h3{
+    margin:0 0 8px;
+}
+
+.product-code{
+    color:#078f9a;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.product-meta{
+    margin-top:10px;
+    line-height:1.7;
+    color:#586672;
 }
 
 /* =========================================================
    SEARCH
 ========================================================= */
 
-.search{
-    margin-bottom:12px;
+.search-box{
+    margin-bottom:15px;
 }
 
 /* =========================================================
-   MODAL
+   REPORT CARDS
 ========================================================= */
 
-.modal{
-    display:none;
-    position:fixed;
-    z-index:1000;
-    inset:0;
-    background:#0008;
-    align-items:center;
-    justify-content:center;
-    padding:15px;
+.report-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:15px;
 }
 
-.modal.open{
-    display:flex;
-}
-
-.modal-box{
-    width:min(600px,100%);
-    max-height:90vh;
-    overflow:auto;
+.report-card{
     background:white;
-    border-radius:15px;
-    padding:22px;
+    border-radius:14px;
+    padding:18px;
+    box-shadow:0 5px 18px #17344b18;
 }
 
-.modal-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.report-card h3{
+    margin:0;
+    color:#63727d;
+    font-size:14px;
 }
 
-.close{
-    border:0;
-    background:#eee;
-    width:38px;
-    height:38px;
-    border-radius:50%;
-    cursor:pointer;
-    font-size:20px;
+.report-card strong{
+    display:block;
+    margin-top:8px;
+    font-size:24px;
 }
 
 /* =========================================================
@@ -600,17 +672,17 @@ tr:hover td{
 
 .invoice{
     background:white;
-    padding:25px;
     max-width:800px;
-    margin:auto;
-    box-shadow:0 3px 15px #0002;
+    margin:20px auto;
+    padding:30px;
+    box-shadow:0 5px 20px #0002;
 }
 
 .invoice-head{
     display:flex;
     justify-content:space-between;
     gap:20px;
-    border-bottom:3px solid #f4b400;
+    border-bottom:2px solid #078f9a;
     padding-bottom:15px;
 }
 
@@ -620,16 +692,24 @@ tr:hover td{
     gap:10px;
 }
 
-.mini-logo{
-    width:60px;
-    height:60px;
+.invoice-logo-circle{
+    width:55px;
+    height:55px;
     border-radius:50%;
-    border:3px solid #f4b400;
-    background:#10212d;
+    background:#111;
+    border:3px solid #f5b400;
     display:flex;
     align-items:center;
     justify-content:center;
     color:white;
+    font-size:11px;
+    font-weight:bold;
+    text-align:center;
+}
+
+.invoice-title{
+    color:#078f9a;
+    font-size:22px;
     font-weight:bold;
 }
 
@@ -639,14 +719,26 @@ tr:hover td{
 }
 
 .invoice th{
-    background:#123b5d;
+    background:#078f9a;
 }
 
 .invoice-total{
     text-align:right;
-    margin-top:20px;
     font-size:20px;
     font-weight:bold;
+    margin-top:15px;
+}
+
+/* =========================================================
+   NOTICE
+========================================================= */
+
+.notice{
+    background:#fff8df;
+    border-left:4px solid #f5b400;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:15px;
 }
 
 /* =========================================================
@@ -654,225 +746,213 @@ tr:hover td{
 ========================================================= */
 
 .footer{
-    margin-top:35px;
-    background:#dce7ef;
-    padding:22px;
+    background:#dce6ed;
+    color:#5f6c75;
     text-align:center;
-    color:#607080;
+    padding:20px;
+    margin-top:20px;
 }
 
 /* =========================================================
-   TOAST
+   MOBILE / TABLET
 ========================================================= */
 
-.toast{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    background:#062b42;
-    color:white;
-    padding:14px 18px;
-    border-radius:10px;
-    box-shadow:0 5px 20px #0004;
-    display:none;
-    z-index:2000;
-    max-width:350px;
-}
+@media(max-width:1000px){
 
-.toast.show{
-    display:block;
-}
-
-/* =========================================================
-   RESPONSIVE
-========================================================= */
-
-@media(max-width:1100px){
-
-    .brand-title h1{
-        font-size:32px;
-    }
-
-    .kpi-grid{
+    .stats{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .quick-grid{
+    .dashboard-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .product-grid{
         grid-template-columns:repeat(2,1fr);
     }
 
-    .dashboard-panels{
-        grid-template-columns:1fr;
+    .brand-icons{
+        display:none;
+    }
+
+    .brand-name{
+        font-size:26px;
     }
 
 }
 
-@media(max-width:800px){
+@media(max-width:700px){
 
     .top-header{
-        min-height:auto;
-    }
-
-    .header-content{
-        flex-direction:column;
-        text-align:center;
+        padding:14px;
     }
 
     .brand{
-        flex-direction:column;
-    }
-
-    .header-tools{
-        text-align:center;
-    }
-
-    .welcome{
         justify-content:center;
     }
 
-    .app-layout{
+    .brand-left{
+        width:100%;
+        justify-content:center;
+    }
+
+    .logo{
+        width:70px;
+        height:70px;
+    }
+
+    .brand-name{
+        font-size:20px;
+    }
+
+    .brand-subtitle{
+        font-size:11px;
+    }
+
+    .info-inner{
+        font-size:12px;
+    }
+
+    .layout{
         display:block;
     }
 
     .sidebar{
         width:100%;
-        display:grid;
-        grid-template-columns:repeat(4,1fr);
+        display:flex;
+        overflow-x:auto;
+        position:sticky;
+        top:0;
+        z-index:20;
     }
 
-    .nav-button{
-        padding:11px 5px;
+    .nav-title{
+        display:none;
+    }
+
+    .nav-btn{
+        min-width:105px;
         justify-content:center;
         flex-direction:column;
-        gap:3px;
-        font-size:11px;
-        text-align:center;
+        gap:2px;
+        padding:8px 5px;
+        font-size:10px;
         border-left:0;
         border-bottom:3px solid transparent;
     }
 
-    .nav-button.active{
+    .nav-btn.active{
         border-left:0;
-        border-bottom-color:#f4b400;
+        border-bottom-color:#f5c400;
     }
 
-    .main{
+    .nav-icon{
+        font-size:19px;
+    }
+
+    .content{
         padding:14px;
     }
 
-}
-
-@media(max-width:600px){
-
-    .brand-title h1{
-        font-size:25px;
+    .stats{
+        grid-template-columns:1fr 1fr;
+        gap:10px;
     }
 
-    .brand-title p{
-        font-size:12px;
+    .stat-card{
+        min-height:125px;
+        padding:13px;
     }
 
-    .logo{
-        width:85px;
-        height:85px;
+    .stat-value{
+        font-size:19px;
     }
 
-    .kpi-grid,
-    .quick-grid,
-    .form-grid,
-    .form-grid.three{
+    .dashboard-grid{
         grid-template-columns:1fr;
     }
 
-    .page-title{
-        display:block;
+    .form-grid{
+        grid-template-columns:1fr;
     }
 
-    .page-title h2{
+    .form-group.full{
+        grid-column:auto;
+    }
+
+    .product-grid{
+        grid-template-columns:1fr;
+    }
+
+    .report-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .page-title{
         font-size:23px;
     }
 
 }
 
-/* =========================================================
-   PRINT
-========================================================= */
-
-@media print{
-
-    body *{
-        visibility:hidden;
-    }
-
-    #invoicePrint,
-    #invoicePrint *{
-        visibility:visible;
-    }
-
-    #invoicePrint{
-        position:absolute;
-        left:0;
-        top:0;
-        width:100%;
-    }
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-
-<!-- =======================================================
+<!-- =========================================================
      HEADER
-======================================================= -->
+========================================================= -->
 
 <header class="top-header">
 
-<div class="header-content">
+<div class="brand">
 
-    <div class="brand">
+    <div class="brand-left">
 
         <div class="logo">
             <div class="logo-text">
-                <b>SM</b>
-                <span>TYRES</span>
-                <span>& ALIGNMENT</span>
+                SM<br>
+                <span style="color:#f5b400">TYRES</span><br>
+                <span style="font-size:12px">ALIGNMENT</span>
             </div>
         </div>
 
-        <div class="brand-title">
-
-            <h1>
+        <div>
+            <div class="brand-name">
                 SM TYRES & <span>ALIGNMENT</span>
-            </h1>
+            </div>
 
-            <p>
+            <div class="brand-subtitle">
                 ACCOUNTING & INVENTORY MANAGEMENT
-            </p>
+            </div>
 
+            <div class="brand-subtitle">
+                Sales • Purchases • Inventory • Reports
+            </div>
         </div>
 
     </div>
 
-    <div class="header-tools">
+    <div class="brand-icons">
 
-        <div class="date" id="currentDate">
-            Loading date...
+        <div class="brand-icon">
+            <strong>💰</strong>
+            Sales
         </div>
 
-        <div class="welcome">
+        <div class="brand-icon">
+            <strong>🛒</strong>
+            Purchases
+        </div>
 
-            <span>
-                Welcome, SM TYRES
-            </span>
+        <div class="brand-icon">
+            <strong>📦</strong>
+            Inventory
+        </div>
 
-            <div class="user-circle">
-                👤
-            </div>
-
+        <div class="brand-icon">
+            <strong>📊</strong>
+            Reports
         </div>
 
     </div>
@@ -882,70 +962,96 @@ tr:hover td{
 </header>
 
 
-<!-- =======================================================
-     APP
-======================================================= -->
+<!-- =========================================================
+     INFO BAR
+========================================================= -->
 
-<div class="app-layout">
+<div class="info-bar">
+
+<div class="info-inner">
+
+    <div id="currentDate">
+        📅 Loading date...
+    </div>
+
+    <div class="info-user">
+        Welcome, SM TYRES
+        <div class="user-circle">👤</div>
+    </div>
+
+</div>
+
+</div>
 
 
-<!-- =======================================================
+<!-- =========================================================
+     MAIN LAYOUT
+========================================================= -->
+
+<div class="layout">
+
+
+<!-- =========================================================
      SIDEBAR
-======================================================= -->
+========================================================= -->
 
 <nav class="sidebar">
 
-<button class="nav-button active" data-screen="dashboard">
+<div class="nav-title">
+    Main Menu
+</div>
+
+<button class="nav-btn active" data-screen="dashboard">
     <span class="nav-icon">🏠</span>
     Dashboard
 </button>
 
-<button class="nav-button" data-screen="sales">
+<button class="nav-btn" data-screen="sales">
     <span class="nav-icon">💰</span>
     Sales
 </button>
 
-<button class="nav-button" data-screen="purchases">
+<button class="nav-btn" data-screen="purchases">
     <span class="nav-icon">🛒</span>
     Purchases
 </button>
 
-<button class="nav-button" data-screen="inventory">
+<button class="nav-btn" data-screen="inventory">
     <span class="nav-icon">📦</span>
     Inventory
 </button>
 
-<button class="nav-button" data-screen="products">
-    <span class="nav-icon">🔧</span>
+<button class="nav-btn" data-screen="products">
+    <span class="nav-icon">🛠️</span>
     Products
 </button>
 
-<button class="nav-button" data-screen="expenses">
+<button class="nav-btn" data-screen="expenses">
     <span class="nav-icon">💸</span>
     Expenses
 </button>
 
-<button class="nav-button" data-screen="customers">
+<button class="nav-btn" data-screen="customers">
     <span class="nav-icon">👥</span>
     Customers
 </button>
 
-<button class="nav-button" data-screen="suppliers">
+<button class="nav-btn" data-screen="suppliers">
     <span class="nav-icon">🏢</span>
     Suppliers
 </button>
 
-<button class="nav-button" data-screen="reports">
+<button class="nav-btn" data-screen="reports">
     <span class="nav-icon">📊</span>
     Reports
 </button>
 
-<button class="nav-button" data-screen="settings">
+<button class="nav-btn" data-screen="settings">
     <span class="nav-icon">⚙️</span>
     Settings
 </button>
 
-<button class="nav-button" data-screen="backup">
+<button class="nav-btn" data-screen="backup">
     <span class="nav-icon">☁️</span>
     Backup
 </button>
@@ -953,275 +1059,253 @@ tr:hover td{
 </nav>
 
 
-<!-- =======================================================
-     MAIN
-======================================================= -->
+<!-- =========================================================
+     CONTENT
+========================================================= -->
 
-<main class="main">
+<main class="content">
 
 
-<!-- =======================================================
+<!-- =========================================================
      DASHBOARD
-======================================================= -->
+========================================================= -->
 
 <section id="dashboard" class="screen active">
 
-<div class="page-title">
+<h1 class="page-title">
+    📊 Business Dashboard
+</h1>
 
-<div>
-<h2>📊 Business Dashboard</h2>
-<p>SM TYRES & ALIGNMENT accounting overview</p>
-</div>
-
-</div>
+<p class="page-subtitle">
+    Overview of SM TYRES & ALIGNMENT
+</p>
 
 
-<div class="kpi-grid">
+<div class="stats">
 
-<div class="kpi green">
+<div class="stat-card stat-sales">
 
-<div class="kpi-icon">
-💰
-</div>
+    <div class="stat-icon">💰</div>
 
-<div class="kpi-label">
-TOTAL SALES
-</div>
+    <div class="stat-label">
+        Total Sales
+    </div>
 
-<div class="kpi-value" id="dashSales">
-TSh 0
-</div>
+    <div class="stat-value" id="dashSales">
+        TSh 0
+    </div>
 
 </div>
 
 
-<div class="kpi blue">
+<div class="stat-card stat-purchases">
 
-<div class="kpi-icon">
-🛒
-</div>
+    <div class="stat-icon">🛒</div>
 
-<div class="kpi-label">
-PURCHASES
-</div>
+    <div class="stat-label">
+        Purchases
+    </div>
 
-<div class="kpi-value" id="dashPurchases">
-TSh 0
-</div>
+    <div class="stat-value" id="dashPurchases">
+        TSh 0
+    </div>
 
 </div>
 
 
-<div class="kpi orange">
+<div class="stat-card stat-expenses">
 
-<div class="kpi-icon">
-💸
-</div>
+    <div class="stat-icon">💸</div>
 
-<div class="kpi-label">
-EXPENSES
-</div>
+    <div class="stat-label">
+        Expenses
+    </div>
 
-<div class="kpi-value" id="dashExpenses">
-TSh 0
-</div>
+    <div class="stat-value" id="dashExpenses">
+        TSh 0
+    </div>
 
 </div>
 
 
-<div class="kpi purple">
+<div class="stat-card stat-profit">
 
-<div class="kpi-icon">
-📈
-</div>
+    <div class="stat-icon">📈</div>
 
-<div class="kpi-label">
-NET PROFIT
-</div>
+    <div class="stat-label">
+        Net Profit
+    </div>
 
-<div class="kpi-value" id="dashProfit">
-TSh 0
-</div>
+    <div class="stat-value" id="dashProfit">
+        TSh 0
+    </div>
 
 </div>
 
 </div>
 
 
-<h3 class="quick-title">
-🚀 Quick Access
-</h3>
+<div class="dashboard-grid">
 
 
-<div class="quick-grid">
-
-<button class="quick q-sales" data-screen="sales">
-💰 SALES
-</button>
-
-<button class="quick q-purchases" data-screen="purchases">
-🛒 PURCHASES
-</button>
-
-<button class="quick q-inventory" data-screen="inventory">
-📦 INVENTORY
-</button>
-
-<button class="quick q-products" data-screen="products">
-🔧 PRODUCTS
-</button>
-
-<button class="quick q-expenses" data-screen="expenses">
-💸 EXPENSES
-</button>
-
-<button class="quick q-customers" data-screen="customers">
-👥 CUSTOMERS
-</button>
-
-<button class="quick q-suppliers" data-screen="suppliers">
-🏢 SUPPLIERS
-</button>
-
-<button class="quick q-reports" data-screen="reports">
-📊 REPORTS
-</button>
-
-</div>
-
-
-<div class="dashboard-panels">
-
+<!-- LOW STOCK -->
 
 <div class="panel">
+
+<div class="panel-header">
 
 <h3>⚠️ Low Stock Alert</h3>
 
-<div id="lowStockDashboard">
-No low stock products.
+<button class="small-link" data-screen="inventory">
+    View all →
+</button>
+
+</div>
+
+<div id="lowStockList">
+    No low-stock products.
 </div>
 
 </div>
 
+
+<!-- RECENT SALES -->
 
 <div class="panel">
+
+<div class="panel-header">
 
 <h3>📈 Recent Sales</h3>
 
+<button class="small-link" data-screen="sales">
+    View all →
+</button>
+
+</div>
+
 <div id="recentSales">
-No sales yet.
+    No sales yet.
 </div>
 
 </div>
 
+
+<!-- RECENT PURCHASES -->
 
 <div class="panel">
 
+<div class="panel-header">
+
 <h3>🛒 Recent Purchases</h3>
 
+<button class="small-link" data-screen="purchases">
+    View all →
+</button>
+
+</div>
+
 <div id="recentPurchases">
-No purchases yet.
+    No purchases yet.
 </div>
 
 </div>
-
 
 </div>
 
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      SALES
-======================================================= -->
+========================================================= -->
 
 <section id="sales" class="screen">
 
-<div class="page-title">
+<h1 class="page-title">💰 Sales</h1>
 
-<div>
-<h2>💰 Sales</h2>
-<p>Create sales and sales invoices</p>
-</div>
-
-<button class="btn btn-gray" data-screen="dashboard">
-← Dashboard
-</button>
-
-</div>
+<p class="page-subtitle">
+    Record sales and create sales invoices.
+</p>
 
 
-<div class="form-card">
+<div class="form-panel">
 
 <div class="form-grid">
 
-<div>
+<div class="form-group">
 
 <label>Date</label>
 
 <input
-id="saleDate"
-type="date">
+    id="saleDate"
+    type="date">
 
 </div>
 
 
-<div>
+<div class="form-group">
 
 <label>Customer</label>
 
 <input
-id="saleCustomer"
-placeholder="Customer name">
+    id="saleCustomer"
+    placeholder="Customer name">
 
 </div>
 
 
-<div>
+<div class="form-group">
 
 <label>Product</label>
 
 <select id="saleProduct">
-<option value="">
-Select product
-</option>
+    <option value="">Select product</option>
 </select>
 
 </div>
 
 
-<div>
+<div class="form-group">
 
 <label>Quantity</label>
 
 <input
-id="saleQuantity"
-type="number"
-min="1"
-value="1">
+    id="saleQuantity"
+    type="number"
+    min="1"
+    value="1">
 
 </div>
 
 
-<div>
+<div class="form-group">
 
-<label>Selling Price</label>
+<label>Selling Price per Unit</label>
 
 <input
-id="salePrice"
-type="number"
-min="0"
-placeholder="Selling price">
+    id="salePrice"
+    type="number"
+    min="0"
+    placeholder="Enter selling price">
 
 </div>
 
+</div>
+
+
+<div class="notice">
+Selling prices can be different on every sale.
 </div>
 
 
 <div class="action-row">
 
 <button class="btn btn-green" id="recordSale">
-💰 Record Sale
+    💾 Record Sale
+</button>
+
+<button class="btn btn-light" id="clearSale">
+    Clear
 </button>
 
 </div>
@@ -1229,7 +1313,9 @@ placeholder="Selling price">
 </div>
 
 
-<div class="table-wrap">
+<div class="table-panel">
+
+<h3>Sales History</h3>
 
 <table>
 
@@ -1243,7 +1329,6 @@ placeholder="Selling price">
 <th>Qty</th>
 <th>Total</th>
 <th>Profit</th>
-<th>Action</th>
 </tr>
 
 </thead>
@@ -1258,87 +1343,78 @@ placeholder="Selling price">
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      PURCHASES
-======================================================= -->
+========================================================= -->
 
 <section id="purchases" class="screen">
 
-<div class="page-title">
+<h1 class="page-title">🛒 Purchases</h1>
 
-<div>
-<h2>🛒 Purchases</h2>
-<p>Record purchases and increase stock</p>
-</div>
-
-<button class="btn btn-gray" data-screen="dashboard">
-← Dashboard
-</button>
-
-</div>
+<p class="page-subtitle">
+    Record purchases from suppliers and automatically increase stock.
+</p>
 
 
-<div class="form-card">
+<div class="form-panel">
 
 <div class="form-grid">
 
-<div>
+<div class="form-group">
 
 <label>Date</label>
 
 <input
-id="purchaseDate"
-type="date">
+    id="purchaseDate"
+    type="date">
 
 </div>
 
 
-<div>
+<div class="form-group">
 
 <label>Supplier</label>
 
 <input
-id="purchaseSupplier"
-placeholder="Supplier name">
+    id="purchaseSupplier"
+    placeholder="Supplier name">
 
 </div>
 
 
-<div>
+<div class="form-group">
 
 <label>Product</label>
 
 <select id="purchaseProduct">
-<option value="">
-Select product
-</option>
+    <option value="">Select product</option>
 </select>
 
 </div>
 
 
-<div>
+<div class="form-group">
 
 <label>Quantity</label>
 
 <input
-id="purchaseQuantity"
-type="number"
-min="1"
-value="1">
+    id="purchaseQuantity"
+    type="number"
+    min="1"
+    value="1">
 
 </div>
 
 
-<div>
+<div class="form-group">
 
-<label>Buying Price</label>
+<label>Buying Price per Unit</label>
 
 <input
-id="purchasePrice"
-type="number"
-min="0"
-placeholder="Buying price">
+    id="purchasePrice"
+    type="number"
+    min="0"
+    placeholder="Buying price">
 
 </div>
 
@@ -1348,7 +1424,11 @@ placeholder="Buying price">
 <div class="action-row">
 
 <button class="btn btn-blue" id="recordPurchase">
-🛒 Record Purchase
+    💾 Record Purchase
+</button>
+
+<button class="btn btn-light" id="clearPurchase">
+    Clear
 </button>
 
 </div>
@@ -1356,19 +1436,20 @@ placeholder="Buying price">
 </div>
 
 
-<div class="table-wrap">
+<div class="table-panel">
+
+<h3>Purchase History</h3>
 
 <table>
 
 <thead>
 
 <tr>
-<th>PO</th>
+<th>PO Number</th>
 <th>Date</th>
 <th>Supplier</th>
 <th>Product</th>
 <th>Qty</th>
-<th>Price</th>
 <th>Total</th>
 </tr>
 
@@ -1384,48 +1465,31 @@ placeholder="Buying price">
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      INVENTORY
-======================================================= -->
+========================================================= -->
 
 <section id="inventory" class="screen">
 
-<div class="page-title">
+<h1 class="page-title">📦 Inventory</h1>
 
-<div>
-<h2>📦 Inventory</h2>
-<p>Monitor stock levels and product costs</p>
-</div>
-
-<button class="btn btn-gray" data-screen="dashboard">
-← Dashboard
-</button>
-
-</div>
+<p class="page-subtitle">
+    Current stock and product values.
+</p>
 
 
-<div class="form-card">
-
-<input
-id="inventorySearch"
-class="search"
-placeholder="🔎 Search inventory...">
-
-</div>
-
-
-<div class="table-wrap">
+<div class="table-panel">
 
 <table>
 
 <thead>
 
 <tr>
-<th>Code</th>
 <th>Product</th>
+<th>SKU</th>
 <th>Category</th>
 <th>Stock</th>
-<th>Average Cost</th>
+<th>Buying Cost</th>
 <th>Stock Value</th>
 <th>Status</th>
 </tr>
@@ -1442,62 +1506,72 @@ placeholder="🔎 Search inventory...">
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      PRODUCTS
-======================================================= -->
+========================================================= -->
 
 <section id="products" class="screen">
 
-<div class="page-title">
+<h1 class="page-title">🛠️ Product Management</h1>
 
-<div>
-<h2>🔧 Product Management</h2>
-<p>Add, edit and delete your products</p>
-</div>
-
-<button class="btn btn-gray" data-screen="dashboard">
-← Dashboard
-</button>
-
-</div>
+<p class="page-subtitle">
+    Add, edit, search and delete products.
+</p>
 
 
-<div class="form-card">
+<div class="form-panel">
 
-<h3>➕ Add Product</h3>
+<div class="form-grid">
 
-
-<div class="form-grid three">
-
-<div>
+<div class="form-group">
 
 <label>Product Code / SKU</label>
 
 <input
-id="productCode"
-placeholder="e.g. TYR001">
+    id="productCode"
+    placeholder="Example: MIC-205">
 
 </div>
 
 
-<div>
+<div class="form-group">
 
 <label>Product Name</label>
 
 <input
-id="productName"
-placeholder="e.g. Michelin 205/55R16">
+    id="productName"
+    placeholder="Example: Michelin 205/55R16">
 
 </div>
 
 
-<div>
+<div class="form-group">
 
 <label>Category</label>
 
-<input
-id="productCategory"
-placeholder="Tyre / Spare Part / Service">
+<select id="productCategory">
+
+<option value="Tyre">
+Tyre
+</option>
+
+<option value="Wheel">
+Wheel
+</option>
+
+<option value="Spare Part">
+Spare Part
+</option>
+
+<option value="Service">
+Service
+</option>
+
+<option value="Other">
+Other
+</option>
+
+</select>
 
 </div>
 
@@ -1506,8 +1580,12 @@ placeholder="Tyre / Spare Part / Service">
 
 <div class="action-row">
 
-<button class="btn btn-green" id="addProduct">
-➕ Add Product
+<button class="btn btn-primary" id="addProduct">
+    ➕ Add Product
+</button>
+
+<button class="btn btn-light" id="clearProduct">
+    Clear
 </button>
 
 </div>
@@ -1515,98 +1593,70 @@ placeholder="Tyre / Spare Part / Service">
 </div>
 
 
-<div class="form-card">
+<div style="margin-top:18px">
 
 <input
-id="productSearch"
-class="search"
-placeholder="🔎 Search products...">
+    id="productSearch"
+    class="search-box"
+    placeholder="🔎 Search by product name, code or category">
 
 </div>
 
 
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-<th>Code</th>
-<th>Product</th>
-<th>Category</th>
-<th>Stock</th>
-<th>Average Cost</th>
-<th>Actions</th>
-</tr>
-
-</thead>
-
-<tbody id="productsTable">
-</tbody>
-
-</table>
-
+<div id="productGrid" class="product-grid">
 </div>
 
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      EXPENSES
-======================================================= -->
+========================================================= -->
 
 <section id="expenses" class="screen">
 
-<div class="page-title">
+<h1 class="page-title">💸 Expenses</h1>
 
-<div>
-<h2>💸 Expenses</h2>
-<p>Record business expenses</p>
-</div>
-
-<button class="btn btn-gray" data-screen="dashboard">
-← Dashboard
-</button>
-
-</div>
+<p class="page-subtitle">
+    Record business expenses.
+</p>
 
 
-<div class="form-card">
+<div class="form-panel">
 
 <div class="form-grid">
 
-<div>
+<div class="form-group">
 
 <label>Date</label>
 
 <input
-id="expenseDate"
-type="date">
+    id="expenseDate"
+    type="date">
 
 </div>
 
 
-<div>
+<div class="form-group">
 
-<label>Description</label>
+<label>Expense Description</label>
 
 <input
-id="expenseName"
-placeholder="e.g. Electricity">
+    id="expenseName"
+    placeholder="Example: Electricity">
 
 </div>
 
 
-<div>
+<div class="form-group">
 
 <label>Amount</label>
 
 <input
-id="expenseAmount"
-type="number"
-min="0"
-placeholder="TSh">
+    id="expenseAmount"
+    type="number"
+    min="0"
+    placeholder="Amount in TSh">
 
 </div>
 
@@ -1616,7 +1666,7 @@ placeholder="TSh">
 <div class="action-row">
 
 <button class="btn btn-orange" id="recordExpense">
-💸 Record Expense
+    💾 Record Expense
 </button>
 
 </div>
@@ -1624,7 +1674,9 @@ placeholder="TSh">
 </div>
 
 
-<div class="table-wrap">
+<div class="table-panel">
+
+<h3>Expense History</h3>
 
 <table>
 
@@ -1634,7 +1686,6 @@ placeholder="TSh">
 <th>Date</th>
 <th>Description</th>
 <th>Amount</th>
-<th>Action</th>
 </tr>
 
 </thead>
@@ -1649,405 +1700,14 @@ placeholder="TSh">
 </section>
 
 
-<!-- =======================================================
+<!-- =========================================================
      CUSTOMERS
-======================================================= -->
+========================================================= -->
 
 <section id="customers" class="screen">
 
-<div class="page-title">
+<h1 class="page-title">👥 Customers</h1>
 
-<div>
-<h2>👥 Customers</h2>
-<p>Manage your customers</p>
-</div>
-
-<button class="btn btn-gray" data-screen="dashboard">
-← Dashboard
-</button>
-
-</div>
-
-
-<div class="form-card">
-
-<div class="form-grid">
-
-<div>
-
-<label>Customer Name</label>
-
-<input
-id="customerName"
-placeholder="Customer name">
-
-</div>
-
-
-<div>
-
-<label>Phone</label>
-
-<input
-id="customerPhone"
-placeholder="Phone number">
-
-</div>
-
-</div>
-
-
-<div class="action-row">
-
-<button class="btn btn-green" id="addCustomer">
-➕ Add Customer
-</button>
-
-</div>
-
-</div>
-
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-<th>Name</th>
-<th>Phone</th>
-<th>Action</th>
-</tr>
-
-</thead>
-
-<tbody id="customersTable">
-</tbody>
-
-</table>
-
-</div>
-
-</section>
-
-
-<!-- =======================================================
-     SUPPLIERS
-======================================================= -->
-
-<section id="suppliers" class="screen">
-
-<div class="page-title">
-
-<div>
-<h2>🏢 Suppliers</h2>
-<p>Manage your suppliers</p>
-</div>
-
-<button class="btn btn-gray" data-screen="dashboard">
-← Dashboard
-</button>
-
-</div>
-
-
-<div class="form-card">
-
-<div class="form-grid">
-
-<div>
-
-<label>Supplier Name</label>
-
-<input
-id="supplierName"
-placeholder="Supplier name">
-
-</div>
-
-
-<div>
-
-<label>Phone</label>
-
-<input
-id="supplierPhone"
-placeholder="Phone number">
-
-</div>
-
-</div>
-
-
-<div class="action-row">
-
-<button class="btn btn-blue" id="addSupplier">
-➕ Add Supplier
-</button>
-
-</div>
-
-</div>
-
-
-<div class="table-wrap">
-
-<table>
-
-<thead>
-
-<tr>
-<th>Name</th>
-<th>Phone</th>
-<th>Action</th>
-</tr>
-
-</thead>
-
-<tbody id="suppliersTable">
-</tbody>
-
-</table>
-
-</div>
-
-</section>
-
-
-<!-- =======================================================
-     REPORTS
-======================================================= -->
-
-<section id="reports" class="screen">
-
-<div class="page-title">
-
-<div>
-<h2>📊 Reports</h2>
-<p>Business financial summary</p>
-</div>
-
-<button class="btn btn-gray" data-screen="dashboard">
-← Dashboard
-</button>
-
-</div>
-
-
-<div class="kpi-grid">
-
-<div class="kpi green">
-
-<div class="kpi-label">
-TOTAL SALES
-</div>
-
-<div
-class="kpi-value"
-id="reportSales">
-TSh 0
-</div>
-
-</div>
-
-
-<div class="kpi blue">
-
-<div class="kpi-label">
-COST OF GOODS SOLD
-</div>
-
-<div
-class="kpi-value"
-id="reportCOGS">
-TSh 0
-</div>
-
-</div>
-
-
-<div class="kpi orange">
-
-<div class="kpi-label">
-GROSS PROFIT
-</div>
-
-<div
-class="kpi-value"
-id="reportGross">
-TSh 0
-</div>
-
-</div>
-
-
-<div class="kpi purple">
-
-<div class="kpi-label">
-NET PROFIT
-</div>
-
-<div
-class="kpi-value"
-id="reportNet">
-TSh 0
-</div>
-
-</div>
-
-</div>
-
-
-<div class="panel" style="margin-top:18px">
-
-<h3>📋 Profit Summary</h3>
-
-<div class="panel-row">
-Sales:
-<strong id="summarySales">TSh 0</strong>
-</div>
-
-<div class="panel-row">
-Cost of Goods Sold:
-<strong id="summaryCost">TSh 0</strong>
-</div>
-
-<div class="panel-row">
-Gross Profit:
-<strong id="summaryGross">TSh 0</strong>
-</div>
-
-<div class="panel-row">
-Expenses:
-<strong id="summaryExpenses">TSh 0</strong>
-</div>
-
-<div class="panel-row">
-Net Profit:
-<strong id="summaryNet">TSh 0</strong>
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =======================================================
-     SETTINGS
-======================================================= -->
-
-<section id="settings" class="screen">
-
-<div class="page-title">
-
-<div>
-<h2>⚙️ Settings</h2>
-<p>Business information</p>
-</div>
-
-<button class="btn btn-gray" data-screen="dashboard">
-← Dashboard
-</button>
-
-</div>
-
-
-<div class="form-card">
-
-<h3>Business Information</h3>
-
-
-<label>Business Name</label>
-
-<input
-id="settingBusinessName"
-value="SM TYRES & ALIGNMENT">
-
-
-<label>Location</label>
-
-<input
-id="settingLocation"
-placeholder="LAKE OIL KENYATTA ROAD">
-
-
-<label>Phone</label>
-
-<input
-id="settingPhone"
-placeholder="Phone number">
-
-
-<label>Currency</label>
-
-<input
-id="settingCurrency"
-value="TSh">
-
-
-<div class="action-row">
-
-<button class="btn btn-green" id="saveSettings">
-💾 Save Settings
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =======================================================
-     BACKUP
-======================================================= -->
-
-<section id="backup" class="screen">
-
-<div class="page-title">
-
-<div>
-<h2>☁️ Backup & Restore</h2>
-<p>Protect your accounting data</p>
-</div>
-
-<button class="btn btn-gray" data-screen="dashboard">
-← Dashboard
-</button>
-
-</div>
-
-
-<div class="form-card">
-
-<h3>📤 Backup</h3>
-
-<p>
-Download a copy of your sales, purchases,
-inventory, customers, suppliers and expenses.
+<p class="page-subtitle">
+    Manage your customers.
 </p>
-
-<button class="btn btn-blue" id="exportData">
-📤 Download Backup
-</button>
-
-</div>
-
-
-<div class="form-card">
-
-<h3>📥 Restore</h3>
-
-<p>
-Select a previous SM TYRES backup file.
-</p>
-
-<input
-id="importFile"
-type="file"
-accept=".json">
-
-<div class="action-row">
-
-<button class="
