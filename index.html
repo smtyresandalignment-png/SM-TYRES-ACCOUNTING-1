@@ -2,687 +2,2265 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#061d30">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>SM TYRES & ALIGNMENT - Accounting</title>
 
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial;background:#eef4f8;color:#172638}
-button,input{font:inherit}
-button{border:0;cursor:pointer}
 
-.top{
-background:linear-gradient(120deg,#031827,#0b3858,#087f8d);
-color:white;
-padding:20px
+*{
+    box-sizing:border-box;
 }
 
-.brand{
-max-width:1200px;
-margin:auto;
-display:flex;
-align-items:center;
-gap:18px
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#eef4f8;
+    color:#17202a;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+    font-family:Arial,sans-serif;
+}
+
+header{
+    background:linear-gradient(135deg,#063b63,#087f8c,#0fa3b1);
+    color:white;
+    text-align:center;
+    padding:25px 15px 30px;
+    box-shadow:0 4px 15px #0003;
 }
 
 .logo{
-width:90px;
-height:90px;
-border:4px solid #f5b900;
-border-radius:50%;
-display:grid;
-place-items:center;
-background:#092235;
-font-size:46px
+    width:90px;
+    height:90px;
+    margin:auto;
+    border-radius:50%;
+    background:linear-gradient(135deg,#ffb300,#ff7a00);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:50px;
+    box-shadow:0 5px 15px #0004;
 }
 
-h1{margin:0;font-size:30px}
-.gold{color:#f5b900}
-.brand p{margin:5px 0}
-
-.topline{
-max-width:1200px;
-margin:12px auto 0;
-border-top:1px solid #ffffff33;
-padding-top:10px;
-display:flex;
-justify-content:space-between
+header h1{
+    margin:15px 0 5px;
+    font-size:27px;
 }
 
-.layout{
-max-width:1200px;
-margin:auto;
-display:flex;
-min-height:700px
+header h2{
+    margin:0;
+    font-size:16px;
+    font-weight:normal;
 }
 
-.side{
-width:190px;
-background:#071d30;
-padding:10px
+header p{
+    margin:7px 0 0;
+    font-size:14px;
 }
 
-.nav{
-width:100%;
-background:transparent;
-color:white;
-text-align:left;
-padding:13px;
-border-radius:8px;
-margin:2px 0;
-font-weight:bold
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:18px;
 }
 
-.nav.active,.nav:hover{background:#0b9fa6}
-
-.main{
-flex:1;
-padding:20px
+.screen{
+    display:none;
 }
 
-.screen{display:none}
-.screen.active{display:block}
-
-.cards,.grid,.panels{
-display:grid;
-gap:12px
+.screen.active{
+    display:block;
 }
 
-.cards{grid-template-columns:repeat(4,1fr)}
-
-.grid{
-grid-template-columns:repeat(4,1fr);
-margin-top:12px
+.dashboard-title{
+    font-size:24px;
+    margin:5px 0 15px;
 }
 
-.panels{
-grid-template-columns:repeat(3,1fr);
-margin-top:18px
+.cards{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
 }
 
-.card,.panel,.form,.list{
-background:white;
-border-radius:14px;
-padding:15px;
-box-shadow:0 4px 16px #16334a18
+.card{
+    background:white;
+    border-radius:16px;
+    padding:18px;
+    box-shadow:0 3px 12px #0002;
+    border-left:6px solid #0b8995;
 }
-
-.card{border-left:5px solid #0b9fa6}
-.card:nth-child(1){border-color:#11a56a}
-.card:nth-child(2){border-color:#246dcc}
-.card:nth-child(3){border-color:#e77d17}
-.card:nth-child(4){border-color:#7350d8}
 
 .card small{
-color:#6d7c89;
-font-weight:bold
+    color:#68737d;
+    font-size:14px;
 }
 
 .amount{
-font-size:23px;
-font-weight:bold;
-margin-top:8px
+    margin-top:8px;
+    font-size:22px;
+    font-weight:bold;
 }
 
-.tile{
-color:white;
-padding:19px;
-border-radius:13px;
-font-weight:bold;
-min-height:65px
+.menu{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+    margin-top:18px;
 }
 
-.s{background:#11a56a}
-.p{background:#246dcc}
-.i{background:#e67d14}
-.pr{background:#0b9fa6}
-.e{background:#7350d8}
-.c{background:#d52c70}
-.su{background:#5148bd}
-.r{background:#986d16}
-
-.title{
-display:flex;
-justify-content:space-between;
-align-items:center
+.menu button{
+    padding:18px 10px;
+    border-radius:13px;
+    color:white;
+    font-size:16px;
+    font-weight:bold;
+    background:linear-gradient(135deg,#087f8c,#0875a8);
+    box-shadow:0 3px 8px #0003;
 }
 
-.title h2{margin-top:0}
+.menu button:active{
+    transform:scale(.97);
+}
 
-.form{max-width:800px}
+.page{
+    background:white;
+    border-radius:16px;
+    padding:18px;
+    box-shadow:0 3px 12px #0002;
+}
+
+.back{
+    background:#667781;
+    color:white;
+    padding:12px 18px;
+    border-radius:9px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+h2{
+    color:#075a78;
+}
+
+input,
+select{
+    width:100%;
+    padding:13px;
+    margin:5px 0 10px;
+    border:1px solid #ccd5da;
+    border-radius:9px;
+    font-size:16px;
+    background:white;
+}
+
+label{
+    display:block;
+    margin-top:8px;
+    font-weight:bold;
+    color:#4c5961;
+}
 
 .row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:10px
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
 }
 
-input{
-width:100%;
-padding:12px;
-border:1px solid #d3dce2;
-border-radius:9px;
-margin:5px 0
+.action{
+    width:100%;
+    background:#07879a;
+    color:white;
+    padding:14px;
+    border-radius:9px;
+    font-size:15px;
+    font-weight:bold;
+    margin-top:5px;
 }
 
-.btn{
-padding:12px 15px;
-border-radius:9px;
-background:#087c91;
-color:white;
-font-weight:bold;
-margin:5px 0
+.action.blue{
+    background:#0875a8;
 }
 
-.green{background:#11a56a}
-.gray{background:#687782}
-.red{background:#d83b4b}
+.action.green{
+    background:#199447;
+}
+
+.action.red{
+    background:#c0392b;
+}
+
+.action.orange{
+    background:#e67e22;
+}
+
+.list{
+    margin-top:15px;
+}
 
 .item{
-padding:12px 5px;
-border-bottom:1px solid #edf0f2
+    background:#f8fafb;
+    border-radius:10px;
+    padding:14px;
+    margin-bottom:9px;
+    border-left:4px solid #0b8995;
 }
 
-.item:last-child{border:0}
-
-.head{
-display:flex;
-justify-content:space-between;
-gap:8px
+.item-title{
+    font-weight:bold;
+    font-size:17px;
+    color:#075a78;
 }
 
-.badge{
-background:#e8f6f5;
-color:#087c91;
-padding:4px 7px;
-border-radius:20px;
-font-size:11px;
-font-weight:bold
+.item-actions{
+    display:flex;
+    gap:7px;
+    margin-top:10px;
 }
 
-.small{
-padding:7px 9px;
-background:#246dcc;
-color:white;
-border-radius:7px;
-font-size:12px
+.small-btn{
+    padding:9px 13px;
+    border-radius:7px;
+    color:white;
+    font-weight:bold;
 }
 
-.small.red{background:#d83b4b}
+.edit-btn{
+    background:#e67e22;
+}
+
+.delete-btn{
+    background:#c0392b;
+}
 
 .notice{
-background:#fff7dc;
-border-left:4px solid #f5b900;
-padding:11px;
-border-radius:8px;
-margin:10px 0
+    background:#fff5d6;
+    padding:12px;
+    border-radius:9px;
+    margin:10px 0;
+    font-size:14px;
 }
 
 .invoice{
-background:white;
-max-width:700px;
-margin:15px auto;
-padding:25px;
-border-radius:12px
+    background:white;
+    border:1px solid #ddd;
+    border-radius:12px;
+    padding:18px;
+    margin-top:12px;
+    box-shadow:0 2px 8px #0001;
 }
 
-.footer{
-text-align:center;
-color:#74818a;
-padding:25px;
-font-size:12px
+.invoice-header{
+    text-align:center;
+    border-bottom:2px solid #087f8c;
+    padding-bottom:10px;
+    margin-bottom:12px;
 }
 
-@media(max-width:850px){
-.side{width:165px}
-.cards{grid-template-columns:1fr 1fr}
-.grid{grid-template-columns:1fr 1fr}
-.panels{grid-template-columns:1fr}
+.invoice-header h3{
+    margin:0;
+    color:#075a78;
+    font-size:20px;
 }
 
-@media(max-width:600px){
-h1{font-size:21px}
-.logo{
-width:65px;
-height:65px;
-font-size:32px
+.invoice-total{
+    font-size:20px;
+    font-weight:bold;
+    text-align:right;
+    margin-top:10px;
 }
-.layout{display:block}
-.side{
-width:100%;
-display:grid;
-grid-template-columns:repeat(4,1fr);
-gap:3px
+
+.report-card{
+    background:#f7fafb;
+    border-radius:10px;
+    padding:15px;
+    margin-bottom:10px;
 }
-.nav{
-font-size:11px;
-text-align:center;
-padding:10px 3px
+
+.report-card b{
+    color:#075a78;
 }
-.main{padding:12px}
-.row{grid-template-columns:1fr}
+
+.search{
+    margin-top:15px;
 }
+
+footer{
+    text-align:center;
+    color:#68737d;
+    padding:30px 10px;
+    font-size:13px;
+}
+
+@media(min-width:700px){
+
+    .cards{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+    .menu{
+        grid-template-columns:repeat(4,1fr);
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
-<header class="top">
+<header>
 
-<div class="brand">
+    <div class="logo">🚗</div>
 
-<div class="logo">🚗</div>
+    <h1>SM TYRES & ALIGNMENT</h1>
 
-<div>
+    <h2>ACCOUNTING & INVENTORY MANAGEMENT</h2>
 
-<h1>
-SM <span class="gold">TYRES & ALIGNMENT</span>
-</h1>
-
-<p>ACCOUNTING & INVENTORY MANAGEMENT</p>
-
-<p>Sales • Purchases • Inventory • Reports</p>
-
-</div>
-
-</div>
-
-<div class="topline">
-
-<span id="today"></span>
-
-<span>Welcome, SM TYRES</span>
-
-</div>
+    <p>Sales • Purchases • Inventory • Products • Reports</p>
 
 </header>
 
 
-<div class="layout">
+<div class="container">
 
 
-<aside class="side">
-
-<button class="nav active" data-s="dashboard">
-🏠 Dashboard
-</button>
-
-<button class="nav" data-s="sales">
-💰 Sales
-</button>
-
-<button class="nav" data-s="purchases">
-🛒 Purchases
-</button>
-
-<button class="nav" data-s="inventory">
-📦 Inventory
-</button>
-
-<button class="nav" data-s="products">
-🔧 Products
-</button>
-
-<button class="nav" data-s="expenses">
-💸 Expenses
-</button>
-
-<button class="nav" data-s="customers">
-👥 Customers
-</button>
-
-<button class="nav" data-s="suppliers">
-🏢 Suppliers
-</button>
-
-<button class="nav" data-s="reports">
-📊 Reports
-</button>
-
-</aside>
-
-
-<main class="main">
-
-
-<!-- DASHBOARD -->
+<!-- ================= DASHBOARD ================= -->
 
 <section id="dashboard" class="screen active">
 
-<h2>📊 Business Dashboard</h2>
+    <h2 class="dashboard-title">📊 Business Dashboard</h2>
 
-<div class="cards">
+    <div class="cards">
 
-<div class="card">
-<small>💰 TOTAL SALES</small>
-<div class="amount" id="ts">TSh 0</div>
-</div>
+        <div class="card">
+            <small>💰 TOTAL SALES</small>
+            <div class="amount" id="totalSales">TSh 0</div>
+        </div>
 
-<div class="card">
-<small>🛒 PURCHASES</small>
-<div class="amount" id="tp">TSh 0</div>
-</div>
+        <div class="card">
+            <small>🛒 PURCHASES</small>
+            <div class="amount" id="totalPurchases">TSh 0</div>
+        </div>
 
-<div class="card">
-<small>💸 EXPENSES</small>
-<div class="amount" id="te">TSh 0</div>
-</div>
+        <div class="card">
+            <small>💸 EXPENSES</small>
+            <div class="amount" id="totalExpenses">TSh 0</div>
+        </div>
 
-<div class="card">
-<small>📈 NET PROFIT</small>
-<div class="amount" id="tn">TSh 0</div>
-</div>
+        <div class="card">
+            <small>📈 NET PROFIT</small>
+            <div class="amount" id="netProfit">TSh 0</div>
+        </div>
 
-</div>
-
-
-<h3>🚀 Quick Access</h3>
-
-<div class="grid">
-
-<button class="tile s" data-s="sales">
-💰 SALES
-</button>
-
-<button class="tile p" data-s="purchases">
-🛒 PURCHASES
-</button>
-
-<button class="tile i" data-s="inventory">
-📦 INVENTORY
-</button>
-
-<button class="tile pr" data-s="products">
-🔧 PRODUCTS
-</button>
-
-<button class="tile e" data-s="expenses">
-💸 EXPENSES
-</button>
-
-<button class="tile c" data-s="customers">
-👥 CUSTOMERS
-</button>
-
-<button class="tile su" data-s="suppliers">
-🏢 SUPPLIERS
-</button>
-
-<button class="tile r" data-s="reports">
-📊 REPORTS
-</button>
-
-</div>
+    </div>
 
 
-<div class="panels">
+    <div class="menu">
 
-<div class="panel">
+        <button onclick="openScreen('sales')">
+            💰 SALES
+        </button>
 
-<h3>⚠️ Low Stock</h3>
+        <button onclick="openScreen('purchases')">
+            🛒 PURCHASES
+        </button>
 
-<div id="low"></div>
+        <button onclick="openScreen('inventory')">
+            📦 INVENTORY
+        </button>
 
-</div>
+        <button onclick="openScreen('products')">
+            🔧 PRODUCTS
+        </button>
 
+        <button onclick="openScreen('expenses')">
+            💸 EXPENSES
+        </button>
 
-<div class="panel">
+        <button onclick="openScreen('customers')">
+            👥 CUSTOMERS
+        </button>
 
-<h3>💰 Recent Sales</h3>
+        <button onclick="openScreen('suppliers')">
+            🏢 SUPPLIERS
+        </button>
 
-<div id="recentS"></div>
+        <button onclick="openScreen('reports')">
+            📊 REPORTS
+        </button>
 
-</div>
-
-
-<div class="panel">
-
-<h3>🛒 Recent Purchases</h3>
-
-<div id="recentP"></div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-<!-- SALES -->
+
+<!-- ================= SALES ================= -->
 
 <section id="sales" class="screen">
 
-<h2>💰 Sales Invoice</h2>
+<div class="page">
 
-<div class="form">
+<button class="back" onclick="openScreen('dashboard')">
+← Dashboard
+</button>
+
+<h2>💰 Sales</h2>
 
 <label>Date</label>
+<input id="saleDate" type="date">
 
-<input id="sd" type="date">
+<label>Customer</label>
+<input id="saleCustomer" placeholder="Customer name">
 
-<input
-id="sc"
-placeholder="Customer name">
+<label>Product</label>
+<input id="saleProduct" list="productOptions" placeholder="Product name">
 
-<input
-id="sp"
-list="opts"
-placeholder="Product name">
+<datalist id="productOptions"></datalist>
 
 <div class="row">
 
-<input
-id="sq"
-type="number"
-min="1"
-value="1"
-placeholder="Quantity">
+<div>
+<label>Quantity</label>
+<input id="saleQuantity" type="number" min="1" placeholder="Quantity">
+</div>
 
-<input
-id="sv"
-type="number"
-min="0"
-placeholder="Selling price">
+<div>
+<label>Selling Price</label>
+<input id="salePrice" type="number" min="0" placeholder="Selling price">
+</div>
 
 </div>
 
-<button class="btn green" id="addSale">
-
-➕ Record Sale & Create Invoice
-
+<button class="action" onclick="recordSale()">
+💰 RECORD SALE & CREATE INVOICE
 </button>
-
-</div>
 
 <div id="salesList" class="list"></div>
 
+</div>
+
 </section>
 
 
-<!-- PURCHASES -->
+
+<!-- ================= PURCHASES ================= -->
 
 <section id="purchases" class="screen">
 
+<div class="page">
+
+<button class="back" onclick="openScreen('dashboard')">
+← Dashboard
+</button>
+
 <h2>🛒 Purchases</h2>
 
-<div class="form">
-
 <label>Date</label>
+<input id="purchaseDate" type="date">
 
-<input id="pd" type="date">
+<label>Supplier</label>
+<input id="purchaseSupplier" placeholder="Supplier name">
 
-<input
-id="ps"
-placeholder="Supplier name">
-
-<input
-id="pp"
-list="opts"
-placeholder="Product name">
+<label>Product</label>
+<input id="purchaseProduct" list="productOptions" placeholder="Product name">
 
 <div class="row">
 
-<input
-id="pq"
-type="number"
-min="1"
-value="1"
-placeholder="Quantity">
+<div>
+<label>Quantity</label>
+<input id="purchaseQuantity" type="number" min="1" placeholder="Quantity">
+</div>
 
-<input
-id="pv"
-type="number"
-min="0"
-placeholder="Buying price">
+<div>
+<label>Buying Price</label>
+<input id="purchasePrice" type="number" min="0" placeholder="Buying price">
+</div>
 
 </div>
 
-<button class="btn" id="addPurchase">
-
-➕ Record Purchase
-
+<button class="action blue" onclick="recordPurchase()">
+🛒 RECORD PURCHASE
 </button>
 
-</div>
+<div id="purchasesList" class="list"></div>
 
-<div id="purchaseList" class="list"></div>
+</div>
 
 </section>
 
 
-<!-- INVENTORY -->
+
+<!-- ================= INVENTORY ================= -->
 
 <section id="inventory" class="screen">
+
+<div class="page">
+
+<button class="back" onclick="openScreen('dashboard')">
+← Dashboard
+</button>
 
 <h2>📦 Inventory</h2>
 
 <div class="notice">
-
-Purchases increase stock.
-Sales decrease stock.
-
+Stock increases when you record a purchase and decreases when you record a sale.
 </div>
 
 <div id="inventoryList" class="list"></div>
 
+</div>
+
 </section>
 
 
-<!-- PRODUCTS -->
+
+<!-- ================= PRODUCTS ================= -->
 
 <section id="products" class="screen">
 
+<div class="page">
+
+<button class="back" onclick="openScreen('dashboard')">
+← Dashboard
+</button>
+
 <h2>🔧 Product Management</h2>
 
-<div class="form">
+<input id="productCode" placeholder="Product code / SKU">
 
-<input id="editKey" type="hidden">
+<input id="productName" placeholder="Product name">
 
-<input
-id="pc"
-placeholder="Product code / SKU">
+<input id="productCategory" placeholder="Category e.g. Tyre, Oil, Spare Part">
 
-<input
-id="pn"
-placeholder="Product name">
-
-<input
-id="cat"
-placeholder="Category">
-
-<button class="btn green" id="saveProduct">
-
-➕ Add Product
-
+<button class="action green" onclick="saveProduct()">
+➕ ADD PRODUCT
 </button>
 
 <button
-class="btn gray"
 id="cancelEdit"
+class="action orange"
+onclick="cancelProductEdit()"
 style="display:none">
-
-Cancel Edit
-
+Cancel Editing
 </button>
 
-</div>
-
-
 <input
-id="search"
+id="productSearch"
+class="search"
 placeholder="🔎 Search products">
 
+<div id="productsList" class="list"></div>
 
-<div id="productList" class="list"></div>
+</div>
 
 </section>
 
 
-<!-- EXPENSES -->
+
+<!-- ================= EXPENSES ================= -->
 
 <section id="expenses" class="screen">
 
-<h2>💸 Expenses</h2>
+<div class="page">
 
-<div class="form">
-
-<input id="ed" type="date">
-
-<input
-id="en"
-placeholder="Expense description">
-
-<input
-id="ea"
-type="number"
-min="0"
-placeholder="Amount in TSh">
-
-<button class="btn" id="addExpense">
-
-➕ Record Expense
-
+<button class="back" onclick="openScreen('dashboard')">
+← Dashboard
 </button>
 
-</div>
+<h2>💸 Expenses</h2>
 
-<div id="expenseList" class="list"></div>
+<label>Date</label>
+<input id="expenseDate" type="date">
+
+<input id="expenseName" placeholder="Expense description">
+
+<input id="expenseAmount" type="number" min="0" placeholder="Amount in TSh">
+
+<button class="action red" onclick="recordExpense()">
+💸 RECORD EXPENSE
+</button>
+
+<div id="expensesList" class="list"></div>
+
+</div>
 
 </section>
 
 
-<!-- CUSTOMERS -->
+
+<!-- ================= CUSTOMERS ================= -->
 
 <section id="customers" class="screen">
 
-<h2>👥 Customers</h2>
+<div class="page">
 
-<div class="form">
-
-<input
-id="cn"
-placeholder="Customer name">
-
-<input
-id="ct"
-placeholder="Phone number">
-
-<button class="btn" id="addCustomer">
-
-➕ Add Customer
-
+<button class="back" onclick="openScreen('dashboard')">
+← Dashboard
 </button>
 
-</div>
+<h2>👥 Customers</h2>
 
-<div id="customerList" class="list"></div>
+<input id="customerName" placeholder="Customer name">
+
+<input id="customerPhone" placeholder="Phone number">
+
+<button class="action" onclick="addCustomer()">
+➕ ADD CUSTOMER
+</button>
+
+<div id="customersList" class="list"></div>
+
+</div>
 
 </section>
 
 
-<!-- SUPPLIERS -->
+
+<!-- ================= SUPPLIERS ================= -->
 
 <section id="suppliers" class="screen">
 
-<h2>🏢 Suppliers</h
+<div class="page">
+
+<button class="back" onclick="openScreen('dashboard')">
+← Dashboard
+</button>
+
+<h2>🏢 Suppliers</h2>
+
+<input id="supplierName" placeholder="Supplier name">
+
+<input id="supplierPhone" placeholder="Phone number">
+
+<button class="action" onclick="addSupplier()">
+➕ ADD SUPPLIER
+</button>
+
+<div id="suppliersList" class="list"></div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= REPORTS ================= -->
+
+<section id="reports" class="screen">
+
+<div class="page">
+
+<button class="back" onclick="openScreen('dashboard')">
+← Dashboard
+</button>
+
+<h2>📊 Reports</h2>
+
+<div class="report-card">
+<b>Total Sales</b>
+<br>
+<span id="reportSales">TSh 0</span>
+</div>
+
+<div class="report-card">
+<b>Cost of Goods Sold</b>
+<br>
+<span id="reportCost">TSh 0</span>
+</div>
+
+<div class="report-card">
+<b>Gross Profit</b>
+<br>
+<span id="reportGross">TSh 0</span>
+</div>
+
+<div class="report-card">
+<b>Total Expenses</b>
+<br>
+<span id="reportExpenses">TSh 0</span>
+</div>
+
+<div class="report-card">
+<b>NET PROFIT</b>
+<br>
+<span id="reportNet">TSh 0</span>
+</div>
+
+
+<h2>🧾 Sales Invoices</h2>
+
+<div id="invoicesList"></div>
+
+</div>
+
+</section>
+
+
+<footer>
+SM TYRES & ALIGNMENT • Accounting System
+</footer>
+
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   SM TYRES ACCOUNTING
+   VERSION 3
+===================================================== */
+
+
+/* ================= DATABASE ================= */
+
+let data = {
+
+    products:{},
+
+    sales:[],
+
+    purchases:[],
+
+    expenses:[],
+
+    customers:[],
+
+    suppliers:[]
+
+};
+
+
+let editingProduct = null;
+
+
+/* ================= LOAD DATABASE ================= */
+
+try{
+
+    let saved =
+        localStorage.getItem("SM_TYRES_ACCOUNTING");
+
+    if(saved){
+
+        data = JSON.parse(saved);
+
+    }
+
+}catch(error){
+
+    console.log(error);
+
+}
+
+
+/* Make sure old data still works */
+
+data.products = data.products || {};
+data.sales = data.sales || [];
+data.purchases = data.purchases || [];
+data.expenses = data.expenses || [];
+data.customers = data.customers || [];
+data.suppliers = data.suppliers || [];
+
+
+/* ================= SAVE ================= */
+
+function saveData(){
+
+    localStorage.setItem(
+        "SM_TYRES_ACCOUNTING",
+        JSON.stringify(data)
+    );
+
+}
+
+
+/* ================= MONEY ================= */
+
+function money(value){
+
+    return "TSh " +
+        Number(value || 0).toLocaleString();
+
+}
+
+
+/* ================= DATE ================= */
+
+function today(){
+
+    let d = new Date();
+
+    let month =
+        String(d.getMonth()+1).padStart(2,"0");
+
+    let day =
+        String(d.getDate()).padStart(2,"0");
+
+    return d.getFullYear() +
+        "-" +
+        month +
+        "-" +
+        day;
+
+}
+
+
+/* ================= SCREEN ================= */
+
+function openScreen(name){
+
+    document
+        .querySelectorAll(".screen")
+        .forEach(function(screen){
+
+            screen.classList.remove("active");
+
+        });
+
+
+    let selected =
+        document.getElementById(name);
+
+
+    if(selected){
+
+        selected.classList.add("active");
+
+        window.scrollTo({
+            top:0,
+            behavior:"smooth"
+        });
+
+    }
+
+
+    renderAll();
+
+}
+
+
+/* ================= TOTALS ================= */
+
+function totals(){
+
+    let sales = 0;
+
+    let purchases = 0;
+
+    let expenses = 0;
+
+    let cost = 0;
+
+
+    data.sales.forEach(function(sale){
+
+        sales += Number(sale.total || 0);
+
+        cost += Number(sale.costTotal || 0);
+
+    });
+
+
+    data.purchases.forEach(function(purchase){
+
+        purchases += Number(purchase.total || 0);
+
+    });
+
+
+    data.expenses.forEach(function(expense){
+
+        expenses += Number(expense.amount || 0);
+
+    });
+
+
+    let gross =
+        sales - cost;
+
+
+    let net =
+        gross - expenses;
+
+
+    return {
+
+        sales:sales,
+
+        purchases:purchases,
+
+        expenses:expenses,
+
+        cost:cost,
+
+        gross:gross,
+
+        net:net
+
+    };
+
+}
+
+
+/* ================= DASHBOARD ================= */
+
+function updateDashboard(){
+
+    let t = totals();
+
+
+    document.getElementById("totalSales")
+        .textContent = money(t.sales);
+
+
+    document.getElementById("totalPurchases")
+        .textContent = money(t.purchases);
+
+
+    document.getElementById("totalExpenses")
+        .textContent = money(t.expenses);
+
+
+    document.getElementById("netProfit")
+        .textContent = money(t.net);
+
+
+    document.getElementById("reportSales")
+        .textContent = money(t.sales);
+
+
+    document.getElementById("reportCost")
+        .textContent = money(t.cost);
+
+
+    document.getElementById("reportGross")
+        .textContent = money(t.gross);
+
+
+    document.getElementById("reportExpenses")
+        .textContent = money(t.expenses);
+
+
+    document.getElementById("reportNet")
+        .textContent = money(t.net);
+
+}
+
+
+/* ================= PRODUCT OPTIONS ================= */
+
+function updateProductOptions(){
+
+    let html = "";
+
+
+    Object.keys(data.products)
+    .forEach(function(name){
+
+        html +=
+            "<option value=\"" +
+            escapeHTML(name) +
+            "\">";
+
+    });
+
+
+    document.getElementById("productOptions")
+        .innerHTML = html;
+
+}
+
+
+/* ================= ESCAPE ================= */
+
+function escapeHTML(value){
+
+    return String(value || "")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* ================= PURCHASE ================= */
+
+function recordPurchase(){
+
+    let date =
+        document.getElementById("purchaseDate").value ||
+        today();
+
+
+    let supplier =
+        document.getElementById("purchaseSupplier")
+        .value.trim();
+
+
+    let product =
+        document.getElementById("purchaseProduct")
+        .value.trim();
+
+
+    let quantity =
+        Number(
+            document.getElementById("purchaseQuantity").value
+        );
+
+
+    let price =
+        Number(
+            document.getElementById("purchasePrice").value
+        );
+
+
+    if(
+        !product ||
+        quantity <= 0 ||
+        price <= 0
+    ){
+
+        alert(
+            "Please enter product, quantity and buying price."
+        );
+
+        return;
+
+    }
+
+
+    /* Create product automatically */
+
+    if(!data.products[product]){
+
+        data.products[product] = {
+
+            code:"",
+
+            category:"",
+
+            stock:0,
+
+            cost:price
+
+        };
+
+    }
+
+
+    let productData =
+        data.products[product];
+
+
+    productData.stock =
+        Number(productData.stock || 0)
+        + quantity;
+
+
+    productData.cost =
+        price;
+
+
+    data.purchases.push({
+
+        date:date,
+
+        supplier:
+            supplier || "Unknown Supplier",
+
+        product:product,
+
+        quantity:quantity,
+
+        price:price,
+
+        total:
+            quantity * price
+
+    });
+
+
+    /* Add supplier */
+
+    if(
+        supplier &&
+        !data.suppliers.some(function(item){
+
+            return item.name.toLowerCase()
+                === supplier.toLowerCase();
+
+        })
+    ){
+
+        data.suppliers.push({
+
+            name:supplier,
+
+            phone:""
+
+        });
+
+    }
+
+
+    saveData();
+
+    renderAll();
+
+
+    document.getElementById("purchaseSupplier").value="";
+
+    document.getElementById("purchaseProduct").value="";
+
+    document.getElementById("purchaseQuantity").value="";
+
+    document.getElementById("purchasePrice").value="";
+
+
+    alert("Purchase recorded successfully.");
+
+}
+
+
+/* ================= SALES ================= */
+
+function recordSale(){
+
+    let date =
+        document.getElementById("saleDate").value ||
+        today();
+
+
+    let customer =
+        document.getElementById("saleCustomer")
+        .value.trim();
+
+
+    let product =
+        document.getElementById("saleProduct")
+        .value.trim();
+
+
+    let quantity =
+        Number(
+            document.getElementById("saleQuantity").value
+        );
+
+
+    let price =
+        Number(
+            document.getElementById("salePrice").value
+        );
+
+
+    if(
+        !product ||
+        quantity <= 0 ||
+        price <= 0
+    ){
+
+        alert(
+            "Please enter product, quantity and selling price."
+        );
+
+        return;
+
+    }
+
+
+    if(!data.products[product]){
+
+        alert(
+            "Product not found.\n\nPlease add the product or record a purchase first."
+        );
+
+        return;
+
+    }
+
+
+    let productData =
+        data.products[product];
+
+
+    let stock =
+        Number(productData.stock || 0);
+
+
+    if(stock < quantity){
+
+        alert(
+            "Not enough stock.\n\nAvailable: " +
+            stock +
+            "\nRequested: " +
+            quantity
+        );
+
+        return;
+
+    }
+
+
+    let cost =
+        Number(productData.cost || 0);
+
+
+    let invoiceNumber =
+        "INV-" +
+        new Date().getFullYear() +
+        "-" +
+        String(data.sales.length + 1)
+            .padStart(4,"0");
+
+
+    let sale = {
+
+        invoice:invoiceNumber,
+
+        date:date,
+
+        customer:
+            customer || "Cash Customer",
+
+        product:product,
+
+        quantity:quantity,
+
+        price:price,
+
+        cost:cost,
+
+        total:
+            quantity * price,
+
+        costTotal:
+            quantity * cost,
+
+        profit:
+            (price - cost) * quantity
+
+    };
+
+
+    /* Reduce stock */
+
+    productData.stock =
+        stock - quantity;
+
+
+    /* Save */
+
+    data.sales.push(sale);
+
+
+    /* Add customer */
+
+    if(
+        customer &&
+        !data.customers.some(function(item){
+
+            return item.name.toLowerCase()
+                === customer.toLowerCase();
+
+        })
+    ){
+
+        data.customers.push({
+
+            name:customer,
+
+            phone:""
+
+        });
+
+    }
+
+
+    saveData();
+
+    renderAll();
+
+
+    document.getElementById("saleCustomer").value="";
+
+    document.getElementById("saleProduct").value="";
+
+    document.getElementById("saleQuantity").value="";
+
+    document.getElementById("salePrice").value="";
+
+
+    alert(
+        "Sale recorded successfully.\n\n" +
+        "Invoice: " +
+        invoiceNumber
+    );
+
+}
+
+
+/* ================= EXPENSE ================= */
+
+function recordExpense(){
+
+    let date =
+        document.getElementById("expenseDate").value ||
+        today();
+
+
+    let name =
+        document.getElementById("expenseName")
+        .value.trim();
+
+
+    let amount =
+        Number(
+            document.getElementById("expenseAmount").value
+        );
+
+
+    if(!name || amount <= 0){
+
+        alert(
+            "Please enter expense description and amount."
+        );
+
+        return;
+
+    }
+
+
+    data.expenses.push({
+
+        date:date,
+
+        name:name,
+
+        amount:amount
+
+    });
+
+
+    saveData();
+
+    renderAll();
+
+
+    document.getElementById("expenseName").value="";
+
+    document.getElementById("expenseAmount").value="";
+
+
+    alert("Expense recorded successfully.");
+
+}
+
+
+/* ================= CUSTOMER ================= */
+
+function addCustomer(){
+
+    let name =
+        document.getElementById("customerName")
+        .value.trim();
+
+
+    let phone =
+        document.getElementById("customerPhone")
+        .value.trim();
+
+
+    if(!name){
+
+        alert("Please enter customer name.");
+
+        return;
+
+    }
+
+
+    data.customers.push({
+
+        name:name,
+
+        phone:phone
+
+    });
+
+
+    saveData();
+
+    renderAll();
+
+
+    document.getElementById("customerName").value="";
+
+    document.getElementById("customerPhone").value="";
+
+}
+
+
+/* ================= SUPPLIER ================= */
+
+function addSupplier(){
+
+    let name =
+        document.getElementById("supplierName")
+        .value.trim();
+
+
+    let phone =
+        document.getElementById("supplierPhone")
+        .value.trim();
+
+
+    if(!name){
+
+        alert("Please enter supplier name.");
+
+        return;
+
+    }
+
+
+    data.suppliers.push({
+
+        name:name,
+
+        phone:phone
+
+    });
+
+
+    saveData();
+
+    renderAll();
+
+
+    document.getElementById("supplierName").value="";
+
+    document.getElementById("supplierPhone").value="";
+
+}
+
+
+/* ================= PRODUCT ================= */
+
+function saveProduct(){
+
+    let code =
+        document.getElementById("productCode")
+        .value.trim();
+
+
+    let name =
+        document.getElementById("productName")
+        .value.trim();
+
+
+    let category =
+        document.getElementById("productCategory")
+        .value.trim();
+
+
+    if(!name){
+
+        alert("Please enter product name.");
+
+        return;
+
+    }
+
+
+    /* EDIT PRODUCT */
+
+    if(editingProduct !== null){
+
+        let oldName =
+            editingProduct;
+
+
+        if(
+            name !== oldName &&
+            data.products[name]
+        ){
+
+            alert(
+                "A product with this name already exists."
+            );
+
+            return;
+
+        }
+
+
+        let oldProduct =
+            data.products[oldName];
+
+
+        data.products[name] = {
+
+            code:code,
+
+            category:category,
+
+            stock:
+                Number(oldProduct.stock || 0),
+
+            cost:
+                Number(oldProduct.cost || 0)
+
+        };
+
+
+        if(name !== oldName){
+
+            delete data.products[oldName];
+
+        }
+
+
+        editingProduct = null;
+
+
+        document.getElementById("cancelEdit")
+            .style.display="none";
+
+
+        document.querySelector(
+            "#products .action.green"
+        ).textContent =
+            "➕ ADD PRODUCT";
+
+
+        saveData();
+
+        renderAll();
+
+
+        clearProductForm();
+
+
+        alert("Product updated successfully.");
+
+        return;
+
+    }
+
+
+    /* ADD NEW PRODUCT */
+
+    if(data.products[name]){
+
+        alert(
+            "This product already exists."
+        );
+
+        return;
+
+    }
+
+
+    data.products[name] = {
+
+        code:code,
+
+        category:category,
+
+        stock:0,
+
+        cost:0
+
+    };
+
+
+    saveData();
+
+    renderAll();
+
+    clearProductForm();
+
+
+    alert("Product added successfully.");
+
+}
+
+
+/* ================= EDIT PRODUCT ================= */
+
+function editProduct(name){
+
+    let product =
+        data.products[name];
+
+
+    if(!product){
+
+        return;
+
+    }
+
+
+    editingProduct =
+        name;
+
+
+    document.getElementById("productCode")
+        .value =
+        product.code || "";
+
+
+    document.getElementById("productName")
+        .value =
+        name;
+
+
+    document.getElementById("productCategory")
+        .value =
+        product.category || "";
+
+
+    document.getElementById("cancelEdit")
+        .style.display="block";
+
+
+    document.querySelector(
+        "#products .action.green"
+    ).textContent =
+        "💾 SAVE PRODUCT CHANGES";
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* ================= DELETE PRODUCT ================= */
+
+function deleteProduct(name){
+
+    if(!data.products[name]){
+
+        return;
+
+    }
+
+
+    let answer =
+        confirm(
+            "Delete product \"" +
+            name +
+            "\"?\n\nThe sales and purchase history will remain."
+        );
+
+
+    if(!answer){
+
+        return;
+
+    }
+
+
+    delete data.products[name];
+
+
+    saveData();
+
+    renderAll();
+
+
+    alert("Product deleted.");
+
+}
+
+
+/* ================= CANCEL PRODUCT EDIT ================= */
+
+function cancelProductEdit(){
+
+    editingProduct = null;
+
+
+    clearProductForm();
+
+
+    document.getElementById("cancelEdit")
+        .style.display="none";
+
+
+    document.querySelector(
+        "#products .action.green"
+    ).textContent =
+        "➕ ADD PRODUCT";
+
+}
+
+
+/* ================= CLEAR PRODUCT FORM ================= */
+
+function clearProductForm(){
+
+    document.getElementById("productCode").value="";
+
+    document.getElementById("productName").value="";
+
+    document.getElementById("productCategory").value="";
+
+}
+
+
+/* ================= RENDER PRODUCTS ================= */
+
+function renderProducts(){
+
+    let search =
+        document.getElementById("productSearch")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    let html = "";
+
+
+    Object.keys(data.products)
+    .forEach(function(name){
+
+        let product =
+            data.products[name];
+
+
+        let code =
+            product.code || "";
+
+
+        let category =
+            product.category || "";
+
+
+        if(
+            search &&
+            !name.toLowerCase().includes(search) &&
+            !code.toLowerCase().includes(search) &&
+            !category.toLowerCase().includes(search)
+        ){
+
+            return;
+
+        }
+
+
+        html +=
+
+        "<div class='item'>" +
+
+        "<div class='item-title'>" +
+        "🔧 " +
+        escapeHTML(name) +
+        "</div>" +
+
+        "<br>" +
+
+        "SKU: " +
+        escapeHTML(code || "No code") +
+
+        "<br>" +
+
+        "Category: " +
+        escapeHTML(category || "Not specified") +
+
+        "<br>" +
+
+        "Stock: <b>" +
+        Number(product.stock || 0) +
+        "</b>" +
+
+        "<br>" +
+
+        "Buying cost: " +
+        money(product.cost) +
+
+        "<div class='item-actions'>" +
+
+        "<button class='small-btn edit-btn' " +
+        "onclick='editProduct(" +
+        JSON.stringify(name) +
+        ")'>" +
+        "✏️ EDIT" +
+        "</button>" +
+
+        "<button class='small-btn delete-btn' " +
+        "onclick='deleteProduct(" +
+        JSON.stringify(name) +
+        ")'>" +
+        "🗑 DELETE" +
+        "</button>" +
+
+        "</div>" +
+
+        "</div>";
+
+    });
+
+
+    document.getElementById("productsList")
+        .innerHTML =
+        html || "No products found.";
+
+}
+
+
+/* ================= RENDER INVENTORY ================= */
+
+function renderInventory(){
+
+    let html = "";
+
+
+    Object.keys(data.products)
+    .forEach(function(name){
+
+        let product =
+            data.products[name];
+
+
+        let stock =
+            Number(product.stock || 0);
+
+
+        let status =
+            stock <= 0
+            ? "❌ OUT OF STOCK"
+            : stock <= 5
+            ? "⚠️ LOW STOCK"
+            : "✅ IN STOCK";
+
+
+        html +=
+
+        "<div class='item'>" +
+
+        "<div class='item-title'>" +
+        "📦 " +
+        escapeHTML(name) +
+        "</div>" +
+
+        "<br>" +
+
+        "Stock: <b>" +
+        stock +
+        "</b>" +
+
+        "<br>" +
+
+        "Buying cost: " +
+        money(product.cost) +
+
+        "<br>" +
+
+        status +
+
+        "</div>";
+
+    });
+
+
+    document.getElementById("inventoryList")
+        .innerHTML =
+        html || "No products in inventory.";
+
+}
+
+
+/* ================= RENDER SALES ================= */
+
+function renderSales(){
+
+    let html = "";
+
+
+    data.sales
+    .slice()
+    .reverse()
+    .forEach(function(sale){
+
+        html +=
+
+        "<div class='item'>" +
+
+        "<div class='item-title'>" +
+        "🧾 " +
+        escapeHTML(sale.invoice) +
+        "</div>" +
+
+        "<br>" +
+
+        "Date: " +
+        escapeHTML(sale.date) +
+
+        "<br>" +
+
+        "Customer: " +
+        escapeHTML(sale.customer) +
+
+        "<br>" +
+
+        "Product: " +
+        escapeHTML(sale.product) +
+
+        "<br>" +
+
+        "Quantity: " +
+        sale.quantity +
+
+        "<br>" +
+
+        "Total: <b>" +
+        money(sale.total) +
+        "</b>" +
+
+        "<br>" +
+
+        "Profit: <b>" +
+        money(sale.profit) +
+        "</b>" +
+
+        "</div>";
+
+    });
+
+
+    document.getElementById("salesList")
+        .innerHTML =
+        html || "No sales yet.";
+
+}
+
+
+/* ================= RENDER PURCHASES ================= */
+
+function renderPurchases(){
+
+    let html = "";
+
+
+    data.purchases
+    .slice()
+    .reverse()
+    .forEach(function(purchase){
+
+        html +=
+
+        "<div class='item'>" +
+
+        "<div class='item-title'>" +
+        "🛒 " +
+        escapeHTML(purchase.product) +
+        "</div>" +
+
+        "<br>" +
+
+        "Date: " +
+        escapeHTML(purchase.date) +
+
+        "<br>" +
+
+        "Supplier: " +
+        escapeHTML(purchase.supplier) +
+
+        "<br>" +
+
+        "Quantity: " +
+        purchase.quantity +
+
+        "<br>" +
+
+        "Buying price: " +
+        money(purchase.price) +
+
+        "<br>" +
+
+        "Total: <b>" +
+        money(purchase.total) +
+        "</b>" +
+
+        "</div>";
+
+    });
+
+
+    document.getElementById("purchasesList")
+        .innerHTML =
+        html || "No purchases yet.";
+
+}
+
+
+/* ================= RENDER EXPENSES ================= */
+
+function renderExpenses(){
+
+    let html = "";
+
+
+    data.expenses
+    .slice()
+    .reverse()
+    .forEach(function(expense){
+
+        html +=
+
+        "<div class='item'>" +
+
+        "<div class='item-title'>" +
+        "💸 " +
+        escapeHTML(expense.name) +
+        "</div>" +
+
+        "<br>" +
+
+        "Date: " +
+        escapeHTML(expense.date) +
+
+        "<br>" +
+
+        "Amount: <b>" +
+        money(expense.amount) +
+        "</b>" +
+
+        "</div>";
+
+    });
+
+
+    document.getElementById("expensesList")
+        .innerHTML =
+        html || "No expenses yet.";
+
+}
+
+
+/* ================= CUSTOMERS ================= */
+
+function renderCustomers(){
+
+    let html = "";
+
+
+    data.customers.forEach(function(customer){
+
+        html +=
+
+        "<div class='item'>" +
+
+        "<div class='item-title'>" +
+        "👤 " +
+        escapeHTML(customer.name) +
+        "</div>" +
+
+        "<br>" +
+
+        "Phone: " +
+        escapeHTML(
+            customer.phone || "No phone number"
+        ) +
+
+        "</div>";
+
+    });
+
+
+    document.getElementById("customersList")
+        .innerHTML =
+        html || "No customers yet.";
+
+}
+
+
+/* ================= SUPPLIERS ================= */
+
+function renderSuppliers(){
+
+    let html = "";
+
+
+    data.suppliers.forEach(function(supplier){
+
+        html +=
+
+        "<div class='item'>" +
+
+        "<div class='item-title'>" +
+        "🏢 " +
+        escapeHTML(supplier.name) +
+        "</div>" +
+
+        "<br>" +
+
+        "Phone: " +
+        escapeHTML(
+            supplier.phone || "No phone number"
+        ) +
+
+        "</div>";
+
+    });
+
+
+    document.getElementById("suppliersList")
+        .innerHTML =
+        html || "No suppliers yet.";
+
+}
+
+
+/* ================= INVOICES ================= */
+
+function renderInvoices(){
+
+    let html = "";
+
+
+    data.sales
+    .slice()
+    .reverse()
+    .forEach(function(sale){
+
+        html +=
+
+        "<div class='invoice'>" +
+
+        "<div class='invoice-header'>" +
+
+        "<h3>SM TYRES & ALIGNMENT</h3>" +
+
+        "<div>SALES INVOICE</div>" +
+
+        "</div>" +
+
+        "<b>Invoice:</b> " +
+        escapeHTML(sale.invoice) +
+
+        "<br>" +
+
+        "<b>Date:</b> " +
+        escapeHTML(sale.date) +
+
+        "<br>" +
+
+        "<b>Customer:</b> " +
+        escapeHTML(sale.customer) +
+
+        "<hr>" +
+
+        "<b>Product:</b> " +
+        escapeHTML(sale.product) +
+
+        "<br>" +
+
+        "<b>Quantity:</b> " +
+        sale.quantity +
+
+        "<br>" +
+
+        "<b>Unit Price:</b> " +
+        money(sale.price) +
+
+        "<div class='invoice-total'>" +
+
+        "TOTAL: " +
+        money(sale.total) +
+
+        "</div>" +
+
+        "<hr>" +
+
+        "<div style='text-align:center'>" +
+
+        "Thank you for your business." +
+
+        "</div>" +
+
+        "</div>";
+
+    });
+
+
+    document.getElementById("invoicesList")
+        .innerHTML =
+        html || "No sales invoices yet.";
+
+}
+
+
+/* ================= RENDER ALL ================= */
+
+function renderAll(){
+
+    updateDashboard();
+
+    updateProductOptions();
+
+    renderProducts();
+
+    renderInventory();
+
+    renderSales();
+
+    renderPurchases();
+
+    renderExpenses();
+
+    renderCustomers();
+
+    renderSuppliers();
+
+    renderInvoices();
+
+}
+
+
+/* ================= PRODUCT SEARCH ================= */
+
+document.getElementById("productSearch")
+.addEventListener(
+    "input",
+    renderProducts
+);
+
+
+/* ================= INITIAL DATES ================= */
+
+document.getElementById("saleDate")
+    .value = today();
+
+
+document.getElementById("purchaseDate")
+    .value = today();
+
+
+document.getElementById("expenseDate")
+    .value = today();
+
+
+/* ================= START APP ================= */
+
+renderAll();
+
+</script>
+
+</body>
+</html>
