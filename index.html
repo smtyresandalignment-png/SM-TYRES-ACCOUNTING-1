@@ -1,369 +1,455 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>SM TYRES & ALIGNMENT</title>
 
 <style>
 *{
-    box-sizing:border-box;
-    -webkit-tap-highlight-color:transparent;
+ box-sizing:border-box;
+ -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+ --bg1:#061827;
+ --bg2:#0b3852;
+ --primary:#00aeea;
+ --secondary:#0879a8;
+ --card:#ffffff;
+ --text:#132b38;
+ --muted:#6b7c85;
+ --danger:#d83b3b;
+ --success:#159447;
+ --shadow:0 8px 25px rgba(0,0,0,.35);
 }
 
 html,body{
-    margin:0;
-    padding:0;
-    min-height:100%;
-    font-family:Arial,sans-serif;
-    background:
-        radial-gradient(circle at top,#155a78 0,#08283b 35%,#03131e 100%);
+ margin:0;
+ padding:0;
+ min-height:100%;
+ font-family:Arial,sans-serif;
+ background:
+ radial-gradient(circle at 15% 10%,var(--bg2),transparent 35%),
+ linear-gradient(145deg,var(--bg1),#020b12);
+ color:white;
 }
 
-body{
-    color:#172b38;
-}
-
-.header{
-    text-align:center;
-    padding:20px 10px;
-}
-
-.logo{
-    width:125px;
-    height:125px;
-    margin:auto;
-    border-radius:50%;
-    border:4px solid #19d5ff;
-    background:
-        radial-gradient(circle,#168ab8,#063b55 65%,#021923);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    color:white;
-    font-size:15px;
-    font-weight:bold;
-    line-height:1.35;
-    text-align:center;
-    box-shadow:0 0 30px rgba(0,210,255,.55);
-}
-
-.container{
-    max-width:1000px;
-    margin:auto;
-    padding:12px;
-}
-
-.menu{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
+button,input,select,textarea{
+ font-family:Arial,sans-serif;
 }
 
 button{
-    font-family:Arial,sans-serif;
-    touch-action:manipulation;
-    -webkit-user-select:none;
-    user-select:none;
-    cursor:pointer;
+ touch-action:manipulation;
+ cursor:pointer;
+ -webkit-user-select:none;
+ user-select:none;
 }
 
-.menu button{
-    min-height:100px;
-    border:0;
-    border-radius:16px;
-    background:linear-gradient(145deg,#0786bb,#06435f);
-    color:white;
-    font-size:14px;
-    font-weight:bold;
-    box-shadow:0 6px 15px rgba(0,0,0,.4);
+.header{
+ padding:22px 10px 15px;
+ text-align:center;
 }
 
-.menu button:active{
-    transform:scale(.95);
-    background:#12a9df;
+.logo{
+ width:135px;
+ height:135px;
+ margin:auto;
+ border-radius:50%;
+ border:4px solid var(--primary);
+ background:
+ radial-gradient(circle at 35% 30%,var(--primary),var(--secondary) 42%,#02131e 75%);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ text-align:center;
+ color:#fff;
+ font-weight:900;
+ font-size:16px;
+ line-height:1.3;
+ box-shadow:
+ 0 0 18px var(--primary),
+ 0 0 45px rgba(0,0,0,.45);
 }
 
-.icon{
-    display:block;
-    font-size:30px;
-    margin-bottom:8px;
+.container{
+ width:100%;
+ max-width:1100px;
+ margin:auto;
+ padding:10px;
 }
 
 .page{
-    display:none;
+ display:none;
 }
 
-.page.show{
-    display:block;
+.page.active{
+ display:block;
+}
+
+.menu{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:12px;
+}
+
+.menu-btn{
+ min-height:105px;
+ border:0;
+ border-radius:18px;
+ color:white;
+ font-size:14px;
+ font-weight:bold;
+ background:
+ linear-gradient(145deg,var(--primary),var(--secondary));
+ box-shadow:var(--shadow);
+}
+
+.menu-btn:active{
+ transform:scale(.95);
+}
+
+.icon{
+ display:block;
+ font-size:31px;
+ margin-bottom:8px;
 }
 
 .back{
-    width:100%;
-    min-height:52px;
-    margin-bottom:14px;
-    border:0;
-    border-radius:10px;
-    background:#253e4c;
-    color:white;
-    font-size:16px;
-    font-weight:bold;
+ width:100%;
+ min-height:52px;
+ margin-bottom:14px;
+ border:0;
+ border-radius:12px;
+ color:white;
+ background:#263c49;
+ font-size:16px;
+ font-weight:bold;
 }
 
 .title{
-    color:white;
-    font-size:24px;
-    margin:8px 0 15px;
+ font-size:25px;
+ margin:8px 0 15px;
 }
 
 .card{
-    background:white;
-    padding:16px;
-    border-radius:15px;
-    box-shadow:0 5px 18px rgba(0,0,0,.35);
+ background:var(--card);
+ color:var(--text);
+ padding:17px;
+ border-radius:17px;
+ box-shadow:var(--shadow);
 }
 
 label{
-    display:block;
-    margin-top:12px;
-    margin-bottom:6px;
-    font-weight:bold;
+ display:block;
+ margin:13px 0 6px;
+ font-weight:bold;
 }
 
 input,select,textarea{
-    width:100%;
-    min-height:50px;
-    padding:12px;
-    border:2px solid #d9e2e7;
-    border-radius:9px;
-    font-size:16px;
-    background:white;
+ width:100%;
+ min-height:51px;
+ padding:12px;
+ border:2px solid #dce5e9;
+ border-radius:10px;
+ background:#fff;
+ color:#182c36;
+ font-size:16px;
+ outline:none;
+}
+
+input:focus,select:focus,textarea:focus{
+ border-color:var(--primary);
 }
 
 textarea{
-    min-height:80px;
+ min-height:85px;
+ resize:vertical;
 }
 
 .action{
-    width:100%;
-    min-height:54px;
-    margin-top:18px;
-    border:0;
-    border-radius:10px;
-    background:#0786bb;
-    color:white;
-    font-size:16px;
-    font-weight:bold;
+ width:100%;
+ min-height:54px;
+ margin-top:18px;
+ border:0;
+ border-radius:11px;
+ background:var(--primary);
+ color:white;
+ font-size:16px;
+ font-weight:bold;
 }
 
 .action:active{
-    background:#10a9df;
-    transform:scale(.98);
+ transform:scale(.98);
 }
 
 .green{
-    background:#15964d;
+ background:#159447;
+}
+
+.red{
+ background:#c93636;
 }
 
 .orange{
-    background:#d67808;
+ background:#d9790b;
 }
 
 .notice{
-    background:#e8f8ff;
-    padding:13px;
-    border-left:5px solid #0786bb;
-    border-radius:8px;
-    margin-bottom:14px;
+ margin-bottom:14px;
+ padding:13px;
+ border-radius:11px;
+ background:rgba(255,255,255,.95);
+ color:#15303d;
+ border-left:5px solid var(--primary);
 }
 
-.box{
-    margin-top:15px;
-    padding:8px;
-    background:white;
-    border-radius:14px;
-    overflow-x:auto;
+.table-wrap{
+ margin-top:15px;
+ background:white;
+ border-radius:15px;
+ overflow-x:auto;
+ box-shadow:var(--shadow);
 }
 
 table{
-    width:100%;
-    min-width:600px;
-    border-collapse:collapse;
+ width:100%;
+ min-width:650px;
+ border-collapse:collapse;
+ color:#152b36;
 }
 
 th{
-    background:#06435f;
-    color:white;
-    padding:10px;
-    text-align:left;
+ padding:11px;
+ text-align:left;
+ background:var(--secondary);
+ color:white;
 }
 
 td{
-    padding:10px;
-    border-bottom:1px solid #ddd;
-}
-
-.in{
-    color:#128541;
-    font-weight:bold;
-}
-
-.out{
-    color:#c0392b;
-    font-weight:bold;
+ padding:10px;
+ border-bottom:1px solid #e2e7ea;
 }
 
 .empty{
-    text-align:center;
-    padding:25px;
-    color:#777;
+ text-align:center;
+ padding:25px;
+ color:#777;
+}
+
+.in{
+ color:#148742;
+ font-weight:bold;
+}
+
+.out{
+ color:#cf3535;
+ font-weight:bold;
 }
 
 .report{
-    background:white;
-    margin-bottom:12px;
-    padding:18px;
-    border-radius:14px;
-    box-shadow:0 4px 12px rgba(0,0,0,.3);
+ margin-bottom:12px;
+ padding:18px;
+ border-radius:15px;
+ background:white;
+ color:#172d38;
+ box-shadow:var(--shadow);
 }
 
-.report b{
-    display:block;
-    color:#647783;
-    font-size:13px;
+.report span{
+ display:block;
+ color:#6d7d84;
+ font-size:13px;
+ font-weight:bold;
 }
 
 .report strong{
-    display:block;
-    margin-top:8px;
-    color:#06435f;
-    font-size:21px;
+ display:block;
+ margin-top:8px;
+ color:var(--secondary);
+ font-size:22px;
+}
+
+.theme-grid{
+ display:grid;
+ grid-template-columns:repeat(2,1fr);
+ gap:10px;
+}
+
+.theme-btn{
+ min-height:60px;
+ border:3px solid transparent;
+ border-radius:12px;
+ color:white;
+ font-weight:bold;
+}
+
+.theme-btn:active{
+ transform:scale(.96);
+}
+
+.theme-ocean{
+ background:linear-gradient(135deg,#00aeea,#075279);
+}
+
+.theme-purple{
+ background:linear-gradient(135deg,#9b59ff,#4a168f);
+}
+
+.theme-green{
+ background:linear-gradient(135deg,#19bd79,#07623e);
+}
+
+.theme-red{
+ background:linear-gradient(135deg,#e33d46,#49080d);
+}
+
+.theme-orange{
+ background:linear-gradient(135deg,#ff9d20,#a63e00);
+}
+
+.theme-midnight{
+ background:linear-gradient(135deg,#59636b,#090c10);
+}
+
+.theme-cyan{
+ background:linear-gradient(135deg,#00fff0,#006d85);
+}
+
+.theme-gold{
+ background:linear-gradient(135deg,#f4c542,#765400);
 }
 
 @media(min-width:700px){
-    .menu{
-        grid-template-columns:repeat(4,1fr);
-    }
+
+ .menu{
+  grid-template-columns:repeat(4,1fr);
+ }
+
+ .theme-grid{
+  grid-template-columns:repeat(4,1fr);
+ }
+
 }
 </style>
 </head>
 
 <body>
 
-<!-- LOGO -->
-
 <div class="header">
-    <div class="logo">
-        SM TYRES<br>
-        &<br>
-        ALIGNMENT
-    </div>
+ <div class="logo">
+  SM TYRES<br>
+  &amp;<br>
+  ALIGNMENT
+ </div>
 </div>
-
 
 <div class="container">
 
 
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 
-<div id="home" class="page show">
+<section id="home" class="page active">
 
 <div class="menu">
 
-<button type="button" onclick="openPage('sales')">
+<button class="menu-btn" onclick="showPage('sales')">
 <span class="icon">🧾</span>
 SALES
 </button>
 
-<button type="button" onclick="openPage('purchases')">
+<button class="menu-btn" onclick="showPage('purchases')">
 <span class="icon">🛒</span>
 PURCHASES
 </button>
 
-<button type="button" onclick="openPage('transferIn')">
-<span class="icon">📥</span>
-TRANSFER IN
-</button>
-
-<button type="button" onclick="openPage('transferOut')">
-<span class="icon">📤</span>
-TRANSFER OUT
-</button>
-
-<button type="button" onclick="openPage('inventory')">
+<button class="menu-btn" onclick="showPage('inventory')">
 <span class="icon">📦</span>
 INVENTORY
 </button>
 
-<button type="button" onclick="openPage('products')">
+<button class="menu-btn" onclick="showPage('movements')">
+<span class="icon">🔄</span>
+INVENTORY<br>MOVEMENTS
+</button>
+
+<button class="menu-btn" onclick="showPage('transferIn')">
+<span class="icon">📥</span>
+TRANSFER IN
+</button>
+
+<button class="menu-btn" onclick="showPage('transferOut')">
+<span class="icon">📤</span>
+TRANSFER OUT
+</button>
+
+<button class="menu-btn" onclick="showPage('products')">
 <span class="icon">🔧</span>
 PRODUCTS
 </button>
 
-<button type="button" onclick="openPage('customers')">
+<button class="menu-btn" onclick="showPage('customers')">
 <span class="icon">👥</span>
 CUSTOMERS
 </button>
 
-<button type="button" onclick="openPage('suppliers')">
+<button class="menu-btn" onclick="showPage('suppliers')">
 <span class="icon">🏭</span>
 SUPPLIERS
 </button>
 
-<button type="button" onclick="openPage('expenses')">
+<button class="menu-btn" onclick="showPage('expenses')">
 <span class="icon">💰</span>
 EXPENSES
 </button>
 
-<button type="button" onclick="openPage('movements')">
-<span class="icon">🔄</span>
-MOVEMENTS
-</button>
-
-<button type="button" onclick="openPage('reports')">
+<button class="menu-btn" onclick="showPage('reports')">
 <span class="icon">📊</span>
 REPORTS
 </button>
 
-</div>
-</div>
-
-
-<!-- ================= SALES ================= -->
-
-<div id="sales" class="page">
-
-<button type="button" class="back" onclick="openPage('home')">
-← MAIN MENU
+<button class="menu-btn" onclick="showPage('themes')">
+<span class="icon">🎨</span>
+THEMES
 </button>
+
+</div>
+</section>
+
+
+<!-- SALES -->
+
+<section id="sales" class="page">
+
+<button class="back" onclick="showPage('home')">← MAIN MENU</button>
 
 <h2 class="title">SALES</h2>
 
 <div class="card">
 
 <label>Date</label>
-<input type="date" id="saleDate">
+<input id="saleDate" type="date">
 
 <label>Customer</label>
-<input type="text" id="saleCustomer">
+<input id="saleCustomer" type="text" placeholder="Customer name">
 
 <label>Product</label>
 <select id="saleProduct"></select>
 
 <label>Quantity</label>
-<input type="number" id="saleQty">
+<input id="saleQty" type="number" min="1">
 
 <label>Selling Price</label>
-<input type="number" id="salePrice">
+<input id="salePrice" type="number" min="0">
 
-<button type="button" class="action" onclick="saveSale()">
+<button class="action" onclick="recordSale()">
 RECORD SALE
 </button>
 
 </div>
 
-<div class="box">
+<div class="table-wrap">
 <table>
 <thead>
 <tr>
@@ -376,47 +462,45 @@ RECORD SALE
 <th>Profit</th>
 </tr>
 </thead>
-<tbody id="salesTable"></tbody>
+<tbody id="salesList"></tbody>
 </table>
 </div>
 
-</div>
+</section>
 
 
-<!-- ================= PURCHASES ================= -->
+<!-- PURCHASES -->
 
-<div id="purchases" class="page">
+<section id="purchases" class="page">
 
-<button type="button" class="back" onclick="openPage('home')">
-← MAIN MENU
-</button>
+<button class="back" onclick="showPage('home')">← MAIN MENU</button>
 
 <h2 class="title">PURCHASES</h2>
 
 <div class="card">
 
 <label>Date</label>
-<input type="date" id="purchaseDate">
+<input id="purchaseDate" type="date">
 
 <label>Supplier</label>
-<input type="text" id="purchaseSupplier">
+<input id="purchaseSupplier" type="text">
 
 <label>Product</label>
 <select id="purchaseProduct"></select>
 
 <label>Quantity</label>
-<input type="number" id="purchaseQty">
+<input id="purchaseQty" type="number" min="1">
 
 <label>Purchase Price</label>
-<input type="number" id="purchasePrice">
+<input id="purchasePrice" type="number" min="0">
 
-<button type="button" class="action" onclick="savePurchase()">
+<button class="action" onclick="recordPurchase()">
 RECORD PURCHASE
 </button>
 
 </div>
 
-<div class="box">
+<div class="table-wrap">
 <table>
 <thead>
 <tr>
@@ -428,130 +512,94 @@ RECORD PURCHASE
 <th>Total</th>
 </tr>
 </thead>
-<tbody id="purchaseTable"></tbody>
+<tbody id="purchaseList"></tbody>
 </table>
 </div>
 
-</div>
+</section>
 
 
-<!-- ================= TRANSFER IN ================= -->
+<!-- TRANSFER IN -->
 
-<div id="transferIn" class="page">
+<section id="transferIn" class="page">
 
-<button type="button" class="back" onclick="openPage('home')">
-← MAIN MENU
-</button>
+<button class="back" onclick="showPage('home')">← MAIN MENU</button>
 
 <h2 class="title">TRANSFER IN</h2>
 
 <div class="notice">
-Transfer stock into this location.
+Stock transferred into this location will increase inventory.
 </div>
 
 <div class="card">
 
 <label>Date</label>
-<input type="date" id="inDate">
+<input id="transferInDate" type="date">
 
 <label>Product</label>
-<select id="inProduct"></select>
+<select id="transferInProduct"></select>
 
 <label>Quantity</label>
-<input type="number" id="inQty">
+<input id="transferInQty" type="number" min="1">
 
 <label>From Location</label>
-<input type="text" id="inFrom">
+<input id="transferInFrom" type="text" placeholder="Example: Mwanza Branch">
 
 <label>Note</label>
-<textarea id="inNote"></textarea>
+<textarea id="transferInNote"></textarea>
 
-<button type="button" class="action green" onclick="saveTransferIn()">
+<button class="action green" onclick="recordTransferIn()">
 📥 RECORD TRANSFER IN
 </button>
 
 </div>
 
-<div class="box">
-<table>
-<thead>
-<tr>
-<th>Date</th>
-<th>Product</th>
-<th>Qty</th>
-<th>From</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody id="inTable"></tbody>
-</table>
-</div>
-
-</div>
+</section>
 
 
-<!-- ================= TRANSFER OUT ================= -->
+<!-- TRANSFER OUT -->
 
-<div id="transferOut" class="page">
+<section id="transferOut" class="page">
 
-<button type="button" class="back" onclick="openPage('home')">
-← MAIN MENU
-</button>
+<button class="back" onclick="showPage('home')">← MAIN MENU</button>
 
 <h2 class="title">TRANSFER OUT</h2>
 
 <div class="notice">
-Transfer stock from this location to another location.
+Stock transferred out of this location will reduce inventory.
 </div>
 
 <div class="card">
 
 <label>Date</label>
-<input type="date" id="outDate">
+<input id="transferOutDate" type="date">
 
 <label>Product</label>
-<select id="outProduct"></select>
+<select id="transferOutProduct"></select>
 
 <label>Quantity</label>
-<input type="number" id="outQty">
+<input id="transferOutQty" type="number" min="1">
 
 <label>To Location</label>
-<input type="text" id="outTo">
+<input id="transferOutTo" type="text" placeholder="Example: Dodoma Branch">
 
 <label>Note</label>
-<textarea id="outNote"></textarea>
+<textarea id="transferOutNote"></textarea>
 
-<button type="button" class="action orange" onclick="saveTransferOut()">
+<button class="action orange" onclick="recordTransferOut()">
 📤 RECORD TRANSFER OUT
 </button>
 
 </div>
 
-<div class="box">
-<table>
-<thead>
-<tr>
-<th>Date</th>
-<th>Product</th>
-<th>Qty</th>
-<th>To</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody id="outTable"></tbody>
-</table>
-</div>
-
-</div>
+</section>
 
 
-<!-- ================= INVENTORY ================= -->
+<!-- INVENTORY -->
 
-<div id="inventory" class="page">
+<section id="inventory" class="page">
 
-<button type="button" class="back" onclick="openPage('home')">
-← MAIN MENU
-</button>
+<button class="back" onclick="showPage('home')">← MAIN MENU</button>
 
 <h2 class="title">INVENTORY</h2>
 
@@ -559,7 +607,7 @@ Transfer stock from this location to another location.
 Stock = Purchases + Transfer In − Sales − Transfer Out
 </div>
 
-<div class="box">
+<div class="table-wrap">
 <table>
 <thead>
 <tr>
@@ -571,31 +619,1278 @@ Stock = Purchases + Transfer In − Sales − Transfer Out
 <th>Value</th>
 </tr>
 </thead>
-<tbody id="inventoryTable"></tbody>
+<tbody id="inventoryList"></tbody>
 </table>
 </div>
 
+</section>
+
+
+<!-- INVENTORY MOVEMENTS -->
+
+<section id="movements" class="page">
+
+<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+
+<h2 class="title">INVENTORY MOVEMENTS</h2>
+
+<div class="notice">
+All stock movements are shown here.
 </div>
 
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Movement</th>
+<th>Product</th>
+<th>Qty</th>
+<th>Details</th>
+</tr>
+</thead>
+<tbody id="movementList"></tbody>
+</table>
+</div>
 
-<!-- ================= PRODUCTS ================= -->
+</section>
 
-<div id="products" class="page">
 
-<button type="button" class="back" onclick="openPage('home')">
-← MAIN MENU
-</button>
+<!-- PRODUCTS -->
+
+<section id="products" class="page">
+
+<button class="back" onclick="showPage('home')">← MAIN MENU</button>
 
 <h2 class="title">PRODUCTS</h2>
 
 <div class="card">
 
 <label>Product Code</label>
-<input type="text" id="productCode">
+<input id="productCode" type="text">
 
 <label>Product Name</label>
-<input type="text" id="productName">
+<input id="productName" type="text">
 
 <label>Category</label>
 <select id="productCategory">
 <option>Tyre</option>
+<option>Service</option>
+<option>Spare Part</option>
+<option>Other</option>
+</select>
+
+<button class="action" onclick="addProduct()">
+➕ ADD PRODUCT
+</button>
+
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Product</th>
+<th>Category</th>
+<th>Stock</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody id="productList"></tbody>
+</table>
+</div>
+
+</section>
+
+
+<!-- CUSTOMERS -->
+
+<section id="customers" class="page">
+
+<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+
+<h2 class="title">CUSTOMERS</h2>
+
+<div class="card">
+
+<label>Name</label>
+<input id="customerName" type="text">
+
+<label>Phone</label>
+<input id="customerPhone" type="text">
+
+<button class="action" onclick="addCustomer()">
+ADD CUSTOMER
+</button>
+
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Phone</th>
+</tr>
+</thead>
+<tbody id="customerList"></tbody>
+</table>
+</div>
+
+</section>
+
+
+<!-- SUPPLIERS -->
+
+<section id="suppliers" class="page">
+
+<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+
+<h2 class="title">SUPPLIERS</h2>
+
+<div class="card">
+
+<label>Name</label>
+<input id="supplierName" type="text">
+
+<label>Phone</label>
+<input id="supplierPhone" type="text">
+
+<button class="action" onclick="addSupplier()">
+ADD SUPPLIER
+</button>
+
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Phone</th>
+</tr>
+</thead>
+<tbody id="supplierList"></tbody>
+</table>
+</div>
+
+</section>
+
+
+<!-- EXPENSES -->
+
+<section id="expenses" class="page">
+
+<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+
+<h2 class="title">EXPENSES</h2>
+
+<div class="card">
+
+<label>Date</label>
+<input id="expenseDate" type="date">
+
+<label>Expense</label>
+<input id="expenseName" type="text">
+
+<label>Amount</label>
+<input id="expenseAmount" type="number" min="0">
+
+<button class="action" onclick="recordExpense()">
+RECORD EXPENSE
+</button>
+
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Expense</th>
+<th>Amount</th>
+</tr>
+</thead>
+<tbody id="expenseList"></tbody>
+</table>
+</div>
+
+</section>
+
+
+<!-- REPORTS -->
+
+<section id="reports" class="page">
+
+<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+
+<h2 class="title">REPORTS</h2>
+
+<div class="report">
+<span>TOTAL SALES</span>
+<strong id="totalSales">TSh 0</strong>
+</div>
+
+<div class="report">
+<span>COST OF GOODS SOLD</span>
+<strong id="totalCost">TSh 0</strong>
+</div>
+
+<div class="report">
+<span>GROSS PROFIT</span>
+<strong id="grossProfit">TSh 0</strong>
+</div>
+
+<div class="report">
+<span>TOTAL EXPENSES</span>
+<strong id="totalExpenses">TSh 0</strong>
+</div>
+
+<div class="report">
+<span>NET PROFIT</span>
+<strong id="netProfit">TSh 0</strong>
+</div>
+
+<div class="report">
+<span>TRANSFER IN</span>
+<strong id="transferInTotal">0</strong>
+</div>
+
+<div class="report">
+<span>TRANSFER OUT</span>
+<strong id="transferOutTotal">0</strong>
+</div>
+
+</section>
+
+
+<!-- THEMES -->
+
+<section id="themes" class="page">
+
+<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+
+<h2 class="title">CHOOSE THEME</h2>
+
+<div class="card">
+
+<div class="theme-grid">
+
+<button class="theme-btn theme-ocean"
+onclick="setTheme('ocean')">
+🌊 OCEAN BLUE
+</button>
+
+<button class="theme-btn theme-purple"
+onclick="setTheme('purple')">
+💜 ROYAL PURPLE
+</button>
+
+<button class="theme-btn theme-green"
+onclick="setTheme('green')">
+💚 EMERALD
+</button>
+
+<button class="theme-btn theme-red"
+onclick="setTheme('red')">
+❤️ RED & BLACK
+</button>
+
+<button class="theme-btn theme-orange"
+onclick="setTheme('orange')">
+🧡 SUNSET
+</button>
+
+<button class="theme-btn theme-midnight"
+onclick="setTheme('midnight')">
+🖤 MIDNIGHT
+</button>
+
+<button class="theme-btn theme-cyan"
+onclick="setTheme('cyan')">
+💎 ELECTRIC CYAN
+</button>
+
+<button class="theme-btn theme-gold"
+onclick="setTheme('gold')">
+💛 GOLD PREMIUM
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+
+<script>
+
+/* ================= DATABASE ================= */
+
+const KEY="SM_TYRES_ALIGNMENT_ACCOUNTING_1";
+
+let data={
+ products:{},
+ sales:[],
+ purchases:[],
+ transferIn:[],
+ transferOut:[],
+ customers:[],
+ suppliers:[],
+ expenses:[]
+};
+
+
+/* ================= LOAD ================= */
+
+function loadData(){
+
+ try{
+
+  const saved=localStorage.getItem(KEY);
+
+  if(saved){
+
+   const x=JSON.parse(saved);
+
+   data.products=x.products||{};
+   data.sales=x.sales||[];
+   data.purchases=x.purchases||[];
+   data.transferIn=x.transferIn||[];
+   data.transferOut=x.transferOut||[];
+   data.customers=x.customers||[];
+   data.suppliers=x.suppliers||[];
+   data.expenses=x.expenses||[];
+
+  }
+
+ }catch(e){
+
+  console.log(e);
+
+ }
+
+}
+
+
+/* ================= SAVE ================= */
+
+function saveData(){
+
+ localStorage.setItem(KEY,JSON.stringify(data));
+
+}
+
+
+/* ================= PAGE ================= */
+
+function showPage(id){
+
+ document.querySelectorAll(".page").forEach(function(p){
+  p.classList.remove("active");
+ });
+
+ const page=document.getElementById(id);
+
+ if(page){
+  page.classList.add("active");
+ }
+
+ window.scrollTo(0,0);
+
+}
+
+
+/* ================= MONEY ================= */
+
+function money(value){
+
+ return "TSh "+
+ Number(value||0).toLocaleString();
+
+}
+
+
+/* ================= DATE ================= */
+
+function today(){
+
+ const d=new Date();
+
+ return d.getFullYear()+"-"+
+ String(d.getMonth()+1).padStart(2,"0")+"-"+
+ String(d.getDate()).padStart(2,"0");
+
+}
+
+
+/* ================= PRODUCT SELECTS ================= */
+
+function updateProductSelects(){
+
+ const ids=[
+  "saleProduct",
+  "purchaseProduct",
+  "transferInProduct",
+  "transferOutProduct"
+ ];
+
+ ids.forEach(function(id){
+
+  const select=document.getElementById(id);
+
+  select.innerHTML="<option value=''>Select Product</option>";
+
+  Object.keys(data.products).forEach(function(name){
+
+   const p=data.products[name];
+
+   const option=document.createElement("option");
+
+   option.value=name;
+
+   option.textContent=
+    name+" | Stock: "+p.stock;
+
+   select.appendChild(option);
+
+  });
+
+ });
+
+}
+
+
+/* ================= PRODUCT ================= */
+
+function addProduct(){
+
+ const code=document.getElementById("productCode").value.trim();
+ const name=document.getElementById("productName").value.trim();
+ const category=document.getElementById("productCategory").value;
+
+ if(!name){
+
+  alert("Enter product name.");
+  return;
+
+ }
+
+ if(data.products[name]){
+
+  alert("Product already exists.");
+  return;
+
+ }
+
+ data.products[name]={
+  code:code,
+  name:name,
+  category:category,
+  stock:0,
+  cost:0
+ };
+
+ saveData();
+ render();
+
+ document.getElementById("productCode").value="";
+ document.getElementById("productName").value="";
+
+ alert("Product added successfully.");
+
+}
+
+
+/* ================= PURCHASE ================= */
+
+function recordPurchase(){
+
+ const date=document.getElementById("purchaseDate").value;
+ const supplier=document.getElementById("purchaseSupplier").value.trim();
+ const product=document.getElementById("purchaseProduct").value;
+ const qty=Number(document.getElementById("purchaseQty").value);
+ const price=Number(document.getElementById("purchasePrice").value);
+
+ if(!product){
+  alert("Select a product.");
+  return;
+ }
+
+ if(qty<=0){
+  alert("Enter quantity.");
+  return;
+ }
+
+ if(price<=0){
+  alert("Enter purchase price.");
+  return;
+ }
+
+ const p=data.products[product];
+
+ p.stock+=qty;
+ p.cost=price;
+
+ data.purchases.push({
+  date:date,
+  supplier:supplier||"Unknown",
+  product:product,
+  qty:qty,
+  price:price,
+  total:qty*price
+ });
+
+ if(supplier && !data.suppliers.some(function(x){
+  return x.name===supplier;
+ })){
+  data.suppliers.push({
+   name:supplier,
+   phone:""
+  });
+ }
+
+ saveData();
+ render();
+
+ document.getElementById("purchaseSupplier").value="";
+ document.getElementById("purchaseQty").value="";
+ document.getElementById("purchasePrice").value="";
+
+ alert("Purchase recorded successfully.");
+
+}
+
+
+/* ================= SALE ================= */
+
+function recordSale(){
+
+ const date=document.getElementById("saleDate").value;
+ const customer=document.getElementById("saleCustomer").value.trim();
+ const product=document.getElementById("saleProduct").value;
+ const qty=Number(document.getElementById("saleQty").value);
+ const price=Number(document.getElementById("salePrice").value);
+
+ if(!product){
+  alert("Select a product.");
+  return;
+ }
+
+ if(qty<=0){
+  alert("Enter quantity.");
+  return;
+ }
+
+ if(price<=0){
+  alert("Enter selling price.");
+  return;
+ }
+
+ const p=data.products[product];
+
+ if(p.stock<qty){
+
+  alert(
+   "Not enough stock.\n\n"+
+   "Available: "+p.stock+
+   "\nRequested: "+qty
+  );
+
+  return;
+
+ }
+
+ const cost=Number(p.cost||0);
+ const total=qty*price;
+ const costTotal=qty*cost;
+
+ const invoice=
+  "SM-"+String(data.sales.length+1).padStart(5,"0");
+
+ p.stock-=qty;
+
+ data.sales.push({
+  invoice:invoice,
+  date:date,
+  customer:customer||"Cash Customer",
+  product:product,
+  qty:qty,
+  price:price,
+  cost:cost,
+  total:total,
+  costTotal:costTotal,
+  profit:total-costTotal
+ });
+
+ if(customer && !data.customers.some(function(x){
+  return x.name===customer;
+ })){
+  data.customers.push({
+   name:customer,
+   phone:""
+  });
+ }
+
+ saveData();
+ render();
+
+ document.getElementById("saleCustomer").value="";
+ document.getElementById("saleQty").value="";
+ document.getElementById("salePrice").value="";
+
+ alert(
+  "Sale recorded successfully.\n"+
+  "Invoice: "+invoice
+ );
+
+}
+
+
+/* ================= TRANSFER IN ================= */
+
+function recordTransferIn(){
+
+ const date=document.getElementById("transferInDate").value;
+ const product=document.getElementById("transferInProduct").value;
+ const qty=Number(document.getElementById("transferInQty").value);
+ const from=document.getElementById("transferInFrom").value.trim();
+ const note=document.getElementById("transferInNote").value.trim();
+
+ if(!product){
+  alert("Select a product.");
+  return;
+ }
+
+ if(qty<=0){
+  alert("Enter quantity.");
+  return;
+ }
+
+ if(!from){
+  alert("Enter From Location.");
+  return;
+ }
+
+ data.products[product].stock+=qty;
+
+ data.transferIn.push({
+  date:date,
+  product:product,
+  qty:qty,
+  from:from,
+  note:note
+ });
+
+ saveData();
+ render();
+
+ document.getElementById("transferInQty").value="";
+ document.getElementById("transferInFrom").value="";
+ document.getElementById("transferInNote").value="";
+
+ alert("Transfer In recorded successfully.");
+
+}
+
+
+/* ================= TRANSFER OUT ================= */
+
+function recordTransferOut(){
+
+ const date=document.getElementById("transferOutDate").value;
+ const product=document.getElementById("transferOutProduct").value;
+ const qty=Number(document.getElementById("transferOutQty").value);
+ const to=document.getElementById("transferOutTo").value.trim();
+ const note=document.getElementById("transferOutNote").value.trim();
+
+ if(!product){
+  alert("Select a product.");
+  return;
+ }
+
+ if(qty<=0){
+  alert("Enter quantity.");
+  return;
+ }
+
+ if(!to){
+  alert("Enter To Location.");
+  return;
+ }
+
+ const p=data.products[product];
+
+ if(p.stock<qty){
+
+  alert(
+   "Not enough stock.\n\n"+
+   "Available: "+p.stock+
+   "\nRequested: "+qty
+  );
+
+  return;
+
+ }
+
+ p.stock-=qty;
+
+ data.transferOut.push({
+  date:date,
+  product:product,
+  qty:qty,
+  to:to,
+  note:note
+ });
+
+ saveData();
+ render();
+
+ document.getElementById("transferOutQty").value="";
+ document.getElementById("transferOutTo").value="";
+ document.getElementById("transferOutNote").value="";
+
+ alert("Transfer Out recorded successfully.");
+
+}
+
+
+/* ================= CUSTOMER ================= */
+
+function addCustomer(){
+
+ const name=document.getElementById("customerName").value.trim();
+ const phone=document.getElementById("customerPhone").value.trim();
+
+ if(!name){
+  alert("Enter customer name.");
+  return;
+ }
+
+ data.customers.push({
+  name:name,
+  phone:phone
+ });
+
+ saveData();
+ render();
+
+ document.getElementById("customerName").value="";
+ document.getElementById("customerPhone").value="";
+
+ alert("Customer added.");
+
+}
+
+
+/* ================= SUPPLIER ================= */
+
+function addSupplier(){
+
+ const name=document.getElementById("supplierName").value.trim();
+ const phone=document.getElementById("supplierPhone").value.trim();
+
+ if(!name){
+  alert("Enter supplier name.");
+  return;
+ }
+
+ data.suppliers.push({
+  name:name,
+  phone:phone
+ });
+
+ saveData();
+ render();
+
+ document.getElementById("supplierName").value="";
+ document.getElementById("supplierPhone").value="";
+
+ alert("Supplier added.");
+
+}
+
+
+/* ================= EXPENSE ================= */
+
+function recordExpense(){
+
+ const date=document.getElementById("expenseDate").value;
+ const name=document.getElementById("expenseName").value.trim();
+ const amount=Number(document.getElementById("expenseAmount").value);
+
+ if(!name){
+  alert("Enter expense name.");
+  return;
+ }
+
+ if(amount<=0){
+  alert("Enter expense amount.");
+  return;
+ }
+
+ data.expenses.push({
+  date:date,
+  name:name,
+  amount:amount
+ });
+
+ saveData();
+ render();
+
+ document.getElementById("expenseName").value="";
+ document.getElementById("expenseAmount").value="";
+
+ alert("Expense recorded.");
+
+}
+
+
+/* ================= RENDER ================= */
+
+function render(){
+
+ updateProductSelects();
+
+ renderProducts();
+ renderInventory();
+ renderSales();
+ renderPurchases();
+ renderMovements();
+ renderCustomers();
+ renderSuppliers();
+ renderExpenses();
+ renderReports();
+
+}
+
+
+/* ================= PRODUCTS LIST ================= */
+
+function renderProducts(){
+
+ let html="";
+
+ Object.keys(data.products).forEach(function(name){
+
+  const p=data.products[name];
+
+  html+=
+  "<tr>"+
+  "<td>"+p.code+"</td>"+
+  "<td>"+p.name+"</td>"+
+  "<td>"+p.category+"</td>"+
+  "<td>"+p.stock+"</td>"+
+  "<td>"+money(p.cost)+"</td>"+
+  "</tr>";
+
+ });
+
+ if(!html){
+  html="<tr><td colspan='5' class='empty'>No products yet</td></tr>";
+ }
+
+ document.getElementById("productList").innerHTML=html;
+
+}
+
+
+/* ================= INVENTORY ================= */
+
+function renderInventory(){
+
+ let html="";
+
+ Object.keys(data.products).forEach(function(name){
+
+  const p=data.products[name];
+
+  html+=
+  "<tr>"+
+  "<td>"+p.code+"</td>"+
+  "<td>"+p.name+"</td>"+
+  "<td>"+p.category+"</td>"+
+  "<td><b>"+p.stock+"</b></td>"+
+  "<td>"+money(p.cost)+"</td>"+
+  "<td>"+money(p.stock*p.cost)+"</td>"+
+  "</tr>";
+
+ });
+
+ if(!html){
+  html="<tr><td colspan='6' class='empty'>No inventory yet</td></tr>";
+ }
+
+ document.getElementById("inventoryList").innerHTML=html;
+
+}
+
+
+/* ================= SALES LIST ================= */
+
+function renderSales(){
+
+ let html="";
+
+ [...data.sales].reverse().forEach(function(s){
+
+  html+=
+  "<tr>"+
+  "<td>"+s.invoice+"</td>"+
+  "<td>"+s.date+"</td>"+
+  "<td>"+s.customer+"</td>"+
+  "<td>"+s.product+"</td>"+
+  "<td>"+s.qty+"</td>"+
+  "<td>"+money(s.total)+"</td>"+
+  "<td>"+money(s.profit)+"</td>"+
+  "</tr>";
+
+ });
+
+ document.getElementById("salesList").innerHTML=html;
+
+}
+
+
+/* ================= PURCHASE LIST ================= */
+
+function renderPurchases(){
+
+ let html="";
+
+ [...data.purchases].reverse().forEach(function(p){
+
+  html+=
+  "<tr>"+
+  "<td>"+p.date+"</td>"+
+  "<td>"+p.supplier+"</td>"+
+  "<td>"+p.product+"</td>"+
+  "<td>"+p.qty+"</td>"+
+  "<td>"+money(p.price)+"</td>"+
+  "<td>"+money(p.total)+"</td>"+
+  "</tr>";
+
+ });
+
+ document.getElementById("purchaseList").innerHTML=html;
+
+}
+
+
+/* ================= MOVEMENTS ================= */
+
+function renderMovements(){
+
+ let movements=[];
+
+ data.purchases.forEach(function(x){
+
+  movements.push({
+   date:x.date,
+   type:"PURCHASE",
+   product:x.product,
+   qty:"+"+x.qty,
+   details:"Supplier: "+x.supplier
+  });
+
+ });
+
+ data.transferIn.forEach(function(x){
+
+  movements.push({
+   date:x.date,
+   type:"TRANSFER IN",
+   product:x.product,
+   qty:"+"+x.qty,
+   details:"From: "+x.from
+  });
+
+ });
+
+ data.sales.forEach(function(x){
+
+  movements.push({
+   date:x.date,
+   type:"SALE",
+   product:x.product,
+   qty:"-"+x.qty,
+   details:"Customer: "+x.customer
+  });
+
+ });
+
+ data.transferOut.forEach(function(x){
+
+  movements.push({
+   date:x.date,
+   type:"TRANSFER OUT",
+   product:x.product,
+   qty:"-"+x.qty,
+   details:"To: "+x.to
+  });
+
+ });
+
+ movements.reverse();
+
+ let html="";
+
+ movements.forEach(function(x){
+
+  const cls=x.qty.charAt(0)==="+"?"in":"out";
+
+  html+=
+  "<tr>"+
+  "<td>"+x.date+"</td>"+
+  "<td>"+x.type+"</td>"+
+  "<td>"+x.product+"</td>"+
+  "<td class='"+cls+"'>"+x.qty+"</td>"+
+  "<td>"+x.details+"</td>"+
+  "</tr>";
+
+ });
+
+ if(!html){
+  html="<tr><td colspan='5' class='empty'>No movements yet</td></tr>";
+ }
+
+ document.getElementById("movementList").innerHTML=html;
+
+}
+
+
+/* ================= CUSTOMERS ================= */
+
+function renderCustomers(){
+
+ let html="";
+
+ data.customers.forEach(function(x){
+
+  html+=
+  "<tr>"+
+  "<td>"+x.name+"</td>"+
+  "<td>"+x.phone+"</td>"+
+  "</tr>";
+
+ });
+
+ document.getElementById("customerList").innerHTML=html;
+
+}
+
+
+/* ================= SUPPLIERS ================= */
+
+function renderSuppliers(){
+
+ let html="";
+
+ data.suppliers.forEach(function(x){
+
+  html+=
+  "<tr>"+
+  "<td>"+x.name+"</td>"+
+  "<td>"+x.phone+"</td>"+
+  "</tr>";
+
+ });
+
+ document.getElementById("supplierList").innerHTML=html;
+
+}
+
+
+/* ================= EXPENSES ================= */
+
+function renderExpenses(){
+
+ let html="";
+
+ [...data.expenses].reverse().forEach(function(x){
+
+  html+=
+  "<tr>"+
+  "<td>"+x.date+"</td>"+
+  "<td>"+x.name+"</td>"+
+  "<td>"+money(x.amount)+"</td>"+
+  "</tr>";
+
+ });
+
+ document.getElementById("expenseList").innerHTML=html;
+
+}
+
+
+/* ================= REPORTS ================= */
+
+function renderReports(){
+
+ let sales=0;
+ let cost=0;
+ let expenses=0;
+ let transferIn=0;
+ let transferOut=0;
+
+ data.sales.forEach(function(x){
+
+  sales+=Number(x.total||0);
+  cost+=Number(x.costTotal||0);
+
+ });
+
+ data.expenses.forEach(function(x){
+
+  expenses+=Number(x.amount||0);
+
+ });
+
+ data.transferIn.forEach(function(x){
+
+  transferIn+=Number(x.qty||0);
+
+ });
+
+ data.transferOut.forEach(function(x){
+
+  transferOut+=Number(x.qty||0);
+
+ });
+
+ const gross=sales-cost;
+ const net=gross-expenses;
+
+ document.getElementById("totalSales").textContent=money(sales);
+ document.getElementById("totalCost").textContent=money(cost);
+ document.getElementById("grossProfit").textContent=money(gross);
+ document.getElementById("totalExpenses").textContent=money(expenses);
+ document.getElementById("netProfit").textContent=money(net);
+ document.getElementById("transferInTotal").textContent=transferIn;
+ document.getElementById("transferOutTotal").textContent=transferOut;
+
+}
+
+
+/* ================= THEMES ================= */
+
+const themes={
+
+ ocean:{
+  bg1:"#061827",
+  bg2:"#0b3852",
+  primary:"#00aeea",
+  secondary:"#0879a8"
+ },
+
+ purple:{
+  bg1:"#160822",
+  bg2:"#4b1680",
+  primary:"#b36cff",
+  secondary:"#7130b8"
+ },
+
+ green:{
+  bg1:"#031a12",
+  bg2:"#075c3d",
+  primary:"#20d58a",
+  secondary:"#128b5a"
+ },
+
+ red:{
+  bg1:"#130304",
+  bg2:"#510b11",
+  primary:"#ff4050",
+  secondary:"#a81827"
+ },
+
+ orange:{
+  bg1:"#1d0c02",
+  bg2:"#873400",
+  primary:"#ff9c20",
+  secondary:"#d25d0b"
+ },
+
+ midnight:{
+  bg1:"#020406",
+  bg2:"#202a31",
+  primary:"#8998a2",
+  secondary:"#48555e"
+ },
+
+ cyan:{
+  bg1:"#001719",
+  bg2:"#005967",
+  primary:"#00fff0",
+  secondary:"#008da0"
+ },
+
+ gold:{
+  bg1:"#120e02",
+  bg2:"#554000",
+  primary:"#f5c842",
+  secondary:"#a57a05"
+ }
+
+};
+
+
+function setTheme(name){
+
+ const t=themes[name];
+
+ if(!t)return;
+
+ document.documentElement.style.setProperty("--bg1",t.bg1);
+ document.documentElement.style.setProperty("--bg2",t.bg2);
+ document.documentElement.style.setProperty("--primary",t.primary);
+ document.documentElement.style.setProperty("--secondary",t.secondary);
+
+ localStorage.setItem(
+  "SM_TYRES_THEME",
+  name
+ );
+
+}
+
+
+/* ================= START ================= */
+
+function start(){
+
+ loadData();
+
+ const savedTheme=
+  localStorage.getItem("SM_TYRES_THEME")||"ocean";
+
+ setTheme(savedTheme);
+
+ const dates=[
+  "saleDate",
+  "purchaseDate",
+  "transferInDate",
+  "transferOutDate",
+  "expenseDate"
+ ];
+
+ dates.forEach(function(id){
+
+  const el=document.getElementById(id);
+
+  if(el)el.value=today();
+
+ });
+
+ render();
+
+}
+
+start();
+
+</script>
+
+</body>
+</html>
