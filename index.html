@@ -1,49 +1,80 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SM TYRES</title>
+<!-- INVENTORY -->
 
-<style>
-body{
-    margin:0;
-    background:#092235;
-    font-family:Arial;
-    color:white;
-    text-align:center;
-}
+<div id="inventory" class="screen">
 
-h1{
-    margin-top:80px;
-    font-size:28px;
-}
-
-button{
-    width:85%;
-    padding:18px;
-    margin:10px;
-    border:0;
-    border-radius:12px;
-    background:#168dcc;
-    color:white;
-    font-size:18px;
-}
-</style>
-</head>
-
-<body>
-
-<h1>SM TYRES & ALIGNMENT</h1>
-
-<p>ACCOUNTING 1</p>
-
-<button onclick="alert('Sales works')">
-SALES
+<button class="back" onclick="openPage('dashboard')">
+← DASHBOARD
 </button>
 
-<button onclick="alert('Inventory works')">
-INVENTORY
+<h2>📋 Inventory</h2>
+
+<div class="notice">
+Purchases increase stock. Sales decrease stock.<br>
+Transfer In increases stock. Transfer Out decreases stock.
+</div>
+
+<!-- INVENTORY MOVEMENT -->
+
+<div class="panel">
+
+<h3>🔄 Inventory Movement</h3>
+
+<label>Date</label>
+<input id="movementDate" type="date">
+
+<select id="movementProduct">
+<option value="">Select Product</option>
+</select>
+
+<div class="row">
+
+<input id="movementQty"
+type="number"
+min="1"
+value="1"
+placeholder="Quantity">
+
+<select id="movementType">
+
+<option value="IN">
+TRANSFER IN
+</option>
+
+<option value="OUT">
+TRANSFER OUT
+</option>
+
+</select>
+
+</div>
+
+<input id="movementReference"
+placeholder="Reference / Note (optional)">
+
+<button
+class="primary"
+onclick="transferIn()">
+
+⬆️ TRANSFER IN
+
 </button>
 
-</body>
-</html>
+<button
+class="primary"
+onclick="transferOut()">
+
+⬇️ TRANSFER OUT
+
+</button>
+
+</div>
+
+<h3>📦 Current Stock</h3>
+
+<div id="inventoryList" class="list"></div>
+
+<h3>🔄 Movement History</h3>
+
+<div id="movementList" class="list"></div>
+
+</div>
