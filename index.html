@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 <title>SM TYRES & ALIGNMENT</title>
 
 <style>
-
 *{
     box-sizing:border-box;
     -webkit-tap-highlight-color:transparent;
@@ -16,63 +15,51 @@
 html,body{
     margin:0;
     padding:0;
+    width:100%;
     min-height:100%;
     font-family:Arial,sans-serif;
+    background:#061b2a;
 }
 
 body{
-    background:
-    linear-gradient(135deg,#031521,#073b58,#02111b);
-    color:#222;
+    color:#172b38;
 }
 
-/* LOGO */
-
 .header{
-    padding:18px 10px;
+    padding:18px 0 12px;
     text-align:center;
+    background:linear-gradient(180deg,#04111b,#073b57);
 }
 
 .logo{
-    width:115px;
-    height:115px;
+    width:125px;
+    height:125px;
     margin:auto;
-
     border-radius:50%;
-
     display:flex;
     align-items:center;
     justify-content:center;
-
     text-align:center;
+    padding:15px;
 
-    padding:12px;
-
-    background:
-    linear-gradient(145deg,#0b6f9f,#031723);
-
-    border:4px solid #18b9f2;
-
-    box-shadow:
-    0 0 25px rgba(24,185,242,.6),
-    inset 0 0 20px rgba(255,255,255,.08);
+    background:linear-gradient(145deg,#0b86bd,#032333);
+    border:4px solid #19c2f5;
 
     color:white;
-
-    font-size:14px;
-
+    font-size:15px;
     font-weight:bold;
+    line-height:1.3;
 
-    line-height:1.2;
+    box-shadow:
+    0 0 25px rgba(25,194,245,.55),
+    inset 0 0 18px rgba(255,255,255,.08);
 }
 
-/* MAIN */
-
-.app{
+.container{
     width:100%;
     max-width:1100px;
     margin:auto;
-    padding:12px;
+    padding:15px;
 }
 
 .screen{
@@ -83,13 +70,12 @@ body{
     display:block;
 }
 
-/* HOME MENU */
-
 .menu-title{
-    text-align:center;
     color:white;
-    font-size:23px;
-    margin:8px 0 18px;
+    text-align:center;
+    font-size:21px;
+    font-weight:bold;
+    margin:5px 0 18px;
 }
 
 .menu{
@@ -98,102 +84,81 @@ body{
     gap:12px;
 }
 
-.menu button{
-    border:none;
-    min-height:105px;
+.menu-btn{
+    border:0;
     border-radius:16px;
+    min-height:105px;
+    padding:10px;
 
-    background:
-    linear-gradient(145deg,#087bad,#063d5c);
+    background:linear-gradient(145deg,#0a82b7,#06415f);
 
     color:white;
-
-    font-size:15px;
+    font-size:14px;
     font-weight:bold;
 
-    box-shadow:
-    0 6px 15px rgba(0,0,0,.45);
+    box-shadow:0 5px 13px rgba(0,0,0,.4);
 
     cursor:pointer;
-
     touch-action:manipulation;
+    user-select:none;
 }
 
-.menu button:active{
-    transform:scale(.95);
-    background:#16a9e5;
+.menu-btn:active{
+    transform:scale(.96);
+    background:#11a8e0;
 }
 
 .icon{
     display:block;
-    font-size:31px;
+    font-size:32px;
     margin-bottom:8px;
 }
-
-/* PAGE */
 
 .page-title{
     color:white;
     font-size:24px;
-    margin:8px 0 15px;
+    margin:5px 0 15px;
 }
 
-.back{
+.back-btn{
     width:100%;
-    min-height:50px;
-
-    border:none;
+    height:52px;
+    border:0;
     border-radius:10px;
-
-    background:#253d4b;
+    background:#263f4d;
     color:white;
-
     font-size:16px;
     font-weight:bold;
-
     margin-bottom:15px;
-
     cursor:pointer;
     touch-action:manipulation;
 }
 
-.back:active{
-    background:#148fc3;
+.back-btn:active{
+    background:#0b91c9;
 }
 
-/* FORM */
-
-.form{
-    background:#fff;
+.card{
+    background:white;
     border-radius:15px;
-    padding:17px;
-
-    box-shadow:
-    0 6px 18px rgba(0,0,0,.35);
+    padding:16px;
+    box-shadow:0 5px 16px rgba(0,0,0,.35);
 }
 
 label{
     display:block;
-    margin:12px 0 5px;
-
-    color:#173c50;
-
+    margin:12px 0 6px;
     font-weight:bold;
+    color:#173c50;
 }
 
-input,
-select,
-textarea{
+input,select,textarea{
     width:100%;
     min-height:50px;
-
-    border:2px solid #d8e2e8;
+    border:2px solid #d7e1e6;
     border-radius:9px;
-
     padding:12px;
-
     font-size:16px;
-
     background:white;
 }
 
@@ -201,86 +166,57 @@ textarea{
     min-height:80px;
 }
 
-input:focus,
-select:focus,
-textarea:focus{
-    outline:none;
-    border-color:#159ed7;
-}
-
-.action{
+.action-btn{
     width:100%;
-    min-height:53px;
-
-    border:none;
+    min-height:54px;
+    border:0;
     border-radius:10px;
-
     margin-top:17px;
-
-    background:#087db7;
-
+    background:#087fb8;
     color:white;
-
     font-size:16px;
     font-weight:bold;
-
     cursor:pointer;
-
     touch-action:manipulation;
 }
 
-.action:active{
+.action-btn:active{
     transform:scale(.98);
 }
 
 .green{
-    background:#15934b;
+    background:#15964d;
 }
 
 .orange{
-    background:#d87508;
+    background:#d87808;
 }
-
-/* NOTICE */
 
 .notice{
     background:#e6f7ff;
-    border-left:5px solid #149fd8;
-
-    padding:13px;
-
-    margin-bottom:15px;
-
+    border-left:5px solid #159ed7;
     border-radius:8px;
-
-    color:#17445c;
+    padding:13px;
+    margin-bottom:15px;
 }
-
-/* TABLE */
 
 .table-box{
     margin-top:15px;
-
     background:white;
-
     border-radius:15px;
-
     padding:8px;
-
     overflow-x:auto;
-
-    box-shadow:
-    0 6px 18px rgba(0,0,0,.35);
+    box-shadow:0 5px 16px rgba(0,0,0,.35);
 }
 
 table{
     width:100%;
-    min-width:650px;
+    min-width:600px;
     border-collapse:collapse;
 }
 
 th{
-    background:#083f60;
+    background:#073e5c;
     color:white;
     padding:11px;
     text-align:left;
@@ -288,17 +224,17 @@ th{
 
 td{
     padding:10px;
-    border-bottom:1px solid #e1e6e9;
+    border-bottom:1px solid #e0e5e8;
 }
 
 .empty{
     text-align:center;
-    color:#777;
     padding:25px;
+    color:#777;
 }
 
 .in{
-    color:#158344;
+    color:#148343;
     font-weight:bold;
 }
 
@@ -306,8 +242,6 @@ td{
     color:#c0392b;
     font-weight:bold;
 }
-
-/* REPORT */
 
 .report-grid{
     display:grid;
@@ -318,30 +252,24 @@ td{
 .report-card{
     background:white;
     border-radius:14px;
-    padding:17px;
-
-    box-shadow:
-    0 5px 15px rgba(0,0,0,.3);
+    padding:16px;
+    box-shadow:0 5px 15px rgba(0,0,0,.3);
 }
 
 .report-card h3{
     margin:0;
-    color:#60717d;
+    color:#667782;
     font-size:12px;
 }
 
 .report-card strong{
     display:block;
     margin-top:9px;
-
-    color:#073b58;
-    font-size:20px;
+    color:#073e5c;
+    font-size:19px;
 }
 
-/* DESKTOP */
-
 @media(min-width:700px){
-
     .menu{
         grid-template-columns:repeat(4,1fr);
     }
@@ -349,114 +277,98 @@ td{
     .report-grid{
         grid-template-columns:repeat(4,1fr);
     }
-
-    .app{
-        padding:20px;
-    }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- ONLY LOGO AT TOP -->
-
 <div class="header">
-
     <div class="logo">
         SM TYRES<br>
         &<br>
         ALIGNMENT
     </div>
-
 </div>
 
+<div class="container">
 
-<div class="app">
-
-
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 
 <div id="home" class="screen active">
 
-    <div class="menu-title">
-        ACCOUNTING & INVENTORY
-    </div>
+<div class="menu-title">ACCOUNTING & INVENTORY</div>
 
-    <div class="menu">
+<div class="menu">
 
-        <button onclick="show('sales')">
-            <span class="icon">🧾</span>
-            SALES
-        </button>
+<button class="menu-btn" data-page="sales">
+<span class="icon">🧾</span>
+SALES
+</button>
 
-        <button onclick="show('purchases')">
-            <span class="icon">🛒</span>
-            PURCHASES
-        </button>
+<button class="menu-btn" data-page="purchases">
+<span class="icon">🛒</span>
+PURCHASES
+</button>
 
-        <button onclick="show('transferIn')">
-            <span class="icon">📥</span>
-            TRANSFER IN
-        </button>
+<button class="menu-btn" data-page="transferIn">
+<span class="icon">📥</span>
+TRANSFER IN
+</button>
 
-        <button onclick="show('transferOut')">
-            <span class="icon">📤</span>
-            TRANSFER OUT
-        </button>
+<button class="menu-btn" data-page="transferOut">
+<span class="icon">📤</span>
+TRANSFER OUT
+</button>
 
-        <button onclick="show('inventory')">
-            <span class="icon">📦</span>
-            INVENTORY
-        </button>
+<button class="menu-btn" data-page="inventory">
+<span class="icon">📦</span>
+INVENTORY
+</button>
 
-        <button onclick="show('products')">
-            <span class="icon">🔧</span>
-            PRODUCTS
-        </button>
+<button class="menu-btn" data-page="products">
+<span class="icon">🔧</span>
+PRODUCTS
+</button>
 
-        <button onclick="show('customers')">
-            <span class="icon">👥</span>
-            CUSTOMERS
-        </button>
+<button class="menu-btn" data-page="customers">
+<span class="icon">👥</span>
+CUSTOMERS
+</button>
 
-        <button onclick="show('suppliers')">
-            <span class="icon">🏭</span>
-            SUPPLIERS
-        </button>
+<button class="menu-btn" data-page="suppliers">
+<span class="icon">🏭</span>
+SUPPLIERS
+</button>
 
-        <button onclick="show('expenses')">
-            <span class="icon">💰</span>
-            EXPENSES
-        </button>
+<button class="menu-btn" data-page="expenses">
+<span class="icon">💰</span>
+EXPENSES
+</button>
 
-        <button onclick="show('movements')">
-            <span class="icon">🔄</span>
-            MOVEMENTS
-        </button>
+<button class="menu-btn" data-page="movements">
+<span class="icon">🔄</span>
+MOVEMENTS
+</button>
 
-        <button onclick="show('reports')">
-            <span class="icon">📊</span>
-            REPORTS
-        </button>
+<button class="menu-btn" data-page="reports">
+<span class="icon">📊</span>
+REPORTS
+</button>
 
-    </div>
-
+</div>
 </div>
 
 
-<!-- ================= SALES ================= -->
+<!-- SALES -->
 
 <div id="sales" class="screen">
 
-<button class="back" onclick="show('home')">
-← MAIN MENU
-</button>
+<button class="back-btn" data-page="home">← MAIN MENU</button>
 
 <h2 class="page-title">Sales</h2>
 
-<div class="form">
+<div class="card">
 
 <label>Date</label>
 <input type="date" id="saleDate">
@@ -465,9 +377,7 @@ td{
 <input id="saleCustomer" placeholder="Customer name">
 
 <label>Product</label>
-<select id="saleProduct">
-<option value="">Select Product</option>
-</select>
+<select id="saleProduct"></select>
 
 <label>Quantity</label>
 <input type="number" id="saleQuantity" min="1">
@@ -475,16 +385,14 @@ td{
 <label>Selling Price</label>
 <input type="number" id="salePrice" min="0">
 
-<button class="action" onclick="recordSale()">
+<button class="action-btn" id="recordSaleBtn">
 RECORD SALE
 </button>
 
 </div>
 
 <div class="table-box">
-
 <table>
-
 <thead>
 <tr>
 <th>Invoice</th>
@@ -496,27 +404,22 @@ RECORD SALE
 <th>Profit</th>
 </tr>
 </thead>
-
 <tbody id="salesList"></tbody>
-
 </table>
-
 </div>
 
 </div>
 
 
-<!-- ================= PURCHASES ================= -->
+<!-- PURCHASES -->
 
 <div id="purchases" class="screen">
 
-<button class="back" onclick="show('home')">
-← MAIN MENU
-</button>
+<button class="back-btn" data-page="home">← MAIN MENU</button>
 
 <h2 class="page-title">Purchases</h2>
 
-<div class="form">
+<div class="card">
 
 <label>Date</label>
 <input type="date" id="purchaseDate">
@@ -525,9 +428,7 @@ RECORD SALE
 <input id="purchaseSupplier">
 
 <label>Product</label>
-<select id="purchaseProduct">
-<option value="">Select Product</option>
-</select>
+<select id="purchaseProduct"></select>
 
 <label>Quantity</label>
 <input type="number" id="purchaseQuantity" min="1">
@@ -535,16 +436,14 @@ RECORD SALE
 <label>Purchase Price</label>
 <input type="number" id="purchasePrice" min="0">
 
-<button class="action" onclick="recordPurchase()">
+<button class="action-btn" id="recordPurchaseBtn">
 RECORD PURCHASE
 </button>
 
 </div>
 
 <div class="table-box">
-
 <table>
-
 <thead>
 <tr>
 <th>Date</th>
@@ -555,23 +454,18 @@ RECORD PURCHASE
 <th>Total</th>
 </tr>
 </thead>
-
 <tbody id="purchasesList"></tbody>
-
 </table>
-
 </div>
 
 </div>
 
 
-<!-- ================= TRANSFER IN ================= -->
+<!-- TRANSFER IN -->
 
 <div id="transferIn" class="screen">
 
-<button class="back" onclick="show('home')">
-← MAIN MENU
-</button>
+<button class="back-btn" data-page="home">← MAIN MENU</button>
 
 <h2 class="page-title">Transfer In</h2>
 
@@ -579,15 +473,13 @@ RECORD PURCHASE
 Transfer stock from another location into this inventory.
 </div>
 
-<div class="form">
+<div class="card">
 
 <label>Date</label>
 <input type="date" id="transferInDate">
 
 <label>Product</label>
-<select id="transferInProduct">
-<option value="">Select Product</option>
-</select>
+<select id="transferInProduct"></select>
 
 <label>Quantity</label>
 <input type="number" id="transferInQuantity" min="1">
@@ -598,16 +490,14 @@ Transfer stock from another location into this inventory.
 <label>Note</label>
 <textarea id="transferInNote"></textarea>
 
-<button class="action green" onclick="recordTransferIn()">
+<button class="action-btn green" id="recordTransferInBtn">
 📥 RECORD TRANSFER IN
 </button>
 
 </div>
 
 <div class="table-box">
-
 <table>
-
 <thead>
 <tr>
 <th>Date</th>
@@ -617,23 +507,18 @@ Transfer stock from another location into this inventory.
 <th>Note</th>
 </tr>
 </thead>
-
 <tbody id="transferInList"></tbody>
-
 </table>
-
 </div>
 
 </div>
 
 
-<!-- ================= TRANSFER OUT ================= -->
+<!-- TRANSFER OUT -->
 
 <div id="transferOut" class="screen">
 
-<button class="back" onclick="show('home')">
-← MAIN MENU
-</button>
+<button class="back-btn" data-page="home">← MAIN MENU</button>
 
 <h2 class="page-title">Transfer Out</h2>
 
@@ -641,15 +526,13 @@ Transfer stock from another location into this inventory.
 Transfer stock from this inventory to another location.
 </div>
 
-<div class="form">
+<div class="card">
 
 <label>Date</label>
 <input type="date" id="transferOutDate">
 
 <label>Product</label>
-<select id="transferOutProduct">
-<option value="">Select Product</option>
-</select>
+<select id="transferOutProduct"></select>
 
 <label>Quantity</label>
 <input type="number" id="transferOutQuantity" min="1">
@@ -660,16 +543,14 @@ Transfer stock from this inventory to another location.
 <label>Note</label>
 <textarea id="transferOutNote"></textarea>
 
-<button class="action orange" onclick="recordTransferOut()">
+<button class="action-btn orange" id="recordTransferOutBtn">
 📤 RECORD TRANSFER OUT
 </button>
 
 </div>
 
 <div class="table-box">
-
 <table>
-
 <thead>
 <tr>
 <th>Date</th>
@@ -679,23 +560,18 @@ Transfer stock from this inventory to another location.
 <th>Note</th>
 </tr>
 </thead>
-
 <tbody id="transferOutList"></tbody>
-
 </table>
-
 </div>
 
 </div>
 
 
-<!-- ================= INVENTORY ================= -->
+<!-- INVENTORY -->
 
 <div id="inventory" class="screen">
 
-<button class="back" onclick="show('home')">
-← MAIN MENU
-</button>
+<button class="back-btn" data-page="home">← MAIN MENU</button>
 
 <h2 class="page-title">Inventory</h2>
 
@@ -704,9 +580,7 @@ Stock = Purchases + Transfer In − Sales − Transfer Out
 </div>
 
 <div class="table-box">
-
 <table>
-
 <thead>
 <tr>
 <th>Code</th>
@@ -717,27 +591,22 @@ Stock = Purchases + Transfer In − Sales − Transfer Out
 <th>Value</th>
 </tr>
 </thead>
-
 <tbody id="inventoryList"></tbody>
-
 </table>
-
 </div>
 
 </div>
 
 
-<!-- ================= PRODUCTS ================= -->
+<!-- PRODUCTS -->
 
 <div id="products" class="screen">
 
-<button class="back" onclick="show('home')">
-← MAIN MENU
-</button>
+<button class="back-btn" data-page="home">← MAIN MENU</button>
 
 <h2 class="page-title">Products</h2>
 
-<div class="form">
+<div class="card">
 
 <label>Product Code</label>
 <input id="productCode">
@@ -746,26 +615,21 @@ Stock = Purchases + Transfer In − Sales − Transfer Out
 <input id="productName">
 
 <label>Category</label>
-
 <select id="productCategory">
-
 <option>Tyre</option>
 <option>Service</option>
 <option>Spare Part</option>
 <option>Other</option>
-
 </select>
 
-<button class="action" onclick="addProduct()">
+<button class="action-btn" id="addProductBtn">
 ➕ ADD PRODUCT
 </button>
 
 </div>
 
 <div class="table-box">
-
 <table>
-
 <thead>
 <tr>
 <th>Code</th>
@@ -775,27 +639,22 @@ Stock = Purchases + Transfer In − Sales − Transfer Out
 <th>Cost</th>
 </tr>
 </thead>
-
 <tbody id="productsList"></tbody>
-
 </table>
-
 </div>
 
 </div>
 
 
-<!-- ================= CUSTOMERS ================= -->
+<!-- CUSTOMERS -->
 
 <div id="customers" class="screen">
 
-<button class="back" onclick="show('home')">
-← MAIN MENU
-</button>
+<button class="back-btn" data-page="home">← MAIN MENU</button>
 
 <h2 class="page-title">Customers</h2>
 
-<div class="form">
+<div class="card">
 
 <label>Customer Name</label>
 <input id="customerName">
@@ -803,43 +662,36 @@ Stock = Purchases + Transfer In − Sales − Transfer Out
 <label>Phone</label>
 <input id="customerPhone">
 
-<button class="action" onclick="addCustomer()">
+<button class="action-btn" id="addCustomerBtn">
 ➕ ADD CUSTOMER
 </button>
 
 </div>
 
 <div class="table-box">
-
 <table>
-
 <thead>
 <tr>
 <th>Name</th>
 <th>Phone</th>
 </tr>
 </thead>
-
 <tbody id="customersList"></tbody>
-
 </table>
-
 </div>
 
 </div>
 
 
-<!-- ================= SUPPLIERS ================= -->
+<!-- SUPPLIERS -->
 
 <div id="suppliers" class="screen">
 
-<button class="back" onclick="show('home')">
-← MAIN MENU
-</button>
+<button class="back-btn" data-page="home">← MAIN MENU</button>
 
 <h2 class="page-title">Suppliers</h2>
 
-<div class="form">
+<div class="card">
 
 <label>Supplier Name</label>
 <input id="supplierName">
@@ -847,43 +699,36 @@ Stock = Purchases + Transfer In − Sales − Transfer Out
 <label>Phone</label>
 <input id="supplierPhone">
 
-<button class="action" onclick="addSupplier()">
+<button class="action-btn" id="addSupplierBtn">
 ➕ ADD SUPPLIER
 </button>
 
 </div>
 
 <div class="table-box">
-
 <table>
-
 <thead>
 <tr>
 <th>Name</th>
 <th>Phone</th>
 </tr>
 </thead>
-
 <tbody id="suppliersList"></tbody>
-
 </table>
-
 </div>
 
 </div>
 
 
-<!-- ================= EXPENSES ================= -->
+<!-- EXPENSES -->
 
 <div id="expenses" class="screen">
 
-<button class="back" onclick="show('home')">
-← MAIN MENU
-</button>
+<button class="back-btn" data-page="home">← MAIN MENU</button>
 
 <h2 class="page-title">Expenses</h2>
 
-<div class="form">
+<div class="card">
 
 <label>Date</label>
 <input type="date" id="expenseDate">
@@ -894,16 +739,14 @@ Stock = Purchases + Transfer In − Sales − Transfer Out
 <label>Amount</label>
 <input type="number" id="expenseAmount">
 
-<button class="action" onclick="recordExpense()">
+<button class="action-btn" id="recordExpenseBtn">
 💰 RECORD EXPENSE
 </button>
 
 </div>
 
 <div class="table-box">
-
 <table>
-
 <thead>
 <tr>
 <th>Date</th>
@@ -911,34 +754,27 @@ Stock = Purchases + Transfer In − Sales − Transfer Out
 <th>Amount</th>
 </tr>
 </thead>
-
 <tbody id="expensesList"></tbody>
-
 </table>
-
 </div>
 
 </div>
 
 
-<!-- ================= MOVEMENTS ================= -->
+<!-- MOVEMENTS -->
 
 <div id="movements" class="screen">
 
-<button class="back" onclick="show('home')">
-← MAIN MENU
-</button>
+<button class="back-btn" data-page="home">← MAIN MENU</button>
 
 <h2 class="page-title">Inventory Movements</h2>
 
 <div class="notice">
-Purchases, Sales, Transfer In and Transfer Out are recorded here.
+All purchases, sales, Transfer In and Transfer Out appear here.
 </div>
 
 <div class="table-box">
-
 <table>
-
 <thead>
 <tr>
 <th>Date</th>
@@ -948,23 +784,18 @@ Purchases, Sales, Transfer In and Transfer Out are recorded here.
 <th>Details</th>
 </tr>
 </thead>
-
 <tbody id="movementsList"></tbody>
-
 </table>
-
 </div>
 
 </div>
 
 
-<!-- ================= REPORTS ================= -->
+<!-- REPORTS -->
 
 <div id="reports" class="screen">
 
-<button class="back" onclick="show('home')">
-← MAIN MENU
-</button>
+<button class="back-btn" data-page="home">← MAIN MENU</button>
 
 <h2 class="page-title">Reports</h2>
 
@@ -984,778 +815,3 @@ Purchases, Sales, Transfer In and Transfer Out are recorded here.
 <h3>GROSS PROFIT</h3>
 <strong id="reportGross">TSh 0</strong>
 </div>
-
-<div class="report-card">
-<h3>EXPENSES</h3>
-<strong id="reportExpenses">TSh 0</strong>
-</div>
-
-<div class="report-card">
-<h3>NET PROFIT</h3>
-<strong id="reportNet">TSh 0</strong>
-</div>
-
-<div class="report-card">
-<h3>TRANSFER IN</h3>
-<strong id="reportIn">0</strong>
-</div>
-
-<div class="report-card">
-<h3>TRANSFER OUT</h3>
-<strong id="reportOut">0</strong>
-</div>
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<script>
-
-/* ================= DATA ================= */
-
-var KEY="SM_TYRES_ALIGNMENT_ACCOUNTING_1";
-
-var data={
-products:{},
-sales:[],
-purchases:[],
-transferIns:[],
-transferOuts:[],
-customers:[],
-suppliers:[],
-expenses:[]
-};
-
-
-/* ================= LOAD ================= */
-
-function loadData(){
-
-    try{
-
-        var saved=
-        localStorage.getItem(KEY);
-
-        if(saved){
-
-            var old=
-            JSON.parse(saved);
-
-            if(old){
-
-                data.products=old.products||{};
-                data.sales=old.sales||[];
-                data.purchases=old.purchases||[];
-                data.transferIns=old.transferIns||[];
-                data.transferOuts=old.transferOuts||[];
-                data.customers=old.customers||[];
-                data.suppliers=old.suppliers||[];
-                data.expenses=old.expenses||[];
-
-            }
-
-        }
-
-    }catch(error){
-
-        console.log(error);
-
-    }
-
-}
-
-
-/* ================= SAVE ================= */
-
-function saveData(){
-
-    localStorage.setItem(
-        KEY,
-        JSON.stringify(data)
-    );
-
-}
-
-
-/* ================= SHOW SCREEN ================= */
-
-function show(id){
-
-    var screens=
-    document.getElementsByClassName("screen");
-
-    for(
-        var i=0;
-        i<screens.length;
-        i++
-    ){
-
-        screens[i].classList.remove("active");
-
-    }
-
-    var page=
-    document.getElementById(id);
-
-    if(page){
-
-        page.classList.add("active");
-
-        window.scrollTo(0,0);
-
-    }
-
-}
-
-
-/* ================= TODAY ================= */
-
-function setDates(){
-
-    var d=
-    new Date();
-
-    var value=
-    d.getFullYear()+
-    "-"+
-    String(d.getMonth()+1).padStart(2,"0")+
-    "-"+
-    String(d.getDate()).padStart(2,"0");
-
-    var ids=[
-        "saleDate",
-        "purchaseDate",
-        "transferInDate",
-        "transferOutDate",
-        "expenseDate"
-    ];
-
-    for(
-        var i=0;
-        i<ids.length;
-        i++
-    ){
-
-        var element=
-        document.getElementById(ids[i]);
-
-        if(element)
-            element.value=value;
-
-    }
-
-}
-
-
-/* ================= MONEY ================= */
-
-function money(n){
-
-    return "TSh "+
-    Number(n||0)
-    .toLocaleString();
-
-}
-
-
-/* ================= ESCAPE ================= */
-
-function safe(v){
-
-    return String(v||"")
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;");
-
-}
-
-
-/* ================= PRODUCTS ================= */
-
-function updateProducts(){
-
-    var ids=[
-        "saleProduct",
-        "purchaseProduct",
-        "transferInProduct",
-        "transferOutProduct"
-    ];
-
-    for(
-        var x=0;
-        x<ids.length;
-        x++
-    ){
-
-        var select=
-        document.getElementById(ids[x]);
-
-        if(!select)continue;
-
-        var current=
-        select.value;
-
-        select.innerHTML=
-        '<option value="">Select Product</option>';
-
-        for(
-            var name in data.products
-        ){
-
-            var p=
-            data.products[name];
-
-            var option=
-            document.createElement("option");
-
-            option.value=p.name;
-
-            option.textContent=
-            p.name+
-            " | Stock: "+
-            Number(p.stock||0);
-
-            select.appendChild(option);
-
-        }
-
-        select.value=current;
-
-    }
-
-}
-
-
-/* ================= ADD PRODUCT ================= */
-
-function addProduct(){
-
-    var code=
-    document.getElementById("productCode").value.trim();
-
-    var name=
-    document.getElementById("productName").value.trim();
-
-    var category=
-    document.getElementById("productCategory").value;
-
-    if(name===""){
-
-        alert("Enter product name.");
-
-        return;
-
-    }
-
-    if(data.products[name]){
-
-        alert("Product already exists.");
-
-        return;
-
-    }
-
-    data.products[name]={
-        code:code,
-        name:name,
-        category:category,
-        stock:0,
-        cost:0
-    };
-
-    saveData();
-
-    render();
-
-    document.getElementById("productCode").value="";
-    document.getElementById("productName").value="";
-
-    alert("Product added successfully.");
-
-}
-
-
-/* ================= PURCHASE ================= */
-
-function recordPurchase(){
-
-    var date=
-    document.getElementById("purchaseDate").value;
-
-    var supplier=
-    document.getElementById("purchaseSupplier").value.trim();
-
-    var product=
-    document.getElementById("purchaseProduct").value;
-
-    var qty=
-    Number(document.getElementById("purchaseQuantity").value);
-
-    var price=
-    Number(document.getElementById("purchasePrice").value);
-
-    if(product===""){
-        alert("Select a product.");
-        return;
-    }
-
-    if(qty<=0){
-        alert("Enter quantity.");
-        return;
-    }
-
-    if(price<=0){
-        alert("Enter purchase price.");
-        return;
-    }
-
-    var p=data.products[product];
-
-    p.stock=
-    Number(p.stock||0)+qty;
-
-    p.cost=price;
-
-    data.purchases.push({
-        date:date,
-        supplier:supplier||"Unknown",
-        product:product,
-        quantity:qty,
-        price:price,
-        total:qty*price
-    });
-
-    saveData();
-    render();
-
-    document.getElementById("purchaseQuantity").value="";
-    document.getElementById("purchasePrice").value="";
-    document.getElementById("purchaseSupplier").value="";
-
-    alert("Purchase recorded successfully.");
-
-}
-
-
-/* ================= SALE ================= */
-
-function recordSale(){
-
-    var date=
-    document.getElementById("saleDate").value;
-
-    var customer=
-    document.getElementById("saleCustomer").value.trim();
-
-    if(customer==="")
-        customer="Cash Customer";
-
-    var product=
-    document.getElementById("saleProduct").value;
-
-    var qty=
-    Number(document.getElementById("saleQuantity").value);
-
-    var price=
-    Number(document.getElementById("salePrice").value);
-
-    if(product===""){
-        alert("Select a product.");
-        return;
-    }
-
-    if(qty<=0){
-        alert("Enter quantity.");
-        return;
-    }
-
-    if(price<=0){
-        alert("Enter selling price.");
-        return;
-    }
-
-    var p=data.products[product];
-
-    var stock=
-    Number(p.stock||0);
-
-    if(stock<qty){
-
-        alert(
-            "Not enough stock.\n\n"+
-            "Available: "+stock+
-            "\nRequested: "+qty
-        );
-
-        return;
-
-    }
-
-    var cost=
-    Number(p.cost||0);
-
-    var total=
-    qty*price;
-
-    var costTotal=
-    qty*cost;
-
-    var profit=
-    total-costTotal;
-
-    var invoice=
-    "SM-"+
-    String(data.sales.length+1)
-    .padStart(5,"0");
-
-    p.stock=stock-qty;
-
-    data.sales.push({
-
-        invoice:invoice,
-        date:date,
-        customer:customer,
-        product:product,
-        quantity:qty,
-        price:price,
-        cost:cost,
-        total:total,
-        costTotal:costTotal,
-        profit:profit
-
-    });
-
-    saveData();
-    render();
-
-    document.getElementById("saleCustomer").value="";
-    document.getElementById("saleQuantity").value="";
-    document.getElementById("salePrice").value="";
-
-    alert(
-        "Sale recorded.\n\nInvoice: "+invoice
-    );
-
-}
-
-
-/* ================= TRANSFER IN ================= */
-
-function recordTransferIn(){
-
-    var date=
-    document.getElementById("transferInDate").value;
-
-    var product=
-    document.getElementById("transferInProduct").value;
-
-    var qty=
-    Number(document.getElementById("transferInQuantity").value);
-
-    var from=
-    document.getElementById("transferInFrom").value.trim();
-
-    var note=
-    document.getElementById("transferInNote").value.trim();
-
-    if(product===""){
-        alert("Select a product.");
-        return;
-    }
-
-    if(qty<=0){
-        alert("Enter quantity.");
-        return;
-    }
-
-    if(from===""){
-        alert("Enter source location.");
-        return;
-    }
-
-    var p=data.products[product];
-
-    p.stock=
-    Number(p.stock||0)+qty;
-
-    data.transferIns.push({
-
-        date:date,
-        product:product,
-        quantity:qty,
-        from:from,
-        note:note
-
-    });
-
-    saveData();
-    render();
-
-    document.getElementById("transferInQuantity").value="";
-    document.getElementById("transferInFrom").value="";
-    document.getElementById("transferInNote").value="";
-
-    alert("Transfer In recorded successfully.");
-
-}
-
-
-/* ================= TRANSFER OUT ================= */
-
-function recordTransferOut(){
-
-    var date=
-    document.getElementById("transferOutDate").value;
-
-    var product=
-    document.getElementById("transferOutProduct").value;
-
-    var qty=
-    Number(document.getElementById("transferOutQuantity").value);
-
-    var to=
-    document.getElementById("transferOutTo").value.trim();
-
-    var note=
-    document.getElementById("transferOutNote").value.trim();
-
-    if(product===""){
-        alert("Select a product.");
-        return;
-    }
-
-    if(qty<=0){
-        alert("Enter quantity.");
-        return;
-    }
-
-    if(to===""){
-        alert("Enter destination.");
-        return;
-    }
-
-    var p=data.products[product];
-
-    var stock=
-    Number(p.stock||0);
-
-    if(stock<qty){
-
-        alert(
-            "Not enough stock.\n\n"+
-            "Available: "+stock+
-            "\nRequested: "+qty
-        );
-
-        return;
-
-    }
-
-    p.stock=stock-qty;
-
-    data.transferOuts.push({
-
-        date:date,
-        product:product,
-        quantity:qty,
-        to:to,
-        note:note
-
-    });
-
-    saveData();
-    render();
-
-    document.getElementById("transferOutQuantity").value="";
-    document.getElementById("transferOutTo").value="";
-    document.getElementById("transferOutNote").value="";
-
-    alert("Transfer Out recorded successfully.");
-
-}
-
-
-/* ================= EXPENSE ================= */
-
-function recordExpense(){
-
-    var date=
-    document.getElementById("expenseDate").value;
-
-    var name=
-    document.getElementById("expenseName").value.trim();
-
-    var amount=
-    Number(document.getElementById("expenseAmount").value);
-
-    if(name===""){
-        alert("Enter expense name.");
-        return;
-    }
-
-    if(amount<=0){
-        alert("Enter amount.");
-        return;
-    }
-
-    data.expenses.push({
-        date:date,
-        name:name,
-        amount:amount
-    });
-
-    saveData();
-    render();
-
-    document.getElementById("expenseName").value="";
-    document.getElementById("expenseAmount").value="";
-
-    alert("Expense recorded successfully.");
-
-}
-
-
-/* ================= CUSTOMER ================= */
-
-function addCustomer(){
-
-    var name=
-    document.getElementById("customerName").value.trim();
-
-    var phone=
-    document.getElementById("customerPhone").value.trim();
-
-    if(name===""){
-        alert("Enter customer name.");
-        return;
-    }
-
-    data.customers.push({
-        name:name,
-        phone:phone
-    });
-
-    saveData();
-    render();
-
-    document.getElementById("customerName").value="";
-    document.getElementById("customerPhone").value="";
-
-    alert("Customer added.");
-
-}
-
-
-/* ================= SUPPLIER ================= */
-
-function addSupplier(){
-
-    var name=
-    document.getElementById("supplierName").value.trim();
-
-    var phone=
-    document.getElementById("supplierPhone").value.trim();
-
-    if(name===""){
-        alert("Enter supplier name.");
-        return;
-    }
-
-    data.suppliers.push({
-        name:name,
-        phone:phone
-    });
-
-    saveData();
-    render();
-
-    document.getElementById("supplierName").value="";
-    document.getElementById("supplierPhone").value="";
-
-    alert("Supplier added.");
-
-}
-
-
-/* ================= RENDER ================= */
-
-function render(){
-
-    updateProducts();
-
-    renderProducts();
-    renderInventory();
-    renderSales();
-    renderPurchases();
-    renderTransferIn();
-    renderTransferOut();
-    renderExpenses();
-    renderCustomers();
-    renderSuppliers();
-    renderMovements();
-    renderReports();
-
-}
-
-
-/* ================= PRODUCT LIST ================= */
-
-function renderProducts(){
-
-    var body=
-    document.getElementById("productsList");
-
-    body.innerHTML="";
-
-    for(
-        var name in data.products
-    ){
-
-        var p=data.products[name];
-
-        body.innerHTML+=
-        "<tr>"+
-        "<td>"+safe(p.code)+"</td>"+
-        "<td>"+safe(p.name)+"</td>"+
-        "<td>"+safe(p.category)+"</td>"+
-        "<td>"+Number(p.stock||0)+"</td>"+
-        "<td>"+money(p.cost)+"</td>"+
-        "</tr>";
-
-    }
-
-}
-
-
-/* ================= INVENTORY ================= */
-
-function renderInventory(){
-
-    var body=
-    document.getElementById("inventoryList");
-
-    body.innerHTML="";
-
-    var names=
-    Object.keys(data.products);
-
-    if(names.length===0){
-
-        body.innerHTML=
-        "<tr><td colspan='6' class='empty'>"+
-        "No products yet."+
-        "</td></tr>";
-
-        return;
-
-    }
-
-    for(
-        var i=0;
-        i<names.length;
-       
