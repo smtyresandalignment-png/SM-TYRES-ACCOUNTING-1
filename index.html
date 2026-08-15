@@ -1,80 +1,844 @@
-<!-- INVENTORY -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
-<div id="inventory" class="screen">
+<meta charset="UTF-8">
 
-<button class="back" onclick="openPage('dashboard')">
-← DASHBOARD
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0,
+maximum-scale=1.0, user-scalable=no">
+
+<title>SM TYRES AND ALIGNMENT ACCOUNTING 1</title>
+
+<style>
+
+/* ================= BASIC ================= */
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+html,body{
+    margin:0;
+    padding:0;
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+body{
+    background:
+    linear-gradient(
+        rgba(3,18,30,.94),
+        rgba(3,18,30,.97)
+    ),
+    radial-gradient(
+        circle at top right,
+        #159bd8,
+        #03121e 60%
+    );
+
+    color:#17202a;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    background:linear-gradient(
+        135deg,
+        #04111d,
+        #0b4c70,
+        #04111d
+    );
+
+    color:white;
+    text-align:center;
+
+    padding:18px 10px;
+
+    border-bottom:3px solid #16a8e8;
+
+    box-shadow:
+    0 4px 15px rgba(0,0,0,.5);
+}
+
+.logo{
+    width:72px;
+    height:72px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:#061723;
+
+    border:4px solid #16a8e8;
+
+    font-size:34px;
+
+    box-shadow:
+    0 0 20px rgba(22,168,232,.5);
+}
+
+.header h1{
+    margin:8px 0 3px;
+
+    font-size:23px;
+
+    letter-spacing:1px;
+}
+
+.header p{
+    margin:0;
+
+    color:#b9e8fb;
+
+    font-size:13px;
+}
+
+/* ================= APP ================= */
+
+.app{
+    width:100%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.screen{
+    display:none;
+    padding:16px;
+}
+
+.screen.active{
+    display:block;
+}
+
+/* ================= HOME ================= */
+
+.home-title{
+    color:white;
+
+    text-align:center;
+
+    font-size:26px;
+
+    margin:5px 0;
+}
+
+.home-subtitle{
+    color:#a9cad9;
+
+    text-align:center;
+
+    margin:0 0 20px;
+}
+
+.menu{
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:13px;
+}
+
+.menu button{
+
+    min-height:105px;
+
+    border:0;
+
+    border-radius:16px;
+
+    background:
+    linear-gradient(
+        145deg,
+        #147eaf,
+        #093f5e
+    );
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    box-shadow:
+    0 6px 15px rgba(0,0,0,.4);
+
+    border:
+    1px solid
+    rgba(255,255,255,.12);
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+}
+
+.menu button:active{
+
+    transform:scale(.96);
+
+    background:#159bd8;
+}
+
+.icon{
+    display:block;
+
+    font-size:32px;
+
+    margin-bottom:8px;
+}
+
+/* ================= TITLES ================= */
+
+.title{
+
+    color:white;
+
+    font-size:24px;
+
+    margin:4px 0 16px;
+}
+
+/* ================= BUTTONS ================= */
+
+.back{
+
+    width:100%;
+
+    min-height:50px;
+
+    margin-bottom:15px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:#263d4c;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+}
+
+.back:active{
+    background:#159bd8;
+}
+
+.action{
+
+    width:100%;
+
+    min-height:52px;
+
+    margin-top:17px;
+
+    border:0;
+
+    border-radius:10px;
+
+    background:#0879b2;
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    touch-action:manipulation;
+}
+
+.action:active{
+    transform:scale(.98);
+}
+
+.green{
+    background:#168d48;
+}
+
+.orange{
+    background:#d87908;
+}
+
+/* ================= FORM ================= */
+
+.form{
+
+    background:#f8fbfd;
+
+    padding:17px;
+
+    border-radius:15px;
+
+    box-shadow:
+    0 7px 18px rgba(0,0,0,.3);
+}
+
+label{
+
+    display:block;
+
+    margin:
+    13px 0 5px;
+
+    font-weight:bold;
+
+    color:#183a4f;
+}
+
+input,
+select,
+textarea{
+
+    width:100%;
+
+    min-height:48px;
+
+    padding:12px;
+
+    border:
+    2px solid #d5e1e7;
+
+    border-radius:9px;
+
+    font-size:16px;
+
+    background:white;
+}
+
+textarea{
+    min-height:80px;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+    outline:none;
+
+    border-color:#159bd8;
+}
+
+/* ================= NOTICE ================= */
+
+.notice{
+
+    background:#e6f6ff;
+
+    border-left:
+    5px solid #159bd8;
+
+    padding:12px;
+
+    margin-bottom:14px;
+
+    border-radius:8px;
+
+    color:#16415b;
+}
+
+/* ================= TABLE ================= */
+
+.table-box{
+
+    margin-top:15px;
+
+    background:white;
+
+    border-radius:15px;
+
+    padding:8px;
+
+    overflow-x:auto;
+
+    box-shadow:
+    0 7px 18px rgba(0,0,0,.3);
+}
+
+table{
+
+    width:100%;
+
+    min-width:650px;
+
+    border-collapse:collapse;
+}
+
+th{
+
+    background:#0a4264;
+
+    color:white;
+
+    padding:11px;
+
+    text-align:left;
+}
+
+td{
+
+    padding:10px;
+
+    border-bottom:
+    1px solid #e1e7ea;
+}
+
+.empty{
+
+    text-align:center;
+
+    color:#777;
+
+    padding:25px;
+}
+
+.in{
+
+    color:#168344;
+
+    font-weight:bold;
+}
+
+.out{
+
+    color:#c0392b;
+
+    font-weight:bold;
+}
+
+/* ================= REPORT ================= */
+
+.report-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(2,1fr);
+
+    gap:12px;
+}
+
+.report-card{
+
+    background:white;
+
+    border-radius:14px;
+
+    padding:18px;
+
+    box-shadow:
+    0 5px 15px rgba(0,0,0,.3);
+}
+
+.report-card h3{
+
+    margin:0;
+
+    font-size:13px;
+
+    color:#60717d;
+}
+
+.report-card strong{
+
+    display:block;
+
+    margin-top:9px;
+
+    font-size:20px;
+
+    color:#092f49;
+}
+
+/* ================= DESKTOP ================= */
+
+@media(min-width:700px){
+
+    .menu{
+
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+    .report-grid{
+
+        grid-template-columns:
+        repeat(4,1fr);
+    }
+
+    .screen{
+
+        padding:25px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+<div class="logo">🚗</div>
+
+<h1>
+SM TYRES & ALIGNMENT
+</h1>
+
+<p>
+ACCOUNTING 1 • SALES • INVENTORY
+</p>
+
+</header>
+
+
+<div class="app">
+
+
+<!-- ================================================= -->
+<!-- HOME -->
+<!-- ================================================= -->
+
+<section id="home"
+class="screen active">
+
+<h2 class="home-title">
+SM TYRES & ALIGNMENT
+</h2>
+
+<p class="home-subtitle">
+Accounting & Inventory Management
+</p>
+
+
+<div class="menu">
+
+
+<button onclick="openScreen('sales')">
+
+<span class="icon">🧾</span>
+
+SALES
+
 </button>
 
-<h2>📋 Inventory</h2>
 
-<div class="notice">
-Purchases increase stock. Sales decrease stock.<br>
-Transfer In increases stock. Transfer Out decreases stock.
+<button onclick="openScreen('purchases')">
+
+<span class="icon">🛒</span>
+
+PURCHASES
+
+</button>
+
+
+<button onclick="openScreen('transferIn')">
+
+<span class="icon">📥</span>
+
+TRANSFER IN
+
+</button>
+
+
+<button onclick="openScreen('transferOut')">
+
+<span class="icon">📤</span>
+
+TRANSFER OUT
+
+</button>
+
+
+<button onclick="openScreen('inventory')">
+
+<span class="icon">📦</span>
+
+INVENTORY
+
+</button>
+
+
+<button onclick="openScreen('products')">
+
+<span class="icon">🔧</span>
+
+PRODUCTS
+
+</button>
+
+
+<button onclick="openScreen('customers')">
+
+<span class="icon">👥</span>
+
+CUSTOMERS
+
+</button>
+
+
+<button onclick="openScreen('suppliers')">
+
+<span class="icon">🏭</span>
+
+SUPPLIERS
+
+</button>
+
+
+<button onclick="openScreen('expenses')">
+
+<span class="icon">💰</span>
+
+EXPENSES
+
+</button>
+
+
+<button onclick="openScreen('movements')">
+
+<span class="icon">🔄</span>
+
+MOVEMENTS
+
+</button>
+
+
+<button onclick="openScreen('reports')">
+
+<span class="icon">📊</span>
+
+REPORTS
+
+</button>
+
+
 </div>
 
-<!-- INVENTORY MOVEMENT -->
+</section>
 
-<div class="panel">
 
-<h3>🔄 Inventory Movement</h3>
+<!-- ================================================= -->
+<!-- SALES -->
+<!-- ================================================= -->
+
+<section id="sales"
+class="screen">
+
+<button class="back"
+onclick="openScreen('home')">
+
+← MAIN MENU
+
+</button>
+
+<h2 class="title">
+Sales
+</h2>
+
+
+<div class="form">
+
 
 <label>Date</label>
-<input id="movementDate" type="date">
 
-<select id="movementProduct">
-<option value="">Select Product</option>
+<input
+type="date"
+id="saleDate">
+
+
+<label>Customer</label>
+
+<input
+id="saleCustomer"
+placeholder="Customer name">
+
+
+<label>Product</label>
+
+<select id="saleProduct">
+
+<option value="">
+Select Product
+</option>
+
 </select>
 
-<div class="row">
 
-<input id="movementQty"
+<label>Quantity</label>
+
+<input
 type="number"
-min="1"
-value="1"
-placeholder="Quantity">
+id="saleQuantity"
+min="1">
 
-<select id="movementType">
 
-<option value="IN">
-TRANSFER IN
-</option>
+<label>Selling Price</label>
 
-<option value="OUT">
-TRANSFER OUT
+<input
+type="number"
+id="salePrice"
+min="0">
+
+
+<button
+class="action"
+onclick="recordSale()">
+
+RECORD SALE
+
+</button>
+
+
+</div>
+
+
+<div class="table-box">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Invoice</th>
+<th>Date</th>
+<th>Customer</th>
+<th>Product</th>
+<th>Qty</th>
+<th>Total</th>
+<th>Profit</th>
+
+</tr>
+
+</thead>
+
+<tbody id="salesList">
+
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- PURCHASES -->
+<!-- ================================================= -->
+
+<section id="purchases"
+class="screen">
+
+<button class="back"
+onclick="openScreen('home')">
+
+← MAIN MENU
+
+</button>
+
+<h2 class="title">
+Purchases
+</h2>
+
+
+<div class="form">
+
+
+<label>Date</label>
+
+<input
+type="date"
+id="purchaseDate">
+
+
+<label>Supplier</label>
+
+<input
+id="purchaseSupplier"
+placeholder="Supplier name">
+
+
+<label>Product</label>
+
+<select id="purchaseProduct">
+
+<option value="">
+Select Product
 </option>
 
 </select>
 
-</div>
 
-<input id="movementReference"
-placeholder="Reference / Note (optional)">
+<label>Quantity</label>
+
+<input
+type="number"
+id="purchaseQuantity"
+min="1">
+
+
+<label>Purchase Price</label>
+
+<input
+type="number"
+id="purchasePrice"
+min="0">
+
 
 <button
-class="primary"
-onclick="transferIn()">
+class="action"
+onclick="recordPurchase()">
 
-⬆️ TRANSFER IN
+RECORD PURCHASE
 
 </button>
 
-<button
-class="primary"
-onclick="transferOut()">
-
-⬇️ TRANSFER OUT
-
-</button>
 
 </div>
 
-<h3>📦 Current Stock</h3>
 
-<div id="inventoryList" class="list"></div>
+<div class="table-box">
 
-<h3>🔄 Movement History</h3>
+<table>
 
-<div id="movementList" class="list"></div>
+<thead>
 
-</div>
+<tr>
+
+<th>Date</th>
+<th>Supplier</th>
+<th>Product</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Total</th>
+
+</tr>
+
+</thead>
+
+<tbody id="purchasesList">
+
+</tbody>
+
+</table>
+
+</
