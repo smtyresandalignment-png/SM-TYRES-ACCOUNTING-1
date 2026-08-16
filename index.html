@@ -7,14 +7,9 @@
 <title>SM TYRES & ALIGNMENT</title>
 
 <style>
-*{
-box-sizing:border-box;
--webkit-tap-highlight-color:transparent;
-}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 
-html{
-scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
 margin:0;
@@ -23,14 +18,112 @@ background:#eef3f7;
 color:#172638;
 }
 
-button,input,select,textarea{
-font-family:inherit;
-}
+button,input,select,textarea{font-family:inherit}
 
 button{
 touch-action:manipulation;
 cursor:pointer;
 }
+
+.hidden{display:none!important}
+
+/* ================= LOGIN ================= */
+
+#loginScreen{
+position:fixed;
+inset:0;
+z-index:99999;
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
+background:
+linear-gradient(135deg,#061b2d,#087f91);
+}
+
+.login-box{
+width:100%;
+max-width:390px;
+background:#fff;
+border-radius:20px;
+padding:28px 22px;
+box-shadow:0 15px 50px rgba(0,0,0,.30);
+text-align:center;
+}
+
+.login-logo{
+width:82px;
+height:82px;
+margin:0 auto 15px;
+border:4px solid #f5bd22;
+border-radius:50%;
+background:#071b2b;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:29px;
+font-weight:bold;
+color:#f5bd22;
+}
+
+.login-box h1{
+margin:5px 0;
+font-size:22px;
+color:#123b5d;
+}
+
+.login-box p{
+margin:6px 0 20px;
+color:#6c7a83;
+font-size:13px;
+}
+
+.login-box input{
+width:100%;
+padding:14px;
+margin:7px 0;
+border:1px solid #ccd7df;
+border-radius:9px;
+font-size:16px;
+outline:none;
+}
+
+.login-box input:focus{
+border-color:#087f91;
+box-shadow:0 0 0 2px rgba(8,127,145,.12);
+}
+
+.login-button{
+width:100%;
+padding:14px;
+margin-top:10px;
+border:0;
+border-radius:9px;
+background:#087c91;
+color:white;
+font-size:15px;
+font-weight:bold;
+}
+
+.login-button:active{
+transform:scale(.98);
+}
+
+.login-error{
+min-height:22px;
+margin-top:10px;
+color:#c73543;
+font-size:13px;
+font-weight:bold;
+}
+
+.login-info{
+margin-top:15px;
+font-size:11px;
+color:#87939a;
+}
+
+/* ================= HEADER ================= */
 
 .header{
 position:fixed;
@@ -76,6 +169,19 @@ font-size:10px;
 opacity:.8;
 }
 
+.logout-button{
+margin-left:auto;
+border:0;
+border-radius:8px;
+padding:10px 12px;
+background:#c73543;
+color:white;
+font-weight:bold;
+font-size:12px;
+}
+
+/* ================= SIDEBAR ================= */
+
 .sidebar{
 position:fixed;
 top:74px;
@@ -115,6 +221,8 @@ font-size:20px;
 text-align:center;
 vertical-align:middle;
 }
+
+/* ================= MAIN ================= */
 
 .main{
 margin-left:190px;
@@ -164,9 +272,7 @@ textarea:focus{
 border-color:#087f91;
 }
 
-textarea{
-resize:vertical;
-}
+textarea{resize:vertical}
 
 .btn{
 display:block;
@@ -318,9 +424,7 @@ border-radius:12px;
 box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
-.invoice-title{
-text-align:center;
-}
+.invoice-title{text-align:center}
 
 .total-line{
 display:flex;
@@ -344,29 +448,26 @@ color:#c73543;
 font-weight:bold;
 }
 
+/* ================= MOBILE ================= */
+
 @media(max-width:750px){
 
-.sidebar{
-width:155px;
-}
+.sidebar{width:155px}
 
-.main{
-margin-left:155px;
-}
+.main{margin-left:155px}
 
-.cards{
-grid-template-columns:1fr 1fr;
-}
+.cards{grid-template-columns:1fr 1fr}
 
-.transfer-grid{
-grid-template-columns:1fr;
-}
+.transfer-grid{grid-template-columns:1fr}
 
 }
 
 @media(max-width:500px){
 
+.header{height:66px}
+
 .sidebar{
+top:66px;
 width:125px;
 }
 
@@ -374,6 +475,7 @@ width:125px;
 margin-left:125px;
 padding-left:8px;
 padding-right:8px;
+padding-top:80px;
 }
 
 .menu{
@@ -386,18 +488,19 @@ width:25px;
 font-size:17px;
 }
 
-.brand h1{
-font-size:14px;
-}
+.brand h1{font-size:14px}
 
-.brand p{
-display:none;
-}
+.brand p{display:none}
 
 .logo{
 width:48px;
 height:48px;
 font-size:17px;
+}
+
+.logout-button{
+padding:8px 7px;
+font-size:10px;
 }
 
 .form-grid{
@@ -409,10 +512,96 @@ grid-template-columns:1fr;
 }
 
 }
+
+/* ================= PRINT ================= */
+
+@media print{
+.header,
+.sidebar,
+.logout-button{
+display:none!important;
+}
+
+.main{
+margin:0;
+padding:0;
+}
+
+.screen{
+display:none!important;
+}
+
+#reports{
+display:block!important;
+}
+
+body{
+background:white;
+}
+}
 </style>
 </head>
 
 <body>
+
+<!-- ======================================================
+     LOGIN SCREEN
+====================================================== -->
+
+<div id="loginScreen">
+
+<div class="login-box">
+
+<div class="login-logo">SM</div>
+
+<h1>SM TYRES & ALIGNMENT</h1>
+
+<p>Accounting & Inventory System</p>
+
+<form id="loginForm" autocomplete="off">
+
+<input
+id="loginUsername"
+type="text"
+placeholder="Username"
+autocomplete="username"
+autocapitalize="none"
+spellcheck="false"
+>
+
+<input
+id="loginPassword"
+type="password"
+placeholder="Password"
+autocomplete="current-password"
+>
+
+<button
+id="loginButton"
+type="submit"
+class="login-button"
+>
+🔐 LOGIN
+</button>
+
+<div id="loginError" class="login-error"></div>
+
+</form>
+
+<div class="login-info">
+Authorized access only
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ======================================================
+     APPLICATION
+====================================================== -->
+
+<div id="app" class="hidden">
 
 <header class="header">
 
@@ -423,7 +612,16 @@ grid-template-columns:1fr;
 <p>ACCOUNTING & INVENTORY</p>
 </div>
 
+<button
+id="logoutButton"
+type="button"
+class="logout-button"
+>
+🔒 LOGOUT
+</button>
+
 </header>
+
 
 <aside class="sidebar">
 
@@ -473,6 +671,7 @@ grid-template-columns:1fr;
 
 </aside>
 
+
 <main class="main">
 
 <!-- SALES -->
@@ -487,27 +686,39 @@ grid-template-columns:1fr;
 
 <input id="saleDate" type="date">
 
-<input id="saleCustomer"
-placeholder="Customer name">
+<input
+id="saleCustomer"
+placeholder="Customer name"
+>
 
-<input id="saleProduct"
+<input
+id="saleProduct"
 list="productOptions"
-placeholder="Product name">
+placeholder="Product name"
+>
 
-<input id="saleQuantity"
+<input
+id="saleQuantity"
 type="number"
 min="1"
 value="1"
-placeholder="Quantity">
+placeholder="Quantity"
+>
 
-<input id="salePrice"
+<input
+id="salePrice"
 type="number"
 min="0"
-placeholder="Selling price">
+placeholder="Selling price"
+>
 
 </div>
 
-<button id="saleButton" type="button" class="btn green">
+<button
+id="saleButton"
+type="button"
+class="btn green"
+>
 ➕ RECORD SALE
 </button>
 
@@ -516,6 +727,7 @@ placeholder="Selling price">
 <div id="salesList" class="list"></div>
 
 </section>
+
 
 <!-- PURCHASES -->
 
@@ -529,27 +741,39 @@ placeholder="Selling price">
 
 <input id="purchaseDate" type="date">
 
-<input id="purchaseSupplier"
-placeholder="Supplier name">
+<input
+id="purchaseSupplier"
+placeholder="Supplier name"
+>
 
-<input id="purchaseProduct"
+<input
+id="purchaseProduct"
 list="productOptions"
-placeholder="Product name">
+placeholder="Product name"
+>
 
-<input id="purchaseQuantity"
+<input
+id="purchaseQuantity"
 type="number"
 min="1"
 value="1"
-placeholder="Quantity">
+placeholder="Quantity"
+>
 
-<input id="purchasePrice"
+<input
+id="purchasePrice"
 type="number"
 min="0"
-placeholder="Buying price">
+placeholder="Buying price"
+>
 
 </div>
 
-<button id="purchaseButton" type="button" class="btn blue">
+<button
+id="purchaseButton"
+type="button"
+class="btn blue"
+>
 ➕ RECORD PURCHASE
 </button>
 
@@ -558,6 +782,7 @@ placeholder="Buying price">
 <div id="purchasesList" class="list"></div>
 
 </section>
+
 
 <!-- PRODUCTS -->
 
@@ -569,18 +794,28 @@ placeholder="Buying price">
 
 <div class="form-grid">
 
-<input id="productCode"
-placeholder="Product code / SKU">
+<input
+id="productCode"
+placeholder="Product code / SKU"
+>
 
-<input id="productName"
-placeholder="Product name">
+<input
+id="productName"
+placeholder="Product name"
+>
 
-<input id="productCategory"
-placeholder="Category">
+<input
+id="productCategory"
+placeholder="Category"
+>
 
 </div>
 
-<button id="productButton" type="button" class="btn green">
+<button
+id="productButton"
+type="button"
+class="btn green"
+>
 ➕ ADD PRODUCT
 </button>
 
@@ -588,14 +823,17 @@ placeholder="Category">
 
 <div class="box">
 
-<input id="productSearch"
-placeholder="🔎 Search product">
+<input
+id="productSearch"
+placeholder="🔎 Search product"
+>
 
 </div>
 
 <div id="productsList" class="list"></div>
 
 </section>
+
 
 <!-- INVENTORY -->
 
@@ -617,6 +855,7 @@ Sales and Transfer Out decrease stock.
 <div id="movementList" class="list"></div>
 
 </section>
+
 
 <!-- TRANSFER IN -->
 
@@ -640,22 +879,34 @@ Sales and Transfer Out decrease stock.
 
 <input id="transferInDate" type="date">
 
-<input id="transferInProduct"
+<input
+id="transferInProduct"
 list="productOptions"
-placeholder="Product">
+placeholder="Product"
+>
 
-<input id="transferInQuantity"
+<input
+id="transferInQuantity"
 type="number"
 min="1"
-placeholder="Quantity">
+placeholder="Quantity"
+>
 
-<input id="transferInFrom"
-placeholder="From location">
+<input
+id="transferInFrom"
+placeholder="From location"
+>
 
-<input id="transferInNote"
-placeholder="Note">
+<input
+id="transferInNote"
+placeholder="Note"
+>
 
-<button id="transferInButton" type="button" class="btn green">
+<button
+id="transferInButton"
+type="button"
+class="btn green"
+>
 📥 CONFIRM TRANSFER IN
 </button>
 
@@ -666,6 +917,7 @@ placeholder="Note">
 <div id="transferInList" class="list"></div>
 
 </section>
+
 
 <!-- TRANSFER OUT -->
 
@@ -689,22 +941,34 @@ placeholder="Note">
 
 <input id="transferOutDate" type="date">
 
-<input id="transferOutProduct"
+<input
+id="transferOutProduct"
 list="productOptions"
-placeholder="Product">
+placeholder="Product"
+>
 
-<input id="transferOutQuantity"
+<input
+id="transferOutQuantity"
 type="number"
 min="1"
-placeholder="Quantity">
+placeholder="Quantity"
+>
 
-<input id="transferOutTo"
-placeholder="To location">
+<input
+id="transferOutTo"
+placeholder="To location"
+>
 
-<input id="transferOutNote"
-placeholder="Note">
+<input
+id="transferOutNote"
+placeholder="Note"
+>
 
-<button id="transferOutButton" type="button" class="btn orange">
+<button
+id="transferOutButton"
+type="button"
+class="btn orange"
+>
 📤 CONFIRM TRANSFER OUT
 </button>
 
@@ -716,6 +980,7 @@ placeholder="Note">
 
 </section>
 
+
 <!-- EXPENSES -->
 
 <section class="screen" id="expenses">
@@ -726,15 +991,23 @@ placeholder="Note">
 
 <input id="expenseDate" type="date">
 
-<input id="expenseName"
-placeholder="Expense description">
+<input
+id="expenseName"
+placeholder="Expense description"
+>
 
-<input id="expenseAmount"
+<input
+id="expenseAmount"
 type="number"
 min="0"
-placeholder="Amount TSh">
+placeholder="Amount TSh"
+>
 
-<button id="expenseButton" type="button" class="btn purple">
+<button
+id="expenseButton"
+type="button"
+class="btn purple"
+>
 ➕ RECORD EXPENSE
 </button>
 
@@ -744,6 +1017,7 @@ placeholder="Amount TSh">
 
 </section>
 
+
 <!-- SUPPLIERS -->
 
 <section class="screen" id="suppliers">
@@ -752,13 +1026,21 @@ placeholder="Amount TSh">
 
 <div class="box">
 
-<input id="supplierName"
-placeholder="Supplier name">
+<input
+id="supplierName"
+placeholder="Supplier name"
+>
 
-<input id="supplierPhone"
-placeholder="Phone number">
+<input
+id="supplierPhone"
+placeholder="Phone number"
+>
 
-<button id="supplierButton" type="button" class="btn blue">
+<button
+id="supplierButton"
+type="button"
+class="btn blue"
+>
 ➕ ADD SUPPLIER
 </button>
 
@@ -767,6 +1049,7 @@ placeholder="Phone number">
 <div id="suppliersList" class="list"></div>
 
 </section>
+
 
 <!-- REPORTS -->
 
@@ -807,7 +1090,10 @@ placeholder="Phone number">
 
 <div class="total-line">
 <span>Net Profit</span>
-<span id="netProfit" style="color:#12965d">
+<span
+id="netProfit"
+style="color:#12965d"
+>
 TSh 0
 </span>
 </div>
@@ -819,6 +1105,7 @@ TSh 0
 <div id="invoiceList"></div>
 
 </section>
+
 
 <!-- BACKUP -->
 
@@ -832,26 +1119,41 @@ TSh 0
 The JSON backup contains all application data.
 </div>
 
-<button id="jsonBackupButton" type="button" class="btn green">
+<button
+id="jsonBackupButton"
+type="button"
+class="btn green"
+>
 💾 DOWNLOAD DATA BACKUP
 </button>
 
-<button id="pdfBackupButton" type="button" class="btn orange">
+<button
+id="pdfBackupButton"
+type="button"
+class="btn orange"
+>
 📄 CREATE PRINT/PDF BACKUP
 </button>
 
-<button id="copyBackupButton" type="button" class="btn blue">
+<button
+id="copyBackupButton"
+type="button"
+class="btn blue"
+>
 📋 COPY BACKUP DATA
 </button>
 
-<textarea id="backupText"
+<textarea
+id="backupText"
 rows="12"
 readonly
-placeholder="Backup data will appear here."></textarea>
+placeholder="Backup data will appear here."
+></textarea>
 
 </div>
 
 </section>
+
 
 <!-- RESTORE -->
 
@@ -865,19 +1167,31 @@ placeholder="Backup data will appear here."></textarea>
 Select a JSON backup created by this app, or paste the backup text.
 </div>
 
-<input id="restoreFile"
+<input
+id="restoreFile"
 type="file"
-accept=".json,application/json">
+accept=".json,application/json"
+>
 
-<textarea id="restoreText"
+<textarea
+id="restoreText"
 rows="12"
-placeholder="Paste JSON backup here"></textarea>
+placeholder="Paste JSON backup here"
+></textarea>
 
-<button id="restoreButton" type="button" class="btn purple">
+<button
+id="restoreButton"
+type="button"
+class="btn purple"
+>
 ♻️ RESTORE DATA
 </button>
 
-<button id="deleteButton" type="button" class="btn red">
+<button
+id="deleteButton"
+type="button"
+class="btn red"
+>
 ⚠️ DELETE ALL DATA
 </button>
 
@@ -889,16 +1203,35 @@ placeholder="Paste JSON backup here"></textarea>
 
 <datalist id="productOptions"></datalist>
 
+</div>
+
+
 <script>
 
 /* =========================================================
-   STORAGE
+   LOGIN CONFIGURATION
 ========================================================= */
 
-var STORAGE = "SM_TYRES_ALIGNMENT_FINAL_V2";
+const LOGIN_USERNAME = "smtyres";
+const LOGIN_PASSWORD = "4321";
+
+const LOGIN_SESSION_KEY =
+"SM_TYRES_LOGIN_SESSION";
 
 
-var data = {
+/* =========================================================
+   APPLICATION STORAGE
+========================================================= */
+
+const STORAGE =
+"SM_TYRES_ALIGNMENT_FINAL_V3";
+
+
+/* =========================================================
+   APPLICATION DATA
+========================================================= */
+
+let data = {
 products:{},
 sales:[],
 purchases:[],
@@ -926,7 +1259,7 @@ return document.getElementById(id);
 
 function value(id){
 
-var element=el(id);
+const element=el(id);
 
 if(!element){
 return "";
@@ -943,7 +1276,7 @@ return String(element.value || "").trim();
 
 function today(){
 
-var d=new Date();
+const d=new Date();
 
 return d.getFullYear()+"-"+
 String(d.getMonth()+1).padStart(2,"0")+"-"+
@@ -958,9 +1291,9 @@ String(d.getDate()).padStart(2,"0");
 
 function money(number){
 
-var n=Number(number);
+let n=Number(number);
 
-if(!isFinite(n)){
+if(!Number.isFinite(n)){
 n=0;
 }
 
@@ -992,6 +1325,119 @@ return String(text==null?"":text)
 
 
 /* =========================================================
+   LOGIN
+========================================================= */
+
+function showLogin(){
+
+el("loginScreen").classList.remove("hidden");
+
+el("app").classList.add("hidden");
+
+setTimeout(function(){
+
+el("loginUsername").focus();
+
+},100);
+
+}
+
+
+function showApp(){
+
+el("loginScreen").classList.add("hidden");
+
+el("app").classList.remove("hidden");
+
+}
+
+
+function login(){
+
+const username=
+el("loginUsername").value.trim();
+
+const password=
+el("loginPassword").value;
+
+
+el("loginError").textContent="";
+
+
+if(
+username === LOGIN_USERNAME &&
+password === LOGIN_PASSWORD
+){
+
+/*
+Store only the login state.
+The password itself is NOT stored.
+*/
+
+sessionStorage.setItem(
+LOGIN_SESSION_KEY,
+"true"
+);
+
+el("loginPassword").value="";
+
+showApp();
+
+render();
+
+return true;
+
+}
+
+
+el("loginError").textContent=
+"Incorrect username or password.";
+
+el("loginPassword").value="";
+
+el("loginPassword").focus();
+
+return false;
+
+}
+
+
+function logout(){
+
+sessionStorage.removeItem(
+LOGIN_SESSION_KEY
+);
+
+el("loginUsername").value="";
+el("loginPassword").value="";
+el("loginError").textContent="";
+
+showLogin();
+
+}
+
+
+function checkLogin(){
+
+const loggedIn=
+sessionStorage.getItem(
+LOGIN_SESSION_KEY
+);
+
+if(loggedIn==="true"){
+
+showApp();
+
+}else{
+
+showLogin();
+
+}
+
+}
+
+
+/* =========================================================
    SAVE
 ========================================================= */
 
@@ -1006,7 +1452,9 @@ JSON.stringify(data)
 
 }catch(error){
 
-alert("Unable to save application data.");
+alert(
+"Unable to save application data."
+);
 
 }
 
@@ -1019,7 +1467,8 @@ alert("Unable to save application data.");
 
 function load(){
 
-var saved=localStorage.getItem(STORAGE);
+const saved=
+localStorage.getItem(STORAGE);
 
 if(!saved){
 return;
@@ -1027,27 +1476,79 @@ return;
 
 try{
 
-var x=JSON.parse(saved);
+const x=JSON.parse(saved);
 
 if(!x || typeof x!=="object"){
 return;
 }
 
-data.products=x.products || {};
-data.sales=Array.isArray(x.sales)?x.sales:[];
-data.purchases=Array.isArray(x.purchases)?x.purchases:[];
-data.expenses=Array.isArray(x.expenses)?x.expenses:[];
-data.suppliers=Array.isArray(x.suppliers)?x.suppliers:[];
-data.movements=Array.isArray(x.movements)?x.movements:[];
-data.transferIn=Array.isArray(x.transferIn)?x.transferIn:[];
-data.transferOut=Array.isArray(x.transferOut)?x.transferOut:[];
+data.products=
+x.products &&
+typeof x.products==="object"
+?
+x.products
+:
+{};
+
+data.sales=
+Array.isArray(x.sales)
+?
+x.sales
+:
+[];
+
+data.purchases=
+Array.isArray(x.purchases)
+?
+x.purchases
+:
+[];
+
+data.expenses=
+Array.isArray(x.expenses)
+?
+x.expenses
+:
+[];
+
+data.suppliers=
+Array.isArray(x.suppliers)
+?
+x.suppliers
+:
+[];
+
+data.movements=
+Array.isArray(x.movements)
+?
+x.movements
+:
+[];
+
+data.transferIn=
+Array.isArray(x.transferIn)
+?
+x.transferIn
+:
+[];
+
+data.transferOut=
+Array.isArray(x.transferOut)
+?
+x.transferOut
+:
+[];
 
 data.invoiceNumber=
 Number(x.invoiceNumber||0);
 
 }catch(error){
 
-alert("Saved data could not be loaded.");
+console.error(error);
+
+alert(
+"Saved accounting data could not be loaded."
+);
 
 }
 
@@ -1055,7 +1556,7 @@ alert("Saved data could not be loaded.");
 
 
 /* =========================================================
-   DATES
+   SET DATES
 ========================================================= */
 
 function setDates(){
@@ -1075,37 +1576,37 @@ el("transferOutDate").value=today();
 
 function calculateTotals(){
 
-var sales=0;
-var purchases=0;
-var cost=0;
-var expenses=0;
+let sales=0;
+let purchases=0;
+let cost=0;
+let expenses=0;
 
 data.sales.forEach(function(item){
 
-sales += Number(item.total)||0;
+sales+=Number(item.total)||0;
 
-cost += Number(item.costTotal)||0;
+cost+=Number(item.costTotal)||0;
 
 });
 
 
 data.purchases.forEach(function(item){
 
-purchases += Number(item.total)||0;
+purchases+=Number(item.total)||0;
 
 });
 
 
 data.expenses.forEach(function(item){
 
-expenses += Number(item.amount)||0;
+expenses+=Number(item.amount)||0;
 
 });
 
 
-var gross=sales-cost;
+const gross=sales-cost;
 
-var net=gross-expenses;
+const net=gross-expenses;
 
 
 return{
@@ -1121,20 +1622,22 @@ net:net
 
 
 /* =========================================================
-   PRODUCT
+   ADD PRODUCT
 ========================================================= */
 
 function addProduct(){
 
-var name=value("productName");
-var code=value("productCode");
-var category=value("productCategory")||"General";
+const name=value("productName");
+const code=value("productCode");
+const category=
+value("productCategory")||"General";
 
 if(!name){
 
 alert("Enter product name.");
 
 return;
+
 }
 
 if(data.products[name]){
@@ -1142,6 +1645,7 @@ if(data.products[name]){
 alert("This product already exists.");
 
 return;
+
 }
 
 data.products[name]={
@@ -1153,7 +1657,6 @@ cost:0
 };
 
 save();
-
 render();
 
 el("productName").value="";
@@ -1169,57 +1672,63 @@ alert("Product added successfully.");
    DELETE PRODUCT
 ========================================================= */
 
-function deleteProduct(name){
+function deleteProduct(encodedName){
 
-name=decodeURIComponent(name);
+const name=
+decodeURIComponent(encodedName);
 
 if(!data.products[name]){
 
 alert("Product not found.");
 
 return;
+
 }
 
-if(!confirm("Delete "+name+"?")){
+if(
+!confirm("Delete "+name+"?")
+){
 
 return;
+
 }
 
 delete data.products[name];
 
 save();
-
 render();
 
 }
 
 
 /* =========================================================
-   PURCHASE
+   RECORD PURCHASE
 ========================================================= */
 
 function recordPurchase(){
 
-var date=value("purchaseDate")||today();
+const date=
+value("purchaseDate")||today();
 
-var supplier=
+const supplier=
 value("purchaseSupplier")||
 "Unknown Supplier";
 
-var product=value("purchaseProduct");
+const product=
+value("purchaseProduct");
 
-var quantity=
+const quantity=
 Number(el("purchaseQuantity").value);
 
-var price=
+const price=
 Number(el("purchasePrice").value);
 
 
 if(
 !product ||
-!isFinite(quantity) ||
+!Number.isFinite(quantity) ||
 quantity<=0 ||
-!isFinite(price) ||
+!Number.isFinite(price) ||
 price<=0
 ){
 
@@ -1228,6 +1737,7 @@ alert(
 );
 
 return;
+
 }
 
 
@@ -1244,21 +1754,14 @@ cost:price
 }
 
 
-var p=data.products[product];
+const p=data.products[product];
 
-
-/* INCREASE STOCK */
 
 p.stock=
 Number(p.stock||0)+quantity;
 
-
-/* UPDATE COST */
-
 p.cost=price;
 
-
-/* SAVE PURCHASE */
 
 data.purchases.push({
 
@@ -1272,8 +1775,19 @@ total:quantity*price
 });
 
 
-save();
+data.movements.push({
 
+date:date,
+type:"PURCHASE",
+product:product,
+quantity:quantity,
+location:supplier,
+note:"Purchase received"
+
+});
+
+
+save();
 render();
 
 
@@ -1284,7 +1798,7 @@ el("purchasePrice").value="";
 
 
 alert(
-"Purchase recorded successfully.\n"+
+"Purchase recorded successfully.\n\n"+
 "Stock increased by "+quantity+
 ".\nCurrent stock: "+p.stock
 );
@@ -1293,31 +1807,33 @@ alert(
 
 
 /* =========================================================
-   SALE
+   RECORD SALE
 ========================================================= */
 
 function recordSale(){
 
-var date=value("saleDate")||today();
+const date=
+value("saleDate")||today();
 
-var customer=
+const customer=
 value("saleCustomer")||
 "Cash Customer";
 
-var product=value("saleProduct");
+const product=
+value("saleProduct");
 
-var quantity=
+const quantity=
 Number(el("saleQuantity").value);
 
-var price=
+const price=
 Number(el("salePrice").value);
 
 
 if(
 !product ||
-!isFinite(quantity) ||
+!Number.isFinite(quantity) ||
 quantity<=0 ||
-!isFinite(price) ||
+!Number.isFinite(price) ||
 price<=0
 ){
 
@@ -1326,40 +1842,43 @@ alert(
 );
 
 return;
+
 }
 
 
 if(!data.products[product]){
 
 alert(
-"Product not found.\n"+
-"Please add the product or make a purchase first."
+"Product not found.\n\n"+
+"Add the product or record a purchase first."
 );
 
 return;
+
 }
 
 
-var p=data.products[product];
+const p=data.products[product];
 
-var currentStock=
+const stock=
 Number(p.stock)||0;
 
 
-if(currentStock<quantity){
+if(stock<quantity){
 
 alert(
 "Not enough stock.\n\n"+
 "Product: "+product+
-"\nAvailable: "+currentStock+
+"\nAvailable: "+stock+
 "\nRequested: "+quantity
 );
 
 return;
+
 }
 
 
-var cost=
+const cost=
 Number(p.cost)||0;
 
 
@@ -1367,36 +1886,24 @@ data.invoiceNumber=
 Number(data.invoiceNumber||0)+1;
 
 
-var invoice=
+const invoice=
 "SM-"+date.substring(0,4)+"-"+
 String(data.invoiceNumber).padStart(5,"0");
 
 
-/* DECREASE STOCK */
-
-p.stock=
-currentStock-quantity;
-
-
-/* SALE TOTAL */
-
-var total=
+const total=
 quantity*price;
 
-
-/* COST TOTAL */
-
-var costTotal=
+const costTotal=
 quantity*cost;
 
-
-/* PROFIT */
-
-var profit=
+const profit=
 total-costTotal;
 
 
-/* SAVE SALE */
+p.stock=
+stock-quantity;
+
 
 data.sales.push({
 
@@ -1413,8 +1920,6 @@ profit:profit
 });
 
 
-/* MOVEMENT */
-
 data.movements.push({
 
 date:date,
@@ -1428,7 +1933,6 @@ note:"Stock sold"
 
 
 save();
-
 render();
 
 
@@ -1455,33 +1959,36 @@ alert(
 
 function recordTransferIn(){
 
-var date=
+const date=
 value("transferInDate")||today();
 
-var product=
+const product=
 value("transferInProduct");
 
-var quantity=
+const quantity=
 Number(el("transferInQuantity").value);
 
-var from=
+const from=
 value("transferInFrom")||
 "Other Location";
 
-var note=
+const note=
 value("transferInNote")||
 "Stock received";
 
 
 if(
 !product ||
-!isFinite(quantity) ||
+!Number.isFinite(quantity) ||
 quantity<=0
 ){
 
-alert("Enter product and quantity.");
+alert(
+"Enter product and quantity."
+);
 
 return;
+
 }
 
 
@@ -1502,7 +2009,7 @@ data.products[product].stock=
 Number(data.products[product].stock||0)+quantity;
 
 
-var record={
+const record={
 
 date:date,
 type:"TRANSFER IN",
@@ -1515,12 +2022,9 @@ note:note
 
 
 data.transferIn.push(record);
-
 data.movements.push(record);
 
-
 save();
-
 render();
 
 
@@ -1531,7 +2035,7 @@ el("transferInNote").value="";
 
 
 alert(
-"Transfer In completed.\n"+
+"Transfer In completed.\n\n"+
 "Stock increased by "+quantity+
 ".\nCurrent stock: "+
 data.products[product].stock
@@ -1546,65 +2050,72 @@ data.products[product].stock
 
 function recordTransferOut(){
 
-var date=
+const date=
 value("transferOutDate")||today();
 
-var product=
+const product=
 value("transferOutProduct");
 
-var quantity=
+const quantity=
 Number(el("transferOutQuantity").value);
 
-var to=
+const to=
 value("transferOutTo")||
 "Other Location";
 
-var note=
+const note=
 value("transferOutNote")||
 "Stock transferred";
 
 
 if(
 !product ||
-!isFinite(quantity) ||
+!Number.isFinite(quantity) ||
 quantity<=0
 ){
 
-alert("Enter product and quantity.");
+alert(
+"Enter product and quantity."
+);
 
 return;
+
 }
 
 
 if(!data.products[product]){
 
-alert("Product does not exist.");
+alert(
+"Product does not exist."
+);
 
 return;
+
 }
 
 
-var currentStock=
+const stock=
 Number(data.products[product].stock)||0;
 
 
-if(currentStock<quantity){
+if(stock<quantity){
 
 alert(
 "Not enough stock.\n\n"+
-"Available: "+currentStock+
+"Available: "+stock+
 "\nRequested: "+quantity
 );
 
 return;
+
 }
 
 
 data.products[product].stock=
-currentStock-quantity;
+stock-quantity;
 
 
-var record={
+const record={
 
 date:date,
 type:"TRANSFER OUT",
@@ -1617,12 +2128,9 @@ note:note
 
 
 data.transferOut.push(record);
-
 data.movements.push(record);
 
-
 save();
-
 render();
 
 
@@ -1633,7 +2141,7 @@ el("transferOutNote").value="";
 
 
 alert(
-"Transfer Out completed.\n"+
+"Transfer Out completed.\n\n"+
 "Stock decreased by "+quantity+
 ".\nCurrent stock: "+
 data.products[product].stock
@@ -1648,19 +2156,19 @@ data.products[product].stock
 
 function recordExpense(){
 
-var date=
+const date=
 value("expenseDate")||today();
 
-var name=
+const name=
 value("expenseName");
 
-var amount=
+const amount=
 Number(el("expenseAmount").value);
 
 
 if(
 !name ||
-!isFinite(amount) ||
+!Number.isFinite(amount) ||
 amount<=0
 ){
 
@@ -1669,6 +2177,7 @@ alert(
 );
 
 return;
+
 }
 
 
@@ -1682,7 +2191,6 @@ amount:amount
 
 
 save();
-
 render();
 
 
@@ -1704,11 +2212,8 @@ alert(
 
 function addSupplier(){
 
-var name=
-value("supplierName");
-
-var phone=
-value("supplierPhone");
+const name=value("supplierName");
+const phone=value("supplierPhone");
 
 
 if(!name){
@@ -1716,6 +2221,7 @@ if(!name){
 alert("Enter supplier name.");
 
 return;
+
 }
 
 
@@ -1728,7 +2234,6 @@ phone:phone
 
 
 save();
-
 render();
 
 
@@ -1736,18 +2241,20 @@ el("supplierName").value="";
 el("supplierPhone").value="";
 
 
-alert("Supplier added successfully.");
+alert(
+"Supplier added successfully."
+);
 
 }
 
 
 /* =========================================================
-   OPTIONS
+   PRODUCT OPTIONS
 ========================================================= */
 
 function renderOptions(){
 
-var html="";
+let html="";
 
 Object.keys(data.products)
 .forEach(function(name){
@@ -1770,18 +2277,18 @@ el("productOptions").innerHTML=html;
 
 function renderProducts(){
 
-var search=
+const search=
 value("productSearch").toLowerCase();
 
-var html="";
+let html="";
 
 
 Object.keys(data.products)
 .forEach(function(name){
 
-var p=data.products[name];
+const p=data.products[name];
 
-var code=
+const code=
 String(p.code||"").toLowerCase();
 
 
@@ -1809,18 +2316,17 @@ html+=
 
 "</div>"+
 
-"Code: "+
-safe(p.code||"-")+
+"Code: "+safe(p.code||"-")+
 "<br>"+
 
 "Category: "+
 safe(p.category||"-")+
 "<br>"+
 
-"Cost: "+
-money(p.cost)+
+"Cost: "+money(p.cost)+
 
-"<button type='button' "+
+"<button "+
+"type='button' "+
 "class='btn blue delete-product' "+
 "data-product='"+encodeURIComponent(name)+"'>"+
 "🗑 DELETE"+
@@ -1844,38 +2350,38 @@ html||
 
 function renderInventory(){
 
-var html="";
+let html="";
 
-var count=0;
-
-var totalUnits=0;
-
-var inventoryValue=0;
+let count=0;
+let totalUnits=0;
+let inventoryValue=0;
 
 
 Object.keys(data.products)
 .forEach(function(name){
 
-var p=data.products[name];
+const p=data.products[name];
 
-var stock=
+const stock=
 Number(p.stock)||0;
 
-var cost=
+const cost=
 Number(p.cost)||0;
 
 count++;
-
 totalUnits+=stock;
-
 inventoryValue+=stock*cost;
 
 
-var stockClass=
-stock>0?
-"stock-positive":
-stock===0?
-"stock-zero":
+const stockClass=
+stock>0
+?
+"stock-positive"
+:
+stock===0
+?
+"stock-zero"
+:
 "stock-negative";
 
 
@@ -1944,7 +2450,7 @@ el("inventorySummary").innerHTML=
 
 function renderMovements(){
 
-var html="";
+let html="";
 
 
 data.movements
@@ -1952,27 +2458,19 @@ data.movements
 .reverse()
 .forEach(function(x){
 
-var icon="🔄";
+let icon="🔄";
 
-if(x.type==="TRANSFER IN"){
-icon="📥";
-}
-
-if(x.type==="TRANSFER OUT"){
-icon="📤";
-}
-
-if(x.type==="SALE"){
-icon="💰";
-}
+if(x.type==="TRANSFER IN") icon="📥";
+if(x.type==="TRANSFER OUT") icon="📤";
+if(x.type==="SALE") icon="💰";
+if(x.type==="PURCHASE") icon="🛒";
 
 
 html+=
 "<div class='item'>"+
 
 "<b>"+
-icon+" "+
-safe(x.type)+
+icon+" "+safe(x.type)+
 "</b>"+
 
 "<br>"+
@@ -2011,7 +2509,7 @@ html||
 
 function renderTransferIn(){
 
-var html="";
+let html="";
 
 
 data.transferIn
@@ -2054,7 +2552,7 @@ html||
 
 function renderTransferOut(){
 
-var html="";
+let html="";
 
 
 data.transferOut
@@ -2097,7 +2595,7 @@ html||
 
 function renderSales(){
 
-var html="";
+let html="";
 
 
 data.sales
@@ -2110,13 +2608,9 @@ html+=
 
 "<div class='item-head'>"+
 
-"<b>"+
-safe(x.invoice)+
-"</b>"+
+"<b>"+safe(x.invoice)+"</b>"+
 
-"<b>"+
-money(x.total)+
-"</b>"+
+"<b>"+money(x.total)+"</b>"+
 
 "</div>"+
 
@@ -2158,7 +2652,7 @@ html||
 
 function renderPurchases(){
 
-var html="";
+let html="";
 
 
 data.purchases
@@ -2171,13 +2665,9 @@ html+=
 
 "<div class='item-head'>"+
 
-"<b>"+
-safe(x.product)+
-"</b>"+
+"<b>"+safe(x.product)+"</b>"+
 
-"<b>"+
-money(x.total)+
-"</b>"+
+"<b>"+money(x.total)+"</b>"+
 
 "</div>"+
 
@@ -2209,7 +2699,7 @@ html||
 
 function renderExpenses(){
 
-var html="";
+let html="";
 
 
 data.expenses
@@ -2220,10 +2710,7 @@ data.expenses
 html+=
 "<div class='item'>"+
 
-"<b>"+
-safe(x.name)+
-"</b>"+
-
+"<b>"+safe(x.name)+"</b>"+
 " • "+
 money(x.amount)+
 
@@ -2248,7 +2735,7 @@ html||
 
 function renderSuppliers(){
 
-var html="";
+let html="";
 
 
 data.suppliers
@@ -2259,13 +2746,9 @@ data.suppliers
 html+=
 "<div class='item'>"+
 
-"<b>"+
-safe(x.name)+
-"</b>"+
+"<b>"+safe(x.name)+"</b>"+
 
-"<br>"+
-
-"Phone: "+
+"<br>Phone: "+
 safe(x.phone||"-")+
 
 "</div>";
@@ -2286,28 +2769,23 @@ html||
 
 function renderReports(){
 
-var t=calculateTotals();
+const t=calculateTotals();
 
 
 el("totalSales").textContent=
 money(t.sales);
 
-
 el("totalPurchases").textContent=
 money(t.purchases);
-
 
 el("totalCost").textContent=
 money(t.cost);
 
-
 el("totalExpenses").textContent=
 money(t.expenses);
 
-
 el("grossProfit").textContent=
 money(t.gross);
-
 
 el("netProfit").textContent=
 money(t.net);
@@ -2324,7 +2802,7 @@ renderInvoices();
 
 function renderInvoices(){
 
-var html="";
+let html="";
 
 
 data.sales
@@ -2400,7 +2878,7 @@ html||
 
 
 /* =========================================================
-   BACKUP TEXT
+   BACKUP
 ========================================================= */
 
 function makeBackup(){
@@ -2410,22 +2888,21 @@ return JSON.stringify(data,null,2);
 }
 
 
-/* =========================================================
-   DOWNLOAD BACKUP
-========================================================= */
-
 function downloadBackup(){
 
-var text=makeBackup();
+const text=makeBackup();
 
-var blob=new Blob(
+const blob=
+new Blob(
 [text],
 {type:"application/json"}
 );
 
-var url=URL.createObjectURL(blob);
+const url=
+URL.createObjectURL(blob);
 
-var a=document.createElement("a");
+const a=
+document.createElement("a");
 
 a.href=url;
 
@@ -2447,13 +2924,9 @@ el("backupText").value=text;
 }
 
 
-/* =========================================================
-   COPY BACKUP
-========================================================= */
-
 function copyBackup(){
 
-var text=makeBackup();
+const text=makeBackup();
 
 el("backupText").value=text;
 
@@ -2484,7 +2957,6 @@ fallbackCopy();
 function fallbackCopy(){
 
 el("backupText").focus();
-
 el("backupText").select();
 
 try{
@@ -2510,12 +2982,12 @@ alert(
 
 function createPDF(){
 
-var t=calculateTotals();
+const t=calculateTotals();
 
-var html=
-
+let html=
 "<!DOCTYPE html>"+
-"<html><head><title>SM TYRES REPORT</title>"+
+"<html><head>"+
+"<title>SM TYRES REPORT</title>"+
 "<style>"+
 "body{font-family:Arial;padding:30px}"+
 "table{width:100%;border-collapse:collapse}"+
@@ -2555,7 +3027,7 @@ html+=
 "<td>"+safe(x.date)+"</td>"+
 "<td>"+safe(x.customer)+"</td>"+
 "<td>"+safe(x.product)+"</td>"+
-"<td>"+x.quantity+"</td>"+
+"<td>"+Number(x.quantity||0)+"</td>"+
 "<td>"+money(x.total)+"</td>"+
 "</tr>";
 
@@ -2567,7 +3039,8 @@ html+=
 "</body></html>";
 
 
-var win=window.open("","_blank");
+const win=
+window.open("","_blank");
 
 
 if(!win){
@@ -2582,10 +3055,9 @@ return;
 
 
 win.document.open();
-
 win.document.write(html);
-
 win.document.close();
+
 
 setTimeout(function(){
 
@@ -2602,21 +3074,24 @@ win.print();
 
 function restoreData(){
 
-var text=
+const text=
 value("restoreText");
 
 
 if(!text){
 
-alert("Paste backup data first.");
+alert(
+"Paste backup data first."
+);
 
 return;
+
 }
 
 
 try{
 
-var x=JSON.parse(text);
+const x=JSON.parse(text);
 
 
 if(
@@ -2645,23 +3120,68 @@ return;
 data={
 
 products:x.products||{},
-sales:Array.isArray(x.sales)?x.sales:[],
-purchases:Array.isArray(x.purchases)?x.purchases:[],
-expenses:Array.isArray(x.expenses)?x.expenses:[],
-suppliers:Array.isArray(x.suppliers)?x.suppliers:[],
-movements:Array.isArray(x.movements)?x.movements:[],
-transferIn:Array.isArray(x.transferIn)?x.transferIn:[],
-transferOut:Array.isArray(x.transferOut)?x.transferOut:[],
-invoiceNumber:Number(x.invoiceNumber||0)
+
+sales:
+Array.isArray(x.sales)
+?
+x.sales
+:
+[],
+
+purchases:
+Array.isArray(x.purchases)
+?
+x.purchases
+:
+[],
+
+expenses:
+Array.isArray(x.expenses)
+?
+x.expenses
+:
+[],
+
+suppliers:
+Array.isArray(x.suppliers)
+?
+x.suppliers
+:
+[],
+
+movements:
+Array.isArray(x.movements)
+?
+x.movements
+:
+[],
+
+transferIn:
+Array.isArray(x.transferIn)
+?
+x.transferIn
+:
+[],
+
+transferOut:
+Array.isArray(x.transferOut)
+?
+x.transferOut
+:
+[],
+
+invoiceNumber:
+Number(x.invoiceNumber||0)
 
 };
 
 
 save();
-
 render();
 
-alert("Data restored successfully.");
+alert(
+"Data restored successfully."
+);
 
 }catch(error){
 
@@ -2676,12 +3196,12 @@ alert(
 
 
 /* =========================================================
-   DELETE ALL
+   DELETE ALL DATA
 ========================================================= */
 
 function deleteAllData(){
 
-var first=
+const first=
 confirm(
 "WARNING!\n\n"+
 "This will permanently delete ALL sales, purchases, "+
@@ -2691,13 +3211,11 @@ confirm(
 
 
 if(!first){
-
 return;
-
 }
 
 
-var second=
+const second=
 confirm(
 "FINAL WARNING!\n\n"+
 "Delete ALL data?"
@@ -2705,9 +3223,7 @@ confirm(
 
 
 if(!second){
-
 return;
-
 }
 
 
@@ -2727,10 +3243,11 @@ invoiceNumber:0
 
 
 save();
-
 render();
 
-alert("All data has been deleted.");
+alert(
+"All accounting data has been deleted."
+);
 
 }
 
@@ -2741,22 +3258,20 @@ alert("All data has been deleted.");
 
 function handleRestoreFile(event){
 
-var file=
+const file=
 event.target.files[0];
 
-
 if(!file){
-
 return;
-
 }
 
 
-var reader=
+const reader=
 new FileReader();
 
 
-reader.onload=function(e){
+reader.onload=
+function(e){
 
 el("restoreText").value=
 e.target.result;
@@ -2764,9 +3279,12 @@ e.target.result;
 };
 
 
-reader.onerror=function(){
+reader.onerror=
+function(){
 
-alert("Could not read backup file.");
+alert(
+"Could not read backup file."
+);
 
 };
 
@@ -2783,35 +3301,61 @@ reader.readAsText(file);
 function render(){
 
 renderOptions();
-
 renderProducts();
-
 renderInventory();
-
 renderMovements();
-
 renderTransferIn();
-
 renderTransferOut();
-
 renderSales();
-
 renderPurchases();
-
 renderExpenses();
-
 renderSuppliers();
-
 renderReports();
 
 }
 
 
 /* =========================================================
-   BUTTON EVENTS
+   SETUP APPLICATION EVENTS
 ========================================================= */
 
 function setupEvents(){
+
+/* LOGIN */
+
+el("loginForm")
+.addEventListener(
+"submit",
+function(event){
+
+event.preventDefault();
+
+login();
+
+}
+);
+
+
+/* LOGOUT */
+
+el("logoutButton")
+.addEventListener(
+"click",
+function(){
+
+if(
+confirm("Log out of SM TYRES?")
+){
+
+logout();
+
+}
+
+}
+);
+
+
+/* ACCOUNTING BUTTONS */
 
 el("productButton")
 .addEventListener(
@@ -2819,13 +3363,11 @@ el("productButton")
 addProduct
 );
 
-
 el("purchaseButton")
 .addEventListener(
 "click",
 recordPurchase
 );
-
 
 el("saleButton")
 .addEventListener(
@@ -2833,13 +3375,11 @@ el("saleButton")
 recordSale
 );
 
-
 el("transferInButton")
 .addEventListener(
 "click",
 recordTransferIn
 );
-
 
 el("transferOutButton")
 .addEventListener(
@@ -2847,13 +3387,11 @@ el("transferOutButton")
 recordTransferOut
 );
 
-
 el("expenseButton")
 .addEventListener(
 "click",
 recordExpense
 );
-
 
 el("supplierButton")
 .addEventListener(
@@ -2861,13 +3399,11 @@ el("supplierButton")
 addSupplier
 );
 
-
 el("jsonBackupButton")
 .addEventListener(
 "click",
 downloadBackup
 );
-
 
 el("copyBackupButton")
 .addEventListener(
@@ -2875,13 +3411,11 @@ el("copyBackupButton")
 copyBackup
 );
 
-
 el("pdfBackupButton")
 .addEventListener(
 "click",
 createPDF
 );
-
 
 el("restoreButton")
 .addEventListener(
@@ -2889,20 +3423,17 @@ el("restoreButton")
 restoreData
 );
 
-
 el("deleteButton")
 .addEventListener(
 "click",
 deleteAllData
 );
 
-
 el("restoreFile")
 .addEventListener(
 "change",
 handleRestoreFile
 );
-
 
 el("productSearch")
 .addEventListener(
@@ -2911,24 +3442,26 @@ renderProducts
 );
 
 
-/* DELETE PRODUCT BUTTONS */
+/* DELETE PRODUCT */
 
 el("productsList")
 .addEventListener(
 "click",
 function(event){
 
-var button=
-event.target.closest(".delete-product");
+const button=
+event.target.closest(
+".delete-product"
+);
 
 if(!button){
-
 return;
-
 }
 
-var name=
-button.getAttribute("data-product");
+const name=
+button.getAttribute(
+"data-product"
+);
 
 deleteProduct(name);
 
@@ -2939,7 +3472,7 @@ deleteProduct(name);
 
 
 /* =========================================================
-   START APP
+   START
 ========================================================= */
 
 function startApp(){
@@ -2950,13 +3483,13 @@ setDates();
 
 setupEvents();
 
-render();
+checkLogin();
 
 }
 
 
 /* =========================================================
-   START
+   START AFTER HTML LOAD
 ========================================================= */
 
 if(
