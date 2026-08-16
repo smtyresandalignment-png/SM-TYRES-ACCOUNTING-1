@@ -2,334 +2,411 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="theme-color" content="#071b2b">
 <title>SM TYRES & ALIGNMENT</title>
 
 <style>
 *{
- box-sizing:border-box;
- -webkit-tap-highlight-color:transparent;
+box-sizing:border-box;
+-webkit-tap-highlight-color:transparent;
 }
 
-:root{
- --bg1:#061827;
- --bg2:#0b3852;
- --primary:#00aeea;
- --secondary:#0879a8;
- --card:#ffffff;
- --text:#132b38;
- --muted:#6b7c85;
- --danger:#d83b3b;
- --success:#159447;
- --shadow:0 8px 25px rgba(0,0,0,.35);
+html{
+scroll-behavior:smooth;
 }
 
-html,body{
- margin:0;
- padding:0;
- min-height:100%;
- font-family:Arial,sans-serif;
- background:
- radial-gradient(circle at 15% 10%,var(--bg2),transparent 35%),
- linear-gradient(145deg,var(--bg1),#020b12);
- color:white;
+body{
+margin:0;
+font-family:Arial,Helvetica,sans-serif;
+background:#eef3f7;
+color:#172638;
 }
 
 button,input,select,textarea{
- font-family:Arial,sans-serif;
+font-family:inherit;
 }
 
 button{
- touch-action:manipulation;
- cursor:pointer;
- -webkit-user-select:none;
- user-select:none;
+touch-action:manipulation;
+cursor:pointer;
 }
 
 .header{
- padding:22px 10px 15px;
- text-align:center;
+position:fixed;
+top:0;
+left:0;
+right:0;
+height:74px;
+z-index:1000;
+background:linear-gradient(135deg,#061b2d,#087f91);
+color:white;
+display:flex;
+align-items:center;
+padding:8px 14px;
 }
 
 .logo{
- width:135px;
- height:135px;
- margin:auto;
- border-radius:50%;
- border:4px solid var(--primary);
- background:
- radial-gradient(circle at 35% 30%,var(--primary),var(--secondary) 42%,#02131e 75%);
- display:flex;
- align-items:center;
- justify-content:center;
- text-align:center;
- color:#fff;
- font-weight:900;
- font-size:16px;
- line-height:1.3;
- box-shadow:
- 0 0 18px var(--primary),
- 0 0 45px rgba(0,0,0,.45);
+width:56px;
+height:56px;
+border:3px solid #f5bd22;
+border-radius:50%;
+background:#071b2b;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:20px;
+font-weight:bold;
+color:#f5bd22;
+flex-shrink:0;
 }
 
-.container{
- width:100%;
- max-width:1100px;
- margin:auto;
- padding:10px;
+.brand{
+margin-left:10px;
 }
 
-.page{
- display:none;
+.brand h1{
+margin:0;
+font-size:19px;
 }
 
-.page.active{
- display:block;
+.brand p{
+margin:3px 0 0;
+font-size:10px;
+opacity:.8;
+}
+
+.sidebar{
+position:fixed;
+top:74px;
+bottom:0;
+left:0;
+width:190px;
+background:#071b2b;
+padding:8px;
+overflow-y:auto;
+z-index:900;
 }
 
 .menu{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:12px;
+display:block;
+width:100%;
+min-height:48px;
+padding:8px;
+margin-bottom:6px;
+border-radius:9px;
+background:#12364e;
+color:#fff;
+text-decoration:none;
+font-size:12px;
+font-weight:bold;
+line-height:32px;
 }
 
-.menu-btn{
- min-height:105px;
- border:0;
- border-radius:18px;
- color:white;
- font-size:14px;
- font-weight:bold;
- background:
- linear-gradient(145deg,var(--primary),var(--secondary));
- box-shadow:var(--shadow);
+.menu:active,
+.menu:hover{
+background:#078c99;
 }
 
-.menu-btn:active{
- transform:scale(.95);
+.menu-icon{
+display:inline-block;
+width:30px;
+font-size:20px;
+text-align:center;
+vertical-align:middle;
 }
 
-.icon{
- display:block;
- font-size:31px;
- margin-bottom:8px;
+.main{
+margin-left:190px;
+padding:90px 18px 30px;
 }
 
-.back{
- width:100%;
- min-height:52px;
- margin-bottom:14px;
- border:0;
- border-radius:12px;
- color:white;
- background:#263c49;
- font-size:16px;
- font-weight:bold;
+.screen{
+max-width:1100px;
+margin:0 auto 50px;
+padding-top:10px;
+scroll-margin-top:82px;
 }
 
-.title{
- font-size:25px;
- margin:8px 0 15px;
+.screen h2{
+color:#123b5d;
+margin-top:0;
 }
 
-.card{
- background:var(--card);
- color:var(--text);
- padding:17px;
- border-radius:17px;
- box-shadow:var(--shadow);
+.box{
+background:white;
+border-radius:13px;
+padding:16px;
+margin-bottom:14px;
+box-shadow:0 3px 12px rgba(0,0,0,.07);
 }
 
-label{
- display:block;
- margin:13px 0 6px;
- font-weight:bold;
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
 }
 
 input,select,textarea{
- width:100%;
- min-height:51px;
- padding:12px;
- border:2px solid #dce5e9;
- border-radius:10px;
- background:#fff;
- color:#182c36;
- font-size:16px;
- outline:none;
+width:100%;
+padding:12px;
+margin:4px 0;
+border:1px solid #ccd7df;
+border-radius:8px;
+background:#fff;
+outline:none;
+font-size:15px;
 }
 
-input:focus,select:focus,textarea:focus{
- border-color:var(--primary);
+input:focus,
+select:focus,
+textarea:focus{
+border-color:#087f91;
 }
 
 textarea{
- min-height:85px;
- resize:vertical;
+resize:vertical;
 }
 
-.action{
- width:100%;
- min-height:54px;
- margin-top:18px;
- border:0;
- border-radius:11px;
- background:var(--primary);
- color:white;
- font-size:16px;
- font-weight:bold;
+.btn{
+display:block;
+width:100%;
+padding:13px;
+margin-top:8px;
+border:0;
+border-radius:8px;
+background:#087c91;
+color:#fff;
+font-weight:bold;
+font-size:14px;
 }
 
-.action:active{
- transform:scale(.98);
+.btn:active{
+transform:scale(.98);
+opacity:.9;
 }
 
-.green{
- background:#159447;
+.green{background:#12965d}
+.blue{background:#087da0}
+.orange{background:#e47b20}
+.red{background:#c73543}
+.purple{background:#7251ae}
+.dark{background:#34495e}
+
+.list{
+background:#fff;
+border-radius:13px;
+padding:14px;
+box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
-.red{
- background:#c93636;
+.item{
+padding:12px 3px;
+border-bottom:1px solid #e4eaee;
 }
 
-.orange{
- background:#d9790b;
+.item:last-child{
+border-bottom:0;
 }
 
-.notice{
- margin-bottom:14px;
- padding:13px;
- border-radius:11px;
- background:rgba(255,255,255,.95);
- color:#15303d;
- border-left:5px solid var(--primary);
+.item-head{
+display:flex;
+justify-content:space-between;
+gap:10px;
 }
 
-.table-wrap{
- margin-top:15px;
- background:white;
- border-radius:15px;
- overflow-x:auto;
- box-shadow:var(--shadow);
-}
-
-table{
- width:100%;
- min-width:650px;
- border-collapse:collapse;
- color:#152b36;
-}
-
-th{
- padding:11px;
- text-align:left;
- background:var(--secondary);
- color:white;
-}
-
-td{
- padding:10px;
- border-bottom:1px solid #e2e7ea;
+.badge{
+display:inline-block;
+padding:4px 8px;
+border-radius:20px;
+background:#e5f5f3;
+color:#087c91;
+font-size:11px;
+font-weight:bold;
 }
 
 .empty{
- text-align:center;
- padding:25px;
- color:#777;
+text-align:center;
+color:#7a8790;
+padding:20px;
 }
 
-.in{
- color:#148742;
- font-weight:bold;
+.notice{
+background:#fff7d8;
+border-left:4px solid #e8b51d;
+border-radius:7px;
+padding:12px;
+margin-bottom:12px;
 }
 
-.out{
- color:#cf3535;
- font-weight:bold;
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:10px;
 }
 
-.report{
- margin-bottom:12px;
- padding:18px;
- border-radius:15px;
- background:white;
- color:#172d38;
- box-shadow:var(--shadow);
+.card{
+background:white;
+padding:15px;
+border-radius:12px;
+box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
-.report span{
- display:block;
- color:#6d7d84;
- font-size:13px;
- font-weight:bold;
+.card small{
+font-weight:bold;
+color:#667783;
 }
 
-.report strong{
- display:block;
- margin-top:8px;
- color:var(--secondary);
- font-size:22px;
+.amount{
+font-size:21px;
+font-weight:bold;
+margin-top:7px;
+color:#087c91;
 }
 
-.theme-grid{
- display:grid;
- grid-template-columns:repeat(2,1fr);
- gap:10px;
+.transfer-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
 }
 
-.theme-btn{
- min-height:60px;
- border:3px solid transparent;
- border-radius:12px;
- color:white;
- font-weight:bold;
+.transfer-banner{
+border-radius:14px;
+padding:25px;
+color:white;
+text-align:center;
 }
 
-.theme-btn:active{
- transform:scale(.96);
+.transfer-in{
+background:linear-gradient(135deg,#087653,#1bad72);
 }
 
-.theme-ocean{
- background:linear-gradient(135deg,#00aeea,#075279);
+.transfer-out{
+background:linear-gradient(135deg,#d45e17,#ef9139);
 }
 
-.theme-purple{
- background:linear-gradient(135deg,#9b59ff,#4a168f);
+.transfer-icon{
+font-size:48px;
 }
 
-.theme-green{
- background:linear-gradient(135deg,#19bd79,#07623e);
+table{
+width:100%;
+border-collapse:collapse;
 }
 
-.theme-red{
- background:linear-gradient(135deg,#e33d46,#49080d);
+th,td{
+padding:8px;
+border-bottom:1px solid #e3e8eb;
+text-align:left;
+font-size:13px;
 }
 
-.theme-orange{
- background:linear-gradient(135deg,#ff9d20,#a63e00);
+th{
+background:#123b5d;
+color:white;
 }
 
-.theme-midnight{
- background:linear-gradient(135deg,#59636b,#090c10);
+.table-wrap{
+overflow-x:auto;
 }
 
-.theme-cyan{
- background:linear-gradient(135deg,#00fff0,#006d85);
+.invoice{
+background:white;
+padding:20px;
+margin:12px 0;
+border-radius:12px;
+box-shadow:0 3px 12px rgba(0,0,0,.06);
 }
 
-.theme-gold{
- background:linear-gradient(135deg,#f4c542,#765400);
+.invoice-title{
+text-align:center;
 }
 
-@media(min-width:700px){
+.total-line{
+display:flex;
+justify-content:space-between;
+padding:7px 0;
+font-weight:bold;
+}
 
- .menu{
-  grid-template-columns:repeat(4,1fr);
- }
+.stock-positive{
+color:#12965d;
+font-weight:bold;
+}
 
- .theme-grid{
-  grid-template-columns:repeat(4,1fr);
- }
+.stock-zero{
+color:#c73543;
+font-weight:bold;
+}
+
+.stock-negative{
+color:#c73543;
+font-weight:bold;
+}
+
+@media(max-width:750px){
+
+.sidebar{
+width:155px;
+}
+
+.main{
+margin-left:155px;
+}
+
+.cards{
+grid-template-columns:1fr 1fr;
+}
+
+.transfer-grid{
+grid-template-columns:1fr;
+}
+
+}
+
+@media(max-width:500px){
+
+.sidebar{
+width:125px;
+}
+
+.main{
+margin-left:125px;
+padding-left:8px;
+padding-right:8px;
+}
+
+.menu{
+font-size:10px;
+padding:5px 3px;
+}
+
+.menu-icon{
+width:25px;
+font-size:17px;
+}
+
+.brand h1{
+font-size:14px;
+}
+
+.brand p{
+display:none;
+}
+
+.logo{
+width:48px;
+height:48px;
+font-size:17px;
+}
+
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.cards{
+grid-template-columns:1fr;
+}
 
 }
 </style>
@@ -337,1558 +414,2565 @@ td{
 
 <body>
 
-<div class="header">
- <div class="logo">
-  SM TYRES<br>
-  &amp;<br>
-  ALIGNMENT
- </div>
+<header class="header">
+
+<div class="logo">SM</div>
+
+<div class="brand">
+<h1>SM TYRES & ALIGNMENT</h1>
+<p>ACCOUNTING & INVENTORY</p>
 </div>
 
-<div class="container">
+</header>
 
+<aside class="sidebar">
 
-<!-- HOME -->
+<a class="menu" href="#sales">
+<span class="menu-icon">💰</span> SALES
+</a>
 
-<section id="home" class="page active">
+<a class="menu" href="#purchases">
+<span class="menu-icon">🛒</span> PURCHASES
+</a>
 
-<div class="menu">
+<a class="menu" href="#products">
+<span class="menu-icon">🔧</span> PRODUCTS
+</a>
 
-<button class="menu-btn" onclick="showPage('sales')">
-<span class="icon">🧾</span>
-SALES
-</button>
+<a class="menu" href="#inventory">
+<span class="menu-icon">📦</span> INVENTORY
+</a>
 
-<button class="menu-btn" onclick="showPage('purchases')">
-<span class="icon">🛒</span>
-PURCHASES
-</button>
+<a class="menu" href="#transfer-in">
+<span class="menu-icon">📥</span> TRANSFER IN
+</a>
 
-<button class="menu-btn" onclick="showPage('inventory')">
-<span class="icon">📦</span>
-INVENTORY
-</button>
+<a class="menu" href="#transfer-out">
+<span class="menu-icon">📤</span> TRANSFER OUT
+</a>
 
-<button class="menu-btn" onclick="showPage('movements')">
-<span class="icon">🔄</span>
-INVENTORY<br>MOVEMENTS
-</button>
+<a class="menu" href="#expenses">
+<span class="menu-icon">💸</span> EXPENSES
+</a>
 
-<button class="menu-btn" onclick="showPage('transferIn')">
-<span class="icon">📥</span>
-TRANSFER IN
-</button>
+<a class="menu" href="#suppliers">
+<span class="menu-icon">🏢</span> SUPPLIERS
+</a>
 
-<button class="menu-btn" onclick="showPage('transferOut')">
-<span class="icon">📤</span>
-TRANSFER OUT
-</button>
+<a class="menu" href="#reports">
+<span class="menu-icon">📊</span> REPORTS
+</a>
 
-<button class="menu-btn" onclick="showPage('products')">
-<span class="icon">🔧</span>
-PRODUCTS
-</button>
+<a class="menu" href="#backup">
+<span class="menu-icon">💾</span> BACKUP
+</a>
 
-<button class="menu-btn" onclick="showPage('customers')">
-<span class="icon">👥</span>
-CUSTOMERS
-</button>
+<a class="menu" href="#restore">
+<span class="menu-icon">♻️</span> RESTORE
+</a>
 
-<button class="menu-btn" onclick="showPage('suppliers')">
-<span class="icon">🏭</span>
-SUPPLIERS
-</button>
+</aside>
 
-<button class="menu-btn" onclick="showPage('expenses')">
-<span class="icon">💰</span>
-EXPENSES
-</button>
-
-<button class="menu-btn" onclick="showPage('reports')">
-<span class="icon">📊</span>
-REPORTS
-</button>
-
-<button class="menu-btn" onclick="showPage('themes')">
-<span class="icon">🎨</span>
-THEMES
-</button>
-
-</div>
-</section>
-
+<main class="main">
 
 <!-- SALES -->
 
-<section id="sales" class="page">
+<section class="screen" id="sales">
 
-<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+<h2>💰 Sales</h2>
 
-<h2 class="title">SALES</h2>
+<div class="box">
 
-<div class="card">
+<div class="form-grid">
 
-<label>Date</label>
 <input id="saleDate" type="date">
 
-<label>Customer</label>
-<input id="saleCustomer" type="text" placeholder="Customer name">
+<input id="saleCustomer"
+placeholder="Customer name">
 
-<label>Product</label>
-<select id="saleProduct"></select>
+<input id="saleProduct"
+list="productOptions"
+placeholder="Product name">
 
-<label>Quantity</label>
-<input id="saleQty" type="number" min="1">
+<input id="saleQuantity"
+type="number"
+min="1"
+value="1"
+placeholder="Quantity">
 
-<label>Selling Price</label>
-<input id="salePrice" type="number" min="0">
+<input id="salePrice"
+type="number"
+min="0"
+placeholder="Selling price">
 
-<button class="action" onclick="recordSale()">
-RECORD SALE
+</div>
+
+<button id="saleButton" type="button" class="btn green">
+➕ RECORD SALE
 </button>
 
 </div>
 
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>Invoice</th>
-<th>Date</th>
-<th>Customer</th>
-<th>Product</th>
-<th>Qty</th>
-<th>Total</th>
-<th>Profit</th>
-</tr>
-</thead>
-<tbody id="salesList"></tbody>
-</table>
-</div>
+<div id="salesList" class="list"></div>
 
 </section>
-
 
 <!-- PURCHASES -->
 
-<section id="purchases" class="page">
+<section class="screen" id="purchases">
 
-<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+<h2>🛒 Purchases</h2>
 
-<h2 class="title">PURCHASES</h2>
+<div class="box">
 
-<div class="card">
+<div class="form-grid">
 
-<label>Date</label>
 <input id="purchaseDate" type="date">
 
-<label>Supplier</label>
-<input id="purchaseSupplier" type="text">
+<input id="purchaseSupplier"
+placeholder="Supplier name">
 
-<label>Product</label>
-<select id="purchaseProduct"></select>
+<input id="purchaseProduct"
+list="productOptions"
+placeholder="Product name">
 
-<label>Quantity</label>
-<input id="purchaseQty" type="number" min="1">
+<input id="purchaseQuantity"
+type="number"
+min="1"
+value="1"
+placeholder="Quantity">
 
-<label>Purchase Price</label>
-<input id="purchasePrice" type="number" min="0">
+<input id="purchasePrice"
+type="number"
+min="0"
+placeholder="Buying price">
 
-<button class="action" onclick="recordPurchase()">
-RECORD PURCHASE
+</div>
+
+<button id="purchaseButton" type="button" class="btn blue">
+➕ RECORD PURCHASE
 </button>
 
 </div>
 
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>Date</th>
-<th>Supplier</th>
-<th>Product</th>
-<th>Qty</th>
-<th>Price</th>
-<th>Total</th>
-</tr>
-</thead>
-<tbody id="purchaseList"></tbody>
-</table>
-</div>
+<div id="purchasesList" class="list"></div>
 
 </section>
-
-
-<!-- TRANSFER IN -->
-
-<section id="transferIn" class="page">
-
-<button class="back" onclick="showPage('home')">← MAIN MENU</button>
-
-<h2 class="title">TRANSFER IN</h2>
-
-<div class="notice">
-Stock transferred into this location will increase inventory.
-</div>
-
-<div class="card">
-
-<label>Date</label>
-<input id="transferInDate" type="date">
-
-<label>Product</label>
-<select id="transferInProduct"></select>
-
-<label>Quantity</label>
-<input id="transferInQty" type="number" min="1">
-
-<label>From Location</label>
-<input id="transferInFrom" type="text" placeholder="Example: Mwanza Branch">
-
-<label>Note</label>
-<textarea id="transferInNote"></textarea>
-
-<button class="action green" onclick="recordTransferIn()">
-📥 RECORD TRANSFER IN
-</button>
-
-</div>
-
-</section>
-
-
-<!-- TRANSFER OUT -->
-
-<section id="transferOut" class="page">
-
-<button class="back" onclick="showPage('home')">← MAIN MENU</button>
-
-<h2 class="title">TRANSFER OUT</h2>
-
-<div class="notice">
-Stock transferred out of this location will reduce inventory.
-</div>
-
-<div class="card">
-
-<label>Date</label>
-<input id="transferOutDate" type="date">
-
-<label>Product</label>
-<select id="transferOutProduct"></select>
-
-<label>Quantity</label>
-<input id="transferOutQty" type="number" min="1">
-
-<label>To Location</label>
-<input id="transferOutTo" type="text" placeholder="Example: Dodoma Branch">
-
-<label>Note</label>
-<textarea id="transferOutNote"></textarea>
-
-<button class="action orange" onclick="recordTransferOut()">
-📤 RECORD TRANSFER OUT
-</button>
-
-</div>
-
-</section>
-
-
-<!-- INVENTORY -->
-
-<section id="inventory" class="page">
-
-<button class="back" onclick="showPage('home')">← MAIN MENU</button>
-
-<h2 class="title">INVENTORY</h2>
-
-<div class="notice">
-Stock = Purchases + Transfer In − Sales − Transfer Out
-</div>
-
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>Product</th>
-<th>Category</th>
-<th>Stock</th>
-<th>Cost</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody id="inventoryList"></tbody>
-</table>
-</div>
-
-</section>
-
-
-<!-- INVENTORY MOVEMENTS -->
-
-<section id="movements" class="page">
-
-<button class="back" onclick="showPage('home')">← MAIN MENU</button>
-
-<h2 class="title">INVENTORY MOVEMENTS</h2>
-
-<div class="notice">
-All stock movements are shown here.
-</div>
-
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>Date</th>
-<th>Movement</th>
-<th>Product</th>
-<th>Qty</th>
-<th>Details</th>
-</tr>
-</thead>
-<tbody id="movementList"></tbody>
-</table>
-</div>
-
-</section>
-
 
 <!-- PRODUCTS -->
 
-<section id="products" class="page">
+<section class="screen" id="products">
 
-<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+<h2>🔧 Products</h2>
 
-<h2 class="title">PRODUCTS</h2>
+<div class="box">
 
-<div class="card">
+<div class="form-grid">
 
-<label>Product Code</label>
-<input id="productCode" type="text">
+<input id="productCode"
+placeholder="Product code / SKU">
 
-<label>Product Name</label>
-<input id="productName" type="text">
+<input id="productName"
+placeholder="Product name">
 
-<label>Category</label>
-<select id="productCategory">
-<option>Tyre</option>
-<option>Service</option>
-<option>Spare Part</option>
-<option>Other</option>
-</select>
+<input id="productCategory"
+placeholder="Category">
 
-<button class="action" onclick="addProduct()">
+</div>
+
+<button id="productButton" type="button" class="btn green">
 ➕ ADD PRODUCT
 </button>
 
 </div>
 
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>Code</th>
-<th>Product</th>
-<th>Category</th>
-<th>Stock</th>
-<th>Cost</th>
-</tr>
-</thead>
-<tbody id="productList"></tbody>
-</table>
+<div class="box">
+
+<input id="productSearch"
+placeholder="🔎 Search product">
+
 </div>
+
+<div id="productsList" class="list"></div>
 
 </section>
 
+<!-- INVENTORY -->
 
-<!-- CUSTOMERS -->
+<section class="screen" id="inventory">
 
-<section id="customers" class="page">
+<h2>📦 Inventory</h2>
 
-<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+<div class="notice">
+Purchases and Transfer In increase stock.
+Sales and Transfer Out decrease stock.
+</div>
 
-<h2 class="title">CUSTOMERS</h2>
+<div id="inventorySummary" class="box"></div>
 
-<div class="card">
+<div id="inventoryList" class="list"></div>
 
-<label>Name</label>
-<input id="customerName" type="text">
+<h2>🔄 Inventory Movement</h2>
 
-<label>Phone</label>
-<input id="customerPhone" type="text">
+<div id="movementList" class="list"></div>
 
-<button class="action" onclick="addCustomer()">
-ADD CUSTOMER
+</section>
+
+<!-- TRANSFER IN -->
+
+<section class="screen" id="transfer-in">
+
+<h2>📥 Transfer In</h2>
+
+<div class="transfer-grid">
+
+<div class="transfer-banner transfer-in">
+
+<div class="transfer-icon">📥</div>
+
+<h3>TRANSFER IN</h3>
+
+<p>Receive stock from another location.</p>
+
+</div>
+
+<div class="box">
+
+<input id="transferInDate" type="date">
+
+<input id="transferInProduct"
+list="productOptions"
+placeholder="Product">
+
+<input id="transferInQuantity"
+type="number"
+min="1"
+placeholder="Quantity">
+
+<input id="transferInFrom"
+placeholder="From location">
+
+<input id="transferInNote"
+placeholder="Note">
+
+<button id="transferInButton" type="button" class="btn green">
+📥 CONFIRM TRANSFER IN
 </button>
 
 </div>
 
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Phone</th>
-</tr>
-</thead>
-<tbody id="customerList"></tbody>
-</table>
 </div>
+
+<div id="transferInList" class="list"></div>
 
 </section>
 
+<!-- TRANSFER OUT -->
 
-<!-- SUPPLIERS -->
+<section class="screen" id="transfer-out">
 
-<section id="suppliers" class="page">
+<h2>📤 Transfer Out</h2>
 
-<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+<div class="transfer-grid">
 
-<h2 class="title">SUPPLIERS</h2>
+<div class="transfer-banner transfer-out">
 
-<div class="card">
+<div class="transfer-icon">📤</div>
 
-<label>Name</label>
-<input id="supplierName" type="text">
+<h3>TRANSFER OUT</h3>
 
-<label>Phone</label>
-<input id="supplierPhone" type="text">
+<p>Move stock to another location.</p>
 
-<button class="action" onclick="addSupplier()">
-ADD SUPPLIER
+</div>
+
+<div class="box">
+
+<input id="transferOutDate" type="date">
+
+<input id="transferOutProduct"
+list="productOptions"
+placeholder="Product">
+
+<input id="transferOutQuantity"
+type="number"
+min="1"
+placeholder="Quantity">
+
+<input id="transferOutTo"
+placeholder="To location">
+
+<input id="transferOutNote"
+placeholder="Note">
+
+<button id="transferOutButton" type="button" class="btn orange">
+📤 CONFIRM TRANSFER OUT
 </button>
 
 </div>
 
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Phone</th>
-</tr>
-</thead>
-<tbody id="supplierList"></tbody>
-</table>
 </div>
 
-</section>
+<div id="transferOutList" class="list"></div>
 
+</section>
 
 <!-- EXPENSES -->
 
-<section id="expenses" class="page">
+<section class="screen" id="expenses">
 
-<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+<h2>💸 Expenses</h2>
 
-<h2 class="title">EXPENSES</h2>
+<div class="box">
 
-<div class="card">
-
-<label>Date</label>
 <input id="expenseDate" type="date">
 
-<label>Expense</label>
-<input id="expenseName" type="text">
+<input id="expenseName"
+placeholder="Expense description">
 
-<label>Amount</label>
-<input id="expenseAmount" type="number" min="0">
+<input id="expenseAmount"
+type="number"
+min="0"
+placeholder="Amount TSh">
 
-<button class="action" onclick="recordExpense()">
-RECORD EXPENSE
+<button id="expenseButton" type="button" class="btn purple">
+➕ RECORD EXPENSE
 </button>
 
 </div>
 
-<div class="table-wrap">
-<table>
-<thead>
-<tr>
-<th>Date</th>
-<th>Expense</th>
-<th>Amount</th>
-</tr>
-</thead>
-<tbody id="expenseList"></tbody>
-</table>
-</div>
+<div id="expensesList" class="list"></div>
 
 </section>
 
+<!-- SUPPLIERS -->
+
+<section class="screen" id="suppliers">
+
+<h2>🏢 Suppliers</h2>
+
+<div class="box">
+
+<input id="supplierName"
+placeholder="Supplier name">
+
+<input id="supplierPhone"
+placeholder="Phone number">
+
+<button id="supplierButton" type="button" class="btn blue">
+➕ ADD SUPPLIER
+</button>
+
+</div>
+
+<div id="suppliersList" class="list"></div>
+
+</section>
 
 <!-- REPORTS -->
 
-<section id="reports" class="page">
+<section class="screen" id="reports">
 
-<button class="back" onclick="showPage('home')">← MAIN MENU</button>
+<h2>📊 Reports</h2>
 
-<h2 class="title">REPORTS</h2>
-
-<div class="report">
-<span>TOTAL SALES</span>
-<strong id="totalSales">TSh 0</strong>
-</div>
-
-<div class="report">
-<span>COST OF GOODS SOLD</span>
-<strong id="totalCost">TSh 0</strong>
-</div>
-
-<div class="report">
-<span>GROSS PROFIT</span>
-<strong id="grossProfit">TSh 0</strong>
-</div>
-
-<div class="report">
-<span>TOTAL EXPENSES</span>
-<strong id="totalExpenses">TSh 0</strong>
-</div>
-
-<div class="report">
-<span>NET PROFIT</span>
-<strong id="netProfit">TSh 0</strong>
-</div>
-
-<div class="report">
-<span>TRANSFER IN</span>
-<strong id="transferInTotal">0</strong>
-</div>
-
-<div class="report">
-<span>TRANSFER OUT</span>
-<strong id="transferOutTotal">0</strong>
-</div>
-
-</section>
-
-
-<!-- THEMES -->
-
-<section id="themes" class="page">
-
-<button class="back" onclick="showPage('home')">← MAIN MENU</button>
-
-<h2 class="title">CHOOSE THEME</h2>
+<div class="cards">
 
 <div class="card">
+<small>TOTAL SALES</small>
+<div id="totalSales" class="amount">TSh 0</div>
+</div>
 
-<div class="theme-grid">
+<div class="card">
+<small>TOTAL PURCHASES</small>
+<div id="totalPurchases" class="amount">TSh 0</div>
+</div>
 
-<button class="theme-btn theme-ocean"
-onclick="setTheme('ocean')">
-🌊 OCEAN BLUE
-</button>
+<div class="card">
+<small>COST OF GOODS SOLD</small>
+<div id="totalCost" class="amount">TSh 0</div>
+</div>
 
-<button class="theme-btn theme-purple"
-onclick="setTheme('purple')">
-💜 ROYAL PURPLE
-</button>
-
-<button class="theme-btn theme-green"
-onclick="setTheme('green')">
-💚 EMERALD
-</button>
-
-<button class="theme-btn theme-red"
-onclick="setTheme('red')">
-❤️ RED & BLACK
-</button>
-
-<button class="theme-btn theme-orange"
-onclick="setTheme('orange')">
-🧡 SUNSET
-</button>
-
-<button class="theme-btn theme-midnight"
-onclick="setTheme('midnight')">
-🖤 MIDNIGHT
-</button>
-
-<button class="theme-btn theme-cyan"
-onclick="setTheme('cyan')">
-💎 ELECTRIC CYAN
-</button>
-
-<button class="theme-btn theme-gold"
-onclick="setTheme('gold')">
-💛 GOLD PREMIUM
-</button>
+<div class="card">
+<small>EXPENSES</small>
+<div id="totalExpenses" class="amount">TSh 0</div>
+</div>
 
 </div>
+
+<div class="box">
+
+<div class="total-line">
+<span>Gross Profit</span>
+<span id="grossProfit">TSh 0</span>
+</div>
+
+<div class="total-line">
+<span>Net Profit</span>
+<span id="netProfit" style="color:#12965d">
+TSh 0
+</span>
+</div>
+
+</div>
+
+<h2>🧾 Sales Invoices</h2>
+
+<div id="invoiceList"></div>
+
+</section>
+
+<!-- BACKUP -->
+
+<section class="screen" id="backup">
+
+<h2>💾 Backup</h2>
+
+<div class="box">
+
+<div class="notice">
+The JSON backup contains all application data.
+</div>
+
+<button id="jsonBackupButton" type="button" class="btn green">
+💾 DOWNLOAD DATA BACKUP
+</button>
+
+<button id="pdfBackupButton" type="button" class="btn orange">
+📄 CREATE PRINT/PDF BACKUP
+</button>
+
+<button id="copyBackupButton" type="button" class="btn blue">
+📋 COPY BACKUP DATA
+</button>
+
+<textarea id="backupText"
+rows="12"
+readonly
+placeholder="Backup data will appear here."></textarea>
 
 </div>
 
 </section>
 
+<!-- RESTORE -->
+
+<section class="screen" id="restore">
+
+<h2>♻️ Restore</h2>
+
+<div class="box">
+
+<div class="notice">
+Select a JSON backup created by this app, or paste the backup text.
 </div>
 
+<input id="restoreFile"
+type="file"
+accept=".json,application/json">
+
+<textarea id="restoreText"
+rows="12"
+placeholder="Paste JSON backup here"></textarea>
+
+<button id="restoreButton" type="button" class="btn purple">
+♻️ RESTORE DATA
+</button>
+
+<button id="deleteButton" type="button" class="btn red">
+⚠️ DELETE ALL DATA
+</button>
+
+</div>
+
+</section>
+
+</main>
+
+<datalist id="productOptions"></datalist>
 
 <script>
 
-/* ================= DATABASE ================= */
+/* =========================================================
+   STORAGE
+========================================================= */
 
-const KEY="SM_TYRES_ALIGNMENT_ACCOUNTING_1";
+var STORAGE = "SM_TYRES_ALIGNMENT_FINAL_V2";
 
-let data={
- products:{},
- sales:[],
- purchases:[],
- transferIn:[],
- transferOut:[],
- customers:[],
- suppliers:[],
- expenses:[]
+
+var data = {
+products:{},
+sales:[],
+purchases:[],
+expenses:[],
+suppliers:[],
+movements:[],
+transferIn:[],
+transferOut:[],
+invoiceNumber:0
 };
 
 
-/* ================= LOAD ================= */
+/* =========================================================
+   ELEMENT
+========================================================= */
 
-function loadData(){
+function el(id){
+return document.getElementById(id);
+}
 
- try{
 
-  const saved=localStorage.getItem(KEY);
+/* =========================================================
+   VALUE
+========================================================= */
 
-  if(saved){
+function value(id){
 
-   const x=JSON.parse(saved);
+var element=el(id);
 
-   data.products=x.products||{};
-   data.sales=x.sales||[];
-   data.purchases=x.purchases||[];
-   data.transferIn=x.transferIn||[];
-   data.transferOut=x.transferOut||[];
-   data.customers=x.customers||[];
-   data.suppliers=x.suppliers||[];
-   data.expenses=x.expenses||[];
+if(!element){
+return "";
+}
 
-  }
-
- }catch(e){
-
-  console.log(e);
-
- }
+return String(element.value || "").trim();
 
 }
 
 
-/* ================= SAVE ================= */
-
-function saveData(){
-
- localStorage.setItem(KEY,JSON.stringify(data));
-
-}
-
-
-/* ================= PAGE ================= */
-
-function showPage(id){
-
- document.querySelectorAll(".page").forEach(function(p){
-  p.classList.remove("active");
- });
-
- const page=document.getElementById(id);
-
- if(page){
-  page.classList.add("active");
- }
-
- window.scrollTo(0,0);
-
-}
-
-
-/* ================= MONEY ================= */
-
-function money(value){
-
- return "TSh "+
- Number(value||0).toLocaleString();
-
-}
-
-
-/* ================= DATE ================= */
+/* =========================================================
+   TODAY
+========================================================= */
 
 function today(){
 
- const d=new Date();
+var d=new Date();
 
- return d.getFullYear()+"-"+
- String(d.getMonth()+1).padStart(2,"0")+"-"+
- String(d.getDate()).padStart(2,"0");
-
-}
-
-
-/* ================= PRODUCT SELECTS ================= */
-
-function updateProductSelects(){
-
- const ids=[
-  "saleProduct",
-  "purchaseProduct",
-  "transferInProduct",
-  "transferOutProduct"
- ];
-
- ids.forEach(function(id){
-
-  const select=document.getElementById(id);
-
-  select.innerHTML="<option value=''>Select Product</option>";
-
-  Object.keys(data.products).forEach(function(name){
-
-   const p=data.products[name];
-
-   const option=document.createElement("option");
-
-   option.value=name;
-
-   option.textContent=
-    name+" | Stock: "+p.stock;
-
-   select.appendChild(option);
-
-  });
-
- });
+return d.getFullYear()+"-"+
+String(d.getMonth()+1).padStart(2,"0")+"-"+
+String(d.getDate()).padStart(2,"0");
 
 }
 
 
-/* ================= PRODUCT ================= */
+/* =========================================================
+   MONEY
+========================================================= */
+
+function money(number){
+
+var n=Number(number);
+
+if(!isFinite(n)){
+n=0;
+}
+
+return "TSh "+n.toLocaleString(
+"en-TZ",
+{
+minimumFractionDigits:0,
+maximumFractionDigits:2
+}
+);
+
+}
+
+
+/* =========================================================
+   SAFE HTML
+========================================================= */
+
+function safe(text){
+
+return String(text==null?"":text)
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================================
+   SAVE
+========================================================= */
+
+function save(){
+
+try{
+
+localStorage.setItem(
+STORAGE,
+JSON.stringify(data)
+);
+
+}catch(error){
+
+alert("Unable to save application data.");
+
+}
+
+}
+
+
+/* =========================================================
+   LOAD
+========================================================= */
+
+function load(){
+
+var saved=localStorage.getItem(STORAGE);
+
+if(!saved){
+return;
+}
+
+try{
+
+var x=JSON.parse(saved);
+
+if(!x || typeof x!=="object"){
+return;
+}
+
+data.products=x.products || {};
+data.sales=Array.isArray(x.sales)?x.sales:[];
+data.purchases=Array.isArray(x.purchases)?x.purchases:[];
+data.expenses=Array.isArray(x.expenses)?x.expenses:[];
+data.suppliers=Array.isArray(x.suppliers)?x.suppliers:[];
+data.movements=Array.isArray(x.movements)?x.movements:[];
+data.transferIn=Array.isArray(x.transferIn)?x.transferIn:[];
+data.transferOut=Array.isArray(x.transferOut)?x.transferOut:[];
+
+data.invoiceNumber=
+Number(x.invoiceNumber||0);
+
+}catch(error){
+
+alert("Saved data could not be loaded.");
+
+}
+
+}
+
+
+/* =========================================================
+   DATES
+========================================================= */
+
+function setDates(){
+
+el("saleDate").value=today();
+el("purchaseDate").value=today();
+el("expenseDate").value=today();
+el("transferInDate").value=today();
+el("transferOutDate").value=today();
+
+}
+
+
+/* =========================================================
+   CALCULATE TOTALS
+========================================================= */
+
+function calculateTotals(){
+
+var sales=0;
+var purchases=0;
+var cost=0;
+var expenses=0;
+
+data.sales.forEach(function(item){
+
+sales += Number(item.total)||0;
+
+cost += Number(item.costTotal)||0;
+
+});
+
+
+data.purchases.forEach(function(item){
+
+purchases += Number(item.total)||0;
+
+});
+
+
+data.expenses.forEach(function(item){
+
+expenses += Number(item.amount)||0;
+
+});
+
+
+var gross=sales-cost;
+
+var net=gross-expenses;
+
+
+return{
+sales:sales,
+purchases:purchases,
+cost:cost,
+expenses:expenses,
+gross:gross,
+net:net
+};
+
+}
+
+
+/* =========================================================
+   PRODUCT
+========================================================= */
 
 function addProduct(){
 
- const code=document.getElementById("productCode").value.trim();
- const name=document.getElementById("productName").value.trim();
- const category=document.getElementById("productCategory").value;
+var name=value("productName");
+var code=value("productCode");
+var category=value("productCategory")||"General";
 
- if(!name){
+if(!name){
 
-  alert("Enter product name.");
-  return;
+alert("Enter product name.");
 
- }
+return;
+}
 
- if(data.products[name]){
+if(data.products[name]){
 
-  alert("Product already exists.");
-  return;
+alert("This product already exists.");
 
- }
+return;
+}
 
- data.products[name]={
-  code:code,
-  name:name,
-  category:category,
-  stock:0,
-  cost:0
- };
+data.products[name]={
+name:name,
+code:code,
+category:category,
+stock:0,
+cost:0
+};
 
- saveData();
- render();
+save();
 
- document.getElementById("productCode").value="";
- document.getElementById("productName").value="";
+render();
 
- alert("Product added successfully.");
+el("productName").value="";
+el("productCode").value="";
+el("productCategory").value="";
+
+alert("Product added successfully.");
 
 }
 
 
-/* ================= PURCHASE ================= */
+/* =========================================================
+   DELETE PRODUCT
+========================================================= */
+
+function deleteProduct(name){
+
+name=decodeURIComponent(name);
+
+if(!data.products[name]){
+
+alert("Product not found.");
+
+return;
+}
+
+if(!confirm("Delete "+name+"?")){
+
+return;
+}
+
+delete data.products[name];
+
+save();
+
+render();
+
+}
+
+
+/* =========================================================
+   PURCHASE
+========================================================= */
 
 function recordPurchase(){
 
- const date=document.getElementById("purchaseDate").value;
- const supplier=document.getElementById("purchaseSupplier").value.trim();
- const product=document.getElementById("purchaseProduct").value;
- const qty=Number(document.getElementById("purchaseQty").value);
- const price=Number(document.getElementById("purchasePrice").value);
+var date=value("purchaseDate")||today();
 
- if(!product){
-  alert("Select a product.");
-  return;
- }
+var supplier=
+value("purchaseSupplier")||
+"Unknown Supplier";
 
- if(qty<=0){
-  alert("Enter quantity.");
-  return;
- }
+var product=value("purchaseProduct");
 
- if(price<=0){
-  alert("Enter purchase price.");
-  return;
- }
+var quantity=
+Number(el("purchaseQuantity").value);
 
- const p=data.products[product];
+var price=
+Number(el("purchasePrice").value);
 
- p.stock+=qty;
- p.cost=price;
 
- data.purchases.push({
-  date:date,
-  supplier:supplier||"Unknown",
-  product:product,
-  qty:qty,
-  price:price,
-  total:qty*price
- });
+if(
+!product ||
+!isFinite(quantity) ||
+quantity<=0 ||
+!isFinite(price) ||
+price<=0
+){
 
- if(supplier && !data.suppliers.some(function(x){
-  return x.name===supplier;
- })){
-  data.suppliers.push({
-   name:supplier,
-   phone:""
-  });
- }
+alert(
+"Enter product, quantity and buying price."
+);
 
- saveData();
- render();
+return;
+}
 
- document.getElementById("purchaseSupplier").value="";
- document.getElementById("purchaseQty").value="";
- document.getElementById("purchasePrice").value="";
 
- alert("Purchase recorded successfully.");
+if(!data.products[product]){
+
+data.products[product]={
+name:product,
+code:"",
+category:"General",
+stock:0,
+cost:price
+};
 
 }
 
 
-/* ================= SALE ================= */
+var p=data.products[product];
+
+
+/* INCREASE STOCK */
+
+p.stock=
+Number(p.stock||0)+quantity;
+
+
+/* UPDATE COST */
+
+p.cost=price;
+
+
+/* SAVE PURCHASE */
+
+data.purchases.push({
+
+date:date,
+supplier:supplier,
+product:product,
+quantity:quantity,
+price:price,
+total:quantity*price
+
+});
+
+
+save();
+
+render();
+
+
+el("purchaseSupplier").value="";
+el("purchaseProduct").value="";
+el("purchaseQuantity").value=1;
+el("purchasePrice").value="";
+
+
+alert(
+"Purchase recorded successfully.\n"+
+"Stock increased by "+quantity+
+".\nCurrent stock: "+p.stock
+);
+
+}
+
+
+/* =========================================================
+   SALE
+========================================================= */
 
 function recordSale(){
 
- const date=document.getElementById("saleDate").value;
- const customer=document.getElementById("saleCustomer").value.trim();
- const product=document.getElementById("saleProduct").value;
- const qty=Number(document.getElementById("saleQty").value);
- const price=Number(document.getElementById("salePrice").value);
+var date=value("saleDate")||today();
 
- if(!product){
-  alert("Select a product.");
-  return;
- }
+var customer=
+value("saleCustomer")||
+"Cash Customer";
 
- if(qty<=0){
-  alert("Enter quantity.");
-  return;
- }
+var product=value("saleProduct");
 
- if(price<=0){
-  alert("Enter selling price.");
-  return;
- }
+var quantity=
+Number(el("saleQuantity").value);
 
- const p=data.products[product];
+var price=
+Number(el("salePrice").value);
 
- if(p.stock<qty){
 
-  alert(
-   "Not enough stock.\n\n"+
-   "Available: "+p.stock+
-   "\nRequested: "+qty
-  );
+if(
+!product ||
+!isFinite(quantity) ||
+quantity<=0 ||
+!isFinite(price) ||
+price<=0
+){
 
-  return;
+alert(
+"Enter product, quantity and selling price."
+);
 
- }
+return;
+}
 
- const cost=Number(p.cost||0);
- const total=qty*price;
- const costTotal=qty*cost;
 
- const invoice=
-  "SM-"+String(data.sales.length+1).padStart(5,"0");
+if(!data.products[product]){
 
- p.stock-=qty;
+alert(
+"Product not found.\n"+
+"Please add the product or make a purchase first."
+);
 
- data.sales.push({
-  invoice:invoice,
-  date:date,
-  customer:customer||"Cash Customer",
-  product:product,
-  qty:qty,
-  price:price,
-  cost:cost,
-  total:total,
-  costTotal:costTotal,
-  profit:total-costTotal
- });
+return;
+}
 
- if(customer && !data.customers.some(function(x){
-  return x.name===customer;
- })){
-  data.customers.push({
-   name:customer,
-   phone:""
-  });
- }
 
- saveData();
- render();
+var p=data.products[product];
 
- document.getElementById("saleCustomer").value="";
- document.getElementById("saleQty").value="";
- document.getElementById("salePrice").value="";
+var currentStock=
+Number(p.stock)||0;
 
- alert(
-  "Sale recorded successfully.\n"+
-  "Invoice: "+invoice
- );
+
+if(currentStock<quantity){
+
+alert(
+"Not enough stock.\n\n"+
+"Product: "+product+
+"\nAvailable: "+currentStock+
+"\nRequested: "+quantity
+);
+
+return;
+}
+
+
+var cost=
+Number(p.cost)||0;
+
+
+data.invoiceNumber=
+Number(data.invoiceNumber||0)+1;
+
+
+var invoice=
+"SM-"+date.substring(0,4)+"-"+
+String(data.invoiceNumber).padStart(5,"0");
+
+
+/* DECREASE STOCK */
+
+p.stock=
+currentStock-quantity;
+
+
+/* SALE TOTAL */
+
+var total=
+quantity*price;
+
+
+/* COST TOTAL */
+
+var costTotal=
+quantity*cost;
+
+
+/* PROFIT */
+
+var profit=
+total-costTotal;
+
+
+/* SAVE SALE */
+
+data.sales.push({
+
+invoice:invoice,
+date:date,
+customer:customer,
+product:product,
+quantity:quantity,
+price:price,
+total:total,
+costTotal:costTotal,
+profit:profit
+
+});
+
+
+/* MOVEMENT */
+
+data.movements.push({
+
+date:date,
+type:"SALE",
+product:product,
+quantity:quantity,
+location:"Sales",
+note:"Stock sold"
+
+});
+
+
+save();
+
+render();
+
+
+el("saleCustomer").value="";
+el("saleProduct").value="";
+el("saleQuantity").value=1;
+el("salePrice").value="";
+
+
+alert(
+"Sale recorded successfully.\n\n"+
+"Invoice: "+invoice+
+"\nSale: "+money(total)+
+"\nProfit: "+money(profit)+
+"\nRemaining stock: "+p.stock
+);
 
 }
 
 
-/* ================= TRANSFER IN ================= */
+/* =========================================================
+   TRANSFER IN
+========================================================= */
 
 function recordTransferIn(){
 
- const date=document.getElementById("transferInDate").value;
- const product=document.getElementById("transferInProduct").value;
- const qty=Number(document.getElementById("transferInQty").value);
- const from=document.getElementById("transferInFrom").value.trim();
- const note=document.getElementById("transferInNote").value.trim();
+var date=
+value("transferInDate")||today();
 
- if(!product){
-  alert("Select a product.");
-  return;
- }
+var product=
+value("transferInProduct");
 
- if(qty<=0){
-  alert("Enter quantity.");
-  return;
- }
+var quantity=
+Number(el("transferInQuantity").value);
 
- if(!from){
-  alert("Enter From Location.");
-  return;
- }
+var from=
+value("transferInFrom")||
+"Other Location";
 
- data.products[product].stock+=qty;
+var note=
+value("transferInNote")||
+"Stock received";
 
- data.transferIn.push({
-  date:date,
-  product:product,
-  qty:qty,
-  from:from,
-  note:note
- });
 
- saveData();
- render();
+if(
+!product ||
+!isFinite(quantity) ||
+quantity<=0
+){
 
- document.getElementById("transferInQty").value="";
- document.getElementById("transferInFrom").value="";
- document.getElementById("transferInNote").value="";
+alert("Enter product and quantity.");
 
- alert("Transfer In recorded successfully.");
+return;
+}
+
+
+if(!data.products[product]){
+
+data.products[product]={
+name:product,
+code:"",
+category:"General",
+stock:0,
+cost:0
+};
 
 }
 
 
-/* ================= TRANSFER OUT ================= */
+data.products[product].stock=
+Number(data.products[product].stock||0)+quantity;
 
-function recordTransferOut(){
 
- const date=document.getElementById("transferOutDate").value;
- const product=document.getElementById("transferOutProduct").value;
- const qty=Number(document.getElementById("transferOutQty").value);
- const to=document.getElementById("transferOutTo").value.trim();
- const note=document.getElementById("transferOutNote").value.trim();
+var record={
 
- if(!product){
-  alert("Select a product.");
-  return;
- }
-
- if(qty<=0){
-  alert("Enter quantity.");
-  return;
- }
-
- if(!to){
-  alert("Enter To Location.");
-  return;
- }
-
- const p=data.products[product];
-
- if(p.stock<qty){
-
-  alert(
-   "Not enough stock.\n\n"+
-   "Available: "+p.stock+
-   "\nRequested: "+qty
-  );
-
-  return;
-
- }
-
- p.stock-=qty;
-
- data.transferOut.push({
-  date:date,
-  product:product,
-  qty:qty,
-  to:to,
-  note:note
- });
-
- saveData();
- render();
-
- document.getElementById("transferOutQty").value="";
- document.getElementById("transferOutTo").value="";
- document.getElementById("transferOutNote").value="";
-
- alert("Transfer Out recorded successfully.");
-
-}
-
-
-/* ================= CUSTOMER ================= */
-
-function addCustomer(){
-
- const name=document.getElementById("customerName").value.trim();
- const phone=document.getElementById("customerPhone").value.trim();
-
- if(!name){
-  alert("Enter customer name.");
-  return;
- }
-
- data.customers.push({
-  name:name,
-  phone:phone
- });
-
- saveData();
- render();
-
- document.getElementById("customerName").value="";
- document.getElementById("customerPhone").value="";
-
- alert("Customer added.");
-
-}
-
-
-/* ================= SUPPLIER ================= */
-
-function addSupplier(){
-
- const name=document.getElementById("supplierName").value.trim();
- const phone=document.getElementById("supplierPhone").value.trim();
-
- if(!name){
-  alert("Enter supplier name.");
-  return;
- }
-
- data.suppliers.push({
-  name:name,
-  phone:phone
- });
-
- saveData();
- render();
-
- document.getElementById("supplierName").value="";
- document.getElementById("supplierPhone").value="";
-
- alert("Supplier added.");
-
-}
-
-
-/* ================= EXPENSE ================= */
-
-function recordExpense(){
-
- const date=document.getElementById("expenseDate").value;
- const name=document.getElementById("expenseName").value.trim();
- const amount=Number(document.getElementById("expenseAmount").value);
-
- if(!name){
-  alert("Enter expense name.");
-  return;
- }
-
- if(amount<=0){
-  alert("Enter expense amount.");
-  return;
- }
-
- data.expenses.push({
-  date:date,
-  name:name,
-  amount:amount
- });
-
- saveData();
- render();
-
- document.getElementById("expenseName").value="";
- document.getElementById("expenseAmount").value="";
-
- alert("Expense recorded.");
-
-}
-
-
-/* ================= RENDER ================= */
-
-function render(){
-
- updateProductSelects();
-
- renderProducts();
- renderInventory();
- renderSales();
- renderPurchases();
- renderMovements();
- renderCustomers();
- renderSuppliers();
- renderExpenses();
- renderReports();
-
-}
-
-
-/* ================= PRODUCTS LIST ================= */
-
-function renderProducts(){
-
- let html="";
-
- Object.keys(data.products).forEach(function(name){
-
-  const p=data.products[name];
-
-  html+=
-  "<tr>"+
-  "<td>"+p.code+"</td>"+
-  "<td>"+p.name+"</td>"+
-  "<td>"+p.category+"</td>"+
-  "<td>"+p.stock+"</td>"+
-  "<td>"+money(p.cost)+"</td>"+
-  "</tr>";
-
- });
-
- if(!html){
-  html="<tr><td colspan='5' class='empty'>No products yet</td></tr>";
- }
-
- document.getElementById("productList").innerHTML=html;
-
-}
-
-
-/* ================= INVENTORY ================= */
-
-function renderInventory(){
-
- let html="";
-
- Object.keys(data.products).forEach(function(name){
-
-  const p=data.products[name];
-
-  html+=
-  "<tr>"+
-  "<td>"+p.code+"</td>"+
-  "<td>"+p.name+"</td>"+
-  "<td>"+p.category+"</td>"+
-  "<td><b>"+p.stock+"</b></td>"+
-  "<td>"+money(p.cost)+"</td>"+
-  "<td>"+money(p.stock*p.cost)+"</td>"+
-  "</tr>";
-
- });
-
- if(!html){
-  html="<tr><td colspan='6' class='empty'>No inventory yet</td></tr>";
- }
-
- document.getElementById("inventoryList").innerHTML=html;
-
-}
-
-
-/* ================= SALES LIST ================= */
-
-function renderSales(){
-
- let html="";
-
- [...data.sales].reverse().forEach(function(s){
-
-  html+=
-  "<tr>"+
-  "<td>"+s.invoice+"</td>"+
-  "<td>"+s.date+"</td>"+
-  "<td>"+s.customer+"</td>"+
-  "<td>"+s.product+"</td>"+
-  "<td>"+s.qty+"</td>"+
-  "<td>"+money(s.total)+"</td>"+
-  "<td>"+money(s.profit)+"</td>"+
-  "</tr>";
-
- });
-
- document.getElementById("salesList").innerHTML=html;
-
-}
-
-
-/* ================= PURCHASE LIST ================= */
-
-function renderPurchases(){
-
- let html="";
-
- [...data.purchases].reverse().forEach(function(p){
-
-  html+=
-  "<tr>"+
-  "<td>"+p.date+"</td>"+
-  "<td>"+p.supplier+"</td>"+
-  "<td>"+p.product+"</td>"+
-  "<td>"+p.qty+"</td>"+
-  "<td>"+money(p.price)+"</td>"+
-  "<td>"+money(p.total)+"</td>"+
-  "</tr>";
-
- });
-
- document.getElementById("purchaseList").innerHTML=html;
-
-}
-
-
-/* ================= MOVEMENTS ================= */
-
-function renderMovements(){
-
- let movements=[];
-
- data.purchases.forEach(function(x){
-
-  movements.push({
-   date:x.date,
-   type:"PURCHASE",
-   product:x.product,
-   qty:"+"+x.qty,
-   details:"Supplier: "+x.supplier
-  });
-
- });
-
- data.transferIn.forEach(function(x){
-
-  movements.push({
-   date:x.date,
-   type:"TRANSFER IN",
-   product:x.product,
-   qty:"+"+x.qty,
-   details:"From: "+x.from
-  });
-
- });
-
- data.sales.forEach(function(x){
-
-  movements.push({
-   date:x.date,
-   type:"SALE",
-   product:x.product,
-   qty:"-"+x.qty,
-   details:"Customer: "+x.customer
-  });
-
- });
-
- data.transferOut.forEach(function(x){
-
-  movements.push({
-   date:x.date,
-   type:"TRANSFER OUT",
-   product:x.product,
-   qty:"-"+x.qty,
-   details:"To: "+x.to
-  });
-
- });
-
- movements.reverse();
-
- let html="";
-
- movements.forEach(function(x){
-
-  const cls=x.qty.charAt(0)==="+"?"in":"out";
-
-  html+=
-  "<tr>"+
-  "<td>"+x.date+"</td>"+
-  "<td>"+x.type+"</td>"+
-  "<td>"+x.product+"</td>"+
-  "<td class='"+cls+"'>"+x.qty+"</td>"+
-  "<td>"+x.details+"</td>"+
-  "</tr>";
-
- });
-
- if(!html){
-  html="<tr><td colspan='5' class='empty'>No movements yet</td></tr>";
- }
-
- document.getElementById("movementList").innerHTML=html;
-
-}
-
-
-/* ================= CUSTOMERS ================= */
-
-function renderCustomers(){
-
- let html="";
-
- data.customers.forEach(function(x){
-
-  html+=
-  "<tr>"+
-  "<td>"+x.name+"</td>"+
-  "<td>"+x.phone+"</td>"+
-  "</tr>";
-
- });
-
- document.getElementById("customerList").innerHTML=html;
-
-}
-
-
-/* ================= SUPPLIERS ================= */
-
-function renderSuppliers(){
-
- let html="";
-
- data.suppliers.forEach(function(x){
-
-  html+=
-  "<tr>"+
-  "<td>"+x.name+"</td>"+
-  "<td>"+x.phone+"</td>"+
-  "</tr>";
-
- });
-
- document.getElementById("supplierList").innerHTML=html;
-
-}
-
-
-/* ================= EXPENSES ================= */
-
-function renderExpenses(){
-
- let html="";
-
- [...data.expenses].reverse().forEach(function(x){
-
-  html+=
-  "<tr>"+
-  "<td>"+x.date+"</td>"+
-  "<td>"+x.name+"</td>"+
-  "<td>"+money(x.amount)+"</td>"+
-  "</tr>";
-
- });
-
- document.getElementById("expenseList").innerHTML=html;
-
-}
-
-
-/* ================= REPORTS ================= */
-
-function renderReports(){
-
- let sales=0;
- let cost=0;
- let expenses=0;
- let transferIn=0;
- let transferOut=0;
-
- data.sales.forEach(function(x){
-
-  sales+=Number(x.total||0);
-  cost+=Number(x.costTotal||0);
-
- });
-
- data.expenses.forEach(function(x){
-
-  expenses+=Number(x.amount||0);
-
- });
-
- data.transferIn.forEach(function(x){
-
-  transferIn+=Number(x.qty||0);
-
- });
-
- data.transferOut.forEach(function(x){
-
-  transferOut+=Number(x.qty||0);
-
- });
-
- const gross=sales-cost;
- const net=gross-expenses;
-
- document.getElementById("totalSales").textContent=money(sales);
- document.getElementById("totalCost").textContent=money(cost);
- document.getElementById("grossProfit").textContent=money(gross);
- document.getElementById("totalExpenses").textContent=money(expenses);
- document.getElementById("netProfit").textContent=money(net);
- document.getElementById("transferInTotal").textContent=transferIn;
- document.getElementById("transferOutTotal").textContent=transferOut;
-
-}
-
-
-/* ================= THEMES ================= */
-
-const themes={
-
- ocean:{
-  bg1:"#061827",
-  bg2:"#0b3852",
-  primary:"#00aeea",
-  secondary:"#0879a8"
- },
-
- purple:{
-  bg1:"#160822",
-  bg2:"#4b1680",
-  primary:"#b36cff",
-  secondary:"#7130b8"
- },
-
- green:{
-  bg1:"#031a12",
-  bg2:"#075c3d",
-  primary:"#20d58a",
-  secondary:"#128b5a"
- },
-
- red:{
-  bg1:"#130304",
-  bg2:"#510b11",
-  primary:"#ff4050",
-  secondary:"#a81827"
- },
-
- orange:{
-  bg1:"#1d0c02",
-  bg2:"#873400",
-  primary:"#ff9c20",
-  secondary:"#d25d0b"
- },
-
- midnight:{
-  bg1:"#020406",
-  bg2:"#202a31",
-  primary:"#8998a2",
-  secondary:"#48555e"
- },
-
- cyan:{
-  bg1:"#001719",
-  bg2:"#005967",
-  primary:"#00fff0",
-  secondary:"#008da0"
- },
-
- gold:{
-  bg1:"#120e02",
-  bg2:"#554000",
-  primary:"#f5c842",
-  secondary:"#a57a05"
- }
+date:date,
+type:"TRANSFER IN",
+product:product,
+quantity:quantity,
+location:from,
+note:note
 
 };
 
 
-function setTheme(name){
+data.transferIn.push(record);
 
- const t=themes[name];
+data.movements.push(record);
 
- if(!t)return;
 
- document.documentElement.style.setProperty("--bg1",t.bg1);
- document.documentElement.style.setProperty("--bg2",t.bg2);
- document.documentElement.style.setProperty("--primary",t.primary);
- document.documentElement.style.setProperty("--secondary",t.secondary);
+save();
 
- localStorage.setItem(
-  "SM_TYRES_THEME",
-  name
- );
+render();
+
+
+el("transferInProduct").value="";
+el("transferInQuantity").value="";
+el("transferInFrom").value="";
+el("transferInNote").value="";
+
+
+alert(
+"Transfer In completed.\n"+
+"Stock increased by "+quantity+
+".\nCurrent stock: "+
+data.products[product].stock
+);
+
+}
+
+
+/* =========================================================
+   TRANSFER OUT
+========================================================= */
+
+function recordTransferOut(){
+
+var date=
+value("transferOutDate")||today();
+
+var product=
+value("transferOutProduct");
+
+var quantity=
+Number(el("transferOutQuantity").value);
+
+var to=
+value("transferOutTo")||
+"Other Location";
+
+var note=
+value("transferOutNote")||
+"Stock transferred";
+
+
+if(
+!product ||
+!isFinite(quantity) ||
+quantity<=0
+){
+
+alert("Enter product and quantity.");
+
+return;
+}
+
+
+if(!data.products[product]){
+
+alert("Product does not exist.");
+
+return;
+}
+
+
+var currentStock=
+Number(data.products[product].stock)||0;
+
+
+if(currentStock<quantity){
+
+alert(
+"Not enough stock.\n\n"+
+"Available: "+currentStock+
+"\nRequested: "+quantity
+);
+
+return;
+}
+
+
+data.products[product].stock=
+currentStock-quantity;
+
+
+var record={
+
+date:date,
+type:"TRANSFER OUT",
+product:product,
+quantity:quantity,
+location:to,
+note:note
+
+};
+
+
+data.transferOut.push(record);
+
+data.movements.push(record);
+
+
+save();
+
+render();
+
+
+el("transferOutProduct").value="";
+el("transferOutQuantity").value="";
+el("transferOutTo").value="";
+el("transferOutNote").value="";
+
+
+alert(
+"Transfer Out completed.\n"+
+"Stock decreased by "+quantity+
+".\nCurrent stock: "+
+data.products[product].stock
+);
 
 }
 
 
-/* ================= START ================= */
+/* =========================================================
+   EXPENSE
+========================================================= */
 
-function start(){
+function recordExpense(){
 
- loadData();
+var date=
+value("expenseDate")||today();
 
- const savedTheme=
-  localStorage.getItem("SM_TYRES_THEME")||"ocean";
+var name=
+value("expenseName");
 
- setTheme(savedTheme);
+var amount=
+Number(el("expenseAmount").value);
 
- const dates=[
-  "saleDate",
-  "purchaseDate",
-  "transferInDate",
-  "transferOutDate",
-  "expenseDate"
- ];
 
- dates.forEach(function(id){
+if(
+!name ||
+!isFinite(amount) ||
+amount<=0
+){
 
-  const el=document.getElementById(id);
+alert(
+"Enter expense description and amount."
+);
 
-  if(el)el.value=today();
+return;
+}
 
- });
 
- render();
+data.expenses.push({
+
+date:date,
+name:name,
+amount:amount
+
+});
+
+
+save();
+
+render();
+
+
+el("expenseName").value="";
+el("expenseAmount").value="";
+
+
+alert(
+"Expense recorded successfully.\n"+
+"Amount: "+money(amount)
+);
 
 }
 
-start();
+
+/* =========================================================
+   SUPPLIER
+========================================================= */
+
+function addSupplier(){
+
+var name=
+value("supplierName");
+
+var phone=
+value("supplierPhone");
+
+
+if(!name){
+
+alert("Enter supplier name.");
+
+return;
+}
+
+
+data.suppliers.push({
+
+name:name,
+phone:phone
+
+});
+
+
+save();
+
+render();
+
+
+el("supplierName").value="";
+el("supplierPhone").value="";
+
+
+alert("Supplier added successfully.");
+
+}
+
+
+/* =========================================================
+   OPTIONS
+========================================================= */
+
+function renderOptions(){
+
+var html="";
+
+Object.keys(data.products)
+.forEach(function(name){
+
+html+=
+"<option value=\""+
+safe(name)+
+"\"></option>";
+
+});
+
+el("productOptions").innerHTML=html;
+
+}
+
+
+/* =========================================================
+   PRODUCTS LIST
+========================================================= */
+
+function renderProducts(){
+
+var search=
+value("productSearch").toLowerCase();
+
+var html="";
+
+
+Object.keys(data.products)
+.forEach(function(name){
+
+var p=data.products[name];
+
+var code=
+String(p.code||"").toLowerCase();
+
+
+if(
+search &&
+name.toLowerCase().indexOf(search)===-1 &&
+code.indexOf(search)===-1
+){
+
+return;
+
+}
+
+
+html+=
+"<div class='item'>"+
+
+"<div class='item-head'>"+
+
+"<b>"+safe(name)+"</b>"+
+
+"<span class='badge'>"+
+"Stock: "+Number(p.stock||0)+
+"</span>"+
+
+"</div>"+
+
+"Code: "+
+safe(p.code||"-")+
+"<br>"+
+
+"Category: "+
+safe(p.category||"-")+
+"<br>"+
+
+"Cost: "+
+money(p.cost)+
+
+"<button type='button' "+
+"class='btn blue delete-product' "+
+"data-product='"+encodeURIComponent(name)+"'>"+
+"🗑 DELETE"+
+"</button>"+
+
+"</div>";
+
+});
+
+
+el("productsList").innerHTML=
+html||
+"<div class='empty'>No products.</div>";
+
+}
+
+
+/* =========================================================
+   INVENTORY
+========================================================= */
+
+function renderInventory(){
+
+var html="";
+
+var count=0;
+
+var totalUnits=0;
+
+var inventoryValue=0;
+
+
+Object.keys(data.products)
+.forEach(function(name){
+
+var p=data.products[name];
+
+var stock=
+Number(p.stock)||0;
+
+var cost=
+Number(p.cost)||0;
+
+count++;
+
+totalUnits+=stock;
+
+inventoryValue+=stock*cost;
+
+
+var stockClass=
+stock>0?
+"stock-positive":
+stock===0?
+"stock-zero":
+"stock-negative";
+
+
+html+=
+"<div class='item'>"+
+
+"<div class='item-head'>"+
+
+"<b>"+safe(name)+"</b>"+
+
+"<span class='badge'>"+
+"STOCK: "+stock+
+"</span>"+
+
+"</div>"+
+
+"Category: "+
+safe(p.category||"-")+
+"<br>"+
+
+"Cost per unit: "+
+money(cost)+
+"<br>"+
+
+"Stock value: "+
+money(stock*cost)+
+"<br>"+
+
+"<span class='"+stockClass+"'>"+
+"Balance: "+stock+" unit(s)"+
+"</span>"+
+
+"</div>";
+
+});
+
+
+el("inventoryList").innerHTML=
+html||
+"<div class='empty'>No inventory.</div>";
+
+
+el("inventorySummary").innerHTML=
+
+"<div class='total-line'>"+
+"<span>Products</span>"+
+"<span>"+count+"</span>"+
+"</div>"+
+
+"<div class='total-line'>"+
+"<span>Total Units</span>"+
+"<span>"+totalUnits+"</span>"+
+"</div>"+
+
+"<div class='total-line'>"+
+"<span>Total Inventory Value</span>"+
+"<span>"+money(inventoryValue)+"</span>"+
+"</div>";
+
+}
+
+
+/* =========================================================
+   MOVEMENTS
+========================================================= */
+
+function renderMovements(){
+
+var html="";
+
+
+data.movements
+.slice()
+.reverse()
+.forEach(function(x){
+
+var icon="🔄";
+
+if(x.type==="TRANSFER IN"){
+icon="📥";
+}
+
+if(x.type==="TRANSFER OUT"){
+icon="📤";
+}
+
+if(x.type==="SALE"){
+icon="💰";
+}
+
+
+html+=
+"<div class='item'>"+
+
+"<b>"+
+icon+" "+
+safe(x.type)+
+"</b>"+
+
+"<br>"+
+
+safe(x.date)+
+" • "+
+safe(x.product)+
+" × "+
+Number(x.quantity||0)+
+
+"<br>"+
+
+"Location: "+
+safe(x.location)+
+
+"<br>"+
+
+"Note: "+
+safe(x.note)+
+
+"</div>";
+
+});
+
+
+el("movementList").innerHTML=
+html||
+"<div class='empty'>No movements.</div>";
+
+}
+
+
+/* =========================================================
+   TRANSFER IN LIST
+========================================================= */
+
+function renderTransferIn(){
+
+var html="";
+
+
+data.transferIn
+.slice()
+.reverse()
+.forEach(function(x){
+
+html+=
+"<div class='item'>"+
+
+"<b>📥 "+
+safe(x.product)+
+"</b> × "+
+Number(x.quantity||0)+
+
+"<br>Date: "+
+safe(x.date)+
+
+"<br>From: "+
+safe(x.location)+
+
+"<br>"+
+safe(x.note)+
+
+"</div>";
+
+});
+
+
+el("transferInList").innerHTML=
+html||
+"<div class='empty'>No Transfer In records.</div>";
+
+}
+
+
+/* =========================================================
+   TRANSFER OUT LIST
+========================================================= */
+
+function renderTransferOut(){
+
+var html="";
+
+
+data.transferOut
+.slice()
+.reverse()
+.forEach(function(x){
+
+html+=
+"<div class='item'>"+
+
+"<b>📤 "+
+safe(x.product)+
+"</b> × "+
+Number(x.quantity||0)+
+
+"<br>Date: "+
+safe(x.date)+
+
+"<br>To: "+
+safe(x.location)+
+
+"<br>"+
+safe(x.note)+
+
+"</div>";
+
+});
+
+
+el("transferOutList").innerHTML=
+html||
+"<div class='empty'>No Transfer Out records.</div>";
+
+}
+
+
+/* =========================================================
+   SALES LIST
+========================================================= */
+
+function renderSales(){
+
+var html="";
+
+
+data.sales
+.slice()
+.reverse()
+.forEach(function(x){
+
+html+=
+"<div class='item'>"+
+
+"<div class='item-head'>"+
+
+"<b>"+
+safe(x.invoice)+
+"</b>"+
+
+"<b>"+
+money(x.total)+
+"</b>"+
+
+"</div>"+
+
+safe(x.date)+
+" • "+
+safe(x.customer)+
+
+"<br>"+
+
+safe(x.product)+
+" × "+
+Number(x.quantity||0)+
+
+"<br>"+
+
+"Cost: "+
+money(x.costTotal)+
+
+"<br>"+
+
+"Profit: "+
+money(x.profit)+
+
+"</div>";
+
+});
+
+
+el("salesList").innerHTML=
+html||
+"<div class='empty'>No sales.</div>";
+
+}
+
+
+/* =========================================================
+   PURCHASE LIST
+========================================================= */
+
+function renderPurchases(){
+
+var html="";
+
+
+data.purchases
+.slice()
+.reverse()
+.forEach(function(x){
+
+html+=
+"<div class='item'>"+
+
+"<div class='item-head'>"+
+
+"<b>"+
+safe(x.product)+
+"</b>"+
+
+"<b>"+
+money(x.total)+
+"</b>"+
+
+"</div>"+
+
+safe(x.date)+
+" • "+
+safe(x.supplier)+
+
+"<br>Quantity: "+
+Number(x.quantity||0)+
+
+"<br>Price: "+
+money(x.price)+
+
+"</div>";
+
+});
+
+
+el("purchasesList").innerHTML=
+html||
+"<div class='empty'>No purchases.</div>";
+
+}
+
+
+/* =========================================================
+   EXPENSE LIST
+========================================================= */
+
+function renderExpenses(){
+
+var html="";
+
+
+data.expenses
+.slice()
+.reverse()
+.forEach(function(x){
+
+html+=
+"<div class='item'>"+
+
+"<b>"+
+safe(x.name)+
+"</b>"+
+
+" • "+
+money(x.amount)+
+
+"<br>"+
+safe(x.date)+
+
+"</div>";
+
+});
+
+
+el("expensesList").innerHTML=
+html||
+"<div class='empty'>No expenses.</div>";
+
+}
+
+
+/* =========================================================
+   SUPPLIER LIST
+========================================================= */
+
+function renderSuppliers(){
+
+var html="";
+
+
+data.suppliers
+.slice()
+.reverse()
+.forEach(function(x){
+
+html+=
+"<div class='item'>"+
+
+"<b>"+
+safe(x.name)+
+"</b>"+
+
+"<br>"+
+
+"Phone: "+
+safe(x.phone||"-")+
+
+"</div>";
+
+});
+
+
+el("suppliersList").innerHTML=
+html||
+"<div class='empty'>No suppliers.</div>";
+
+}
+
+
+/* =========================================================
+   REPORTS
+========================================================= */
+
+function renderReports(){
+
+var t=calculateTotals();
+
+
+el("totalSales").textContent=
+money(t.sales);
+
+
+el("totalPurchases").textContent=
+money(t.purchases);
+
+
+el("totalCost").textContent=
+money(t.cost);
+
+
+el("totalExpenses").textContent=
+money(t.expenses);
+
+
+el("grossProfit").textContent=
+money(t.gross);
+
+
+el("netProfit").textContent=
+money(t.net);
+
+
+renderInvoices();
+
+}
+
+
+/* =========================================================
+   INVOICES
+========================================================= */
+
+function renderInvoices(){
+
+var html="";
+
+
+data.sales
+.slice()
+.reverse()
+.forEach(function(x){
+
+html+=
+
+"<div class='invoice'>"+
+
+"<div class='invoice-title'>"+
+"<h3>SM TYRES & ALIGNMENT</h3>"+
+"<b>SALES INVOICE</b>"+
+"</div>"+
+
+"<hr>"+
+
+"<b>Invoice:</b> "+
+safe(x.invoice)+
+
+"<br>"+
+
+"<b>Date:</b> "+
+safe(x.date)+
+
+"<br>"+
+
+"<b>Customer:</b> "+
+safe(x.customer)+
+
+"<br><br>"+
+
+"<div class='table-wrap'>"+
+
+"<table>"+
+
+"<tr>"+
+"<th>Product</th>"+
+"<th>Qty</th>"+
+"<th>Price</th>"+
+"<th>Total</th>"+
+"</tr>"+
+
+"<tr>"+
+"<td>"+safe(x.product)+"</td>"+
+"<td>"+Number(x.quantity||0)+"</td>"+
+"<td>"+money(x.price)+"</td>"+
+"<td>"+money(x.total)+"</td>"+
+"</tr>"+
+
+"</table>"+
+
+"</div>"+
+
+"<br>"+
+
+"<div class='total-line'>"+
+"<span>Total</span>"+
+"<span>"+money(x.total)+"</span>"+
+"</div>"+
+
+"</div>";
+
+});
+
+
+el("invoiceList").innerHTML=
+html||
+"<div class='empty'>No sales invoices.</div>";
+
+}
+
+
+/* =========================================================
+   BACKUP TEXT
+========================================================= */
+
+function makeBackup(){
+
+return JSON.stringify(data,null,2);
+
+}
+
+
+/* =========================================================
+   DOWNLOAD BACKUP
+========================================================= */
+
+function downloadBackup(){
+
+var text=makeBackup();
+
+var blob=new Blob(
+[text],
+{type:"application/json"}
+);
+
+var url=URL.createObjectURL(blob);
+
+var a=document.createElement("a");
+
+a.href=url;
+
+a.download=
+"SM_TYRES_BACKUP_"+
+today()+
+".json";
+
+document.body.appendChild(a);
+
+a.click();
+
+document.body.removeChild(a);
+
+URL.revokeObjectURL(url);
+
+el("backupText").value=text;
+
+}
+
+
+/* =========================================================
+   COPY BACKUP
+========================================================= */
+
+function copyBackup(){
+
+var text=makeBackup();
+
+el("backupText").value=text;
+
+
+if(navigator.clipboard){
+
+navigator.clipboard.writeText(text)
+.then(function(){
+
+alert("Backup data copied.");
+
+})
+.catch(function(){
+
+fallbackCopy();
+
+});
+
+}else{
+
+fallbackCopy();
+
+}
+
+}
+
+
+function fallbackCopy(){
+
+el("backupText").focus();
+
+el("backupText").select();
+
+try{
+
+document.execCommand("copy");
+
+alert("Backup data copied.");
+
+}catch(e){
+
+alert(
+"Copy failed. Select and copy the text manually."
+);
+
+}
+
+}
+
+
+/* =========================================================
+   PRINT / PDF
+========================================================= */
+
+function createPDF(){
+
+var t=calculateTotals();
+
+var html=
+
+"<!DOCTYPE html>"+
+"<html><head><title>SM TYRES REPORT</title>"+
+"<style>"+
+"body{font-family:Arial;padding:30px}"+
+"table{width:100%;border-collapse:collapse}"+
+"th,td{border:1px solid #ccc;padding:8px;text-align:left}"+
+"th{background:#123b5d;color:white}"+
+"</style>"+
+"</head><body>"+
+
+"<h1>SM TYRES & ALIGNMENT</h1>"+
+"<h2>Accounting Report</h2>"+
+
+"<p>Total Sales: "+money(t.sales)+"</p>"+
+"<p>Total Purchases: "+money(t.purchases)+"</p>"+
+"<p>Cost of Goods Sold: "+money(t.cost)+"</p>"+
+"<p>Gross Profit: "+money(t.gross)+"</p>"+
+"<p>Expenses: "+money(t.expenses)+"</p>"+
+"<h2>Net Profit: "+money(t.net)+"</h2>"+
+
+"<h2>Sales</h2>"+
+
+"<table>"+
+"<tr>"+
+"<th>Invoice</th>"+
+"<th>Date</th>"+
+"<th>Customer</th>"+
+"<th>Product</th>"+
+"<th>Qty</th>"+
+"<th>Total</th>"+
+"</tr>";
+
+
+data.sales.forEach(function(x){
+
+html+=
+"<tr>"+
+"<td>"+safe(x.invoice)+"</td>"+
+"<td>"+safe(x.date)+"</td>"+
+"<td>"+safe(x.customer)+"</td>"+
+"<td>"+safe(x.product)+"</td>"+
+"<td>"+x.quantity+"</td>"+
+"<td>"+money(x.total)+"</td>"+
+"</tr>";
+
+});
+
+
+html+=
+"</table>"+
+"</body></html>";
+
+
+var win=window.open("","_blank");
+
+
+if(!win){
+
+alert(
+"Print window was blocked. Allow pop-ups for this app."
+);
+
+return;
+
+}
+
+
+win.document.open();
+
+win.document.write(html);
+
+win.document.close();
+
+setTimeout(function(){
+
+win.print();
+
+},500);
+
+}
+
+
+/* =========================================================
+   RESTORE
+========================================================= */
+
+function restoreData(){
+
+var text=
+value("restoreText");
+
+
+if(!text){
+
+alert("Paste backup data first.");
+
+return;
+}
+
+
+try{
+
+var x=JSON.parse(text);
+
+
+if(
+!x ||
+typeof x!=="object" ||
+!x.products
+){
+
+throw new Error("Invalid backup");
+
+}
+
+
+if(
+!confirm(
+"Restore this backup?\n\n"+
+"Current data will be replaced."
+)
+){
+
+return;
+
+}
+
+
+data={
+
+products:x.products||{},
+sales:Array.isArray(x.sales)?x.sales:[],
+purchases:Array.isArray(x.purchases)?x.purchases:[],
+expenses:Array.isArray(x.expenses)?x.expenses:[],
+suppliers:Array.isArray(x.suppliers)?x.suppliers:[],
+movements:Array.isArray(x.movements)?x.movements:[],
+transferIn:Array.isArray(x.transferIn)?x.transferIn:[],
+transferOut:Array.isArray(x.transferOut)?x.transferOut:[],
+invoiceNumber:Number(x.invoiceNumber||0)
+
+};
+
+
+save();
+
+render();
+
+alert("Data restored successfully.");
+
+}catch(error){
+
+alert(
+"Invalid backup file.\n"+
+"Please select a valid SM TYRES backup."
+);
+
+}
+
+}
+
+
+/* =========================================================
+   DELETE ALL
+========================================================= */
+
+function deleteAllData(){
+
+var first=
+confirm(
+"WARNING!\n\n"+
+"This will permanently delete ALL sales, purchases, "+
+"products, expenses, suppliers, transfers and inventory.\n\n"+
+"Continue?"
+);
+
+
+if(!first){
+
+return;
+
+}
+
+
+var second=
+confirm(
+"FINAL WARNING!\n\n"+
+"Delete ALL data?"
+);
+
+
+if(!second){
+
+return;
+
+}
+
+
+data={
+
+products:{},
+sales:[],
+purchases:[],
+expenses:[],
+suppliers:[],
+movements:[],
+transferIn:[],
+transferOut:[],
+invoiceNumber:0
+
+};
+
+
+save();
+
+render();
+
+alert("All data has been deleted.");
+
+}
+
+
+/* =========================================================
+   RESTORE FILE
+========================================================= */
+
+function handleRestoreFile(event){
+
+var file=
+event.target.files[0];
+
+
+if(!file){
+
+return;
+
+}
+
+
+var reader=
+new FileReader();
+
+
+reader.onload=function(e){
+
+el("restoreText").value=
+e.target.result;
+
+};
+
+
+reader.onerror=function(){
+
+alert("Could not read backup file.");
+
+};
+
+
+reader.readAsText(file);
+
+}
+
+
+/* =========================================================
+   RENDER EVERYTHING
+========================================================= */
+
+function render(){
+
+renderOptions();
+
+renderProducts();
+
+renderInventory();
+
+renderMovements();
+
+renderTransferIn();
+
+renderTransferOut();
+
+renderSales();
+
+renderPurchases();
+
+renderExpenses();
+
+renderSuppliers();
+
+renderReports();
+
+}
+
+
+/* =========================================================
+   BUTTON EVENTS
+========================================================= */
+
+function setupEvents(){
+
+el("productButton")
+.addEventListener(
+"click",
+addProduct
+);
+
+
+el("purchaseButton")
+.addEventListener(
+"click",
+recordPurchase
+);
+
+
+el("saleButton")
+.addEventListener(
+"click",
+recordSale
+);
+
+
+el("transferInButton")
+.addEventListener(
+"click",
+recordTransferIn
+);
+
+
+el("transferOutButton")
+.addEventListener(
+"click",
+recordTransferOut
+);
+
+
+el("expenseButton")
+.addEventListener(
+"click",
+recordExpense
+);
+
+
+el("supplierButton")
+.addEventListener(
+"click",
+addSupplier
+);
+
+
+el("jsonBackupButton")
+.addEventListener(
+"click",
+downloadBackup
+);
+
+
+el("copyBackupButton")
+.addEventListener(
+"click",
+copyBackup
+);
+
+
+el("pdfBackupButton")
+.addEventListener(
+"click",
+createPDF
+);
+
+
+el("restoreButton")
+.addEventListener(
+"click",
+restoreData
+);
+
+
+el("deleteButton")
+.addEventListener(
+"click",
+deleteAllData
+);
+
+
+el("restoreFile")
+.addEventListener(
+"change",
+handleRestoreFile
+);
+
+
+el("productSearch")
+.addEventListener(
+"input",
+renderProducts
+);
+
+
+/* DELETE PRODUCT BUTTONS */
+
+el("productsList")
+.addEventListener(
+"click",
+function(event){
+
+var button=
+event.target.closest(".delete-product");
+
+if(!button){
+
+return;
+
+}
+
+var name=
+button.getAttribute("data-product");
+
+deleteProduct(name);
+
+}
+);
+
+}
+
+
+/* =========================================================
+   START APP
+========================================================= */
+
+function startApp(){
+
+load();
+
+setDates();
+
+setupEvents();
+
+render();
+
+}
+
+
+/* =========================================================
+   START
+========================================================= */
+
+if(
+document.readyState==="loading"
+){
+
+document.addEventListener(
+"DOMContentLoaded",
+startApp
+);
+
+}else{
+
+startApp();
+
+}
 
 </script>
 
