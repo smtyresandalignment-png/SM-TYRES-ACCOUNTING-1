@@ -3422,6 +3422,12 @@ function renderOpeningStock(){
 
 /* =========================================================
    MONTHLY CLOSING STOCK
+   Closing = Opening balance (carried from before the month)
+             + Opening Stock ENTERED during the month
+             + Purchases during the month
+             + Transfer In during the month
+             − Sales during the month
+             − Transfer Out during the month
 ========================================================= */
 
 function calculateMonthlyStock(){
@@ -3459,6 +3465,10 @@ function calculateMonthlyStock(){
   String(previousDate.getDate()).padStart(2,"0");
 
 
+ const startDate=
+  month+"-01";
+
+
  const products=
   productFilter
   ?
@@ -3472,12 +3482,13 @@ function calculateMonthlyStock(){
   "<table>"+
   "<tr>"+
   "<th>Product</th>"+
-  "<th>Opening</th>"+
+  "<th>Opening Balance</th>"+
+  "<th>Opening Stock Added</th>"+
   "<th>Purchases</th>"+
   "<th>Transfer In</th>"+
   "<th>Sales</th>"+
   "<th>Transfer Out</th>"+
-  "<th>Closing</th>"+
+  "<th>Closing Stock</th>"+
   "</tr>";
 
 
@@ -3489,21 +3500,42 @@ function calculateMonthlyStock(){
   hasRows=true;
 
 
+  /* Balance carried forward from before this month started */
+
   const opening=
    getStock(product,previousEnd);
 
 
+  let openingAdded=0;
   let purchases=0;
   let transferIn=0;
   let sales=0;
   let transferOut=0;
 
 
+  /* Actual opening stock entries recorded DURING this month */
+
+  data.openingStock.forEach(function(x){
+
+   if(
+    x.product===product &&
+    x.date>=startDate &&
+    x.date<=endDate
+   ){
+
+    openingAdded+=
+     Number(x.quantity)||0;
+
+   }
+
+  });
+
+
   data.purchases.forEach(function(x){
 
    if(
     x.product===product &&
-    x.date>=month+"-01" &&
+    x.date>=startDate &&
     x.date<=endDate
    ){
 
@@ -3519,7 +3551,7 @@ function calculateMonthlyStock(){
 
    if(
     x.product===product &&
-    x.date>=month+"-01" &&
+    x.date>=startDate &&
     x.date<=endDate
    ){
 
@@ -3535,7 +3567,7 @@ function calculateMonthlyStock(){
 
    if(
     x.product===product &&
-    x.date>=month+"-01" &&
+    x.date>=startDate &&
     x.date<=endDate
    ){
 
@@ -3551,7 +3583,7 @@ function calculateMonthlyStock(){
 
    if(
     x.product===product &&
-    x.date>=month+"-01" &&
+    x.date>=startDate &&
     x.date<=endDate
    ){
 
@@ -3563,8 +3595,15 @@ function calculateMonthlyStock(){
   });
 
 
+  /* Accurate closing stock = opening balance carried forward
+     + actual opening stock entered this month
+     + purchases + transfer in
+     − sales − transfer out
+  */
+
   const closing=
    opening+
+   openingAdded+
    purchases+
    transferIn-
    sales-
@@ -3579,6 +3618,7 @@ function calculateMonthlyStock(){
    "</b></td>"+
 
    "<td>"+opening+"</td>"+
+   "<td>"+openingAdded+"</td>"+
    "<td>"+purchases+"</td>"+
    "<td>"+transferIn+"</td>"+
    "<td>"+sales+"</td>"+
